@@ -5,14 +5,19 @@
 #include "Material.h"
 #include "Edificio.h"
 #include "configuracion.h"
+#include <iomanip>
 using namespace std;
 
 class Casillero
 {
 protected:
-    int energia_consumida;
+    int energia_necesaria;
     Coordenada posicion;
-    bool esta_ocupado; // constructor que lo ponga por defecto el falso?
+    bool esta_ocupado;
+    bool esta_habitado;
+    char icono = ' ';
+    string color_fondo = COLOR_GRIS;
+    string color_texto = COLOR_TEXTO_NEGRO;
 
 public:
     //Constructor por defecto
@@ -26,12 +31,19 @@ public:
     Casillero(int posicion_x, int posicion_y, bool esta_ocupado);
 
     //Metodos virtuales
+    //PRE: -
+    //POS: fija esta_ocupado como true
     virtual void ocupar_casillero();
-
+    //PRE: -
+    //POS: fija esta_habitado y esta_ocupado como true
+    virtual void habitar_casillero();
+    //PRE: -
+    //POS: fija esta_habitado y esta_ocupado como false
+    virtual void deshabitar_casillero();
     //Metodos virtuales puros
     virtual void mostrar() = 0;
 
-    virtual void mostrar_en_mapa(int ancho, bool es_primera, bool es_ultima) = 0;
+    void mostrar_en_mapa(int ancho, bool es_medio, bool es_ultima);
 
     //Destructor
     virtual ~Casillero();
@@ -43,6 +55,9 @@ public:
     // Pre:
     // POS:Devuelve el estado del casillero, si tiene un objeto en su interior devuelve true.
     bool casillero_ocupado();
+    // Pre:
+    // POS:Devuelve el estado del casillero, si tiene un jugador en su interior devuelve true.
+    bool casillero_habitado();
     // PRE: -
     // POS: Fija energia_necesaria =consumo.
     void fijar_energia_necesaria(int consumo);

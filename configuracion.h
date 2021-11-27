@@ -27,6 +27,11 @@ const char ICONO_METAL = 'I';
 const char TERRENO_CONSTRUIBLE = 'T';
 const char TERRENO_INTRANSITABLE = 'L';
 const char TERRENO_TRANSITABLE = 'C';
+const int MAX_ENERGIA = 100;
+const char ICONO_POR_DEFECTO = ' ';
+const char ICONO_JUGADOR = 'J';
+const char ICONO_OCUPADO_POR_DEFECTO = 'X';
+
 //Casillero_contruible
 const string COLOR_BLANCO = "\033[48;5;15m";
 const string COLOR_GRIS = "\033[48;5;240m";

@@ -123,3 +123,53 @@ tipos_casillero Matriz_casillero::obtener_tipo_casillero(int fila, int columna)
     }
     return tipo_de_casillero;
 };
+Casillero *Matriz_casillero::obtener_casillero_vecino(Casillero *casillero_actual, direcciones direccion_vecino)
+{
+    Coordenada posicion_casillero_actual = casillero_actual->obtener_posicion();
+    int fila_casillero_actual = posicion_casillero_actual.obtener_coordenadas().coordenada_x;
+    int columna_casillero_actual = posicion_casillero_actual.obtener_coordenadas().coordenada_y;
+    Casillero *vecino;
+    int maximo_filas = this->obtener_largo_filas();
+    int maximo_columnas = this->obtener_largo_columnas();
+    vecino = nullptr;
+    if (fila_casillero_actual < maximo_filas && columna_casillero_actual < maximo_columnas)
+    {
+        switch (direccion_vecino)
+        {
+        case ARRIBA:
+            if (fila_casillero_actual != 0)
+            {
+                vecino = this->obtener_dato(fila_casillero_actual - 1, columna_casillero_actual);
+            }
+            break;
+
+        case ABAJO:
+
+            if (fila_casillero_actual != maximo_filas - 1)
+            {
+                vecino = this->obtener_dato(fila_casillero_actual + 1, columna_casillero_actual);
+            }
+            break;
+
+        case DERECHA:
+
+            if (columna_casillero_actual != maximo_columnas - 1)
+            {
+                vecino = this->obtener_dato(fila_casillero_actual, columna_casillero_actual + 1);
+            }
+            break;
+
+        case IZQUIERDA:
+            if (columna_casillero_actual != 0)
+            {
+                vecino = this->obtener_dato(fila_casillero_actual, columna_casillero_actual - 1);
+            }
+            break;
+
+        default:
+            break;
+        }
+    }
+
+    return vecino;
+}

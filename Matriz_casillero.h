@@ -13,6 +13,13 @@ enum tipos_casillero
     CASILLERO_TRANSITABLE,
     CASILLERO_INACCESIBLE,
 };
+enum direcciones
+{
+    ARRIBA,
+    ABAJO,
+    DERECHA,
+    IZQUIERDA,
+};
 class Matriz_casillero : public Matriz<Casillero *>
 {
 private:
@@ -64,6 +71,10 @@ public:
     //PRE:Recibe una fila y columna válidas.
     //POS:Devuelve un elemento de tipos_casillero indicando de que tipo es el casillero consultado.
     tipos_casillero obtener_tipo_casillero(int fila, int columna);
+
+    //PRE:Recibe un casillero dentro de la matriz de casilleros y una dirección donde buscar el vecino
+    //POS:Devuelve el dato vecino, si el vecino no es alcanzable devuelve NULL
+    Casillero *obtener_casillero_vecino(Casillero *casillero_actual, direcciones direccion_vecino);
 };
 
 #endif

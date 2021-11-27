@@ -12,7 +12,7 @@
 class Casillero_transitable : public Casillero
 {
 private:
-    Material_de_construccion material;
+    Material_consumible material;
 
 public:
     //Constructores

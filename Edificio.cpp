@@ -8,14 +8,14 @@ Edificio::Edificio()
     this->cant_construidos = 0;
 }
 
-Edificio::Edificio(std::string nombre_edificio, int cant_max, Material_de_construccion materiales[MAX_MATERIALES_CONSTRUIBLES])
+/* Edificio::Edificio(std::string nombre_edificio, int cant_max, Material_de_construccion materiales[MAX_MATERIALES_CONSTRUIBLES])
 {
     this->nombre_edificio = nombre_edificio;
     this->cant_max = cant_max;
     this->cant_construidos = 0;
-    this->materiales[0] = materiales[0];
-    this->materiales[1] = materiales[1];
-    this->materiales[2] = materiales[2];
+    //this->materiales[0] = materiales[0];
+    //this->materiales[1] = materiales[1];
+    //this->materiales[2] = materiales[2];
 
     if (nombre_edificio == NOMBRE_EDIFICIO_MINA)
     {
@@ -40,7 +40,7 @@ Edificio::Edificio(std::string nombre_edificio, int cant_max, Material_de_constr
         this->recursos_producidos.fijar_nombre(NOMBRE_RECURSO_POR_DEFECTO);
         this->recursos_producidos.fijar_cantidad(0);
     }
-}
+} */
 
 void Edificio::modificar_cant_construidos(int cant_construidos)
 {

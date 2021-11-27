@@ -24,7 +24,7 @@ public:
     //Constructor por parametros
     //PRE: -
     //POS: Construye edificio de nombre nombre_edificio, cantidad maxima cant_max y materiales de construccion materiales.
-    Edificio(std::string nombre_edificio, int cant_max, Material_de_construccion *materiales);
+    //Edificio(std::string nombre_edificio, int cant_max, Material_de_construccion *materiales);
 
     //PRE: cant_construidos debe ser mayor o igual que cero.
     //POS: Actualiza el atributo cant_construidos.
