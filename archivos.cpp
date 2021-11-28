@@ -25,7 +25,40 @@ Errores abrir_archivo_de_salida(std::ofstream &archivo, std::string path)
     estado = EXITO;
     return estado;
 }
+void procesar_mapa(Matriz_casillero &mapa)
+{
+    string filas;
+    string columnas;
+    char tipo_terreno;
+    bool esta_ocupado = false;
 
+    ifstream archivo_mapa(RUTA_MAPA);
+
+    if (!archivo_mapa.is_open())
+    {
+        cout << COLOR_TEXTO_ROJO << MENSAJE_ARCHIVO_NO_ENCONTRADO << COLOR_TEXTO_BLANCO << endl;
+    }
+    else
+    {
+        archivo_mapa >> filas;
+        archivo_mapa >> columnas;
+        int cant_filas = stoi(filas);
+        int cant_columnas = stoi(columnas);
+        mapa.agrandar_matriz(cant_filas, cant_columnas);
+
+        Coordenada coordenadas;
+
+        for (int fila = 0; fila < cant_filas; fila++)
+        {
+            for (int columna = 0; columna < cant_columnas; columna++)
+            {
+                coordenadas.fijar_coordenadas(fila, columna);
+                archivo_mapa >> tipo_terreno;
+                mapa.agregar_casillero(tipo_terreno, fila, columna, esta_ocupado);
+            }
+        }
+    }
+}
 /* void procesar_edificios(Vector_edificio &edificios)
 {
     string nombre;
@@ -69,41 +102,6 @@ Errores abrir_archivo_de_salida(std::ofstream &archivo, std::string path)
     }
     archivo_edificios.close();
 } */
-
-void procesar_mapa(Matriz_casillero &mapa)
-{
-    string filas;
-    string columnas;
-    char tipo_terreno;
-    bool esta_ocupado = false;
-
-    ifstream archivo_mapa(RUTA_MAPA);
-
-    if (!archivo_mapa.is_open())
-    {
-        cout << COLOR_TEXTO_ROJO << MENSAJE_ARCHIVO_NO_ENCONTRADO << COLOR_TEXTO_BLANCO << endl;
-    }
-    else
-    {
-        archivo_mapa >> filas;
-        archivo_mapa >> columnas;
-        int cant_filas = stoi(filas);
-        int cant_columnas = stoi(columnas);
-        mapa.agrandar_matriz(cant_filas, cant_columnas);
-
-        Coordenada coordenadas;
-
-        for (int fila = 0; fila < cant_filas; fila++)
-        {
-            for (int columna = 0; columna < cant_columnas; columna++)
-            {
-                coordenadas.fijar_coordenadas(fila, columna);
-                archivo_mapa >> tipo_terreno;
-                mapa.agregar_casillero(tipo_terreno, fila, columna, esta_ocupado);
-            }
-        }
-    }
-}
 
 /* void procesar_ubicaciones(Vector_edificio &edificios, Matriz_casillero &mapa) //Procesar despues de mapa
 {

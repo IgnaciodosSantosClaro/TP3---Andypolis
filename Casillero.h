@@ -51,7 +51,15 @@ public:
     // PRE: -
     // POS: Fija esta_ocupado como falso.
     void desocupar_casillero();
-
+    // PRE: Recibe una cadena con un Color de fondo
+    // POS: fija color_fondo =color
+    void fijar_color_fondo(string color);
+    // PRE: Recibe una cadena con un Color de fondo
+    // POS: fija color_texto =color
+    void fijar_color_texto(string color);
+    // PRE: Recibe un caracter
+    // POS: fija icono=icono
+    void fijar_icono(char icono);
     // Pre:
     // POS:Devuelve el estado del casillero, si tiene un objeto en su interior devuelve true.
     bool casillero_ocupado();

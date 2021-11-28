@@ -11,7 +11,7 @@
 #include "configuracion.h"
 #include "mensajes.h"
 #include "Material_consumible.h"
-
+Errores abrir_archivo(std::ifstream &archivo, std::string path);
 //PRE: Recibe un Vector de materiales no nulo
 //POS: Carga ese vector con el contenido de materiales.txt
 void cargar_materiales(Vector_material &materiales);

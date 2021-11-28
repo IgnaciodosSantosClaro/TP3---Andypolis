@@ -35,6 +35,18 @@ void Casillero::desocupar_casillero()
     this->esta_ocupado = false;
     //this->energia_necesaria = volver a valores viejos;
 };
+void Casillero::fijar_color_fondo(string color)
+{
+    this->color_fondo = color;
+};
+void Casillero::fijar_color_texto(string color)
+{
+    this->color_texto = color;
+};
+void Casillero::fijar_icono(char icono)
+{
+    this->icono = icono;
+};
 void Casillero::mostrar_en_mapa(int ancho, bool es_medio, bool es_ultima)
 {
     char separador = SEPARADOR_GRILLA_MEDIA;
