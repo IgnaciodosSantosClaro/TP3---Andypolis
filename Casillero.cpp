@@ -76,11 +76,12 @@ bool Casillero ::casillero_habitado()
 {
     return this->esta_habitado;
 };
-void Casillero::fijar_energia_necesaria(int consumo)
+void Casillero::fijar_energia_necesaria(int energia_jugador_1, int energia_jugador_2)
 {
-    this->energia_necesaria = consumo;
+    this->energia_necesaria[0] = energia_jugador_1;
+    this->energia_necesaria[1] = energia_jugador_2;
 };
-int Casillero::obtener_energia_necesaria()
+int *Casillero::obtener_energia_necesaria()
 {
     return this->energia_necesaria;
 };

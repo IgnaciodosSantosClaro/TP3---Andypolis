@@ -84,4 +84,9 @@ const string MENSAJE_CONSTRUCCION_FALLIDA = "Construccion cancelada";
 const string MENSAJE_TRANSITABLES_COMPLETO = "Se despejaron las nubes : No hay casilleros transitables libres para lluevan materiales.";
 const string MENSAJE_LLUVIA_INICIO = "Esta empezando a llover sobre el mapa....";
 const string MENSAJE_LLUVIA_COMPLETA = "Termino la lluvia, se generaron los siguientes recursos: ";
+//Objetivo_material.h
+const string MENSAJE_OBJETIVO_INVENTARIO_RESTANTES_P1 = "Faltan ";
+const string MENSAJE_OBJETIVO_INVENTARIO_RESTANTES_P2 = " de ";
+const string MENSAJE_OBJETIVO_INVENTARIO_RESTANTES_P3 = " para completar el objetivo ";
+const string DESCRIPCION_EDAD_PIEDRA = "Tener 500000 de piedra en el inventario.";
 #endif

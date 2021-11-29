@@ -11,7 +11,7 @@ using namespace std;
 class Casillero
 {
 protected:
-    int energia_necesaria;
+    int energia_necesaria[2];
     Coordenada posicion;
     bool esta_ocupado;
     bool esta_habitado;
@@ -66,12 +66,12 @@ public:
     // Pre:
     // POS:Devuelve el estado del casillero, si tiene un jugador en su interior devuelve true.
     bool casillero_habitado();
-    // PRE: -
+    // PRE: Recibe dos enteros positivos con las energías necesarias para cada jugadir
     // POS: Fija energia_necesaria =consumo.
-    void fijar_energia_necesaria(int consumo);
+    void fijar_energia_necesaria(int energia_jugador_1, int energia_jugador_2);
     // PRE: -
     // POS: Devuelve la energia necesaria para atravezar el casillero.
-    int obtener_energia_necesaria();
+    int *obtener_energia_necesaria();
     // PRE: -
     // POS: Devuelve un struct tipo ubicacion con la posicion del objeto.
     Coordenada obtener_posicion();
