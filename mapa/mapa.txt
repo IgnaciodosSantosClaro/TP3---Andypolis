@@ -1,0 +1,9 @@
+8 10
+L L T T T C C T B M
+L T T T T C C C B M
+L L C C T C C T B M
+C L T T T C C T B M
+T L T T T L C T B M
+T T T T T C C T B M
+C C T C T C C T B M
+T T T T T C C T B M
