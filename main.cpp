@@ -1,6 +1,6 @@
 
 #include "Matriz_casillero.h"
-#include "Interfaz.h"
+#include "interfaz.h"
 #include "archivos.h"
 #include <iostream>
 #include "configuracion.h"
@@ -25,4 +25,6 @@ int main(void)
         cout << "Objetivo 1 completo" << endl;
     }
     objetivo_1.mostrar_restante();
+
+    return 0;
 }

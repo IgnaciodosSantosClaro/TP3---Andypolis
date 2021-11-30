@@ -15,7 +15,7 @@ using namespace std;
 const string RUTA_MATERIALES = "materiales/materiales.txt";
 const string RUTA_EDIFICIOS = "edificios/edificios.txt";
 const string RUTA_UBICACIONES = "ubicaciones/ubicaciones.txt";
-const string RUTA_MAPA = "mapa/mapa.txt";
+const string RUTA_MAPA = "../mapa/mapa.txt";
 const char SEPARADOR_DERECHO_UBICACIONES = '(';
 const char SEPARADOR_IZQUIERDO_UBICACIONES = ')';
 const char SEPARADOR_MEDIO_UBICACIONES = ',';
