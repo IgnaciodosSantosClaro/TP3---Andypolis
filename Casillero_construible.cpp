@@ -1,6 +1,13 @@
 #include "Casillero_construible.h"
 using namespace std;
 
+Casillero_construible::Casillero_construible(int posicion_x, int posicion_y, bool esta_ocupado, string color_texto) : Casillero(posicion_x, posicion_y, esta_ocupado)
+{
+    this->posicion.fijar_coordenadas(posicion_x, posicion_y);
+    this->esta_ocupado = esta_ocupado;
+    this->color_fondo = COLOR_VERDE;
+    this->color_texto = color_texto;
+};
 Casillero_construible::Casillero_construible(int posicion_x, int posicion_y, bool esta_ocupado) : Casillero(posicion_x, posicion_y, esta_ocupado)
 {
     this->posicion.fijar_coordenadas(posicion_x, posicion_y);
@@ -29,7 +36,7 @@ void Casillero_construible::mostrar()
     }
 };
 
-void Casillero_construible::fijar_edificio(Edificio edificio)
+void Casillero_construible::fijar_edificio(Edificio &edificio)
 {
     this->icono = edificio.obtener_nombre()[0];
     this->edificio = edificio;
@@ -39,9 +46,15 @@ Edificio Casillero_construible::obtener_edificio()
 {
     return this->edificio;
 };
-void Casillero_construible::ocupar_casillero(Edificio edificio)
+void Casillero_construible::ocupar_casillero(Edificio edificio, string color_estado_edificio)
 {
+    this->color_texto = color_estado_edificio;
     this->edificio = edificio;
     this->esta_ocupado = true;
     this->icono = edificio.obtener_nombre()[0];
+};
+void Casillero_construible::desocupar_casillero()
+{
+    this->esta_ocupado = false;
+    this->icono = ' ';
 };

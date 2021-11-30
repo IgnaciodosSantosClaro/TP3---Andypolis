@@ -7,7 +7,11 @@ const string MENSAJE_ARCHIVO_NO_ENCONTRADO = "Archivo no encontrado";
 const string NOMBRE_CASILLERO_INACCESIBLE = "Lago";
 const string NOMBRE_CASILLERO_TRANSITABLE = "Camino";
 const string NOMBRE_CASILLERO_CONSTRUIBLE = "Terreno construible";
-
+// Bomba
+const string MENSAJE_BOMBA_DESTRUYO = "La bomba destruyo el edificio ";
+const string MENSAJE_BOMBA_DAÑO = "La bomba debilito el edificio ";
+const string MENSAJE_BOMBA_INSUFICIENTES = "No tienes suficentes bombas";
+const string MENSAJE_BOMBA_CASILLERO_VACIO = "No hay un edificio para bombardear en la posicion ";
 //Casillero_inaccesible
 const string CASILLERO_OCUPADO_MENSAJE = " y estoy ocupado.";
 const string CASILLERO_NO_OCUPADO_MENSAJE = " y no estoy ocupado.";

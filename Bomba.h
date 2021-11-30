@@ -1,10 +1,10 @@
 #ifndef BOMBA_H
 #define BOMBA_H
-
-class Bomba
+#include "Material_consumible.h"
+#include "Casillero_construible.h"
+#include "Edificio.h"
+class Bomba : public Material
 {
-private:
-    int cantidad;
 
 public:
     //PRE: -
@@ -15,13 +15,9 @@ public:
     //POS: Devuelve la cantidad de bombas.
     int obtener_cantidad();
 
-    //PRE: La cantidad es un numero positivo y entero.
-    //POS: Fija la cantidad de bombas.
-    void fijar_cantidad(int cantidad);
-
     //PRE:
     //POS:
-    void tirar_bomba();
+    void tirar_bomba(Casillero_construible &casillero_objetivo, string color_texto_edificio_herido);
 };
 
 #endif //BOMBA_H
