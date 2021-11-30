@@ -7,6 +7,6 @@ class Jugador
 {
 protected:
     int energia;
-    Coordenada coordenada;
+    Coordenada posicion;
 };
 #endif
