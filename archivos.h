@@ -4,6 +4,8 @@
 #include <fstream>
 #include "errores.h"
 #include "Vector_material.h"
+#include "Grafo.h"
+
 //#include "Vector_edificio.h" ->implementar como arbol
 #include "Coordenada.h"
 #include "Matriz_casillero.h"
@@ -44,4 +46,8 @@ void actualizar_archivo_ubicaciones(Matriz_casillero &mapa);
 //POS: Actualiza los archivos de materiales, edificios y ubicaciones.
 //void guardar_y_salir(Vector_edificio &edificios, Vector_material &materiales, Matriz_casillero &mapa);
 
-#endif
+//PRE: Recibe un objeto Grafo y un mapa bien cargado.
+//POS: Carga el grafo con los casilleros como vertices y las energias como aristas.
+void cargar_grafo(Grafo &grafo, Matriz_casillero &mapa);
+
+#endif //ARCHIVO_H

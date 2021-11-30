@@ -1,5 +1,9 @@
 #ifndef COORDENADA_H
 #define COORDENADA_H
+
+#include <string>
+using namespace std;
+
 struct ubicacion
 {
     int coordenada_x;
@@ -27,5 +31,9 @@ public:
     //PRE: -
     //POS: Imprime por pantalla las coordenadas.
     void mostrar();
+
+    //PRE: Las coordenadas estan cargadas.
+    //POS: Devuelve las coordenadas como "(fila, columna)".
+    string coordenada_a_string();
 };
 #endif
