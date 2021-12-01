@@ -15,7 +15,7 @@ using namespace std;
 const string RUTA_MATERIALES = "materiales/materiales.txt";
 const string RUTA_EDIFICIOS = "edificios/edificios.txt";
 const string RUTA_UBICACIONES = "ubicaciones/ubicaciones.txt";
-const string RUTA_MAPA = "mapa/mapa.txt";
+const string RUTA_MAPA = "../mapa/mapa.txt";
 const char SEPARADOR_DERECHO_UBICACIONES = '(';
 const char SEPARADOR_IZQUIERDO_UBICACIONES = ')';
 const char SEPARADOR_MEDIO_UBICACIONES = ',';
@@ -43,7 +43,10 @@ const int MAX_ENERGIA = 100;
 const char ICONO_POR_DEFECTO = ' ';
 const char ICONO_JUGADOR = 'J';
 const char ICONO_OCUPADO_POR_DEFECTO = 'X';
-
+//Jugador
+const int ENERGIA_INICIAL = 50;
+const int ENERGIA_MAXIMA = 100;
+const int ENERGIA_MINIMA = 0;
 //Casillero_contruible
 const string COLOR_BLANCO = "\033[48;5;15m";
 const string COLOR_MARRON = "\033[48;5;136m";

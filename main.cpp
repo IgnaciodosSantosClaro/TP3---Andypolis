@@ -7,6 +7,7 @@
 #include "Objetivo_material.h"
 #include "Material_consumible.h"
 #include "Grafo.h"
+#include "ABB.h"
 
 int main(void)
 {
@@ -17,6 +18,14 @@ int main(void)
         cout << "No encontré mapa" << endl;
     } */
     Grafo grafo;
+    ABB<int> arbol;
+    arbol.insertar_nodo(5);
+    arbol.insertar_nodo(2);
+    arbol.insertar_nodo(7);
+    arbol.insertar_nodo(3);
+
+    arbol.imprimir_in_order();
+    cout << endl;
 
     procesar_mapa(mapa);
     cargar_grafo(grafo, mapa);

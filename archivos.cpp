@@ -93,7 +93,6 @@ void cargar_grafo(Grafo &grafo, Matriz_casillero &mapa)
         }
     }
 }
-
 /* void procesar_edificios(Vector_edificio &edificios)
 {
     string nombre;

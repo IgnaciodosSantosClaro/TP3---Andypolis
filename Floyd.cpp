@@ -112,6 +112,10 @@ void Floyd::camino_minimo(int origen, int destino) {
 
 }
 
+int Floyd::obtener_costo(int origen, int destino) {
+    return matriz_costos[origen][destino];
+}
+
 void Floyd::liberar_matrices() {
     if(matriz_costos != nullptr && matriz_caminos != nullptr){
         for(int i = 0; i < cantidad_vertices; i++){

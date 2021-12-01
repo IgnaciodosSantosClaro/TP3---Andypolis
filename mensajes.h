@@ -9,7 +9,7 @@ const string NOMBRE_CASILLERO_TRANSITABLE = "Camino";
 const string NOMBRE_CASILLERO_CONSTRUIBLE = "Terreno construible";
 // Bomba
 const string MENSAJE_BOMBA_DESTRUYO = "La bomba destruyo el edificio ";
-const string MENSAJE_BOMBA_DAÑO = "La bomba debilito el edificio ";
+const string MENSAJE_BOMBA_DANO = "La bomba debilito el edificio ";
 const string MENSAJE_BOMBA_INSUFICIENTES = "No tienes suficentes bombas";
 const string MENSAJE_BOMBA_CASILLERO_VACIO = "No hay un edificio para bombardear en la posicion ";
 //Casillero_inaccesible

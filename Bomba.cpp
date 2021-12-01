@@ -22,7 +22,7 @@ void Bomba::tirar_bomba(Casillero_construible &casillero_objetivo, string color_
             }
             else
             {
-                cout << MENSAJE_BOMBA_DAÑO << edificio_objetivo.obtener_nombre() << endl;
+                cout << MENSAJE_BOMBA_DANO << edificio_objetivo.obtener_nombre() << endl;
                 casillero_objetivo.fijar_color_texto(color_texto_edificio_herido);
                 casillero_objetivo.fijar_edificio(edificio_objetivo);
             }
