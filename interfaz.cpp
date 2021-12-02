@@ -11,7 +11,7 @@ void mostrar_leyenda_casillero(string color_fondo, string color_letra, char icon
 {
     mostrar_leyenda_tipo_terreno(COLOR_VERDE, NOMBRE_CASILLERO_CONSTRUIBLE);
     mostrar_leyenda_tipo_terreno(COLOR_GRIS, NOMBRE_CASILLERO_TRANSITABLE);
-    mostrar_leyenda_tipo_terreno(COLOR_CELESTE, NOMBRE_CASILLERO_INACCESIBLE);
+    mostrar_leyenda_tipo_terreno(COLOR_CELESTE, NOMBRE_CASILLERO_transitable);
     cout << endl;
     mostrar_leyenda_casillero(COLOR_GRIS, COLOR_TEXTO_NEGRO, ICONO_PIEDRA, PIEDRA_MAYUS);
     mostrar_leyenda_casillero(COLOR_GRIS, COLOR_TEXTO_NEGRO, ICONO_MADERA, MADERA_MAYUS);
@@ -26,12 +26,36 @@ void mostrar_leyenda_casillero(string color_fondo, string color_letra, char icon
     }
     cout << endl;
 } */
+void mostrar_encabezado(int margen, int ancho_grilla, int columnas)
+{
+    // cout << setw(margen + (ancho_grilla)*columnas + 2);
+    string margen_cadena;
+    int ancho_total = margen + (ancho_grilla) * (columnas + 1);
+    string numeracion;
+    numeracion.resize(ancho_total, ESPACIO);
+    for (int i = 0; i <= columnas; i++)
+    {
+        numeracion[margen + int(ancho_grilla / 2 - 1) + i * ancho_grilla] = to_string(i)[0];
+    }
+    cout << numeracion << endl;
+    margen_cadena.resize(margen, ESPACIO);
+    margen_cadena.resize(ancho_total, SEPARADOR_GRILLA_INFERIOR);
+    cout << margen_cadena << endl;
+}
 void mostrar_fila(Matriz_casillero &mapa, int fila, int ancho_grilla, int largo_grilla)
 {
     int limite_columna = mapa.obtener_largo_columnas();
     int medio = (int)largo_grilla / 2;
     for (int i = 0; i < largo_grilla; i++)
     {
+        if (i == medio)
+        {
+            cout << fila;
+        }
+        else
+        {
+            cout << ESPACIO;
+        }
         cout << SEPARADOR_GRILLA_DERECHA;
         for (int columna = 0; columna < limite_columna; columna++)
         {
@@ -50,18 +74,86 @@ void mostrar_fila(Matriz_casillero &mapa, int fila, int ancho_grilla, int largo_
                 mapa.obtener_dato(fila, columna)->mostrar_en_mapa(ancho_grilla, false, false);
             }
         };
-        cout << endl;
+        if (i != largo_grilla - 1)
+        {
+            cout << endl;
+        }
     }
 }
+void mostrar_referencia_casilleros()
+{
+    Casillero_construible casillero_construible;
+    casillero_construible.mostrar_leyenda(NOMBRE_CASILLERO_CONSTRUIBLE);
+
+    Casillero_transitable casillero_camino = Casillero_transitable(TERRENO_TRANSITABLE, 0, 0, false);
+    casillero_camino.mostrar_leyenda(NOMBRE_CASILLERO_TRANSITABLE);
+
+    Casillero_transitable casillero_betun = Casillero_transitable(TERRENO_BETUN, 0, 0, false);
+    casillero_betun.mostrar_leyenda(NOMBRE_CASILLERO_BETUN);
+
+    Casillero_transitable casillero_muelle = Casillero_transitable(TERRENO_MUELLE, 0, 0, false);
+    casillero_muelle.mostrar_leyenda(NOMBRE_CASILLERO_MUELLE);
+
+    Casillero_inaccesible casillero_inaccesible = Casillero_inaccesible();
+    casillero_inaccesible.mostrar_leyenda(NOMBRE_CASILLERO_INACCESIBLE);
+}
+void mostrar_referencia_edificios() // PENSAR EN IMPLEMENTARLO CON metodos de la clase
+{
+    // Recorrer Edificios y mostrar referencia
+    cout << "Referencias edificios";
+};
+void mostrar_referencias_salud_edificios()
+{
+    cout << COLOR_VERDE << ESPACIO << COLOR_EDIFICIO_SANO_JUG_1 << NOMBRE_EDIFICIO_ASERRADERO[0] << ESPACIO << COLOR_NEGRO << COLOR_TEXTO_BLANCO << "Edificio de Jugador 1 sano";
+    cout << COLOR_VERDE << ESPACIO << COLOR_EDIFICIO_SANO_JUG_2 << NOMBRE_EDIFICIO_ASERRADERO[0] << ESPACIO << COLOR_NEGRO << COLOR_TEXTO_BLANCO << "Edificio de Jugador 2 sano";
+}
+void mostrar_referencias_salud_edificios_danados()
+{
+    cout << COLOR_VERDE << ESPACIO << COLOR_EDIFICIO_HERIDO_JUG_1 << NOMBRE_EDIFICIO_ASERRADERO[0] << ESPACIO << COLOR_NEGRO << COLOR_TEXTO_BLANCO << "Edificio de Jugador 1 herido";
+    cout << COLOR_VERDE << ESPACIO << COLOR_EDIFICIO_HERIDO_JUG_2 << NOMBRE_EDIFICIO_ASERRADERO[0] << ESPACIO << COLOR_NEGRO << COLOR_TEXTO_BLANCO << "Edificio de Jugador 2 herido";
+}
+void mostrar_referencia_materiales()
+{
+    cout << "Referencias materiales";
+    // Material pinza = Material("pinza", 1);
+    // pinza.mostrar_leyenda('Y');
+}
+
 void mostrar_mapa(Matriz_casillero &mapa, int ancho_grilla, int largo_grilla)
 {
     int limite_fila = mapa.obtener_largo_filas();
     int limite_columna = mapa.obtener_largo_columnas();
     cout << endl;
-    cout.width((ancho_grilla)*limite_columna + 1);
-    cout << cout.fill(SEPARADOR_GRILLA_INFERIOR) << endl;
+    cout << TEXTO_NEGRITA;
+    mostrar_encabezado(2, ancho_grilla, limite_columna - 1);
     for (int fila = 0; fila < limite_fila; fila++)
     {
         mostrar_fila(mapa, fila, ancho_grilla, largo_grilla);
+        switch (fila)
+        {
+        case PRIMERA_FILA:
+            mostrar_referencia_casilleros();
+            cout << endl;
+            break;
+        case SEGUNDA_FILA:
+            mostrar_referencia_edificios();
+            cout << endl;
+            break;
+        case TERCERA_FILA:
+            mostrar_referencia_materiales();
+            cout << endl;
+            break;
+        case CUARTA_FILA:
+            mostrar_referencias_salud_edificios();
+            cout << endl;
+            break;
+        case QUINTA_FILA:
+            mostrar_referencias_salud_edificios_danados();
+            cout << endl;
+            break;
+        default:
+            cout << endl;
+            break;
+        }
     }
 }

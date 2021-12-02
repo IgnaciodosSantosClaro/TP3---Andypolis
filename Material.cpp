@@ -14,7 +14,10 @@ Material::Material(std::string nombre_material, int cantidad)
     this->nombre_material = nombre_material;
     this->cantidad = cantidad;
 }
-
+void Material::mostrar_leyenda(char icono)
+{
+    cout << COLOR_GRIS << ESPACIO << icono << ESPACIO << COLOR_NEGRO << ESPACIO << this->nombre_material;
+}
 std::string Material::obtener_nombre()
 {
     return this->nombre_material;

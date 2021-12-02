@@ -62,29 +62,35 @@ void procesar_mapa(Matriz_casillero &mapa)
 
 void cargar_grafo(Grafo &grafo, Matriz_casillero &mapa, int num_jugador)
 {
-    for(int i = 0; i < mapa.obtener_largo_filas(); i++) {
-        for(int j = 0; j < mapa.obtener_largo_columnas(); j++) {
+    for (int i = 0; i < mapa.obtener_largo_filas(); i++)
+    {
+        for (int j = 0; j < mapa.obtener_largo_columnas(); j++)
+        {
             string vertice = "(" + to_string(i) + "," + " " + to_string(j) + ")";
             grafo.agregar_vertice(vertice);
         }
     }
 
-    for(int i = 0; i < mapa.obtener_largo_filas(); i++) {
-        for(int j = 0; j < mapa.obtener_largo_columnas(); j++) {
-            Casillero* casillero_actual = mapa.obtener_dato(i, j);
-            Casillero* vecino_derecho = mapa.obtener_casillero_vecino(mapa.obtener_dato(i, j), DERECHA);
-            Casillero* vecino_abajo = mapa.obtener_casillero_vecino(mapa.obtener_dato(i, j), ABAJO);
+    for (int i = 0; i < mapa.obtener_largo_filas(); i++)
+    {
+        for (int j = 0; j < mapa.obtener_largo_columnas(); j++)
+        {
+            Casillero *casillero_actual = mapa.obtener_dato(i, j);
+            Casillero *vecino_derecho = mapa.obtener_casillero_vecino(mapa.obtener_dato(i, j), DERECHA);
+            Casillero *vecino_abajo = mapa.obtener_casillero_vecino(mapa.obtener_dato(i, j), ABAJO);
 
             string coord_actual = casillero_actual->obtener_posicion().coordenada_a_string();
             int energia_actual = casillero_actual->obtener_energia_necesaria()[num_jugador - 1];
 
-            if(vecino_derecho != nullptr) {
+            if (vecino_derecho != nullptr)
+            {
                 string coord_derecha = vecino_derecho->obtener_posicion().coordenada_a_string();
                 int energia_derecha = vecino_derecho->obtener_energia_necesaria()[num_jugador - 1];
                 grafo.agregar_camino(coord_actual, coord_derecha, energia_derecha);
                 grafo.agregar_camino(coord_derecha, coord_actual, energia_actual);
             }
-            if(vecino_abajo != nullptr) {
+            if (vecino_abajo != nullptr)
+            {
                 string coord_abajo = vecino_abajo->obtener_posicion().coordenada_a_string();
                 int energia_abajo = vecino_abajo->obtener_energia_necesaria()[num_jugador - 1];
                 grafo.agregar_camino(coord_actual, coord_abajo, energia_abajo);
@@ -137,13 +143,11 @@ void cargar_grafo(Grafo &grafo, Matriz_casillero &mapa, int num_jugador)
     archivo_edificios.close();
 } */
 
-/* void procesar_ubicaciones(Vector_edificio &edificios, Matriz_casillero &mapa) //Procesar despues de mapa
+void procesar_ubicaciones(Matriz_casillero &mapa) // Procesar despues de mapa
 {
+    string linea;
     string nombre;
-    string nombre2;
-    string saltear;
-    string coord_x;
-    string coord_y;
+    long long unsigned int inicio_posicion;
     int fila;
     int columna;
 
@@ -155,28 +159,60 @@ void cargar_grafo(Grafo &grafo, Matriz_casillero &mapa, int num_jugador)
     }
     else
     {
-        while (archivo_ubicaciones >> nombre)
+        bool procesar_jugador_1 = false;
+        bool procesar_jugador_2 = false;
+        while (getline(archivo_ubicaciones, linea))
         {
-            if (nombre == NOMBRE_EDIFICIO_PLANTA)
+            nombre = separar_hasta(linea, SEPARADOR_DERECHO_UBICACIONES);
+            nombre.pop_back();
+            inicio_posicion = linea.find(SEPARADOR_DERECHO_UBICACIONES);
+            fila = linea[inicio_posicion + 1] - '0'; // Resto offset ASCII
+            columna = linea[inicio_posicion + LARGO_HASTA_COLUMNA] - '0';
+            if (es_jugador(nombre))
             {
-                archivo_ubicaciones >> nombre2;
-                nombre += " " + nombre2;
-            }
-            getline(archivo_ubicaciones, saltear, SEPARADOR_DERECHO_UBICACIONES);
-            getline(archivo_ubicaciones, coord_x, SEPARADOR_MEDIO_UBICACIONES);
-            fila = stoi(coord_x);
-            getline(archivo_ubicaciones, saltear, ESPACIO);
-            getline(archivo_ubicaciones, coord_y, SEPARADOR_IZQUIERDO_UBICACIONES);
-            columna = stoi(coord_y);
+                mapa.obtener_dato(fila, columna)->habitar_casillero();
 
-            int posicion = edificios.obtener_pos_edificio(nombre);
-            Edificio edificio_modificado = edificios.obtener_valor(posicion);
-            edificio_modificado.incrementar_construcciones();
-            edificios.fijar_valor(edificio_modificado, posicion);
-            Casillero_construible *casillero_puntero = dynamic_cast<Casillero_construible *>(mapa.obtener_dato(fila, columna));
-            casillero_puntero->ocupar_casillero(edificio_modificado);
+                if (nombre.compare(NOMBRE_JUGADOR_1_UBICACIONES) == 0)
+                {
+                    mapa.obtener_dato(fila, columna)->fijar_color_texto(COLOR_JUGADOR_1);
+                    procesar_jugador_1 = true;
+                    procesar_jugador_2 = false;
+                }
+                else
+                {
+                    mapa.obtener_dato(fila, columna)->fijar_color_texto(COLOR_JUGADOR_2);
+                    procesar_jugador_1 = false;
+                    procesar_jugador_2 = true;
+                }
+            }
+            else if (procesar_jugador_1 == true)
+            {
+                cout << "Soy un edificio del jugador 1" << endl;
+                cout << "mi nombre es: " << nombre << " y estoy en " << fila << ": " << columna << endl;
+                Casillero_construible *construible_ptr = dynamic_cast<Casillero_construible *>(mapa.obtener_dato(fila, columna));
+                Edificio edificio_seleccionado = Edificio(nombre, PUNTOS_SALUD_BASE);
+                construible_ptr->ocupar_casillero(edificio_seleccionado, COLOR_EDIFICIO_SANO_JUG_1);
+            }
+            else if (procesar_jugador_2 == true)
+            {
+                cout << "Soy un edificio del jugador 2" << endl;
+                cout << "mi nombre es: " << nombre << " y estoy en " << fila << ": " << columna << endl;
+                Casillero_construible *construible_ptr = dynamic_cast<Casillero_construible *>(mapa.obtener_dato(fila, columna));
+                Edificio edificio_seleccionado = Edificio(nombre, PUNTOS_SALUD_BASE);
+                construible_ptr->ocupar_casillero(edificio_seleccionado, COLOR_EDIFICIO_SANO_JUG_2);
+            }
+            else
+            {
+                // Procesar materiales
+                cout << "Soy un material " << endl;
+                cout << "mi nombre es:" << nombre << " y estoy en " << fila << ": " << columna << endl;
+            }
         }
     }
+<<<<<<< HEAD
+};
+void cargar_materiales(Vector_material &materiales)
+=======
 }; */
 void cargar_materiales(Jugador &jugador1, Jugador &jugador2)
 {

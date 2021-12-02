@@ -11,12 +11,12 @@ Casillero::Casillero(int posicion_x, int posicion_y, bool esta_ocupado)
 Casillero::~Casillero()
 {
 }
-//void Casillero::()
+// void Casillero::()
 void Casillero::ocupar_casillero()
 {
     this->esta_ocupado = true;
     this->icono = ICONO_OCUPADO_POR_DEFECTO;
-    //this->energia_necesaria = MAX_ENERGIA + 1;
+    // this->energia_necesaria = MAX_ENERGIA + 1;
 };
 void Casillero::habitar_casillero()
 {
@@ -24,16 +24,20 @@ void Casillero::habitar_casillero()
     this->esta_ocupado = true;
     this->icono = ICONO_JUGADOR;
 };
+void Casillero::mostrar_leyenda(string leyenda)
+{
+    cout << this->color_fondo << ESPACIO << ESPACIO << COLOR_NEGRO << ESPACIO << COLOR_TEXTO_BLANCO << leyenda;
+}
 void Casillero::deshabitar_casillero()
 {
     this->esta_habitado = false;
-    this->esta_habitado = false;
+    this->esta_ocupado = false;
     this->icono = ICONO_POR_DEFECTO;
 };
 void Casillero::desocupar_casillero()
 {
     this->esta_ocupado = false;
-    //this->energia_necesaria = volver a valores viejos;
+    // this->energia_necesaria = volver a valores viejos;
 };
 void Casillero::fijar_color_fondo(string color)
 {

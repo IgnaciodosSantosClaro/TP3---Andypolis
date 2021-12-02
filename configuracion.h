@@ -10,12 +10,13 @@
 #define CLR_SCREEN "CLS"
 #endif // __MINGW32__
 
-//Archivos
+// Archivos
 using namespace std;
 const string RUTA_MATERIALES = "../materiales/materiales.txt";
 const string RUTA_EDIFICIOS = "edificios/edificios.txt";
 const string RUTA_UBICACIONES = "ubicaciones/ubicaciones.txt";
-const string RUTA_MAPA = "../mapa/mapa.txt";
+const string RUTA_MAPA = "mapa/mapa.txt";
+const int LARGO_HASTA_COLUMNA = 4;
 const char SEPARADOR_DERECHO_UBICACIONES = '(';
 const char SEPARADOR_IZQUIERDO_UBICACIONES = ')';
 const char SEPARADOR_MEDIO_UBICACIONES = ',';
@@ -34,7 +35,7 @@ const char CONSUMO_ENERGIA_INACCESIBLE_JUGADOR_1 = 2;
 const char CONSUMO_ENERGIA_INACCESIBLE_JUGADOR_2 = 5;
 const char CONSUMO_ENERGIA_CONSTRUIBLE_JUGADOR_1 = 25;
 const char CONSUMO_ENERGIA_CONSTRUIBLE_JUGADOR_2 = 25;
-//Casillero.h
+// Casillero.h
 const char TERRENO_CONSTRUIBLE = 'T';
 const char TERRENO_INTRANSITABLE = 'L';
 const char TERRENO_TRANSITABLE = 'C';
@@ -44,11 +45,13 @@ const int MAX_ENERGIA = 100;
 const char ICONO_POR_DEFECTO = ' ';
 const char ICONO_JUGADOR = 'J';
 const char ICONO_OCUPADO_POR_DEFECTO = 'X';
-//Jugador
+// Jugador
 const int ENERGIA_INICIAL = 50;
 const int ENERGIA_MAXIMA = 100;
 const int ENERGIA_MINIMA = 0;
-//Casillero_contruible
+const string NOMBRE_JUGADOR_1_UBICACIONES = "1";
+const string NOMBRE_JUGADOR_2_UBICACIONES = "2";
+// Casillero_contruible
 const string COLOR_BLANCO = "\033[48;5;15m";
 const string COLOR_MARRON = "\033[48;5;136m";
 const string COLOR_GRIS_OSCURO = "\033[48;5;59m";
@@ -65,20 +68,26 @@ const char SEPARADOR_GRILLA_INFERIOR = '_';
 const char SEPARADOR_GRILLA_MEDIA = ' ';
 const char SEPARADOR_GRILLA_DERECHA = '|';
 
-//Edificio
+// Edificio
+const int PUNTOS_SALUD_BASE = 2;
 const string NOMBRE_EDIFICIO_POR_DEFECTO = "edificio vacío";
 const string NOMBRE_EDIFICIO_MINA = "mina";
+const string NOMBRE_EDIFICIO_MINA_ORO = "mina oro";
 const string NOMBRE_EDIFICIO_ASERRADERO = "aserradero";
 const string NOMBRE_EDIFICIO_FABRICA = "fabrica";
-const string NOMBRE_EDIFICIO_PLANTA = "planta";
+const string NOMBRE_EDIFICIO_PLANTA_ELECTRICA = "planta electrica";
+const string NOMBRE_EDIFICIO_ESCUELA = "escuela";
+const string NOMBRE_EDIFICIO_OBELISCO = "obelisco";
 const string NOMBRE_RECURSO_POR_DEFECTO = "-";
-const string COLOR_EDIFICIO_SANO_JUG_1 = "\033[38;5;16m";    //NEGRO
-const string COLOR_EDIFICIO_SANO_JUG_2 = "\033[38;5;246m";   //GRIS_CLARO
-const string COLOR_EDIFICIO_HERIDO_JUG_1 = "\033[38;5;196m"; //ROJO
-const string COLOR_EDIFICIO_HERIDO_JUG_2 = "\033[38;5;130m"; //NARANJA
+const string COLOR_EDIFICIO_SANO_JUG_1 = "\033[38;5;16m";    // NEGRO
+const string COLOR_EDIFICIO_SANO_JUG_2 = "\033[38;5;63m";    // BLANCO
+const string COLOR_EDIFICIO_HERIDO_JUG_1 = "\033[38;5;9m";   // ROJO
+const string COLOR_EDIFICIO_HERIDO_JUG_2 = "\033[38;5;130m"; // VIOLETA
+const string COLOR_JUGADOR_1 = "\033[38;5;161m";             // ROSA
+const string COLOR_JUGADOR_2 = "\033[38;5;7m";               // BLANCO
 const char ICONO_RECURSO_POR_DEFECTO = '-';
 const int MAX_MATERIALES_CONSTRUIBLES = 3;
-//ERRORES
+// ERRORES
 const int POSICION_INVALIDA = -1;
 //
 const int CANT_MAXIMA_METAL = 4;
@@ -87,14 +96,15 @@ const int CANT_MAXIMA_MADERA = 1;
 const int CANT_MINIMA_METAL = 2;
 const int CANT_MINIMA_PIEDRA = 1;
 const int CANT_MINIMA_MADERA = 0;
-//interfaz
+// interfaz
 const int DURACION_TRUENO_PRINCIPAL = 750;
 const int DURACION_TRUENO_INTERMEDIO = 100;
 const int DURACION_ALEATORIA_MAXIMO_TRUENO_PRINCIPAL = 400;
 const int DURACION_ALEATORIA_MAXIMO_TRUENO_INTERMEDIO = 25;
 const int ANCHO_TRUENO = 270;
 const int LARGO_TRUENO = 120;
-//Material
+const string TEXTO_NEGRITA = "\033[1m";
+// Material
 const string NOMBRE_MATERIAL_POR_DEFECTO = "default";
 const std::string PIEDRA = "piedra";
 const std::string MADERA = "madera";
@@ -104,7 +114,7 @@ const std::string BOMBAS = "bombas";
 const int CANT_MATERIALES_MINA = 15;
 const int CANT_MATERIALES_ASERRADERO = 25;
 const int CANT_MATERIALES_FABRICA = 40;
-//Menu
+// Menu
 const int OPCION_MINIMA = 1;
 const int OPCION_MAXIMA = 10;
 const int OPCION_CONSTRUIR_EDIFICIO = 1;
@@ -119,6 +129,6 @@ const int OPCION_LLUVIA_RECURSOS = 9;
 const int OPCION_GUARDAR_Y_SALIR = 10;
 
 const int TAMANO_MEMORIA_AGREGADA = 1;
-//UTILES.H
+// UTILES.H
 
 #endif

@@ -11,7 +11,46 @@ Casillero_transitable::Casillero_transitable() : Casillero()
     this->color_texto = COLOR_TEXTO_NEGRO;
     this->icono = ICONO_POR_DEFECTO;
 };
-
+Casillero_transitable::Casillero_transitable(char tipo_terreno, int posicion_x, int posicion_y, bool esta_ocupado)
+{
+    this->posicion.fijar_coordenadas(posicion_x, posicion_y);
+    this->esta_ocupado = esta_ocupado;
+    switch (tipo_terreno)
+    {
+    case TERRENO_BETUN:
+        this->fijar_energia_necesaria(CONSUMO_ENERGIA_BETUN_JUGADOR_1, CONSUMO_ENERGIA_BETUN_JUGADOR_2);
+        this->color_fondo = COLOR_GRIS_OSCURO;
+        break;
+    case TERRENO_MUELLE:
+        this->fijar_energia_necesaria(CONSUMO_ENERGIA_MUELLE_JUGADOR_1, CONSUMO_ENERGIA_MUELLE_JUGADOR_2);
+        this->color_fondo = COLOR_MARRON;
+        break;
+    default:
+        this->fijar_energia_necesaria(CONSUMO_ENERGIA_CAMINO_JUGADOR_1, CONSUMO_ENERGIA_CAMINO_JUGADOR_2);
+        this->color_fondo = COLOR_GRIS;
+        break;
+    }
+};
+/* Casillero_transitable::Casillero_transitable(tipos_casillero casillero, int posicion_x, int posicion_y, bool esta_ocupado)
+{
+    this->posicion.fijar_coordenadas(posicion_x, posicion_y);
+    this->esta_ocupado = esta_ocupado;
+    switch (casillero)
+    {
+    case CASILLERO_BETUN:
+        this->fijar_energia_necesaria(CONSUMO_ENERGIA_BETUN_JUGADOR_1, CONSUMO_ENERGIA_BETUN_JUGADOR_2);
+        this->color_fondo = COLOR_GRIS_OSCURO;
+        break;
+    case CASILLERO_MUELLE:
+        this->fijar_energia_necesaria(CONSUMO_ENERGIA_MUELLE_JUGADOR_1, CONSUMO_ENERGIA_MUELLE_JUGADOR_2);
+        this->color_fondo = COLOR_MARRON;
+        break;
+    default:
+        this->fijar_energia_necesaria(CONSUMO_ENERGIA_CAMINO_JUGADOR_1, CONSUMO_ENERGIA_CAMINO_JUGADOR_2);
+        this->color_fondo = COLOR_GRIS;
+        break;
+    }
+}; */
 Casillero_transitable::Casillero_transitable(int posicion_x, int posicion_y, bool esta_ocupado) : Casillero(posicion_x, posicion_y, esta_ocupado)
 {
     this->posicion.fijar_coordenadas(posicion_x, posicion_y);

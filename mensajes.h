@@ -3,53 +3,32 @@
 #include <string>
 using namespace std;
 const string MENSAJE_ARCHIVO_NO_ENCONTRADO = "Archivo no encontrado";
-//Interfaz
+// Interfaz
 const string NOMBRE_CASILLERO_INACCESIBLE = "Lago";
 const string NOMBRE_CASILLERO_TRANSITABLE = "Camino";
+const string NOMBRE_CASILLERO_BETUN = "Betun";
+const string NOMBRE_CASILLERO_MUELLE = "Muelle";
 const string NOMBRE_CASILLERO_CONSTRUIBLE = "Terreno construible";
 // Bomba
 const string MENSAJE_BOMBA_DESTRUYO = "La bomba destruyo el edificio ";
 const string MENSAJE_BOMBA_DANO = "La bomba debilito el edificio ";
 const string MENSAJE_BOMBA_INSUFICIENTES = "No tienes suficentes bombas";
 const string MENSAJE_BOMBA_CASILLERO_VACIO = "No hay un edificio para bombardear en la posicion ";
-//Casillero_inaccesible
+// Casillero_inaccesible
 const string CASILLERO_OCUPADO_MENSAJE = " y estoy ocupado.";
 const string CASILLERO_NO_OCUPADO_MENSAJE = " y no estoy ocupado.";
 const string CASILLERO_CONSULTADO = " y me encuentro en el casillero consultado.";
 const string CASILLERO_INACCESIBLE_MENSAJE = "Soy un casillero inaccesible";
 const string CASILLERO_CONSTRUIBLE_MENSAJE = "Soy un casillero construible";
 const string CASILLERO_TRANSITABLE_MENSAJE = "Soy un casillero transitable";
-//menu
+// menu
 const std::string ENCABEZADO_MENU = "═════════════════════════════════════";
 const std::string TITULO_MENU = "MENU";
 const std::string MENSAJE_OPCION_INVALIDA = "La opcion elegida es invalida. Intente nuevamente.";
 const std::string MENSAJE_DESPEDIDA = "Adios!";
-const std::string ERROR_GUARDAR = "ERROR guardando"; //integrar a error.h
-const std::string INGRESE_ACCION = "Ingrese el numero de la accion que desea realizar.";
-//menu inicial
-const std::string MENSAJE_MENU_INICIAL_1 = " 1. Modificiar edificio por nombre.";
-const std::string MENSAJE_MENU_INICIAL_2 = " 2. Listar edificios construidos.";
-const std::string MENSAJE_MENU_INICIAL_3 = " 5. Mostrar mapa.";
-const std::string MENSAJE_MENU_INICIAL_4 = " 4. Comenzar partida.";
-const std::string MENSAJE_MENU_INICIAL_5 = " 5. Guardar y salir.";
-//menu juego
-const std::string MENSAJE_MENU_JUEGO_OPCION_1 = " 1. Construir edificio por nombre.";
-const std::string MENSAJE_MENU_JUEGO_OPCION_2 = " 2. Listar mis edificios construidos.";
-const std::string MENSAJE_MENU_JUEGO_OPCION_3 = " 3. Demoler edificio por coordenada.";
-const std::string MENSAJE_MENU_JUEGO_OPCION_4 = " 4. Atacar un edificio por coordenada.";
-const std::string MENSAJE_MENU_JUEGO_OPCION_5 = " 5. Reparar un edificio por coordenada.";
-const std::string MENSAJE_MENU_JUEGO_OPCION_6 = " 6. Comprar bombas.";
-const std::string MENSAJE_MENU_JUEGO_OPCION_7 = " 7. Consultar coordenada.";
-const std::string MENSAJE_MENU_JUEGO_OPCION_8 = " 8. Mostrar inventario.";
-const std::string MENSAJE_MENU_JUEGO_OPCION_9 = " 9. Mostrar objetivos.";
-const std::string MENSAJE_MENU_JUEGO_OPCION_10 = " 10. Recolectar recursos producidos.";
-const std::string MENSAJE_MENU_JUEGO_OPCION_11 = " 11. Moverse una coordenada.";
-const std::string MENSAJE_MENU_JUEGO_OPCION_12 = " 12. Finalizar turno.";
-const std::string MENSAJE_MENU_JUEGO_OPCION_13 = " 13. Guardar y salir.";
-
-
-
-//utiles.h
+const std::string ERROR_GUARDAR = "ERROR guardando"; // integrar a error.h
+const std::string MENSAJE_OPCION_INVALIDA = "La opcion elegida es invalida. Intente nuevamente.";
+// utiles.h
 const int ANCHO_DE_INVENTARIO = 11;
 const std::string ENCABEZADO_LISTADO_MATERIALES = "══════════════════════════════════════════";
 const string TITULO_LISTADO_MATERIALES = "\t Listado de materiales        ";
@@ -85,13 +64,13 @@ const string INGRESE_COORD_X = "Coordenada fila: ";
 const string INGRESE_COORD_Y = "Coordenada columna: ";
 const string DESEA_CONSTRUIR = "Desea construir el edificio? (s/n)";
 
-//Matriz.h
+// Matriz.h
 const string TIPO_CASILLERO_DESCONOCIDO = "Formato de ubicaciones.txt desconocido";
 const string MENSAJE_POSICION_INACCESIBLE = "La posicion es inaccesible";
 const string ERROR_AGRANDAR_MATRIZ = "No fue posible agrandar matriz";
 
 const string ERROR_ACHICAR_MATRIZ = "No fue posible achicar matriz";
-//mecanica_juego.h
+// mecanica_juego.h
 const string INGRESE_COORDENADAS_CONSTRUIR = "Ingrese las coordenadas en las que desea construir el edificio.";
 const string INGRESE_COORDENADAS_DESTRUIR = "Ingrese las coordenadas en las que desea destruir el edificio.";
 const string INGRESE_COORDENADAS_CONSULTAR = "Ingrese las coordenadas del casillero que desea consultaro.";
@@ -101,7 +80,7 @@ const string MENSAJE_CONSTRUCCION_FALLIDA = "Construccion cancelada";
 const string MENSAJE_TRANSITABLES_COMPLETO = "Se despejaron las nubes : No hay casilleros transitables libres para lluevan materiales.";
 const string MENSAJE_LLUVIA_INICIO = "Esta empezando a llover sobre el mapa....";
 const string MENSAJE_LLUVIA_COMPLETA = "Termino la lluvia, se generaron los siguientes recursos: ";
-//Objetivo_material.h
+// Objetivo_material.h
 const string MENSAJE_OBJETIVO_INVENTARIO_RESTANTES_P1 = "Faltan ";
 const string MENSAJE_OBJETIVO_INVENTARIO_RESTANTES_P2 = " de ";
 const string MENSAJE_OBJETIVO_INVENTARIO_RESTANTES_P3 = " para completar el objetivo ";

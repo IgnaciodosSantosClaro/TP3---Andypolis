@@ -20,32 +20,32 @@ protected:
     string color_texto = COLOR_TEXTO_NEGRO;
 
 public:
-    //Constructor por defecto
-    //PRE: -
-    //POS: Construye un Casillero en la posicion (0,0) y fija esta_ocupado como verdadero.
+    // Constructor por defecto
+    // PRE: -
+    // POS: Construye un Casillero en la posicion (0,0) y fija esta_ocupado como verdadero.
     Casillero();
 
-    //Constructor por parametros
-    //PRE: -
-    //POS: Construye un Casillero en la posicion (posicion_x, posicion_y)
+    // Constructor por parametros
+    // PRE: -
+    // POS: Construye un Casillero en la posicion (posicion_x, posicion_y)
     Casillero(int posicion_x, int posicion_y, bool esta_ocupado);
 
-    //Metodos virtuales
-    //PRE: -
-    //POS: fija esta_ocupado como true
+    // Metodos virtuales
+    // PRE: -
+    // POS: fija esta_ocupado como true
     virtual void ocupar_casillero();
-    //PRE: -
-    //POS: fija esta_habitado y esta_ocupado como true
+    // PRE: -
+    // POS: fija esta_habitado y esta_ocupado como true
     virtual void habitar_casillero();
-    //PRE: -
-    //POS: fija esta_habitado y esta_ocupado como false
+    // PRE: -
+    // POS: fija esta_habitado y esta_ocupado como false
     virtual void deshabitar_casillero();
-    //Metodos virtuales puros
+    // Metodos virtuales puros
     virtual void mostrar() = 0;
 
     void mostrar_en_mapa(int ancho, bool es_medio, bool es_ultima);
 
-    //Destructor
+    // Destructor
     virtual ~Casillero();
 
     // PRE: -
@@ -69,6 +69,7 @@ public:
     // PRE: Recibe dos enteros positivos con las energías necesarias para cada jugadir
     // POS: Fija energia_necesaria =consumo.
     void fijar_energia_necesaria(int energia_jugador_1, int energia_jugador_2);
+    void mostrar_leyenda(string leyenda);
     // PRE: -
     // POS: Devuelve la energia necesaria para atravezar el casillero.
     int *obtener_energia_necesaria();

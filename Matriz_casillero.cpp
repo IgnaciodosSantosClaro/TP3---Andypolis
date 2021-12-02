@@ -6,29 +6,10 @@ void Matriz_casillero::agregar_casillero(tipos_casillero casillero_elegido, int 
     {
     case CASILLERO_TRANSITABLE:
     {
-        Casillero_transitable *transitable_ptr = new Casillero_transitable(fila, columna, esta_ocupado);
-        transitable_ptr->fijar_energia_necesaria(CONSUMO_ENERGIA_CAMINO_JUGADOR_1, CONSUMO_ENERGIA_CONSTRUIBLE_JUGADOR_2);
+        Casillero_transitable *transitable_ptr = new Casillero_transitable(casillero_elegido, fila, columna, esta_ocupado);
         this->insertar_dato(transitable_ptr, fila, columna);
         this->cantidad_transitables++;
 
-        break;
-    }
-    case CASILLERO_MUELLE:
-    {
-        Casillero_transitable *transitable_ptr = new Casillero_transitable(fila, columna, esta_ocupado);
-        transitable_ptr->fijar_color_fondo(COLOR_MARRON);
-        transitable_ptr->fijar_energia_necesaria(CONSUMO_ENERGIA_CAMINO_JUGADOR_1, CONSUMO_ENERGIA_MUELLE_JUGADOR_2);
-        this->insertar_dato(transitable_ptr, fila, columna);
-        this->cantidad_transitables++;
-        break;
-    }
-    case CASILLERO_BETUN:
-    {
-        Casillero_transitable *transitable_ptr = new Casillero_transitable(fila, columna, esta_ocupado);
-        transitable_ptr->fijar_color_fondo(COLOR_GRIS_OSCURO);
-        transitable_ptr->fijar_energia_necesaria(CONSUMO_ENERGIA_BETUN_JUGADOR_1, CONSUMO_ENERGIA_BETUN_JUGADOR_2);
-        this->insertar_dato(transitable_ptr, fila, columna);
-        this->cantidad_transitables++;
         break;
     }
     case CASILLERO_CONSTRUIBLE:
@@ -57,33 +38,6 @@ void Matriz_casillero::agregar_casillero(const char tipo_terreno, int fila, int 
 {
     switch (tipo_terreno)
     {
-    case TERRENO_TRANSITABLE:
-    {
-        Casillero_transitable *transitable_ptr = new Casillero_transitable(fila, columna, esta_ocupado);
-        transitable_ptr->fijar_energia_necesaria(CONSUMO_ENERGIA_CAMINO_JUGADOR_1, CONSUMO_ENERGIA_CONSTRUIBLE_JUGADOR_2);
-        this->insertar_dato(transitable_ptr, fila, columna);
-        this->cantidad_transitables++;
-
-        break;
-    }
-    case TERRENO_MUELLE:
-    {
-        Casillero_transitable *transitable_ptr = new Casillero_transitable(fila, columna, esta_ocupado);
-        transitable_ptr->fijar_color_fondo(COLOR_MARRON);
-        transitable_ptr->fijar_energia_necesaria(CONSUMO_ENERGIA_CAMINO_JUGADOR_1, CONSUMO_ENERGIA_MUELLE_JUGADOR_2);
-        this->insertar_dato(transitable_ptr, fila, columna);
-        this->cantidad_transitables++;
-        break;
-    }
-    case TERRENO_BETUN:
-    {
-        Casillero_transitable *transitable_ptr = new Casillero_transitable(fila, columna, esta_ocupado);
-        transitable_ptr->fijar_color_fondo(COLOR_GRIS_OSCURO);
-        transitable_ptr->fijar_energia_necesaria(CONSUMO_ENERGIA_BETUN_JUGADOR_1, CONSUMO_ENERGIA_BETUN_JUGADOR_2);
-        this->insertar_dato(transitable_ptr, fila, columna);
-        this->cantidad_transitables++;
-        break;
-    }
     case TERRENO_CONSTRUIBLE:
     {
         Casillero_construible *construible_ptr = new Casillero_construible(fila, columna, esta_ocupado);
@@ -102,7 +56,9 @@ void Matriz_casillero::agregar_casillero(const char tipo_terreno, int fila, int 
         break;
     }
     default:
-        cout << TIPO_CASILLERO_DESCONOCIDO << endl;
+        Casillero_transitable *transitable_ptr = new Casillero_transitable(tipo_terreno, fila, columna, esta_ocupado);
+        this->insertar_dato(transitable_ptr, fila, columna);
+        this->cantidad_transitables++;
         break;
     }
 }

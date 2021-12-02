@@ -3,9 +3,16 @@
 
 Edificio::Edificio()
 {
-    //this->nombre_edificio = NOMBRE_EDIFICIO_POR_DEFECTO;
+    // this->nombre_edificio = NOMBRE_EDIFICIO_POR_DEFECTO;
     this->cant_max = 0;
     this->cant_construidos = 0;
+}
+Edificio::Edificio(string nombre_edificio, int puntos_salud)
+{
+    this->cant_max = 0;
+    this->cant_construidos = 0;
+    this->nombre_edificio = nombre_edificio;
+    this->salud = puntos_salud;
 }
 Edificio::Edificio(string nombre_edificio, int cant_max, int cant_contruidos, int puntos_salud)
 {
@@ -47,6 +54,10 @@ Edificio::Edificio(string nombre_edificio, int cant_max, int cant_contruidos, in
         this->recursos_producidos.fijar_cantidad(0);
     }
 } */
+void Edificio::mostrar_leyenda(char icono)
+{
+    cout << COLOR_VERDE << ESPACIO << icono << ESPACIO << COLOR_NEGRO << ESPACIO << COLOR_TEXTO_BLANCO << this->nombre_edificio;
+}
 void Edificio::fijar_puntos_de_salud(int salud)
 {
     this->salud = salud;
@@ -78,7 +89,7 @@ int Edificio::obtener_cant_construidos()
 {
     return this->cant_construidos;
 }
-/* 
+/*
 Material_de_construccion Edificio::obtener_material(int posicion)
 {
     return this->materiales[posicion];
@@ -89,7 +100,7 @@ Material_consumible Edificio::obtener_materiales_otorgados()
     return this->recursos_producidos;
 }
 //
-//void Edificio::mostrar_materiales() {
+// void Edificio::mostrar_materiales() {
 //    for(int i = 0; i < MAX_MATERIALES_CONSTRUIBLES; i++) {
 //        std::cout << materiales[i].obtener_nombre() << ":" << materiales[i].obtener_cantidad() << std::endl;
 //    }
