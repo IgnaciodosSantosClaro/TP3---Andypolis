@@ -3,11 +3,17 @@
 
 Edificio::Edificio()
 {
-    this->nombre_edificio = NOMBRE_EDIFICIO_POR_DEFECTO;
+    //this->nombre_edificio = NOMBRE_EDIFICIO_POR_DEFECTO;
     this->cant_max = 0;
     this->cant_construidos = 0;
 }
-
+Edificio::Edificio(string nombre_edificio, int cant_max, int cant_contruidos, int puntos_salud)
+{
+    this->nombre_edificio = nombre_edificio;
+    this->cant_max = cant_max;
+    this->cant_construidos = cant_construidos;
+    this->salud = puntos_salud;
+}
 /* Edificio::Edificio(std::string nombre_edificio, int cant_max, Material_de_construccion materiales[MAX_MATERIALES_CONSTRUIBLES])
 {
     this->nombre_edificio = nombre_edificio;
@@ -41,12 +47,23 @@ Edificio::Edificio()
         this->recursos_producidos.fijar_cantidad(0);
     }
 } */
-
+void Edificio::fijar_puntos_de_salud(int salud)
+{
+    this->salud = salud;
+};
 void Edificio::modificar_cant_construidos(int cant_construidos)
 {
     this->cant_construidos = cant_construidos;
 }
-
+estado_edificio Edificio::atacar_edificio()
+{
+    this->salud--;
+    if (this->salud == 0)
+    {
+        return EDIFICIO_DESTRUIDO;
+    }
+    return EDIFICIO_LASTIMADO;
+};
 std::string Edificio::obtener_nombre()
 {
     return this->nombre_edificio;

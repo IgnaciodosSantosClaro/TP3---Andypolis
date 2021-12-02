@@ -15,7 +15,7 @@ using namespace std;
 const string RUTA_MATERIALES = "materiales/materiales.txt";
 const string RUTA_EDIFICIOS = "edificios/edificios.txt";
 const string RUTA_UBICACIONES = "ubicaciones/ubicaciones.txt";
-const string RUTA_MAPA = "mapa/mapa.txt";
+const string RUTA_MAPA = "../mapa/mapa.txt";
 const char SEPARADOR_DERECHO_UBICACIONES = '(';
 const char SEPARADOR_IZQUIERDO_UBICACIONES = ')';
 const char SEPARADOR_MEDIO_UBICACIONES = ',';
@@ -43,7 +43,10 @@ const int MAX_ENERGIA = 100;
 const char ICONO_POR_DEFECTO = ' ';
 const char ICONO_JUGADOR = 'J';
 const char ICONO_OCUPADO_POR_DEFECTO = 'X';
-
+//Jugador
+const int ENERGIA_INICIAL = 50;
+const int ENERGIA_MAXIMA = 100;
+const int ENERGIA_MINIMA = 0;
 //Casillero_contruible
 const string COLOR_BLANCO = "\033[48;5;15m";
 const string COLOR_MARRON = "\033[48;5;136m";
@@ -68,6 +71,10 @@ const string NOMBRE_EDIFICIO_ASERRADERO = "aserradero";
 const string NOMBRE_EDIFICIO_FABRICA = "fabrica";
 const string NOMBRE_EDIFICIO_PLANTA = "planta";
 const string NOMBRE_RECURSO_POR_DEFECTO = "-";
+const string COLOR_EDIFICIO_SANO_JUG_1 = "\033[38;5;16m";    //NEGRO
+const string COLOR_EDIFICIO_SANO_JUG_2 = "\033[38;5;246m";   //GRIS_CLARO
+const string COLOR_EDIFICIO_HERIDO_JUG_1 = "\033[38;5;196m"; //ROJO
+const string COLOR_EDIFICIO_HERIDO_JUG_2 = "\033[38;5;130m"; //NARANJA
 const char ICONO_RECURSO_POR_DEFECTO = '-';
 const int MAX_MATERIALES_CONSTRUIBLES = 3;
 //ERRORES

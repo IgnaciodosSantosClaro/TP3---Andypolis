@@ -59,6 +59,40 @@ void procesar_mapa(Matriz_casillero &mapa)
         }
     }
 }
+
+void cargar_grafo(Grafo &grafo, Matriz_casillero &mapa)
+{
+    for(int i = 0; i < mapa.obtener_largo_filas(); i++) {
+        for(int j = 0; j < mapa.obtener_largo_columnas(); j++) {
+            string vertice = "(" + to_string(i) + "," + " " + to_string(j) + ")";
+            grafo.agregar_vertice(vertice);
+        }
+    }
+
+    for(int i = 0; i < mapa.obtener_largo_filas(); i++) {
+        for(int j = 0; j < mapa.obtener_largo_columnas(); j++) {
+            Casillero* casillero_actual = mapa.obtener_dato(i, j);
+            Casillero* vecino_derecho = mapa.obtener_casillero_vecino(mapa.obtener_dato(i, j), DERECHA);
+            Casillero* vecino_abajo = mapa.obtener_casillero_vecino(mapa.obtener_dato(i, j), ABAJO);
+
+            string coord_actual = casillero_actual->obtener_posicion().coordenada_a_string();
+            int energia_actual = casillero_actual->obtener_energia_necesaria()[0];
+
+            if(vecino_derecho != nullptr) {
+                string coord_derecha = vecino_derecho->obtener_posicion().coordenada_a_string();
+                int energia_derecha = vecino_derecho->obtener_energia_necesaria()[0];
+                grafo.agregar_camino(coord_actual, coord_derecha, energia_derecha);
+                grafo.agregar_camino(coord_derecha, coord_actual, energia_actual);
+            }
+            if(vecino_abajo != nullptr) {
+                string coord_abajo = vecino_abajo->obtener_posicion().coordenada_a_string();
+                int energia_abajo = vecino_abajo->obtener_energia_necesaria()[0];
+                grafo.agregar_camino(coord_actual, coord_abajo, energia_abajo);
+                grafo.agregar_camino(coord_abajo, coord_actual, energia_actual);
+            }
+        }
+    }
+}
 /* void procesar_edificios(Vector_edificio &edificios)
 {
     string nombre;

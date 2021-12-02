@@ -6,12 +6,20 @@
 #include <iostream>
 #include "Material_consumible.h"
 #include "configuracion.h"
+using namespace std;
+enum estado_edificio
+{
+    EDIFICIO_SANO,
+    EDIFICIO_LASTIMADO,
+    EDIFICIO_DESTRUIDO,
+};
 class Edificio
 {
 private:
     std::string nombre_edificio;
     int cant_max;
     int cant_construidos;
+    int salud;
     //Material_de_construccion materiales[MAX_MATERIALES_CONSTRUIBLES];
     Material_consumible recursos_producidos;
 
@@ -24,12 +32,15 @@ public:
     //Constructor por parametros
     //PRE: -
     //POS: Construye edificio de nombre nombre_edificio, cantidad maxima cant_max y materiales de construccion materiales.
+    Edificio(string nombre_Edificio, int cant_max, int cant_contruidos, int puntos_salud);
     //Edificio(std::string nombre_edificio, int cant_max, Material_de_construccion *materiales);
 
     //PRE: cant_construidos debe ser mayor o igual que cero.
     //POS: Actualiza el atributo cant_construidos.
     void modificar_cant_construidos(int cant_construidos);
 
+    void fijar_puntos_de_salud(int salud);
+    estado_edificio atacar_edificio();
     //PRE: -
     //POS: Devuelve el nombre del edificio.
     std::string obtener_nombre();

@@ -26,3 +26,7 @@ ubicacion Coordenada::obtener_coordenadas()
 void Coordenada::mostrar() {
     cout << SEPARADOR_DERECHO_UBICACIONES << this->posicion_actual.coordenada_x << SEPARADOR_MEDIO_UBICACIONES << " " << this->posicion_actual.coordenada_y <<SEPARADOR_IZQUIERDO_UBICACIONES << " ";
 }
+
+string Coordenada::coordenada_a_string() {
+    return "(" + to_string(this->posicion_actual.coordenada_x) + "," + " " + to_string(this->posicion_actual.coordenada_y) + ")";
+}

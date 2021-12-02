@@ -20,8 +20,8 @@ public:
 
     //PRE:Recibe posicion en el eje x , posicion en el eje y y un booleano que indica si el casillero esta ocupado
     //POS:Inicializa la posicion del casillero y si esta ocupado =>esta_ocupado=true
+    Casillero_construible(int posicion_x, int posicion_y, bool esta_ocupado, string color_texto);
     Casillero_construible(int posicion_x, int posicion_y, bool esta_ocupado);
-
     //PRE: -
     //POS: Imprime por pantalla la informacion del casillero.
     void mostrar();
@@ -34,7 +34,7 @@ public:
 
     //PRE: -
     //POS: Guarda en el casillero un edificio.
-    void fijar_edificio(Edificio edificio);
+    void fijar_edificio(Edificio &edificio);
 
     //PRE: -
     //POS: Devuelve el objeto edificio alojado en Casillero_construible
@@ -42,7 +42,8 @@ public:
 
     //PRE: Recibe un objeto edificio
     //POS: Copia el edificio recibido en el atributo de Casillero_construible y fija esta_ocupado=true
-    void ocupar_casillero(Edificio edificio);
+    void ocupar_casillero(Edificio edificio, string color_estado_edificio);
+    void desocupar_casillero();
 };
 
 #endif //CASILLERO_CONSTRUIBLE_H

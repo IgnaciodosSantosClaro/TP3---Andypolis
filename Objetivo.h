@@ -22,4 +22,4 @@ public:
     //virtual void fijar_objetivo();
     //virtual estado_objetivo actualizar_objetivo() = 0;
 };
-#endif
+#endif //OBJETIVO_H
