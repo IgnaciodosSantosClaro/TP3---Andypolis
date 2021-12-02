@@ -155,7 +155,7 @@ void procesar_ubicaciones(Matriz_casillero &mapa) // Procesar despues de mapa
 
     if (!archivo_ubicaciones.is_open())
     {
-        cout << COLOR_TEXTO_ROJO << MENSAJE_ARCHIVO_NO_ENCONTRADO << endl;
+        cout << COLOR_TEXTO_ROJO << MENSAJE_ARCHIVO_NO_ENCONTRADO << COLOR_TEXTO_BLANCO << endl;
     }
     else
     {
@@ -209,11 +209,7 @@ void procesar_ubicaciones(Matriz_casillero &mapa) // Procesar despues de mapa
             }
         }
     }
-<<<<<<< HEAD
 };
-void cargar_materiales(Vector_material &materiales)
-=======
-}; */
 void cargar_materiales(Jugador &jugador1, Jugador &jugador2)
 {
     string nombre;
@@ -224,7 +220,7 @@ void cargar_materiales(Jugador &jugador1, Jugador &jugador2)
 
     if (!archivo_materiales.is_open())
     {
-        cout << COLOR_TEXTO_ROJO << MENSAJE_ARCHIVO_NO_ENCONTRADO << endl;
+        cout << COLOR_TEXTO_ROJO << MENSAJE_ARCHIVO_NO_ENCONTRADO << COLOR_TEXTO_BLANCO << endl;
     }
     else
     {
@@ -247,12 +243,12 @@ void cargar_materiales(Jugador &jugador1, Jugador &jugador2)
                 jugador1.agregar_consumible_inventario(nombre, stoi(cantidad_j1), ICONO_METAL);
                 jugador2.agregar_consumible_inventario(nombre, stoi(cantidad_j2), ICONO_METAL);
             }
-            else if(nombre.compare(ANDYCOINS) == 0)
+            else if (nombre.compare(ANDYCOINS) == 0)
             {
                 jugador1.agregar_consumible_inventario(nombre, stoi(cantidad_j1), ICONO_PIEDRA);
                 jugador2.agregar_consumible_inventario(nombre, stoi(cantidad_j2), ICONO_PIEDRA);
             }
-            else if(nombre.compare(BOMBAS) == 0)
+            else if (nombre.compare(BOMBAS) == 0)
             {
                 jugador1.modificar_cantidad_bomba(stoi(cantidad_j1));
                 jugador2.modificar_cantidad_bomba(stoi(cantidad_j2));

@@ -27,7 +27,27 @@ const std::string TITULO_MENU = "MENU";
 const std::string MENSAJE_OPCION_INVALIDA = "La opcion elegida es invalida. Intente nuevamente.";
 const std::string MENSAJE_DESPEDIDA = "Adios!";
 const std::string ERROR_GUARDAR = "ERROR guardando"; // integrar a error.h
-const std::string MENSAJE_OPCION_INVALIDA = "La opcion elegida es invalida. Intente nuevamente.";
+const std::string INGRESE_ACCION = "Ingrese el numero de la accion que desea realizar.";
+// menu inicial
+const std::string MENSAJE_MENU_INICIAL_1 = " 1. Modificiar edificio por nombre.";
+const std::string MENSAJE_MENU_INICIAL_2 = " 2. Listar edificios construidos.";
+const std::string MENSAJE_MENU_INICIAL_3 = " 5. Mostrar mapa.";
+const std::string MENSAJE_MENU_INICIAL_4 = " 4. Comenzar partida.";
+const std::string MENSAJE_MENU_INICIAL_5 = " 5. Guardar y salir.";
+// menu juego
+const std::string MENSAJE_MENU_JUEGO_OPCION_1 = " 1. Construir edificio por nombre.";
+const std::string MENSAJE_MENU_JUEGO_OPCION_2 = " 2. Listar mis edificios construidos.";
+const std::string MENSAJE_MENU_JUEGO_OPCION_3 = " 3. Demoler edificio por coordenada.";
+const std::string MENSAJE_MENU_JUEGO_OPCION_4 = " 4. Atacar un edificio por coordenada.";
+const std::string MENSAJE_MENU_JUEGO_OPCION_5 = " 5. Reparar un edificio por coordenada.";
+const std::string MENSAJE_MENU_JUEGO_OPCION_6 = " 6. Comprar bombas.";
+const std::string MENSAJE_MENU_JUEGO_OPCION_7 = " 7. Consultar coordenada.";
+const std::string MENSAJE_MENU_JUEGO_OPCION_8 = " 8. Mostrar inventario.";
+const std::string MENSAJE_MENU_JUEGO_OPCION_9 = " 9. Mostrar objetivos.";
+const std::string MENSAJE_MENU_JUEGO_OPCION_10 = " 10. Recolectar recursos producidos.";
+const std::string MENSAJE_MENU_JUEGO_OPCION_11 = " 11. Moverse una coordenada.";
+const std::string MENSAJE_MENU_JUEGO_OPCION_12 = " 12. Finalizar turno.";
+const std::string MENSAJE_MENU_JUEGO_OPCION_13 = " 13. Guardar y salir.";
 // utiles.h
 const int ANCHO_DE_INVENTARIO = 11;
 const std::string ENCABEZADO_LISTADO_MATERIALES = "══════════════════════════════════════════";

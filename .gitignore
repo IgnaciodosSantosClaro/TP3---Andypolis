@@ -353,3 +353,5 @@ CMakeLists.txt
 cmake-build-debug/
 .idea
 tp_prueba.exe
+
+*.exe
