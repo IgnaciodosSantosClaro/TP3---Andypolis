@@ -8,6 +8,7 @@
 #include "Material_consumible.h"
 #include "Grafo.h"
 #include "ABB.h"
+#include "Menu.h"
 
 int main(void)
 {
@@ -17,7 +18,11 @@ int main(void)
     {
         cout << "No encontré mapa" << endl;
     } */
-    Grafo grafo;
+    Grafo grafo1;
+    Grafo grafo2;
+    Menu menu;
+    Jugador jugador1;
+    Jugador jugador2;
     ABB<int> arbol;
     arbol.insertar_nodo(5);
     arbol.insertar_nodo(2);
@@ -28,14 +33,23 @@ int main(void)
     cout << endl;
 
     procesar_mapa(mapa);
-    cargar_grafo(grafo, mapa);
-    grafo.mostrar_grafo();
+    cargar_materiales(jugador1, jugador2);
+    jugador1.mostrar_inventario();
+    jugador2.mostrar_inventario();
+    cargar_grafo(grafo1, mapa, 1);
+    cargar_grafo(grafo2, mapa, 2);
 
-    grafo.usar_floyd();
-    grafo.camino_minimo("(0, 0)", "(7, 8)");
+//    grafo1.mostrar_grafo();
+//    grafo2.mostrar_grafo();
 
-    grafo.usar_dijkstra();
-    grafo.camino_minimo("(0, 0)", "(7, 8)");
+    grafo1.usar_floyd();
+    grafo1.camino_minimo("(0, 0)", "(7, 8)");
+
+    grafo2.usar_floyd();
+    grafo2.camino_minimo("(0, 0)", "(7, 8)");
+
+    menu.mostrar_menu_inicio();
+    menu.mostrar_menu_juego();
 
     mostrar_mapa(mapa, 5, 2);
     cout << mapa.obtener_dato(0, 0)->obtener_energia_necesaria()[0] << " : " << mapa.obtener_dato(0, 0)->obtener_energia_necesaria()[1] << endl;

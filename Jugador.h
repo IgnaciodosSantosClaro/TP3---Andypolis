@@ -4,6 +4,7 @@
 #include "Coordenada.h"
 #include "Objetivo.h"
 #include "Vector_material.h"
+#include "Bomba.h"
 
 class Jugador
 {
@@ -13,6 +14,7 @@ private:
     Objetivo* objetivos_secundarios;
     Objetivo* objetivo_principal;
     Vector_material inventario;
+    Bomba bombas;
 
 public:
     //Constructor
@@ -51,6 +53,20 @@ public:
     //PRE:
     //POS:
     bool objetivo_secundario_completado(Objetivo* objetivo_secundario);
+
+    //PRE:
+    //POS:
+    void agregar_consumible_inventario(string nombre, int cantidad, char icono);
+
+    //PRE:
+    //POS:
+    void agregar_material_inventario(string nombre, int cantidad);
+
+    //PRE: Cantidad es un numero entero.
+    //POS: Modifica la cantidad de bombas que tiene el jugador.
+    void modificar_cantidad_bomba(int cantidad);
+
+    void mostrar_inventario();
 
 };
 #endif //JUGADOR_H

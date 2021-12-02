@@ -27,3 +27,22 @@ void Jugador::modificar_energia(int energia) {
     }
 }
 
+void Jugador::agregar_consumible_inventario(string nombre, int cantidad, char icono) {
+    this->inventario.agregar_material_consumible_al_final(nombre, cantidad, icono);
+}
+
+void Jugador::agregar_material_inventario(string nombre, int cantidad) {
+    this->inventario.agregar_material_al_final(nombre, cantidad);
+}
+
+void Jugador::modificar_cantidad_bomba(int cantidad) {
+    bombas.modificar_cantidad(cantidad);
+}
+
+void Jugador::mostrar_inventario() {
+    for(int i = 0; i < inventario.obtener_largo(); i++) {
+        cout << inventario.obtener_valor(i)->obtener_nombre() << " " << inventario.obtener_valor(i)->obtener_cantidad() << endl;
+    }
+    cout << "Bombas: " << bombas.obtener_cantidad() << endl;
+}
+

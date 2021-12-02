@@ -12,7 +12,7 @@
 
 //Archivos
 using namespace std;
-const string RUTA_MATERIALES = "materiales/materiales.txt";
+const string RUTA_MATERIALES = "../materiales/materiales.txt";
 const string RUTA_EDIFICIOS = "edificios/edificios.txt";
 const string RUTA_UBICACIONES = "ubicaciones/ubicaciones.txt";
 const string RUTA_MAPA = "../mapa/mapa.txt";
@@ -23,6 +23,7 @@ const char ESPACIO = ' ';
 const char ICONO_PIEDRA = 'S';
 const char ICONO_MADERA = 'W';
 const char ICONO_METAL = 'I';
+const char ICONO_ANDYCOINS = 'C';
 const char CONSUMO_ENERGIA_MUELLE_JUGADOR_1 = 5;
 const char CONSUMO_ENERGIA_MUELLE_JUGADOR_2 = 2;
 const char CONSUMO_ENERGIA_CAMINO_JUGADOR_1 = 4;
@@ -98,6 +99,8 @@ const string NOMBRE_MATERIAL_POR_DEFECTO = "default";
 const std::string PIEDRA = "piedra";
 const std::string MADERA = "madera";
 const std::string METAL = "metal";
+const std::string ANDYCOINS = "andycoins";
+const std::string BOMBAS = "bombas";
 const int CANT_MATERIALES_MINA = 15;
 const int CANT_MATERIALES_ASERRADERO = 25;
 const int CANT_MATERIALES_FABRICA = 40;

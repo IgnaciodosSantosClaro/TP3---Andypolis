@@ -38,3 +38,11 @@ void Bomba::tirar_bomba(Casillero_construible &casillero_objetivo, string color_
         cout << MENSAJE_BOMBA_INSUFICIENTES << endl;
     }
 };
+
+void Bomba::modificar_cantidad(int cantidad) {
+    this->cantidad += cantidad;
+}
+
+int Bomba::obtener_cantidad() {
+    return this->cantidad;
+}

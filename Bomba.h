@@ -15,6 +15,10 @@ public:
     //POS: Devuelve la cantidad de bombas.
     int obtener_cantidad();
 
+    //PRE: Cantidad es un numero entero.
+    //POS: Modifica la cantidad de bombas.
+    void modificar_cantidad(int cantidad);
+
     //PRE:
     //POS:
     void tirar_bomba(Casillero_construible &casillero_objetivo, string color_texto_edificio_herido);

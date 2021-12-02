@@ -5,6 +5,7 @@
 #include "errores.h"
 #include "Vector_material.h"
 #include "Grafo.h"
+#include "Jugador.h"
 
 //#include "Vector_edificio.h" ->implementar como arbol
 #include "Coordenada.h"
@@ -14,9 +15,9 @@
 #include "mensajes.h"
 #include "Material_consumible.h"
 Errores abrir_archivo(std::ifstream &archivo, std::string path);
-//PRE: Recibe un Vector de materiales no nulo
-//POS: Carga ese vector con el contenido de materiales.txt
-void cargar_materiales(Vector_material &materiales);
+//PRE: Recibe dos objetos Jugador.
+//POS: Carga el inventario de los jugadores con el contenido de materiales.txt
+void cargar_materiales(Jugador &jugador1, Jugador &jugador2);
 
 //PRE: Recibe un Vector de edificios no nulo
 //POS: Carga el vector con el contenido de edificios.txt
@@ -48,6 +49,6 @@ void actualizar_archivo_ubicaciones(Matriz_casillero &mapa);
 
 //PRE: Recibe un objeto Grafo y un mapa bien cargado.
 //POS: Carga el grafo con los casilleros como vertices y las energias como aristas.
-void cargar_grafo(Grafo &grafo, Matriz_casillero &mapa);
+void cargar_grafo(Grafo &grafo, Matriz_casillero &mapa, int num_jugador);
 
 #endif //ARCHIVO_H

@@ -60,7 +60,7 @@ void procesar_mapa(Matriz_casillero &mapa)
     }
 }
 
-void cargar_grafo(Grafo &grafo, Matriz_casillero &mapa)
+void cargar_grafo(Grafo &grafo, Matriz_casillero &mapa, int num_jugador)
 {
     for(int i = 0; i < mapa.obtener_largo_filas(); i++) {
         for(int j = 0; j < mapa.obtener_largo_columnas(); j++) {
@@ -76,17 +76,17 @@ void cargar_grafo(Grafo &grafo, Matriz_casillero &mapa)
             Casillero* vecino_abajo = mapa.obtener_casillero_vecino(mapa.obtener_dato(i, j), ABAJO);
 
             string coord_actual = casillero_actual->obtener_posicion().coordenada_a_string();
-            int energia_actual = casillero_actual->obtener_energia_necesaria()[0];
+            int energia_actual = casillero_actual->obtener_energia_necesaria()[num_jugador - 1];
 
             if(vecino_derecho != nullptr) {
                 string coord_derecha = vecino_derecho->obtener_posicion().coordenada_a_string();
-                int energia_derecha = vecino_derecho->obtener_energia_necesaria()[0];
+                int energia_derecha = vecino_derecho->obtener_energia_necesaria()[num_jugador - 1];
                 grafo.agregar_camino(coord_actual, coord_derecha, energia_derecha);
                 grafo.agregar_camino(coord_derecha, coord_actual, energia_actual);
             }
             if(vecino_abajo != nullptr) {
                 string coord_abajo = vecino_abajo->obtener_posicion().coordenada_a_string();
-                int energia_abajo = vecino_abajo->obtener_energia_necesaria()[0];
+                int energia_abajo = vecino_abajo->obtener_energia_necesaria()[num_jugador - 1];
                 grafo.agregar_camino(coord_actual, coord_abajo, energia_abajo);
                 grafo.agregar_camino(coord_abajo, coord_actual, energia_actual);
             }
@@ -178,10 +178,11 @@ void cargar_grafo(Grafo &grafo, Matriz_casillero &mapa)
         }
     }
 }; */
-void cargar_materiales(Vector_material &materiales)
+void cargar_materiales(Jugador &jugador1, Jugador &jugador2)
 {
     string nombre;
-    string cantidad;
+    string cantidad_j1;
+    string cantidad_j2;
 
     ifstream archivo_materiales(RUTA_MATERIALES);
 
@@ -193,22 +194,37 @@ void cargar_materiales(Vector_material &materiales)
     {
         while (archivo_materiales >> nombre)
         {
-            archivo_materiales >> cantidad;
+            archivo_materiales >> cantidad_j1;
+            archivo_materiales >> cantidad_j2;
             if (nombre.compare(PIEDRA) == 0)
             {
-                materiales.agregar_material_consumible_al_final(nombre, stoi(cantidad), ICONO_PIEDRA);
+                jugador1.agregar_consumible_inventario(nombre, stoi(cantidad_j1), ICONO_PIEDRA);
+                jugador2.agregar_consumible_inventario(nombre, stoi(cantidad_j2), ICONO_PIEDRA);
             }
             else if (nombre.compare(MADERA) == 0)
             {
-                materiales.agregar_material_consumible_al_final(nombre, stoi(cantidad), ICONO_MADERA);
+                jugador1.agregar_consumible_inventario(nombre, stoi(cantidad_j1), ICONO_MADERA);
+                jugador2.agregar_consumible_inventario(nombre, stoi(cantidad_j2), ICONO_MADERA);
             }
             else if (nombre.compare(METAL) == 0)
             {
-                materiales.agregar_material_consumible_al_final(nombre, stoi(cantidad), ICONO_METAL);
+                jugador1.agregar_consumible_inventario(nombre, stoi(cantidad_j1), ICONO_METAL);
+                jugador2.agregar_consumible_inventario(nombre, stoi(cantidad_j2), ICONO_METAL);
+            }
+            else if(nombre.compare(ANDYCOINS) == 0)
+            {
+                jugador1.agregar_consumible_inventario(nombre, stoi(cantidad_j1), ICONO_PIEDRA);
+                jugador2.agregar_consumible_inventario(nombre, stoi(cantidad_j2), ICONO_PIEDRA);
+            }
+            else if(nombre.compare(BOMBAS) == 0)
+            {
+                jugador1.modificar_cantidad_bomba(stoi(cantidad_j1));
+                jugador2.modificar_cantidad_bomba(stoi(cantidad_j2));
             }
             else
             {
-                materiales.agregar_material_al_final(nombre, stoi(cantidad));
+                jugador1.agregar_material_inventario(nombre, stoi(cantidad_j1));
+                jugador2.agregar_material_inventario(nombre, stoi(cantidad_j2));
             }
         }
     }
