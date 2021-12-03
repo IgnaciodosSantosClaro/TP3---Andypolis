@@ -11,11 +11,11 @@ class ABB {
 
     private:
 
-        // atributos
+        // Atributos
 
         Nodo_ABB<Dato>* raiz;
 
-        // metodos
+        // Metodos
         
 
         /*

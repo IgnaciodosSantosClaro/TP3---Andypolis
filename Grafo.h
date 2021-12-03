@@ -1,7 +1,7 @@
 #ifndef GRAFOS_GRAFO_H
 #define GRAFOS_GRAFO_H
 #include <string>
-#include "Lista.h"
+#include "Lista_grafo.h"
 #include "Vertice.h"
 #include "Floyd.h"
 
