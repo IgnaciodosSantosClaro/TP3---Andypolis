@@ -19,43 +19,42 @@ class Diccionario {
 
     /*
     constructor
-    PRE:
-    POST:
+    PRE: -
+    POST: crea una instancia de la clase diccionario
     */
     Diccionario();
 
     /*
-    PRE:
-    POST:
+    PRE: el diccionario fue creado
+    POST: da de alta 
     */
-    void alta(Edificio* edificio);
+    void alta(string clave, Edificio* edificio);
 
     /*
-    PRE:
+    PRE: el diccionario fue creado y no esta vacio
     POST:
     */
-    void baja(Edificio* edificio);
+    void baja(string clave);
 
     /*
-    PRE:
-    POST:
+    PRE: el diccionario fue creado
+    POST: devuelve true en caso de hallar una clave compatible con el nombre de diccionario pasado por parametro, y false en caso contrario
     */
     bool consulta(string nombre_edificio);
     
     /*
-    PRE:
-    POST:
+    PRE: el diccionario fue creado
+    POST: imprime por pantalla el recorrido in order del arbol
     */
     void recorrer();
 
     /*
     destructor
-    PRE:
-    POST:
+    PRE: el diccionario fue creado
+    POST: destruye el objeto diccionario liberando la memoria del arbol
     */
     ~Diccionario();
 
 };
-
 
 #endif //DICCIONARIO_H

@@ -11,7 +11,7 @@ class Nodo_ABB {
     private:
         
         //atributos
-        string nombre_nodo;
+        string clave_nodo;
         Dato dato;
         Nodo_ABB<Dato>* hijo_izquierdo;
         Nodo_ABB<Dato>* hijo_derecho;
@@ -26,7 +26,7 @@ class Nodo_ABB {
         PRE: -
         POST: crea una instancia de la clase Nodo_ABB con el dato pasado por parametro como dato del nodo
         */
-        Nodo_ABB(string nombre, Dato dato);
+        Nodo_ABB(string clave, Dato dato);
 
         /*
         PRE: el objeto Nodo_ABB fue creado
@@ -34,9 +34,17 @@ class Nodo_ABB {
         */
         Dato obtener_dato();
 
-        //PRE: el objeto Nodo_ABB fue creado
-        //POS: devuelve el nombre del nodo
-        string obtener_nombre();
+        /*
+        PRE: el objeto Nodo_ABB fue creado
+        POS: devuelve la clave del nodo
+        */
+        string obtener_clave();
+
+        /*
+        PRE: el objeto Nodo_ABB fue creado
+        POS: establece el parametro como clave del nodo
+        */
+        void setear_clave(string clave);
         
         /*
         PRE: el objeto Nodo_ABB fue creado
@@ -112,9 +120,9 @@ class Nodo_ABB {
 };
 
 template <class Dato>
-Nodo_ABB<Dato>::Nodo_ABB(string nombre, Dato dato) {
+Nodo_ABB<Dato>::Nodo_ABB(string clave, Dato dato) {
     this->dato = dato;
-    this->nombre_nodo = nombre;
+    this->clave_nodo = clave;
     this->hijo_izquierdo = nullptr;
     this->hijo_derecho = nullptr;
     this->padre = nullptr;
@@ -126,8 +134,13 @@ Dato Nodo_ABB<Dato>::obtener_dato() {
 }
 
 template <class Dato>
-string Nodo_ABB<Dato>::obtener_nombre() {
-    return this->nombre_nodo;
+string Nodo_ABB<Dato>::obtener_clave() {
+    return this->clave_nodo;
+}
+
+template <class Dato>
+void Nodo_ABB<Dato>::setear_clave(string clave) {
+    this->clave_nodo = clave;
 }
 
 template <class Dato>
@@ -156,7 +169,6 @@ template <class Dato>
 void Nodo_ABB<Dato>::setear_dato(Dato dato) {
     this->dato = dato;
 }
-
 
 template <class Dato>
 void Nodo_ABB<Dato>::setear_hijo_izquierdo(Nodo_ABB<Dato>* hijo_izquierdo){

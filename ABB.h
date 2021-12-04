@@ -22,7 +22,7 @@ class ABB {
         PRE: el objeto ABB fue creado y no esta vacio
         POST: inserta el nodo pasado por parametro en el ABB y le asigna el 2do parametro como dato
         */
-        Nodo_ABB<Dato>* insertar_nodo(Nodo_ABB<Dato>* nodo, string nombre, Dato dato);
+        Nodo_ABB<Dato>* insertar_nodo(Nodo_ABB<Dato>* nodo, string clave, Dato dato);
 
         /*
         PRE: el objeto ABB fue creado y no esta vacio
@@ -34,7 +34,7 @@ class ABB {
         PRE: el objeto ABB fue creado y no esta vacio
         POST: busca recursivamente para su subarbol izquierdo o derecho del nodo cuya direccion de memoria es pasada por parametro, y devuelve la dirección de memoria del nodo cuyo dato coincida con el dato pasado por parametro
         */
-        Nodo_ABB<Dato>* buscar(Nodo_ABB<Dato>* nodo, string nombre);
+        Nodo_ABB<Dato>* buscar(Nodo_ABB<Dato>* nodo, string clave);
 
         /*
         PRE: el objeto ABB fue creado y no esta vacio
@@ -64,7 +64,7 @@ class ABB {
         PRE: el objeto ABB fue creado y no esta vacio
         POST: crea una instancia de la clase ABB
         */
-        Nodo_ABB<Dato>* remover_nodo(Nodo_ABB<Dato>* nodo, string nombre);
+        Nodo_ABB<Dato>* remover_nodo(Nodo_ABB<Dato>* nodo, string clave);
 
         /*
         PRE: el objeto ABB fue creado y no esta vacio
@@ -87,7 +87,7 @@ class ABB {
         PRE: el objeto ABB fue creado y no esta vacio
         POST: llama al metodo privado insertar_nodo(Nodo_ABB<Dato>*, Dato), e insertar a partir de la raiz del ABB el dato pasado por parametro
         */
-        void insertar_nodo(string nombre, Dato dato);
+        void insertar_nodo(string clave, Dato dato);
 
         /*
         PRE: el objeto ABB fue creado y no esta vacio
@@ -99,7 +99,7 @@ class ABB {
         PRE: el objeto ABB fue creado y no esta vacio
         POST: busca a partir de la raiz el dato pasado por parametro y devuelve true en caso de hallarlo, y falso en caso de no hacerlo
         */
-        bool buscar(string nombre);
+        bool buscar(string clave);
 
         /*
         PRE: el objeto ABB fue creado y no esta vacio
@@ -117,19 +117,19 @@ class ABB {
         PRE: el objeto ABB fue creado y no esta vacio
         POST: llama a la definicion privada de sucesor, aplicando la busqueda del nodo que se desea buscar a partir de la raiz, y devuelve el dato del sucesor de dicho nodo   
         */
-        Nodo_ABB<Dato>* sucesor(string nombre);
+        Nodo_ABB<Dato>* sucesor(string clave);
 
         /*
         PRE: el objeto ABB fue creado y no esta vacio
         POST: llama a la definicion privada de predecesor, aplicando la busqueda del nodo que se desea buscar a partir de la raiz, y devuelve el dato del predecesor de dicho nodo   
         */
-        Nodo_ABB<Dato>* predecesor(string nombre);
+        Nodo_ABB<Dato>* predecesor(string clave);
 
         /*
         PRE: el objeto ABB fue creado y no esta vacio
         POST: busca partiendo de la raiz y utiliza el metodo privado remover_nodo(Nodo_ABB<Dato>*, Dato) para eliminar el nodo que tenga por dato el que se pasa por parametro
         */
-        void remover_nodo(string nombre);
+        void remover_nodo(string clave);
 
         /*
         PRE: el objeto ABB fue creado y no esta vacio
@@ -164,25 +164,25 @@ ABB<Dato>::ABB() {
 }
 
 template <class Dato>
-Nodo_ABB<Dato>* ABB<Dato>::insertar_nodo(Nodo_ABB<Dato>* nodo, string nombre, Dato dato) {
+Nodo_ABB<Dato>* ABB<Dato>::insertar_nodo(Nodo_ABB<Dato>* nodo, string clave, Dato dato) {
 
     if (nodo == NULL) {
-        nodo = new Nodo_ABB<Dato>(nombre, dato);
+        nodo = new Nodo_ABB<Dato>(clave, dato);
     }
 
     else if (dato > nodo->obtener_dato()) {
-        nodo->setear_hijo_derecho(insertar_nodo(nodo->obtener_hijo_derecho(), nombre, dato), nodo);
+        nodo->setear_hijo_derecho(insertar_nodo(nodo->obtener_hijo_derecho(), clave, dato), nodo);
     }
 
     else {
-        nodo->setear_hijo_izquierdo(insertar_nodo(nodo->obtener_hijo_izquierdo(), nombre, dato), nodo);
+        nodo->setear_hijo_izquierdo(insertar_nodo(nodo->obtener_hijo_izquierdo(), clave, dato), nodo);
     }
     return nodo;
 }
 
 template <class Dato>
-void ABB<Dato>::insertar_nodo(string nombre, Dato dato) {
-    this->raiz = insertar_nodo(this->raiz, nombre, dato);
+void ABB<Dato>::insertar_nodo(string clave, Dato dato) {
+    this->raiz = insertar_nodo(this->raiz, clave, dato);
 }
 
 template <class Dato>
@@ -200,19 +200,19 @@ void ABB<Dato>::imprimir_in_order() {
 }
 
 template <class Dato>
-Nodo_ABB<Dato>* ABB<Dato>::buscar(Nodo_ABB<Dato>* nodo, string nombre) {
-    if (nodo == NULL || nodo->obtener_nombre() == nombre){
+Nodo_ABB<Dato>* ABB<Dato>::buscar(Nodo_ABB<Dato>* nodo, string clave) {
+    if (nodo == NULL || nodo->obtener_clave() == clave){
         return nodo;
     }
-    if (nombre > nodo->obtener_nombre()){
-        return buscar(nodo->obtener_hijo_derecho(), nombre);
+    if (clave > nodo->obtener_clave()){
+        return buscar(nodo->obtener_hijo_derecho(), clave);
     }
-    return buscar(nodo->obtener_hijo_izquierdo(), nombre);
+    return buscar(nodo->obtener_hijo_izquierdo(), clave);
 }
 
 template <class Dato>
-bool ABB<Dato>::buscar(string nombre) {
-    Nodo_ABB<Dato>* resultado_de_busqueda = buscar(this->raiz, nombre);
+bool ABB<Dato>::buscar(string clave) {
+    Nodo_ABB<Dato>* resultado_de_busqueda = buscar(this->raiz, clave);
 
     return resultado_de_busqueda != NULL;
 }
@@ -265,7 +265,7 @@ Nodo_ABB<Dato>* ABB<Dato>::sucesor(Nodo_ABB<Dato>* nodo) {
 
 
     while(ancestro != nodo) {
-        if(nodo->obtener_dato() < ancestro->obtener_dato()) {
+        if(nodo->obtener_clave() < ancestro->obtener_clave()) {
             sucesor = ancestro;
             ancestro = ancestro->obtener_hijo_izquierdo();
         }
@@ -277,13 +277,13 @@ Nodo_ABB<Dato>* ABB<Dato>::sucesor(Nodo_ABB<Dato>* nodo) {
 }
 
 template <class Dato>
-Nodo_ABB<Dato>* ABB<Dato>::sucesor(string nombre) {
-    Nodo_ABB<Dato>* nodo_aux = this->buscar(this->raiz, nombre);
+Nodo_ABB<Dato>* ABB<Dato>::sucesor(string clave) {
+    Nodo_ABB<Dato>* nodo_aux = this->buscar(this->raiz, clave);
     if(nodo_aux == NULL){
 //        return reinterpret_cast<Edificio *>(-1);
         return nullptr;
     }
-    return sucesor(nodo_aux->obtener_nombre());
+    return sucesor(nodo_aux->obtener_clave());
 }
 
 template <class Dato>
@@ -308,8 +308,8 @@ Nodo_ABB<Dato>* ABB<Dato>::predecesor(Nodo_ABB<Dato> * nodo) {
 }
 
 template <class Dato>
-Nodo_ABB<Dato>* ABB<Dato>::predecesor(string nombre) {
-    Nodo_ABB<Dato> * nodo_aux = this->buscar(this->raiz, nombre);
+Nodo_ABB<Dato>* ABB<Dato>::predecesor(string clave) {
+    Nodo_ABB<Dato> * nodo_aux = this->buscar(this->raiz, clave);
 
     if(nodo_aux == NULL){
         return -1;
@@ -320,12 +320,12 @@ Nodo_ABB<Dato>* ABB<Dato>::predecesor(string nombre) {
 }
 
 template <class Dato>
-Nodo_ABB<Dato> * ABB<Dato>::remover_nodo(Nodo_ABB<Dato>* nodo, string nombre) {
+Nodo_ABB<Dato> * ABB<Dato>::remover_nodo(Nodo_ABB<Dato>* nodo, string clave) {
 
     if (nodo == NULL){
         return nullptr;
     }
-    if (nodo->obtener_nombre() == nombre){
+    if (nodo->obtener_clave() == clave){
 
         if (nodo->es_hoja()){
             delete nodo;
@@ -354,7 +354,7 @@ Nodo_ABB<Dato> * ABB<Dato>::remover_nodo(Nodo_ABB<Dato>* nodo, string nombre) {
         else{
 
             // para reemplazar al nodo a eliminar se busca un sucesor, es decir, al nodo mas izquierdo del subarbol derecho de que tiene por raiz al nodo a eliminar
-            Nodo_ABB<Dato>* nodo_sucesor = this->sucesor(nombre);
+            Nodo_ABB<Dato>* nodo_sucesor = this->sucesor(clave);
 
             /* se reemplaza el dato que contiene el nodo a eliminar por el dato que contenga el sucesor (esto de solo reemplazar el dato y el resto dejarlo tal cual es porque si se 
             eliminara el nodo directaente y se lo reemplazara con el sucesor. o predecesor, habría que reacomodar todos los punteros y sería una re fiaca)
@@ -362,22 +362,22 @@ Nodo_ABB<Dato> * ABB<Dato>::remover_nodo(Nodo_ABB<Dato>* nodo, string nombre) {
             nodo->setear_dato(nodo_sucesor->obtener_dato());
 
             // se remueve al nodo sucesor y del nodo a eliminar y se ajustan los punteros del mismo
-            nodo->setear_hijo_derecho(remover_nodo(nodo->obtener_hijo_derecho(), nodo_sucesor->obtener_nombre()));
+            nodo->setear_hijo_derecho(remover_nodo(nodo->obtener_hijo_derecho(), nodo_sucesor->obtener_clave()));
         }
     }
 
-    else if (nodo->obtener_nombre() < nombre){
-        nodo->setear_hijo_derecho(remover_nodo(nodo->obtener_hijo_derecho(), nombre));
+    else if (nodo->obtener_clave() < clave){
+        nodo->setear_hijo_derecho(remover_nodo(nodo->obtener_hijo_derecho(), clave));
     }
     else{
-        nodo->setear_hijo_izquierdo(remover_nodo(nodo->obtener_hijo_izquierdo(), nombre));
+        nodo->setear_hijo_izquierdo(remover_nodo(nodo->obtener_hijo_izquierdo(), clave));
     }
     return nodo;
 }
 
 template <class Dato>
-void ABB<Dato>::remover_nodo(string nombre) {
-    this->raiz = remover_nodo(this->raiz, nombre);
+void ABB<Dato>::remover_nodo(string clave) {
+    this->raiz = remover_nodo(this->raiz, clave);
 }
 
 template <class Dato>
