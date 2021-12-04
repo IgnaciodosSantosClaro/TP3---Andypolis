@@ -2,6 +2,7 @@
 #define DICCIONARIO_H
 
 #include "ABB.h"
+#include "Edificio.h"
 
 using namespace std;
 
@@ -54,7 +55,7 @@ class Diccionario {
     */
     ~Diccionario();
 
-}
+};
 
 
 #endif //DICCIONARIO_H

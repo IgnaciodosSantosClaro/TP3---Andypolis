@@ -143,6 +143,7 @@ void Floyd::liberar_matrices() {
 Floyd::~Floyd(){
     liberar_matrices();
     camino_recorrido->liberar_vector();
+    delete camino_recorrido;
 
 }
 

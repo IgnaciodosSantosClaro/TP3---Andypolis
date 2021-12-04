@@ -1,13 +1,17 @@
 #ifndef NODO_ABB_H
 #define NODO_ABB_H
 
+#include <string>
+
+using namespace std;
+
 template <class Dato>
 class Nodo_ABB {
 
     private:
         
         //atributos
-
+        string nombre_nodo;
         Dato dato;
         Nodo_ABB<Dato>* hijo_izquierdo;
         Nodo_ABB<Dato>* hijo_derecho;
@@ -22,13 +26,17 @@ class Nodo_ABB {
         PRE: -
         POST: crea una instancia de la clase Nodo_ABB con el dato pasado por parametro como dato del nodo
         */
-        Nodo_ABB(Dato dato);
+        Nodo_ABB(string nombre, Dato dato);
 
         /*
         PRE: el objeto Nodo_ABB fue creado
         POST: devuelve el dato del nodo
         */
         Dato obtener_dato();
+
+        //PRE: el objeto Nodo_ABB fue creado
+        //POS: devuelve el nombre del nodo
+        string obtener_nombre();
         
         /*
         PRE: el objeto Nodo_ABB fue creado
@@ -104,8 +112,9 @@ class Nodo_ABB {
 };
 
 template <class Dato>
-Nodo_ABB<Dato>::Nodo_ABB(Dato dato) {
+Nodo_ABB<Dato>::Nodo_ABB(string nombre, Dato dato) {
     this->dato = dato;
+    this->nombre_nodo = nombre;
     this->hijo_izquierdo = nullptr;
     this->hijo_derecho = nullptr;
     this->padre = nullptr;
@@ -114,6 +123,11 @@ Nodo_ABB<Dato>::Nodo_ABB(Dato dato) {
 template <class Dato>
 Dato Nodo_ABB<Dato>::obtener_dato() {
     return this->dato;
+}
+
+template <class Dato>
+string Nodo_ABB<Dato>::obtener_nombre() {
+    return this->nombre_nodo;
 }
 
 template <class Dato>

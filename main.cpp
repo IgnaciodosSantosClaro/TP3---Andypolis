@@ -24,10 +24,10 @@ int main(void)
     Jugador jugador1;
     Jugador jugador2;
     ABB<int> arbol;
-    arbol.insertar_nodo(5);
-    arbol.insertar_nodo(2);
-    arbol.insertar_nodo(7);
-    arbol.insertar_nodo(3);
+    arbol.insertar_nodo("5",5);
+    arbol.insertar_nodo("2", 2);
+    arbol.insertar_nodo("7", 7);
+    arbol.insertar_nodo("3", 3);
 
     arbol.imprimir_in_order();
     cout << endl;
@@ -47,7 +47,7 @@ int main(void)
     for(int i = 0; i < caminos->obtener_largo(); i++) {
         cout << caminos->obtener_valor(i) << " ";
     }
-    caminos->liberar_vector();
+//    caminos->liberar_vector();
     cout << endl;
     cout << grafo1.obtener_arista("(0, 0)", "(7, 8)") << endl;
 
