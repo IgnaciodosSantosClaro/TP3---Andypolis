@@ -106,9 +106,9 @@ class Nodo_ABB {
 template <class Dato>
 Nodo_ABB<Dato>::Nodo_ABB(Dato dato) {
     this->dato = dato;
-    this->hijo_izquierdo = NULL;
-    this->hijo_derecho = NULL;
-    this->padre = NULL;
+    this->hijo_izquierdo = nullptr;
+    this->hijo_derecho = nullptr;
+    this->padre = nullptr;
 }
 
 template <class Dato>
@@ -166,17 +166,17 @@ Nodo_ABB<Dato>* Nodo_ABB<Dato>::obtener_padre() {
 
 template <class Dato>
 bool Nodo_ABB<Dato>::es_hoja() {
-    return (this->obtener_hijo_izquierdo() == NULL && this->obtener_hijo_derecho() == NULL);
+    return (this->obtener_hijo_izquierdo() == nullptr && this->obtener_hijo_derecho() == nullptr);
 }
 
 template <class Dato>
 bool Nodo_ABB<Dato>::solo_hijo_derecho() {
-    return (this->obtener_hijo_izquierdo() == NULL && this->obtener_hijo_derecho() != NULL);
+    return (this->obtener_hijo_izquierdo() == nullptr && this->obtener_hijo_derecho() != nullptr);
 }
 
 template <class Dato>
 bool Nodo_ABB<Dato>::solo_hijo_izquierdo() {
-    return (this->obtener_hijo_izquierdo() != NULL && this->obtener_hijo_derecho() == NULL);
+    return (this->obtener_hijo_izquierdo() != nullptr && this->obtener_hijo_derecho() == nullptr);
 }
 
 #endif //NODO_ABB_H

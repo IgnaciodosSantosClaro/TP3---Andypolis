@@ -43,10 +43,13 @@ int main(void)
 //    grafo2.mostrar_grafo();
 
     grafo1.usar_floyd();
-    grafo1.camino_minimo("(0, 0)", "(7, 8)");
-
-    grafo2.usar_floyd();
-    grafo2.camino_minimo("(0, 0)", "(7, 8)");
+    Vector<string>* caminos = grafo1.camino_minimo("(0, 0)", "(7, 8)");
+    for(int i = 0; i < caminos->obtener_largo(); i++) {
+        cout << caminos->obtener_valor(i) << " ";
+    }
+    caminos->liberar_vector();
+    cout << endl;
+    cout << grafo1.obtener_arista("(0, 0)", "(7, 8)") << endl;
 
     menu.mostrar_menu_inicio();
     menu.mostrar_menu_juego();

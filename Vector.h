@@ -182,6 +182,14 @@ public:
     {
         return this->largo_actual;
     }
+
+    void liberar_vector()
+    {
+        delete[] datos;
+        datos = nullptr;
+        largo_actual = 0;
+        espacio_reservado = 0;
+    }
 };
 
 #endif

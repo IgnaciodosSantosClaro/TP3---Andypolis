@@ -95,24 +95,34 @@ void Floyd::calcular_matrices() {
 
 }
 
-void Floyd::camino_minimo(int origen, int destino) {
-
-    if(matriz_caminos[origen][destino] == POSICION_NO_ENCONTRADA){
-        cout << "No hay un camino que conecte " <<  vertices->obtener_nombre(origen + 1) << " con " << vertices->obtener_nombre(destino + 1);
-    } else {
-        cout << "El camino minimo que une " <<  vertices->obtener_nombre(origen + 1) << " con " << vertices->obtener_nombre(destino + 1);
-        cout << " tiene un costo de: " << matriz_costos[origen][destino] << " y es el siguiente: ";
-        cout << vertices->obtener_nombre(origen + 1);
+Vector<string>* Floyd::camino_minimo(int origen, int destino) {
+//    if(matriz_caminos[origen][destino] == POSICION_NO_ENCONTRADA){
+//        cout << "No hay un camino que conecte " <<  vertices->obtener_nombre(origen + 1) << " con " << vertices->obtener_nombre(destino + 1);
+//    } else {
+//        cout << "El camino minimo que une " <<  vertices->obtener_nombre(origen + 1) << " con " << vertices->obtener_nombre(destino + 1);
+//        cout << " tiene un costo de: " << matriz_costos[origen][destino] << " y es el siguiente: ";
+//        cout << vertices->obtener_nombre(origen + 1);
+//        do {
+//            origen = matriz_caminos[origen][destino];
+//            cout << " -> " << vertices->obtener_nombre(origen + 1);
+//        } while(origen != destino);
+//    }
+//    cout << endl;
+    if(matriz_caminos[origen][destino] == POSICION_NO_ENCONTRADA) {
+        camino_recorrido->agregar_al_final("∞");
+    }
+    else {
         do {
             origen = matriz_caminos[origen][destino];
-            cout << " -> " << vertices->obtener_nombre(origen + 1);
-        } while(origen != destino);
+            camino_recorrido->agregar_al_final(vertices->obtener_nombre(origen + 1));
+        } while (origen != destino);
     }
-    cout << endl;
+
+    return camino_recorrido;
 
 }
 
-int Floyd::obtener_costo(int origen, int destino) {
+int Floyd::obtener_arista(int origen, int destino) {
     return matriz_costos[origen][destino];
 }
 
@@ -132,6 +142,8 @@ void Floyd::liberar_matrices() {
 
 Floyd::~Floyd(){
     liberar_matrices();
+    camino_recorrido->liberar_vector();
+
 }
 
 Floyd::Floyd(Lista<Vertice> *vertices, int ** matriz_adyacencia) : Camino_minimo(vertices, matriz_adyacencia){

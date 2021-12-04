@@ -28,12 +28,12 @@ private:
 public:
     Floyd(Lista<Vertice> *vertices, int ** matriz_adyacencia);
 
-    //post: muestra por pantalla el camino mínimo entre el origen y el destino, detallando su recorrido y peso
-    void camino_minimo(int origen, int destino) override;
+    //POS: muestra por pantalla el camino mínimo entre el origen y el destino, detallando su recorrido y peso
+    Vector<string>* camino_minimo(int origen, int destino) override;
 
-    //PRE: Matriz de caminos bien cargada
-    //POS: Devuelve el costo de ir del vertice origen al vertice destino
-    int obtener_costo(int origen, int destino);
+    //PRE: Matriz de costos bien cargada
+    //POS: Devuelve el costo de ir desde el vertice origen al vertice destino.
+    int obtener_arista(int origen, int destino) override;
 
     ~Floyd() override;
 };

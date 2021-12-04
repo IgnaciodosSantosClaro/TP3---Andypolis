@@ -4,6 +4,7 @@
 #include "Lista.h"
 #include "Vertice.h"
 #include "Floyd.h"
+#include "Vector.h"
 
 using namespace std;
 
@@ -16,7 +17,11 @@ private:
 
     //PRE: tienen que existir tanto el origen como el destino. Ademas se deben haber calculado las matrices de Floyd
     //POS: muestra el camino minimo entre el origen y el destino
-    void camino_minimo(int origen, int destino);
+    Vector<string>* camino_minimo(int origen, int destino);
+
+    //PRE: tienen que existir tanto el origen como el destino. Ademas se deben haber calculado las matrices de Floyd.
+    //POS: devuelve el peso de la arista que conecta el vertice destino con el vertice origen.
+    int obtener_arista(int origen, int destino);
 
     //PRE: -
     //POS: agranda dinamicamente la matriz de adyacencia
@@ -52,7 +57,7 @@ public:
 
     //PRE: se debe tener un algortimo para calcular el camino mínimo previamente elegido
     //POS: muestra por terminal el camino mínimo desde un origen a un destino
-    void camino_minimo(string origen, string destino);
+    Vector<string>* camino_minimo(string origen, string destino);
 
     //PRE: el peso es un valor positivo
     //POS: Ajusta la matriz de adyacencia con el peso ingresado
@@ -66,9 +71,9 @@ public:
     //POS: selecciona el algortimo de Floyd para calcular el camino mínimo
     void usar_floyd();
 
-    //PRE: -
-    //POS: selecciona el algortimo de Dijkstra para calcular el camino mínimo
-    void usar_dijkstra();
+    //PRE: se debe tener un algoritmo para calcular el camino minimo previamente elegido.
+    //POS: devuelve el valor de la arista que une el vertice origen con el destino.
+    int obtener_arista(string origen, string destino);
 
     ~Grafo();
 };

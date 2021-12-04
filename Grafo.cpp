@@ -1,5 +1,4 @@
 #include "Grafo.h"
-#include "Dijkstra.h"
 #include <iostream>
 
 Grafo::Grafo() {
@@ -31,22 +30,21 @@ void Grafo::agregar_camino(string origen, string destino, int peso) {
 
     if(!(posicion_destino == POSICION_NO_ENCONTRADA || posicion_origen == POSICION_NO_ENCONTRADA)) {
         matriz_de_adyacencia[posicion_origen][posicion_destino] = peso;
-//        matriz_de_adyacencia[posicion_destino][posicion_origen] = peso;
     }
 }
 
-void Grafo::camino_minimo(string origen, string destino) {
+Vector<string>* Grafo::camino_minimo(string origen, string destino) {
     int posicion_origen = vertices ->obtener_posicion(origen);
     int posicion_destino = vertices ->obtener_posicion(destino);
 
-    if(posicion_origen == POSICION_NO_ENCONTRADA){
-        cout << "El vertice " << origen << " no existe en el grafo" << endl;
-    }
-    if(posicion_destino == POSICION_NO_ENCONTRADA){
-        cout << "El vertice " << destino << " no existe en el grafo" << endl;
-    }
+//    if(posicion_origen == POSICION_NO_ENCONTRADA){
+//        cout << "El vertice " << origen << " no existe en el grafo" << endl;
+//    }
+//    if(posicion_destino == POSICION_NO_ENCONTRADA){
+//        cout << "El vertice " << destino << " no existe en el grafo" << endl;
+//    }
 
-    camino_minimo(posicion_origen, posicion_destino);
+    return camino_minimo(posicion_origen, posicion_destino);
 }
 
 void Grafo::agrandar_matriz_de_adyacencia() {
@@ -125,8 +123,8 @@ void Grafo::mostrar_matriz_adyacencia() {
     cout << endl;
 }
 
-void Grafo::camino_minimo(int origen, int destino) {
-    algoritmo_camino_minimo -> camino_minimo(origen, destino);
+Vector<string>* Grafo::camino_minimo(int origen, int destino) {
+    return algoritmo_camino_minimo -> camino_minimo(origen, destino);
 }
 
 void Grafo::usar_floyd() {
@@ -134,7 +132,14 @@ void Grafo::usar_floyd() {
     algoritmo_camino_minimo = new Floyd(vertices, matriz_de_adyacencia);
 }
 
-void Grafo::usar_dijkstra() {
-    delete algoritmo_camino_minimo;
-    algoritmo_camino_minimo = new Dijkstra(vertices, matriz_de_adyacencia);
+int Grafo::obtener_arista(string origen, string destino) {
+    int posicion_origen = vertices->obtener_posicion(origen);
+    int posicion_destino = vertices->obtener_posicion(destino);
+
+    return obtener_arista(posicion_origen, posicion_destino);
 }
+
+int Grafo::obtener_arista(int origen, int destino) {
+    return algoritmo_camino_minimo -> obtener_arista(origen, destino);
+}
+
