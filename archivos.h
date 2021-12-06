@@ -7,6 +7,7 @@
 #include "Grafo.h"
 #include "Jugador.h"
 #include "utiles.h"
+#include "Diccionario.h"
 
 //#include "Vector_edificio.h" ->implementar como arbol
 #include "Coordenada.h"
@@ -22,7 +23,7 @@ void cargar_materiales(Jugador &jugador1, Jugador &jugador2);
 
 // PRE: Recibe un Vector de edificios no nulo
 // POS: Carga el vector con el contenido de edificios.txt
-// void procesar_edificios(Vector_edificio &edificios);
+ void procesar_edificios(Diccionario &dicc);
 
 // PRE: Recibe un objeto matriz casillero
 // POS: Porcesa el contenido de mapa.txt y asigna a cada casillero un objeto casillero correspondiente

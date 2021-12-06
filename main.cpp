@@ -24,30 +24,41 @@ int main(void)
     Jugador jugador1;
     Jugador jugador2;
     ABB<int> arbol;
-    arbol.insertar_nodo("5",5);
+    Diccionario diccionario;
+
+    arbol.insertar_nodo("5", 5);
     arbol.insertar_nodo("2", 2);
     arbol.insertar_nodo("7", 7);
     arbol.insertar_nodo("3", 3);
 
     arbol.imprimir_in_order();
+    cout << endl << arbol.buscar("7")->obtener_clave() << endl;
     cout << endl;
 
     procesar_mapa(mapa);
     cargar_materiales(jugador1, jugador2);
+
+    procesar_edificios(diccionario);
+
     jugador1.mostrar_inventario();
     jugador2.mostrar_inventario();
+    diccionario.recorrer();
+    Edificio* aux = diccionario.consulta("mina oro");
+    if(aux == NULL) {
+        cout << endl << "No se encontro el edificio." << endl;
+    }
+    else {
+        cout << endl << aux->obtener_nombre() << endl;
+    }
     cargar_grafo(grafo1, mapa, 1);
     cargar_grafo(grafo2, mapa, 2);
-
-//    grafo1.mostrar_grafo();
-//    grafo2.mostrar_grafo();
 
     grafo1.usar_floyd();
     Vector<string>* caminos = grafo1.camino_minimo("(0, 0)", "(7, 8)");
     for(int i = 0; i < caminos->obtener_largo(); i++) {
         cout << caminos->obtener_valor(i) << " ";
     }
-//    caminos->liberar_vector();
+
     cout << endl;
     cout << grafo1.obtener_arista("(0, 0)", "(7, 8)") << endl;
 

@@ -7,14 +7,12 @@
 using namespace std;
 
 class Diccionario {
-
+private:
     //Atributos
 
-    ABB<Edificio*>* arbol;
+    ABB<Edificio>* arbol;
 
-    private:
-
-
+public:
     //Metodos
 
     /*
@@ -28,19 +26,19 @@ class Diccionario {
     PRE: el diccionario fue creado
     POST: da de alta 
     */
-    void alta(string clave, Edificio* edificio);
+    void alta(Edificio edificio);
 
     /*
     PRE: el diccionario fue creado y no esta vacio
     POST:
     */
-    void baja(string clave);
+    void baja(Edificio edificio);
 
     /*
     PRE: el diccionario fue creado
     POST: devuelve true en caso de hallar una clave compatible con el nombre de diccionario pasado por parametro, y false en caso contrario
     */
-    bool consulta(string nombre_edificio);
+    Edificio* consulta(string nombre_edificio);
     
     /*
     PRE: el diccionario fue creado

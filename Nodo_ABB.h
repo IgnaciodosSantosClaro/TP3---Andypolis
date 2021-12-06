@@ -12,7 +12,7 @@ class Nodo_ABB {
         
         //atributos
         string clave_nodo;
-        Dato dato;
+        Dato* dato;
         Nodo_ABB<Dato>* hijo_izquierdo;
         Nodo_ABB<Dato>* hijo_derecho;
         Nodo_ABB<Dato>* padre;
@@ -32,7 +32,7 @@ class Nodo_ABB {
         PRE: el objeto Nodo_ABB fue creado
         POST: devuelve el dato del nodo
         */
-        Dato obtener_dato();
+        Dato* obtener_dato();
 
         /*
         PRE: el objeto Nodo_ABB fue creado
@@ -50,7 +50,7 @@ class Nodo_ABB {
         PRE: el objeto Nodo_ABB fue creado
         POST: establece el parametro pasado como dato del nodo 
         */
-        void setear_dato(Dato dato);
+        void setear_dato(Dato* dato);
         
         /*
         PRE: el objeto Nodo_ABB fue creado
@@ -117,11 +117,14 @@ class Nodo_ABB {
         POST: devuelve true en caso de que el nodo en cuestion tenga unicamente un hijo izquierdo y false en cualquier otro caso
         */
         bool solo_hijo_izquierdo();
+
+        ~Nodo_ABB();
 };
 
 template <class Dato>
-Nodo_ABB<Dato>::Nodo_ABB(string clave, Dato dato) {
-    this->dato = dato;
+Nodo_ABB<Dato>::Nodo_ABB(string clave, Dato elemento) {
+    this->dato = new Dato;
+    *dato = elemento;
     this->clave_nodo = clave;
     this->hijo_izquierdo = nullptr;
     this->hijo_derecho = nullptr;
@@ -129,7 +132,7 @@ Nodo_ABB<Dato>::Nodo_ABB(string clave, Dato dato) {
 }
 
 template <class Dato>
-Dato Nodo_ABB<Dato>::obtener_dato() {
+Dato* Nodo_ABB<Dato>::obtener_dato() {
     return this->dato;
 }
 
@@ -166,7 +169,7 @@ void Nodo_ABB<Dato>::setear_padre(Nodo_ABB<Dato> *padre) {
 }
 
 template <class Dato>
-void Nodo_ABB<Dato>::setear_dato(Dato dato) {
+void Nodo_ABB<Dato>::setear_dato(Dato* dato) {
     this->dato = dato;
 }
 
@@ -205,4 +208,8 @@ bool Nodo_ABB<Dato>::solo_hijo_izquierdo() {
     return (this->obtener_hijo_izquierdo() != nullptr && this->obtener_hijo_derecho() == nullptr);
 }
 
+template <class Dato>
+Nodo_ABB<Dato>::~Nodo_ABB() {
+    delete dato;
+}
 #endif //NODO_ABB_H

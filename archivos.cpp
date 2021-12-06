@@ -1,5 +1,5 @@
 #include "archivos.h"
-
+#include <cctype>
 using namespace std;
 
 Errores abrir_archivo(std::ifstream &archivo, std::string path)
@@ -99,7 +99,8 @@ void cargar_grafo(Grafo &grafo, Matriz_casillero &mapa, int num_jugador)
         }
     }
 }
-/* void procesar_edificios(Vector_edificio &edificios)
+
+void procesar_edificios(Diccionario &dicc)
 {
     string nombre;
     string nombre2;
@@ -118,17 +119,40 @@ void cargar_grafo(Grafo &grafo, Matriz_casillero &mapa, int num_jugador)
     {
         while (archivo_edificios >> nombre)
         {
-            if (nombre == NOMBRE_EDIFICIO_PLANTA)
+            if (nombre == "planta")
             {
                 archivo_edificios >> nombre2;
                 nombre += " " + nombre2;
+                archivo_edificios >> cant_piedra;
+                archivo_edificios >> cant_madera;
+                archivo_edificios >> cant_metal;
+                archivo_edificios >> cant_maxima;
             }
-            archivo_edificios >> cant_piedra;
-            archivo_edificios >> cant_madera;
-            archivo_edificios >> cant_metal;
-            archivo_edificios >> cant_maxima;
+            else if(nombre == "mina")
+            {
+                archivo_edificios >> nombre2;
+                if(!isdigit(nombre2[0])) {
+                    nombre += " " + nombre2;
+                    archivo_edificios >> cant_piedra;
+                    archivo_edificios >> cant_madera;
+                    archivo_edificios >> cant_metal;
+                    archivo_edificios >> cant_maxima;
+                }
+                else {
+                    cant_piedra = nombre2;
+                    archivo_edificios >> cant_madera;
+                    archivo_edificios >> cant_metal;
+                    archivo_edificios >> cant_maxima;
+                }
+            }
+            else {
+                archivo_edificios >> cant_piedra;
+                archivo_edificios >> cant_madera;
+                archivo_edificios >> cant_metal;
+                archivo_edificios >> cant_maxima;
+            }
 
-            Material_de_construccion materiales[MAX_MATERIALES_CONSTRUIBLES];
+            Material_consumible materiales[MAX_MATERIALES_CONSTRUIBLES];
             materiales[0].fijar_nombre(PIEDRA);
             materiales[0].fijar_cantidad(stoi(cant_piedra));
             materiales[1].fijar_nombre(MADERA);
@@ -137,11 +161,11 @@ void cargar_grafo(Grafo &grafo, Matriz_casillero &mapa, int num_jugador)
             materiales[2].fijar_cantidad(stoi(cant_metal));
 
             Edificio edificio(nombre, stoi(cant_maxima), materiales);
-            edificios.agregar_al_final(edificio);
+            dicc.alta(edificio);
         }
     }
     archivo_edificios.close();
-} */
+}
 
 void procesar_ubicaciones(Matriz_casillero &mapa) // Procesar despues de mapa
 {

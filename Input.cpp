@@ -14,13 +14,13 @@ void Input::fijar_opcion(int input) {
 
 bool Input::es_opcion_numero(string input) {
     int largo_input = (int)input.length();
-    bool numero = true;
+    bool es_numero = true;
     for(int i = 0; i < largo_input; i++) {
         if(!isdigit(input[i])) {
-            numero = false;
+            es_numero = false;
         }
     }
-    return numero;
+    return es_numero;
 }
 
 int Input::castear_string_a_int(string input) {

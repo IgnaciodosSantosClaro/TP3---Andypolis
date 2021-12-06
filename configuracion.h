@@ -87,6 +87,7 @@ const string COLOR_JUGADOR_1 = "\033[38;5;161m";             // ROSA
 const string COLOR_JUGADOR_2 = "\033[38;5;7m";               // BLANCO
 const char ICONO_RECURSO_POR_DEFECTO = '-';
 const int MAX_MATERIALES_CONSTRUIBLES = 3;
+const int SALUD_MAXIMA = 2;
 // ERRORES
 const int POSICION_INVALIDA = -1;
 //

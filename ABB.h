@@ -99,7 +99,7 @@ class ABB {
         PRE: el objeto ABB fue creado y no esta vacio
         POST: busca a partir de la raiz el dato pasado por parametro y devuelve true en caso de hallarlo, y falso en caso de no hacerlo
         */
-        bool buscar(string clave);
+        Nodo_ABB<Dato>* buscar(string clave);
 
         /*
         PRE: el objeto ABB fue creado y no esta vacio
@@ -170,7 +170,7 @@ Nodo_ABB<Dato>* ABB<Dato>::insertar_nodo(Nodo_ABB<Dato>* nodo, string clave, Dat
         nodo = new Nodo_ABB<Dato>(clave, dato);
     }
 
-    else if (dato > nodo->obtener_dato()) {
+    else if (clave > nodo->obtener_clave()) {
         nodo->setear_hijo_derecho(insertar_nodo(nodo->obtener_hijo_derecho(), clave, dato), nodo);
     }
 
@@ -189,7 +189,7 @@ template <class Dato>
 void ABB<Dato>::imprimir_in_order(Nodo_ABB<Dato>* nodo) {
     if (nodo != NULL){
         imprimir_in_order(nodo->obtener_hijo_izquierdo());
-        cout<<nodo->obtener_dato()<<' ';
+        cout<<nodo->obtener_clave()<<' ';
         imprimir_in_order(nodo->obtener_hijo_derecho());
     }
 }
@@ -211,10 +211,10 @@ Nodo_ABB<Dato>* ABB<Dato>::buscar(Nodo_ABB<Dato>* nodo, string clave) {
 }
 
 template <class Dato>
-bool ABB<Dato>::buscar(string clave) {
+Nodo_ABB<Dato>* ABB<Dato>::buscar(string clave) {
     Nodo_ABB<Dato>* resultado_de_busqueda = buscar(this->raiz, clave);
 
-    return resultado_de_busqueda != NULL;
+    return resultado_de_busqueda;
 }
 
 template <class Dato>
@@ -397,6 +397,7 @@ void ABB<Dato>::borrar_todos(Nodo_ABB<Dato>* nodo) {
     }
     this->borrar_todos(nodo->obtener_hijo_izquierdo());
     this->borrar_todos(nodo->obtener_hijo_derecho());
+
     delete nodo;
 }
 

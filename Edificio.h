@@ -9,9 +9,9 @@
 using namespace std;
 enum estado_edificio
 {
-    EDIFICIO_SANO,
+    EDIFICIO_DESTRUIDO = 0,
     EDIFICIO_LASTIMADO,
-    EDIFICIO_DESTRUIDO,
+    EDIFICIO_SANO,
 };
 class Edificio
 {
@@ -20,7 +20,7 @@ private:
     int cant_max;
     int cant_construidos;
     int salud;
-    // Material_de_construccion materiales[MAX_MATERIALES_CONSTRUIBLES];
+    Material_consumible materiales_construccion[MAX_MATERIALES_CONSTRUIBLES];
     Material_consumible recursos_producidos;
 
 public:
@@ -28,19 +28,36 @@ public:
     // PRE: -
     // POS: Construye un objeto Edificio de nombre default, cantidad maxima nula, recursos producidos nulos y materiales nulos.
     Edificio();
+
+    //Constructor por parametros
+    //PRE:
+    //POS:
     Edificio(string nombre_edificio, int puntos_salud);
+
     // Constructor por parametros
     // PRE: -
-    // POS: Construye edificio de nombre nombre_edificio, cantidad maxima cant_max y materiales de construccion materiales.
+    // POS: Construye edificio de nombre nombre_edificio, cantidad maxima cant_max cantidad construida cant_construidos
+    // y salud puntos_salud.
     Edificio(string nombre_Edificio, int cant_max, int cant_contruidos, int puntos_salud);
-    // Edificio(std::string nombre_edificio, int cant_max, Material_de_construccion *materiales);
+
+    Edificio(string nombre_edificio, int cant_max, Material_consumible materiales_construccion[MAX_MATERIALES_CONSTRUIBLES]);
 
     // PRE: cant_construidos debe ser mayor o igual que cero.
     // POS: Actualiza el atributo cant_construidos.
     void modificar_cant_construidos(int cant_construidos);
+
+    //PRE:
+    //POS:
     void mostrar_leyenda(char icono);
+
+    //PRE:
+    //POS:
     void fijar_puntos_de_salud(int salud);
+
+    //PRE:
+    //POS:
     estado_edificio atacar_edificio();
+
     // PRE: -
     // POS: Devuelve el nombre del edificio.
     std::string obtener_nombre();
