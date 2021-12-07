@@ -56,9 +56,9 @@ const string TITULO_COLUMNA_MATERIAL = "Material";
 const string TITULO_COLUMNA_CANTIDAD = "Cantidad";
 const string TITULO_LISTADO_EDIFICIOS = "\t Listado de edificios        ";
 const string TITULO_COLUMNA_EDIFICIOS = "Edificios";
-const std::string PIEDRA_MAYUS = "Piedra";
-const std::string MADERA_MAYUS = "Madera";
-const std::string METAL_MAYUS = "Metal";
+const string PIEDRA_MAYUS = "Piedra";
+const string MADERA_MAYUS = "Madera";
+const string METAL_MAYUS = "Metal";
 const string TITULO_COLUMNA_CANT_CONSTRUIDA = "Cantidad construida";
 const string TITULO_COLUMNA_CANT_PERMITIDA = "Cantidad maxima";
 const string TITULO_COLUMNA_MATERIAL_ENTREGADO = "Material otorgado";
@@ -83,6 +83,7 @@ const string COORDENADA_LIBRE = "El casillero no tiene ningun edificio construid
 const string INGRESE_COORD_X = "Coordenada fila: ";
 const string INGRESE_COORD_Y = "Coordenada columna: ";
 const string DESEA_CONSTRUIR = "Desea construir el edificio? (s/n)";
+const string DESEA_MODIFICAR_MATERIAL = "Desea modificar la cantidad de material necesaria? (s/n)";
 
 // Matriz.h
 const string TIPO_CASILLERO_DESCONOCIDO = "Formato de ubicaciones.txt desconocido";

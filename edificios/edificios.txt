@@ -4,3 +4,4 @@ fabrica 10 0 500 1
 aserradero 40 25 100 5
 escuela 45 125 140 2
 mina oro 324 113 74 5
+obelisco 1000 1000 1000 1

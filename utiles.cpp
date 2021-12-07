@@ -1,4 +1,6 @@
 #include "utiles.h"
+#include "mensajes.h"
+
 string separar_hasta(string cadena_a_separar, char caracter)
 {
     char cursor;
@@ -66,4 +68,58 @@ bool es_jugador(string nombre)
         cout << nombre << " no es jugador" << endl;
     }
     return jugador_detectado;
+}
+
+string pedir_nombre()
+{
+    string nombre;
+    cout << INGRESAR_NOMBRE_EDIFICIO;
+//    cin.ignore();
+    getline(cin, nombre);
+    return nombre;
+}
+
+bool confirmar_decision()
+{
+    char opcion = '0'; //Valor default
+    bool confirmar;
+
+    while (opcion != 's' && opcion != 'n')
+    {
+        cin >> opcion;
+        switch (opcion)
+        {
+            case 's':
+                confirmar = true;
+                break;
+            case 'n':
+                confirmar = false;
+                break;
+            default:
+                cout << COLOR_TEXTO_ROJO << MENSAJE_OPCION_INVALIDA << COLOR_TEXTO_BLANCO << endl;
+                break;
+        }
+    }
+    return confirmar;
+}
+
+bool validar_opcion(string opcion, Input &input, int min, int max) {
+    bool opcion_valida = false;
+    if(!input.es_opcion_numero(opcion)) {
+        opcion_valida = false;
+    }
+    else {
+        input.fijar_opcion(input.castear_string_a_int(opcion));
+        if(input.es_rango_valido(min, max)) {
+            opcion_valida = true;
+        }
+    }
+    return opcion_valida;
+}
+
+void confirmar_opcion_valida(string &opcion, Input &input, int min, int max) {
+    while(!validar_opcion(opcion, input, min, max)) {
+        cout << MENSAJE_OPCION_INVALIDA << endl;
+        cin >> opcion;
+    }
 }

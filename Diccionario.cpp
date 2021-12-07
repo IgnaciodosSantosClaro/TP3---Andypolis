@@ -25,6 +25,10 @@ void Diccionario::recorrer() {//imprime por pantalla el recorrido in order
     arbol->imprimir_in_order();
 }
 
+void Diccionario::reemplazar(Edificio* edificio) {
+    arbol->buscar(edificio->obtener_nombre())->setear_dato(edificio);
+}
+
 Diccionario::~Diccionario() {
     arbol->~ABB();
 }

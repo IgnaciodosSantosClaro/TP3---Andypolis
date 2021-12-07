@@ -209,7 +209,7 @@ void procesar_ubicaciones(Matriz_casillero &mapa) // Procesar despues de mapa
                     procesar_jugador_2 = true;
                 }
             }
-            else if (procesar_jugador_1 == true)
+            else if (procesar_jugador_1)
             {
                 cout << "Soy un edificio del jugador 1" << endl;
                 cout << "mi nombre es: " << nombre << " y estoy en " << fila << ": " << columna << endl;
@@ -217,7 +217,7 @@ void procesar_ubicaciones(Matriz_casillero &mapa) // Procesar despues de mapa
                 Edificio edificio_seleccionado = Edificio(nombre, PUNTOS_SALUD_BASE);
                 construible_ptr->ocupar_casillero(edificio_seleccionado, COLOR_EDIFICIO_SANO_JUG_1);
             }
-            else if (procesar_jugador_2 == true)
+            else if (procesar_jugador_2)
             {
                 cout << "Soy un edificio del jugador 2" << endl;
                 cout << "mi nombre es: " << nombre << " y estoy en " << fila << ": " << columna << endl;

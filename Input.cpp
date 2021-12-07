@@ -32,3 +32,7 @@ void Input::pedir_input() {
 
 }
 
+int Input::obtener_input() {
+    return this->input;
+}
+

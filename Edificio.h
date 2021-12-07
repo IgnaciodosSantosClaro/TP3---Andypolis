@@ -72,11 +72,15 @@ public:
 
     // PRE: La posicion esta entre 0 y 2.
     // POS: Devuelve el objeto material ubicado en la posicion pasada como paramentro del vector materiales.
-    // Material_de_construccion obtener_material(int posicion);
+    Material_consumible obtener_material(int posicion);
 
     // PRE: -
     // POS: Devuelve el objeto correspondiente a los materiales que otorga el edificio.
     Material_consumible obtener_materiales_otorgados();
+
+    //PRE:
+    //POS:
+    void fijar_material_constuible(int cantidad, int posicion);
 
     // PRE: -
     // POS: Incrementa en una unidad la cantidad de construcciones de un edificio.

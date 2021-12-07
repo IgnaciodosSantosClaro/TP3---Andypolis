@@ -133,3 +133,11 @@ void Edificio::mostrar_edificio()
 {
     std::cout << "Soy un/a " << this->nombre_edificio << CASILLERO_CONSULTADO << std::endl;
 }
+
+Material_consumible Edificio::obtener_material(int posicion) {
+    return this->materiales_construccion[posicion];
+}
+
+void Edificio::fijar_material_constuible(int cantidad, int posicion) {
+    this->materiales_construccion[posicion].fijar_cantidad(cantidad);
+}
