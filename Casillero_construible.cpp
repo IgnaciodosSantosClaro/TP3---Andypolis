@@ -38,7 +38,7 @@ void Casillero_construible::mostrar()
 
 void Casillero_construible::fijar_edificio(Edificio &edificio)
 {
-    this->icono = edificio.obtener_nombre()[0];
+    // this->icono = edificio.obtener_nombre()[0];
     this->edificio = edificio;
 }
 

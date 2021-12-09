@@ -5,6 +5,13 @@ Objetivo_material::Objetivo_material(string nombre, string descripcion, Material
     this->descripcion = descripcion;
     this->material_objetivo = material;
 }
+Objetivo_material::Objetivo_material(string nombre, string descripcion, string nombre_material, int cantidad_objetivo)
+{
+    this->nombre_objetivo = nombre;
+    this->descripcion = descripcion;
+    this->material_objetivo.fijar_nombre(nombre_material);
+    this->material_objetivo.fijar_cantidad(cantidad_objetivo);
+}
 void Objetivo_material::fijar_material_objetivo(Material_consumible material)
 {
     this->material_objetivo = material;
@@ -27,16 +34,14 @@ estado_objetivo Objetivo_material::actualizar_objetivo(int cantidad_incremento)
     }
     else
     {
+        this->esta_completo = true;
         return OBJETIVO_INCOMPLETO;
     };
 };
-void Objetivo_material::mostrar()
-{
-    cout << this->nombre_objetivo << " : " << this->descripcion << endl;
-}
+
 void Objetivo_material::mostrar_restante()
 {
     int restante = this->material_objetivo.obtener_cantidad() - this->cantidad_actual;
     cout << MENSAJE_OBJETIVO_INVENTARIO_RESTANTES_P1 << restante << MENSAJE_OBJETIVO_INVENTARIO_RESTANTES_P2;
-    cout << this->material_objetivo.obtener_nombre() << MENSAJE_OBJETIVO_INVENTARIO_RESTANTES_P3 << this->nombre_objetivo;
+    cout << this->material_objetivo.obtener_nombre() << MENSAJE_OBJETIVO_INVENTARIO_RESTANTES_P3 << this->nombre_objetivo << endl;
 };

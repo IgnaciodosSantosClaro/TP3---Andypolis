@@ -128,24 +128,27 @@ void procesar_edificios(Diccionario &dicc, Jugador &jugador1, Jugador &jugador2)
                 archivo_edificios >> cant_metal;
                 archivo_edificios >> cant_maxima;
             }
-            else if(nombre == "mina")
+            else if (nombre == "mina")
             {
                 archivo_edificios >> nombre2;
-                if(!isdigit(nombre2[0])) {
+                if (!isdigit(nombre2[0]))
+                {
                     nombre += " " + nombre2;
                     archivo_edificios >> cant_piedra;
                     archivo_edificios >> cant_madera;
                     archivo_edificios >> cant_metal;
                     archivo_edificios >> cant_maxima;
                 }
-                else {
+                else
+                {
                     cant_piedra = nombre2;
                     archivo_edificios >> cant_madera;
                     archivo_edificios >> cant_metal;
                     archivo_edificios >> cant_maxima;
                 }
             }
-            else {
+            else
+            {
                 archivo_edificios >> cant_piedra;
                 archivo_edificios >> cant_madera;
                 archivo_edificios >> cant_metal;
@@ -188,6 +191,7 @@ void procesar_ubicaciones(Matriz_casillero &mapa, Jugador &jugador1, Jugador &ju
     {
         bool procesar_jugador_1 = false;
         bool procesar_jugador_2 = false;
+        string todos_los_iconos;
         while (getline(archivo_ubicaciones, linea))
         {
             nombre = separar_hasta(linea, SEPARADOR_DERECHO_UBICACIONES);
@@ -195,6 +199,7 @@ void procesar_ubicaciones(Matriz_casillero &mapa, Jugador &jugador1, Jugador &ju
             inicio_posicion = linea.find(SEPARADOR_DERECHO_UBICACIONES);
             fila = linea[inicio_posicion + 1] - '0'; // Resto offset ASCII
             columna = linea[inicio_posicion + LARGO_HASTA_COLUMNA] - '0';
+
             if (es_jugador(nombre))
             {
                 mapa.obtener_dato(fila, columna)->habitar_casillero();
