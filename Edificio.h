@@ -63,7 +63,7 @@ public:
 
     // PRE: -
     // POS: Devuelve el nombre del edificio.
-    std::string obtener_nombre();
+    string obtener_nombre();
 
     // PRE: -
     // POS: Devuelve la cantidad maxima permitida de edificios.
@@ -72,6 +72,10 @@ public:
     // PRE: -
     // POS: Devuelve la cantidad de edificios contruidos.
     int obtener_cant_construidos();
+
+    //PRE: -
+    //POS: Devuelve la salud del edificio.
+    int obtener_salud();
 
     // PRE: La posicion esta entre 0 y 2.
     // POS: Devuelve el objeto material ubicado en la posicion pasada como paramentro del vector materiales.

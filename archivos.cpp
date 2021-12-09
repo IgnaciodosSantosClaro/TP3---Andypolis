@@ -162,6 +162,8 @@ void procesar_edificios(Diccionario &dicc, Jugador &jugador1, Jugador &jugador2)
 
             Edificio edificio(nombre, stoi(cant_maxima), materiales);
             asignar_recursos_otorgados(nombre, edificio);
+            edificio.fijar_puntos_de_salud(SALUD_MAXIMA);
+
             dicc.alta(edificio);
             jugador1.agregar_edificio(edificio);
             jugador2.agregar_edificio(edificio);

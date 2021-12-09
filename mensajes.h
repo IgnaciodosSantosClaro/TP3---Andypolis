@@ -67,6 +67,7 @@ const string TITULO_LISTADO_EDIFICIOS_CONSTRUIDOS = "\t Listado de edificios con
 const char TABULACION = '\t';
 const string TITULO_COLUMNA_EDIFICIO = "Edificio";
 const string TITULO_COLUMNA_COORDENADAS = "Coordenadas";
+const string TITULO_ESTADO_SALUD = "Necesita Reparacion";
 
 const string MENSAJE_RECOLECCION = "Has recolectado: ";
 const string INGRESAR_NOMBRE_EDIFICIO = "Ingrese el nombre del edificio: ";

@@ -42,4 +42,5 @@ Vector<Edificio*> Diccionario::arbol_a_vector() {
 
 Diccionario::~Diccionario() {
     arbol->~ABB();
+    arbol = nullptr;
 }

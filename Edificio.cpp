@@ -146,3 +146,7 @@ void Edificio::fijar_recurso_producido(string nombre, int cantidad) {
     this->recursos_producidos.fijar_nombre(nombre);
     this->recursos_producidos.fijar_cantidad(cantidad);
 }
+
+int Edificio::obtener_salud() {
+    return this->salud;
+}

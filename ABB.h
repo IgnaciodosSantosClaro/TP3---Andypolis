@@ -430,6 +430,7 @@ void ABB<Dato>::arbol_a_vector(Vector<Dato*> &vector) {
 template <class Dato>
 ABB<Dato>::~ABB<Dato>() {
     this->borrar_todos();
+    raiz = nullptr;
 }
 
 #endif //ABB_H

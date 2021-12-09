@@ -194,3 +194,53 @@ void listar_todos_edificios(Diccionario &diccionario) {
         cout << setfill(' ') <<  setw(ancho_general / 2) << vector_edificio.obtener_valor(i)->obtener_materiales_otorgados().obtener_cantidad() << setfill(' ') <<  setw(1) << endl;
     }
 }
+
+void listar_edificios_construidos(Matriz_casillero &mapa, Jugador &jugador) {
+    int ancho_nombre = 19;
+    int ancho_general = 11;
+    cout << TABULACION << ENCABEZADO_LISTADO_MATERIALES << endl;
+    cout << TABULACION << TITULO_LISTADO_EDIFICIOS_CONSTRUIDOS << endl;
+    cout << TABULACION << ENCABEZADO_LISTADO_MATERIALES << endl;
+    cout << left << TABULACION;
+    cout << setfill(' ') <<  setw(ancho_nombre) << TITULO_COLUMNA_EDIFICIO << setfill(' ') <<  setw(1) << SEPARADOR_GRILLA_DERECHA;
+    cout << setfill(' ') <<  setw(ancho_general) << TITULO_COLUMNA_CANTIDAD << setfill(' ') <<  setw(1) << SEPARADOR_GRILLA_DERECHA;
+    cout << setfill(' ') <<  setw(ancho_general) << TITULO_ESTADO_SALUD << setfill(' ') <<  setw(1) << SEPARADOR_GRILLA_DERECHA;
+    cout << setfill(' ') << setw(ancho_nombre) << TITULO_COLUMNA_COORDENADAS << setfill(' ') << setw(1) << endl;
+
+    Vector<Edificio*> vector_construidos = jugador.obtener_edificios()->arbol_a_vector();
+    for(int i = 0; i < vector_construidos.obtener_largo(); i++) {
+        if(vector_construidos.obtener_valor(i)->obtener_cant_construidos() > 0) {
+            string nombre = vector_construidos.obtener_valor(i)->obtener_nombre();
+            string reparacion = "si";
+            if(vector_construidos.obtener_valor(i)->obtener_salud() == SALUD_MAXIMA) {
+                reparacion = "no";
+            }
+            cout << left << TABULACION;
+            cout << setfill(' ') << setw(ancho_nombre) << nombre << setfill(' ') << setw(1) << SEPARADOR_GRILLA_DERECHA;
+            cout << setfill(' ') << setw(ancho_general) << vector_construidos.obtener_valor(i)->obtener_cant_construidos() << setfill(' ') << setw(1) << SEPARADOR_GRILLA_DERECHA;
+            cout << setfill(' ') << setw(ancho_nombre) << reparacion << setfill(' ') << setw(1) << SEPARADOR_GRILLA_DERECHA;
+            mostrar_coordenadas(mapa, nombre);
+            cout << endl;
+
+        }
+    }
+}
+
+void mostrar_coordenadas(Matriz_casillero &mapa, string nombre_edificio)
+{
+    for (int fila = 0; fila < mapa.obtener_largo_filas(); fila++)
+    {
+        for (int columna = 0; columna < mapa.obtener_largo_columnas(); columna++)
+        {
+            if (mapa.obtener_tipo_casillero(fila, columna) == CASILLERO_CONSTRUIBLE)
+            {
+                Casillero_construible *puntero_a_casillero = dynamic_cast<Casillero_construible *>(mapa.obtener_dato(fila, columna));
+                if (puntero_a_casillero->obtener_edificio().obtener_nombre() == nombre_edificio)
+                {
+                    puntero_a_casillero->obtener_posicion().mostrar();
+                }
+            }
+        }
+    }
+}
+

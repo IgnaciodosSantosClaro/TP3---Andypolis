@@ -46,6 +46,9 @@ int main(void)
 
     procesar_ubicaciones(mapa, jugador1, jugador2);
     listar_todos_edificios(diccionario);
+
+    listar_edificios_construidos(mapa, jugador1);
+    listar_edificios_construidos(mapa, jugador2);
 //    jugador2.obtener_edificios()->consulta("escuela")->incrementar_construcciones();
 //    cout << jugador2.obtener_edificios()->consulta("escuela")->obtener_cant_construidos() << endl;
 
