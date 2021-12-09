@@ -11,11 +11,11 @@ private:
 
 public:
     Objetivo_material(string nombre, string descripcion, Material_consumible material);
+    Objetivo_material(string nombre, string descripcion, string nombre_material, int cantidad_objetivo);
     void fijar_material_objetivo(Material_consumible material);
     int obtener_cantidad_objetivo();
     Material_consumible obtener_material_objetivo();
     estado_objetivo actualizar_objetivo(int cantidad_incremento);
-    void mostrar();
     void mostrar_restante();
 };
 #endif

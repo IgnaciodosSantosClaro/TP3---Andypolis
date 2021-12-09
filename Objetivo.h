@@ -13,13 +13,16 @@ class Objetivo
 protected:
     string nombre_objetivo;
     string descripcion;
-    bool esta_completo;
+    bool esta_completo = false;
 
 public:
+    string obtener_nombre();
     void fijar_descripcion(string descripcion);
     string obtener_descripcion();
-    virtual void mostrar() = 0;
-    //virtual void fijar_objetivo();
-    //virtual estado_objetivo actualizar_objetivo() = 0;
+    void mostrar();
+    virtual void mostrar_restante() = 0;
+    bool objetivo_completo();
+    // virtual void fijar_objetivo();
+    // virtual estado_objetivo actualizar_objetivo() = 0;
 };
-#endif //OBJETIVO_H
+#endif // OBJETIVO_H

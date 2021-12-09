@@ -63,7 +63,7 @@ void Casillero::mostrar_en_mapa(int ancho, bool es_medio, bool es_ultima)
     {
         int mitad = (int)ancho / 2;
         cout << setfill(ESPACIO) << std::setw(mitad - 1) << ESPACIO;
-        cout << this->color_texto << icono << COLOR_TEXTO_BLANCO << setfill(ESPACIO) << std::setw(mitad + 1);
+        cout << this->color_texto << this->icono << COLOR_TEXTO_BLANCO << setfill(ESPACIO) << std::setw(mitad + 1);
     }
     else
     {

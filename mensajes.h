@@ -31,7 +31,7 @@ const std::string INGRESE_ACCION = "Ingrese el numero de la accion que desea rea
 // menu inicial
 const std::string MENSAJE_MENU_INICIAL_1 = " 1. Modificiar edificio por nombre.";
 const std::string MENSAJE_MENU_INICIAL_2 = " 2. Listar edificios construidos.";
-const std::string MENSAJE_MENU_INICIAL_3 = " 5. Mostrar mapa.";
+const std::string MENSAJE_MENU_INICIAL_3 = " 3. Mostrar mapa.";
 const std::string MENSAJE_MENU_INICIAL_4 = " 4. Comenzar partida.";
 const std::string MENSAJE_MENU_INICIAL_5 = " 5. Guardar y salir.";
 // menu juego
@@ -106,5 +106,11 @@ const string MENSAJE_LLUVIA_COMPLETA = "Termino la lluvia, se generaron los sigu
 const string MENSAJE_OBJETIVO_INVENTARIO_RESTANTES_P1 = "Faltan ";
 const string MENSAJE_OBJETIVO_INVENTARIO_RESTANTES_P2 = " de ";
 const string MENSAJE_OBJETIVO_INVENTARIO_RESTANTES_P3 = " para completar el objetivo ";
+const string MENSAJE_OBJETIVO_EDIFICIO_RESTANTES_P1 = "Faltan construir ";
+const string MENSAJE_OBJETIVO_EDIFICIO_RESTANTES_P2 = " para completar el objetivo ";
+
 const string DESCRIPCION_EDAD_PIEDRA = "Tener 500000 de piedra en el inventario.";
+const string COMPLETAR_OBJETIVO_MULTIPLE_INICIO = "Debes construir:";
+const string COMPLETAR_OBJETIVO_MULTIPLE_FIN = "Para completar el objetivo ";
+const string MENSAJE_OBJETIVO_COMPLETO = "Completo";
 #endif

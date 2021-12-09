@@ -6,7 +6,14 @@
 #include <iostream>
 #include "Material_consumible.h"
 #include "configuracion.h"
+
 using namespace std;
+enum jugador
+{
+    JUGADOR_1,
+    JUGADOR_2,
+    NO_ASIGNADO
+};
 enum estado_edificio
 {
     EDIFICIO_DESTRUIDO = 0,
@@ -17,6 +24,7 @@ class Edificio
 {
 private:
     std::string nombre_edificio;
+    jugador jugador_dueno = NO_ASIGNADO;
     int cant_max;
     int cant_construidos;
     int salud;
@@ -29,36 +37,40 @@ public:
     // POS: Construye un objeto Edificio de nombre default, cantidad maxima nula, recursos producidos nulos y materiales nulos.
     Edificio();
 
-    //Constructor por parametros
-    //PRE:
-    //POS:
+    // Constructor por parametros
+    // PRE:
+    // POS:
     Edificio(string nombre_edificio, int puntos_salud);
 
     // Constructor por parametros
     // PRE: -
     // POS: Construye edificio de nombre nombre_edificio, cantidad maxima cant_max cantidad construida cant_construidos
     // y salud puntos_salud.
-    Edificio(string nombre_Edificio, int cant_max, int cant_contruidos, int puntos_salud);
+    Edificio(string nombre_Edificio, int cant_max, int cantidad_contruidos, int puntos_salud);
 
     //Constructor por parametros
     //PRE:
     //POS:
     Edificio(string nombre_edificio, int cant_max, Material_consumible materiales_construccion[MAX_MATERIALES_CONSTRUIBLES]);
-
+    void fijar_nombre(string nombre_edificio);
     // PRE: cant_construidos debe ser mayor o igual que cero.
     // POS: Actualiza el atributo cant_construidos.
     void modificar_cant_construidos(int cant_construidos);
 
-    //PRE:
-    //POS:
+    // PRE:
+    // POS:
     void mostrar_leyenda(char icono);
 
-    //PRE:
-    //POS:
+    // PRE:
+    // POS:
+    void fijar_dueno(jugador jugador_dueno);
+    jugador obtener_dueno();
+    // PRE:
+    // POS:
     void fijar_puntos_de_salud(int salud);
 
-    //PRE:
-    //POS:
+    // PRE:
+    // POS:
     estado_edificio atacar_edificio();
 
     // PRE: -
@@ -85,8 +97,8 @@ public:
     // POS: Devuelve el objeto correspondiente a los materiales que otorga el edificio.
     Material_consumible obtener_materiales_otorgados();
 
-    //PRE:
-    //POS:
+    // PRE:
+    // POS:
     void fijar_material_constuible(int cantidad, int posicion);
 
     // PRE: -
