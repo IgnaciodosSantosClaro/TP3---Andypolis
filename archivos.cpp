@@ -2,7 +2,7 @@
 #include <cctype>
 using namespace std;
 
-Errores abrir_archivo(std::ifstream &archivo, std::string path)
+Errores abrir_archivo(ifstream &archivo, string path)
 {
     Errores estado;
     (archivo).open(path);
@@ -14,7 +14,7 @@ Errores abrir_archivo(std::ifstream &archivo, std::string path)
     return estado;
 }
 
-Errores abrir_archivo_de_salida(std::ofstream &archivo, std::string path)
+Errores abrir_archivo_de_salida(ofstream &archivo, string path)
 {
     Errores estado;
     (archivo).open(path);
@@ -161,7 +161,7 @@ void procesar_edificios(Diccionario &dicc)
             materiales[2].fijar_cantidad(stoi(cant_metal));
 
             Edificio edificio(nombre, stoi(cant_maxima), materiales);
-            dicc.alta(edificio);
+            dicc.alta(&edificio);
         }
     }
     archivo_edificios.close();

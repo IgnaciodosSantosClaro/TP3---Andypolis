@@ -118,6 +118,11 @@ class Nodo_ABB {
         */
         bool solo_hijo_izquierdo();
 
+        /*
+        destructor
+        PRE: el Nodo_ABB fue creado
+        POST: se elimina la memoria que almacena el dato del nodo
+        */
         ~Nodo_ABB();
 };
 

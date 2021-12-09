@@ -160,13 +160,13 @@ class ABB {
 
 template <class Dato>
 ABB<Dato>::ABB() {
-    this->raiz = NULL;
+    this->raiz = nullptr;
 }
 
 template <class Dato>
 Nodo_ABB<Dato>* ABB<Dato>::insertar_nodo(Nodo_ABB<Dato>* nodo, string clave, Dato dato) {
 
-    if (nodo == NULL) {
+    if (nodo == nullptr) {
         nodo = new Nodo_ABB<Dato>(clave, dato);
     }
 
@@ -187,7 +187,7 @@ void ABB<Dato>::insertar_nodo(string clave, Dato dato) {
 
 template <class Dato>
 void ABB<Dato>::imprimir_in_order(Nodo_ABB<Dato>* nodo) {
-    if (nodo != NULL){
+    if (nodo != nullptr){
         imprimir_in_order(nodo->obtener_hijo_izquierdo());
         cout<<nodo->obtener_clave()<<' ';
         imprimir_in_order(nodo->obtener_hijo_derecho());
@@ -201,7 +201,7 @@ void ABB<Dato>::imprimir_in_order() {
 
 template <class Dato>
 Nodo_ABB<Dato>* ABB<Dato>::buscar(Nodo_ABB<Dato>* nodo, string clave) {
-    if (nodo == NULL || nodo->obtener_clave() == clave){
+    if (nodo == nullptr || nodo->obtener_clave() == clave){
         return nodo;
     }
     if (clave > nodo->obtener_clave()){
@@ -219,10 +219,10 @@ Nodo_ABB<Dato>* ABB<Dato>::buscar(string clave) {
 
 template <class Dato>
 Dato ABB<Dato>::buscar_min(Nodo_ABB<Dato>* nodo) {
-    if(nodo == NULL){
+    if(nodo == nullptr){
         return -1;
     }
-    else if(nodo->obtener_hijo_izquierdo() == NULL){
+    else if(nodo->obtener_hijo_izquierdo() == nullptr){
         return nodo->obtener_dato();
     }
     else{
@@ -237,10 +237,10 @@ Dato ABB<Dato>::buscar_min() {
 
 template <class Dato>
 Dato ABB<Dato>::buscar_max(Nodo_ABB<Dato>* nodo) {
-    if(nodo == NULL){
+    if(nodo == nullptr){
         return -1;
     }
-    else if(nodo->obtener_hijo_derecho() == NULL){
+    else if(nodo->obtener_hijo_derecho() == nullptr){
         return nodo->obtener_dato();
     }
     else{
@@ -255,12 +255,12 @@ Dato ABB<Dato>::buscar_max() {
 
 template <class Dato>
 Nodo_ABB<Dato>* ABB<Dato>::sucesor(Nodo_ABB<Dato>* nodo) {
-    if (nodo->obtener_hijo_derecho() != NULL){
+    if (nodo->obtener_hijo_derecho() != nullptr){
         return buscar_min(nodo->obtener_hijo_derecho());
     }
 
 
-    Nodo_ABB<Dato>* sucesor = NULL;
+    Nodo_ABB<Dato>* sucesor = nullptr;
     Nodo_ABB<Dato>* ancestro = this->raiz;
 
 
@@ -279,7 +279,7 @@ Nodo_ABB<Dato>* ABB<Dato>::sucesor(Nodo_ABB<Dato>* nodo) {
 template <class Dato>
 Nodo_ABB<Dato>* ABB<Dato>::sucesor(string clave) {
     Nodo_ABB<Dato>* nodo_aux = this->buscar(this->raiz, clave);
-    if(nodo_aux == NULL){
+    if(nodo_aux == nullptr){
 //        return reinterpret_cast<Edificio *>(-1);
         return nullptr;
     }
@@ -288,11 +288,11 @@ Nodo_ABB<Dato>* ABB<Dato>::sucesor(string clave) {
 
 template <class Dato>
 Nodo_ABB<Dato>* ABB<Dato>::predecesor(Nodo_ABB<Dato> * nodo) {
-    if (nodo->obtener_hijo_izquierdo() != NULL){
+    if (nodo->obtener_hijo_izquierdo() != nullptr){
         return buscar_max(nodo->obtener_hijo_izquierdo());
     }
 
-    Nodo_ABB<Dato>* sucesor = NULL;
+    Nodo_ABB<Dato>* sucesor = nullptr;
     Nodo_ABB<Dato>* ancestro = this->raiz;
 
     while(ancestro != nodo) {
@@ -311,7 +311,7 @@ template <class Dato>
 Nodo_ABB<Dato>* ABB<Dato>::predecesor(string clave) {
     Nodo_ABB<Dato> * nodo_aux = this->buscar(this->raiz, clave);
 
-    if(nodo_aux == NULL){
+    if(nodo_aux == nullptr){
         return -1;
     }
     else{
@@ -322,7 +322,7 @@ Nodo_ABB<Dato>* ABB<Dato>::predecesor(string clave) {
 template <class Dato>
 Nodo_ABB<Dato> * ABB<Dato>::remover_nodo(Nodo_ABB<Dato>* nodo, string clave) {
 
-    if (nodo == NULL){
+    if (nodo == nullptr){
         return nullptr;
     }
     if (nodo->obtener_clave() == clave){
@@ -387,12 +387,12 @@ Nodo_ABB<Dato>* ABB<Dato>::obtener_raiz(){
 
 template <class Dato>
 bool ABB<Dato>::vacio() {
-    return this->raiz == NULL;
+    return this->raiz == nullptr;
 }
 
 template <class Dato>
 void ABB<Dato>::borrar_todos(Nodo_ABB<Dato>* nodo) {
-    if(nodo == NULL){
+    if(nodo == nullptr){
         return;
     }
     this->borrar_todos(nodo->obtener_hijo_izquierdo());

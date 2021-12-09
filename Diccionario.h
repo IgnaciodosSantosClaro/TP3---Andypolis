@@ -10,7 +10,7 @@ class Diccionario {
 private:
     //Atributos
 
-    ABB<Edificio>* arbol;
+    ABB<Edificio*>* arbol;
 
 public:
     //Metodos
@@ -24,19 +24,19 @@ public:
 
     /*
     PRE: el diccionario fue creado
-    POS: da de alta
+    POS: da de alta en el arbol la direccion de memoria del objeto edificio pasado por parametro
     */
-    void alta(Edificio edificio);
+    void alta(Edificio* edificio);
 
     /*
     PRE: el diccionario fue creado y no esta vacio
-    POS:
+    POS: da de baja el valor que tenga por clave al nombre_edificio pasado por parametro
     */
-    void baja(Edificio edificio);
+    void baja(string nombre_edificio);
 
     /*
     PRE: el diccionario fue creado
-    POS: devuelve true en caso de hallar una clave compatible con el nombre de diccionario pasado por parametro, y false en caso contrario
+    POS: devuelve true en caso de hallar un nombre_edificio compatible con el nombre de diccionario pasado por parametro, y false en caso contrario
     */
     Edificio* consulta(string nombre_edificio);
     
@@ -46,9 +46,11 @@ public:
     */
     void recorrer();
 
-    //PRE: el nombre_edificio corresponde a una clave del diccionario
-    //POS: reemplaza el objeto edificio asociado a la clave nombre_edificio
-    void reemplazar(Edificio* edificio);
+    /*
+    PRE: la nombre_edificio corresponde a una nombre_edificio del diccionario
+    POS: reemplaza el valor asociado al nombre_edificio pasado por parametro liberando la memoria del dato del nodo anterior
+    */
+    void reemplazar(string viejo, Edificio* edificio);
 
     /*
     destructor
