@@ -12,10 +12,10 @@
 
 // Archivos
 using namespace std;
-const string RUTA_MATERIALES = "materiales/materiales.txt";
-const string RUTA_EDIFICIOS = "edificios/edificios.txt";
-const string RUTA_UBICACIONES = "ubicaciones/ubicaciones.txt";
-const string RUTA_MAPA = "mapa/mapa.txt";
+const string RUTA_MATERIALES = "../materiales/materiales.txt";
+const string RUTA_EDIFICIOS = "../edificios/edificios.txt";
+const string RUTA_UBICACIONES = "../ubicaciones/ubicaciones.txt";
+const string RUTA_MAPA = "../mapa/mapa.txt";
 const int LARGO_HASTA_COLUMNA = 4;
 const char SEPARADOR_DERECHO_UBICACIONES = '(';
 const char SEPARADOR_IZQUIERDO_UBICACIONES = ')';
@@ -46,6 +46,7 @@ const char ICONO_POR_DEFECTO = ' ';
 const char ICONO_JUGADOR = 'J';
 const char ICONO_OCUPADO_POR_DEFECTO = 'X';
 // Jugador
+const string ENERGIA = "energia";
 const int ENERGIA_INICIAL = 50;
 const int ENERGIA_MAXIMA = 100;
 const int ENERGIA_MINIMA = 0;
@@ -112,9 +113,16 @@ const std::string MADERA = "madera";
 const std::string METAL = "metal";
 const std::string ANDYCOINS = "andycoins";
 const std::string BOMBAS = "bombas";
-const int CANT_MATERIALES_MINA = 15;
-const int CANT_MATERIALES_ASERRADERO = 25;
-const int CANT_MATERIALES_FABRICA = 40;
+const int CANT_RECURSOS_MINA = 15;
+const int CANT_RECURSOS_ASERRADERO = 25;
+const int CANT_RECURSOS_FABRICA = 40;
+const int CANT_RECURSOS_ESCUELA = 25;
+const int CANT_RECURSOS_MINA_ORO = 50;
+const int CANT_RECURSOS_PLANTA_ELECTRICA = 15;
+const int CANT_CONJUNTO_PIEDRA = 100;
+const int CANT_CONJUNTO_MADERA = 50;
+const int CANT_CONJUNTO_METAL = 50;
+const int CANT_CONJUNTO_ANDYCOINS = 250;
 // Menu
 const int OPCION_MINIMA = 1;
 const int OPCION_MAXIMA = 10;

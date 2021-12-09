@@ -39,9 +39,18 @@ int main(void)
     procesar_mapa(mapa);
     cargar_materiales(jugador1, jugador2);
 
-    procesar_edificios(diccionario);
+    procesar_edificios(diccionario, jugador1, jugador2);
 
-    modificar_edificio(diccionario);
+//    jugador1.asignar_edificios(&diccionario);
+//    jugador2.asignar_edificios(&diccionario);
+
+    procesar_ubicaciones(mapa, jugador1, jugador2);
+    listar_todos_edificios(diccionario);
+//    jugador2.obtener_edificios()->consulta("escuela")->incrementar_construcciones();
+//    cout << jugador2.obtener_edificios()->consulta("escuela")->obtener_cant_construidos() << endl;
+
+//    modificar_edificio(diccionario);
+//    listar_todos_edificios(diccionario);
 //    jugador1.mostrar_inventario();
 //    jugador2.mostrar_inventario();
 //    diccionario.recorrer();
@@ -67,7 +76,7 @@ int main(void)
 //    menu.mostrar_menu_inicio();
 //    menu.mostrar_menu_juego();
 //
-//    mostrar_mapa(mapa, 5, 2);
+    mostrar_mapa(mapa, 5, 2);
 //    cout << mapa.obtener_dato(0, 0)->obtener_energia_necesaria()[0] << " : " << mapa.obtener_dato(0, 0)->obtener_energia_necesaria()[1] << endl;
 //    Material_consumible k = Material_consumible("Piedra", 100, 'Y');
 //    Objetivo_material objetivo_1 = Objetivo_material("Edad de piedra", DESCRIPCION_EDAD_PIEDRA, k);

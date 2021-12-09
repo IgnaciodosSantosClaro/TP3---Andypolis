@@ -5,6 +5,7 @@ using namespace std;
 
 Jugador::Jugador() {
     this->energia = ENERGIA_INICIAL;
+    this->edificios = new Diccionario;
 }
 
 int Jugador::obtener_energia() {
@@ -46,3 +47,19 @@ void Jugador::mostrar_inventario() {
     cout << "Bombas: " << bombas.obtener_cantidad() << endl;
 }
 
+void Jugador::asignar_edificios(Diccionario* diccionario) {
+    this->edificios = diccionario;
+}
+
+Diccionario* Jugador::obtener_edificios() {
+    return this->edificios;
+}
+
+void Jugador::agregar_edificio(Edificio edificio) {
+    this->edificios->alta(edificio);
+}
+
+Jugador::~Jugador() {
+    this->edificios->~Diccionario();
+    this->edificios = nullptr;
+}

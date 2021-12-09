@@ -35,4 +35,12 @@ bool validar_opcion(string opcion_elegida, Input &input, int min, int max);
 //POS:
 void confirmar_opcion_valida(string &opcion, Input &input, int min, int max);
 
+//PRE: nombre es valido y el objeto edificio esta creado.
+//POS: carga en edificio el material que otorga.
+void asignar_recursos_otorgados(string nombre, Edificio &edificio);
+
+//PRE: nombre es valido y el objeto material esta creado.
+//POS: asigna a material la cantidad y el icono correspondiente.
+void asignar_materiales(string nombre, Material_consumible &material);
+
 #endif //UTILIES_H

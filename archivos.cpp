@@ -100,7 +100,7 @@ void cargar_grafo(Grafo &grafo, Matriz_casillero &mapa, int num_jugador)
     }
 }
 
-void procesar_edificios(Diccionario &dicc)
+void procesar_edificios(Diccionario &dicc, Jugador &jugador1, Jugador &jugador2)
 {
     string nombre;
     string nombre2;
@@ -161,13 +161,16 @@ void procesar_edificios(Diccionario &dicc)
             materiales[2].fijar_cantidad(stoi(cant_metal));
 
             Edificio edificio(nombre, stoi(cant_maxima), materiales);
-            dicc.alta(&edificio);
+            asignar_recursos_otorgados(nombre, edificio);
+            dicc.alta(edificio);
+            jugador1.agregar_edificio(edificio);
+            jugador2.agregar_edificio(edificio);
         }
     }
     archivo_edificios.close();
 }
 
-void procesar_ubicaciones(Matriz_casillero &mapa) // Procesar despues de mapa
+void procesar_ubicaciones(Matriz_casillero &mapa, Jugador &jugador1, Jugador &jugador2) // Procesar despues de mapa
 {
     string linea;
     string nombre;
@@ -199,37 +202,47 @@ void procesar_ubicaciones(Matriz_casillero &mapa) // Procesar despues de mapa
                 if (nombre.compare(NOMBRE_JUGADOR_1_UBICACIONES) == 0)
                 {
                     mapa.obtener_dato(fila, columna)->fijar_color_texto(COLOR_JUGADOR_1);
+                    jugador1.desplazarse(fila, columna);
                     procesar_jugador_1 = true;
                     procesar_jugador_2 = false;
                 }
                 else
                 {
                     mapa.obtener_dato(fila, columna)->fijar_color_texto(COLOR_JUGADOR_2);
+                    jugador2.desplazarse(fila, columna);
                     procesar_jugador_1 = false;
                     procesar_jugador_2 = true;
                 }
             }
             else if (procesar_jugador_1)
             {
-                cout << "Soy un edificio del jugador 1" << endl;
-                cout << "mi nombre es: " << nombre << " y estoy en " << fila << ": " << columna << endl;
+//                cout << "Soy un edificio del jugador 1" << endl;
+//                cout << "mi nombre es: " << nombre << " y estoy en " << fila << ": " << columna << endl;
+
                 Casillero_construible *construible_ptr = dynamic_cast<Casillero_construible *>(mapa.obtener_dato(fila, columna));
                 Edificio edificio_seleccionado = Edificio(nombre, PUNTOS_SALUD_BASE);
+                jugador1.obtener_edificios()->consulta(nombre)->incrementar_construcciones();
                 construible_ptr->ocupar_casillero(edificio_seleccionado, COLOR_EDIFICIO_SANO_JUG_1);
             }
             else if (procesar_jugador_2)
             {
-                cout << "Soy un edificio del jugador 2" << endl;
-                cout << "mi nombre es: " << nombre << " y estoy en " << fila << ": " << columna << endl;
+//                cout << "Soy un edificio del jugador 2" << endl;
+//                cout << "mi nombre es: " << nombre << " y estoy en " << fila << ": " << columna << endl;
                 Casillero_construible *construible_ptr = dynamic_cast<Casillero_construible *>(mapa.obtener_dato(fila, columna));
                 Edificio edificio_seleccionado = Edificio(nombre, PUNTOS_SALUD_BASE);
+                jugador2.obtener_edificios()->consulta(nombre)->incrementar_construcciones();
                 construible_ptr->ocupar_casillero(edificio_seleccionado, COLOR_EDIFICIO_SANO_JUG_2);
             }
             else
             {
                 // Procesar materiales
-                cout << "Soy un material " << endl;
-                cout << "mi nombre es:" << nombre << " y estoy en " << fila << ": " << columna << endl;
+//                cout << "Soy un material " << endl;
+//                cout << "mi nombre es:" << nombre << " y estoy en " << fila << ": " << columna << endl;
+                Casillero_transitable *transitable_ptr = dynamic_cast<Casillero_transitable *>(mapa.obtener_dato(fila, columna));
+                Material_consumible material_seleccionado;
+                asignar_materiales(nombre, material_seleccionado);
+                transitable_ptr->ocupar_casillero(material_seleccionado);
+
             }
         }
     }

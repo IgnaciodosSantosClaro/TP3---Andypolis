@@ -40,6 +40,9 @@ public:
     // y salud puntos_salud.
     Edificio(string nombre_Edificio, int cant_max, int cant_contruidos, int puntos_salud);
 
+    //Constructor por parametros
+    //PRE:
+    //POS:
     Edificio(string nombre_edificio, int cant_max, Material_consumible materiales_construccion[MAX_MATERIALES_CONSTRUIBLES]);
 
     // PRE: cant_construidos debe ser mayor o igual que cero.
@@ -93,6 +96,10 @@ public:
     // PRE: -
     // POS: Imprime por pantalla la informacion del Edificio.
     void mostrar_edificio();
+
+    //PRE: La cantidad es un entero positivo.
+    //POS: Asigna el nombre y la cantidad a recursos_producidos
+    void fijar_recurso_producido(string nombre, int cantidad);
 };
 
 #endif // EDIFICIO_H

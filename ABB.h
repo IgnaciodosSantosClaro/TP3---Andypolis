@@ -1,5 +1,6 @@
 #include "Nodo_ABB.h"
 #include <iostream>
+#include "Vector.h"
 
 using namespace std;
 
@@ -65,6 +66,10 @@ class ABB {
         POST: crea una instancia de la clase ABB
         */
         Nodo_ABB<Dato>* remover_nodo(Nodo_ABB<Dato>* nodo, string clave);
+
+        //PRE: el objeto ABB fue creado y no esta vacio.
+        //POS: guarda en un vector los datos de los nodos
+        void arbol_a_vector(Nodo_ABB<Dato>* nodo, Vector<Dato*> &vector);
 
         /*
         PRE: el objeto ABB fue creado y no esta vacio
@@ -148,6 +153,8 @@ class ABB {
         POST: usa el metodo privado borrar_todos para llamar a partir de la raiz del ABB y recursivamente hacia sus subarboles tanto izauiero como derecho, borrando de "abajo para arriba" los nodos del arbol partiendo de las hojas y llegando a la raiz.
         */
         void borrar_todos();
+
+        void arbol_a_vector(Vector<Dato*> &vector);
 
         /*
         desructor
@@ -404,6 +411,20 @@ void ABB<Dato>::borrar_todos(Nodo_ABB<Dato>* nodo) {
 template <class Dato>
 void ABB<Dato>::borrar_todos() {
     this->borrar_todos(this->raiz);
+}
+
+template <class Dato>
+void ABB<Dato>::arbol_a_vector(Nodo_ABB<Dato> *nodo, Vector<Dato*> &vector) {
+    if(nodo != NULL) {
+        arbol_a_vector(nodo->obtener_hijo_izquierdo(), vector);
+        vector.agregar_al_final(nodo->obtener_dato());
+        arbol_a_vector(nodo->obtener_hijo_derecho(), vector);
+    }
+}
+
+template <class Dato>
+void ABB<Dato>::arbol_a_vector(Vector<Dato*> &vector) {
+    this->arbol_a_vector(this->raiz, vector);
 }
 
 template <class Dato>

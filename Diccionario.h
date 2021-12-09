@@ -3,6 +3,7 @@
 
 #include "ABB.h"
 #include "Edificio.h"
+#include "Vector.h"
 
 using namespace std;
 
@@ -10,7 +11,7 @@ class Diccionario {
 private:
     //Atributos
 
-    ABB<Edificio*>* arbol;
+    ABB<Edificio>* arbol;
 
 public:
     //Metodos
@@ -26,7 +27,7 @@ public:
     PRE: el diccionario fue creado
     POS: da de alta en el arbol la direccion de memoria del objeto edificio pasado por parametro
     */
-    void alta(Edificio* edificio);
+    void alta(Edificio edificio);
 
     /*
     PRE: el diccionario fue creado y no esta vacio
@@ -50,7 +51,11 @@ public:
     PRE: la nombre_edificio corresponde a una nombre_edificio del diccionario
     POS: reemplaza el valor asociado al nombre_edificio pasado por parametro liberando la memoria del dato del nodo anterior
     */
-    void reemplazar(string viejo, Edificio* edificio);
+//    void reemplazar(string viejo, Edificio* edificio);
+
+    //PRE:
+    //POS: devuelve un vector que contiene los datos del ABB
+    Vector<Edificio*> arbol_a_vector();
 
     /*
     destructor

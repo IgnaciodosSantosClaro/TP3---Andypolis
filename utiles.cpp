@@ -123,3 +123,47 @@ void confirmar_opcion_valida(string &opcion, Input &input, int min, int max) {
         cin >> opcion;
     }
 }
+
+void asignar_recursos_otorgados(string nombre, Edificio &edificio) {
+    if(nombre.compare(NOMBRE_EDIFICIO_MINA) == 0) {
+        edificio.fijar_recurso_producido(PIEDRA, CANT_RECURSOS_MINA);
+    }
+    else if(nombre.compare(NOMBRE_EDIFICIO_ASERRADERO) == 0) {
+        edificio.fijar_recurso_producido(MADERA, CANT_RECURSOS_ASERRADERO);
+    }
+    else if(nombre.compare(NOMBRE_EDIFICIO_FABRICA) == 0) {
+        edificio.fijar_recurso_producido(METAL, CANT_RECURSOS_FABRICA);
+    }
+    else if(nombre.compare(NOMBRE_EDIFICIO_ESCUELA) == 0) {
+        edificio.fijar_recurso_producido(ANDYCOINS, CANT_RECURSOS_ESCUELA);
+    }
+    else if(nombre.compare(NOMBRE_EDIFICIO_MINA_ORO) == 0) {
+        edificio.fijar_recurso_producido(ANDYCOINS, CANT_RECURSOS_MINA_ORO);
+    }
+    else if(nombre.compare(NOMBRE_EDIFICIO_PLANTA_ELECTRICA) == 0) {
+        edificio.fijar_recurso_producido(ENERGIA, CANT_RECURSOS_PLANTA_ELECTRICA);
+    }
+}
+
+void asignar_materiales(string nombre, Material_consumible &material) {
+    if(nombre.compare(PIEDRA) == 0) {
+        material.fijar_nombre(PIEDRA);
+        material.fijar_cantidad(CANT_CONJUNTO_PIEDRA);
+        material.fijar_icono(ICONO_PIEDRA);
+    }
+    else if(nombre.compare(MADERA) == 0) {
+        material.fijar_nombre(MADERA);
+        material.fijar_cantidad(CANT_CONJUNTO_MADERA);
+        material.fijar_icono(ICONO_MADERA);
+    }
+    else if(nombre.compare(METAL) == 0) {
+        material.fijar_nombre(METAL);
+        material.fijar_cantidad(CANT_CONJUNTO_METAL);
+        material.fijar_icono(ICONO_METAL);
+    }
+    else if(nombre.compare(ANDYCOINS) == 0) {
+        material.fijar_nombre(ANDYCOINS);
+        material.fijar_cantidad(CANT_CONJUNTO_ANDYCOINS);
+        material.fijar_icono(ICONO_ANDYCOINS);
+    }
+}

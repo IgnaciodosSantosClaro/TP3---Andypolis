@@ -1,6 +1,8 @@
 #ifndef INTERFAZ_H
 #define INTERFAZ_H
 #include "Matriz_casillero.h"
+#include "Diccionario.h"
+
 enum filas_con_referencia
 {
     PRIMERA_FILA,
@@ -29,4 +31,8 @@ void mostrar_fila(Matriz_casillero &mapa, int fila, int ancho_grilla, int largo_
 // PRE:Recibe la matriz de casilleros, el ancho de cada grilla y el largo de la grilla.
 // POS:Imprime todas las filas del mapa con grillas de tamaño ancho grillaxlargo_grilla.
 void mostrar_mapa(Matriz_casillero &mapa, int ancho_grilla, int largo_grilla);
+
+//PRE: El diccionario esta cargado.
+//POS: Imprimer por pantalla la informacion de los edificios.
+void listar_todos_edificios(Diccionario &dicc);
 #endif

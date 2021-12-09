@@ -157,3 +157,40 @@ void mostrar_mapa(Matriz_casillero &mapa, int ancho_grilla, int largo_grilla)
         }
     }
 }
+
+void listar_todos_edificios(Diccionario &diccionario) {
+    int ancho_nombre = 18;
+    int ancho_general = 11;
+    cout << TABULACION << ENCABEZADO_LISTADO_MATERIALES << endl;
+    cout << TABULACION << TITULO_LISTADO_EDIFICIOS << endl;
+    cout << TABULACION << ENCABEZADO_LISTADO_MATERIALES << endl;
+    cout << left << TABULACION << setfill(' ') << setw(ancho_nombre) << TITULO_COLUMNA_EDIFICIOS;
+    cout << setw(1) << setfill(' ') <<  SEPARADOR_GRILLA_DERECHA << setfill(' ') <<  setw(ancho_general) << PIEDRA_MAYUS << setfill(' ') <<  setw(1) << SEPARADOR_GRILLA_DERECHA << setfill(' ') <<  setw(ancho_general) << MADERA_MAYUS << setfill(' ') <<  setw(1) << SEPARADOR_GRILLA_DERECHA;
+    cout <<  setfill(' ') << setw(ancho_general) << METAL_MAYUS <<  setfill(' ') << setw(1) << SEPARADOR_GRILLA_DERECHA;
+    cout <<  setfill(' ') << setw(2 * ancho_general) << TITULO_COLUMNA_CANT_CONSTRUIDA <<  setfill(' ') << setw(1) << SEPARADOR_GRILLA_DERECHA;
+    cout <<  setfill(' ') << setw(2 * ancho_general) << TITULO_COLUMNA_CANT_PERMITIDA <<  setfill(' ') << setw(1) << SEPARADOR_GRILLA_DERECHA;
+    cout <<  setfill(' ') << setw(ancho_general) << TITULO_COLUMNA_RECURSO_ENTREGADO <<  setfill(' ') << setw(1) << endl;
+    cout << left << TABULACION;
+    cout <<  setfill(' ') << setw(ancho_nombre) << "        " <<  setfill(' ') << setw(1) << SEPARADOR_GRILLA_DERECHA;
+    cout <<  setfill(' ') << setw(ancho_general) << "      " <<  setfill(' ') << setw(1) << SEPARADOR_GRILLA_DERECHA;
+    cout <<  setfill(' ') << setw(ancho_general) << "      " <<  setfill(' ') << setw(1) << SEPARADOR_GRILLA_DERECHA;
+    cout <<  setfill(' ') << setw(ancho_general) << "     " <<  setfill(' ') << setw(1) << SEPARADOR_GRILLA_DERECHA;
+    cout <<  setfill(' ') << setw(2 * ancho_general) << "                   " <<  setfill(' ') << setw(1) << SEPARADOR_GRILLA_DERECHA;
+    cout <<  setfill(' ') << setw(2 * ancho_general) << "                   " <<  setfill(' ') << setw(1) << SEPARADOR_GRILLA_DERECHA;
+    cout <<  setfill(' ') << setw(ancho_general) << TITULO_COLUMNA_TIPO <<  setfill(' ') << setw(1) << SEPARADOR_GRILLA_DERECHA;
+    cout <<  setfill(' ') << setw(ancho_general / 2) << TITULO_COLUMNA_CANTIDAD <<  setfill(' ') << setw(1) << endl;
+
+    Vector<Edificio*> vector_edificio = diccionario.arbol_a_vector();
+    for (int i = 0; i < vector_edificio.obtener_largo(); i++)
+    {
+        cout << left << TABULACION;
+        cout << setfill(' ') <<  setw(ancho_nombre) << vector_edificio.obtener_valor(i)->obtener_nombre() << setfill(' ') <<  setw(1) << SEPARADOR_GRILLA_DERECHA;
+        cout << setfill(' ') <<  setw(ancho_general) << vector_edificio.obtener_valor(i)->obtener_material(0).obtener_cantidad() << setfill(' ') <<  setw(1) << SEPARADOR_GRILLA_DERECHA;
+        cout << setfill(' ') <<  setw(ancho_general) << vector_edificio.obtener_valor(i)->obtener_material(1).obtener_cantidad() << setfill(' ') <<  setw(1) << SEPARADOR_GRILLA_DERECHA;
+        cout << setfill(' ') <<  setw(ancho_general) << vector_edificio.obtener_valor(i)->obtener_material(2).obtener_cantidad() << setfill(' ') <<  setw(1) << SEPARADOR_GRILLA_DERECHA;
+        cout << setfill(' ') <<  setw(2 * ancho_general) << vector_edificio.obtener_valor(i)->obtener_cant_construidos() << setfill(' ') <<  setw(1) << SEPARADOR_GRILLA_DERECHA;
+        cout << setfill(' ') <<  setw(2 * ancho_general) << vector_edificio.obtener_valor(i)->obtener_cant_max() - vector_edificio.obtener_valor(i)->obtener_cant_construidos() << setfill(' ') <<  setw(1) << SEPARADOR_GRILLA_DERECHA;
+        cout << setfill(' ') <<  setw(ancho_general) << vector_edificio.obtener_valor(i)->obtener_materiales_otorgados().obtener_nombre() << setfill(' ') <<  setw(1) << SEPARADOR_GRILLA_DERECHA;
+        cout << setfill(' ') <<  setw(ancho_general / 2) << vector_edificio.obtener_valor(i)->obtener_materiales_otorgados().obtener_cantidad() << setfill(' ') <<  setw(1) << endl;
+    }
+}

@@ -5,6 +5,7 @@
 #include "Objetivo.h"
 #include "Vector_material.h"
 #include "Bomba.h"
+#include "Diccionario.h"
 
 class Jugador
 {
@@ -15,6 +16,7 @@ private:
     Objetivo* objetivo_principal;
     Vector_material inventario;
     Bomba bombas;
+    Diccionario* edificios;
 
 public:
     //Constructor
@@ -46,6 +48,14 @@ public:
     //POS:
     void asignar_objetivo_secundario();
 
+    //PRE: EL diccionario esta bien cargado.
+    //POS: Asigna el diccionario al diccionario del jugador.
+    void asignar_edificios(Diccionario* diccionario);
+
+    //PRE: -
+    //POS: Devuelve el puntero a diccionario edificios.
+    Diccionario* obtener_edificios();
+
     //PRE:
     //POS:
     bool objetivo_principal_completado(Objetivo* objetivo_principal);
@@ -66,7 +76,15 @@ public:
     //POS: Modifica la cantidad de bombas que tiene el jugador.
     void modificar_cantidad_bomba(int cantidad);
 
+    //PRE:
+    //POS:
     void mostrar_inventario();
+
+    //PRE:
+    //POS:
+    void agregar_edificio(Edificio edificio);
+
+    ~Jugador();
 
 };
 #endif //JUGADOR_H

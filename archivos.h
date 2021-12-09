@@ -23,7 +23,7 @@ void cargar_materiales(Jugador &jugador1, Jugador &jugador2);
 
 // PRE: Recibe un Vector de edificios no nulo
 // POS: Carga el vector con el contenido de edificios.txt
- void procesar_edificios(Diccionario &dicc);
+ void procesar_edificios(Diccionario &dicc, Jugador &jugador1, Jugador &jugador2);
 
 // PRE: Recibe un objeto matriz casillero
 // POS: Porcesa el contenido de mapa.txt y asigna a cada casillero un objeto casillero correspondiente
@@ -31,7 +31,7 @@ void procesar_mapa(Matriz_casillero &mapa);
 
 // PRE:Recibe vectores de edificios (luego de procesar_edificios) y matriz de casilleros (luego de procesar_mapa)
 // POS: Carga la matriz con los casille
-void procesar_ubicaciones(Matriz_casillero &mapa);
+void procesar_ubicaciones(Matriz_casillero &mapa, Jugador &jugador1, Jugador &jugador2);
 
 // PRE: Vector materiales bien cargado.
 // POS: Actualiza el archivo de materiales. Si no existe lo crea.

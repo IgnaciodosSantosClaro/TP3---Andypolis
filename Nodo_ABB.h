@@ -216,5 +216,6 @@ bool Nodo_ABB<Dato>::solo_hijo_izquierdo() {
 template <class Dato>
 Nodo_ABB<Dato>::~Nodo_ABB() {
     delete dato;
+    dato = nullptr;
 }
 #endif //NODO_ABB_H

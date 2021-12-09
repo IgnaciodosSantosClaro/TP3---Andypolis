@@ -141,3 +141,8 @@ Material_consumible Edificio::obtener_material(int posicion) {
 void Edificio::fijar_material_constuible(int cantidad, int posicion) {
     this->materiales_construccion[posicion].fijar_cantidad(cantidad);
 }
+
+void Edificio::fijar_recurso_producido(string nombre, int cantidad) {
+    this->recursos_producidos.fijar_nombre(nombre);
+    this->recursos_producidos.fijar_cantidad(cantidad);
+}

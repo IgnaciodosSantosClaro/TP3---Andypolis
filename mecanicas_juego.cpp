@@ -21,7 +21,7 @@ void modificar_edificio(Diccionario &diccionario) {
                     cin >> nueva_cantidad;
                     confirmar_opcion_valida(nueva_cantidad, input, 0 + 1, 50000 - 1);
                     edificio_buscado->fijar_material_constuible(input.obtener_input(), i);
-                    diccionario.reemplazar(nombre, edificio_buscado);
+//                    diccionario.reemplazar(nombre, edificio_buscado);
                 }
             }
         }
