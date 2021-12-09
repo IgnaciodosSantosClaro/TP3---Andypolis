@@ -1,15 +1,15 @@
 
 #include "Matriz_casillero.h"
-#include "interfaz.h"
-#include "archivos.h"
+#include "Interfaz.h"
+#include "Archivos.h"
 #include <iostream>
-#include "configuracion.h"
+#include "Configuracion.h"
 #include "Objetivo_material.h"
 #include "Material_consumible.h"
 #include "Grafo.h"
 #include "ABB.h"
 #include "Menu.h"
-#include "mecanicas_juego.h"
+#include "Mecanicas_juego.h"
 
 int main(void)
 {

@@ -1,4 +1,4 @@
-#include "interfaz.h"
+#include "Interfaz.h"
 void mostrar_leyenda_tipo_terreno(string color, string nombre)
 {
     cout << color << ESPACIO << ESPACIO << COLOR_NEGRO << ESPACIO << nombre;

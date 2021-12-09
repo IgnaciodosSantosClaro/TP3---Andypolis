@@ -2,7 +2,7 @@
 #define MATRIZ_H
 #include <iostream>
 #include "Vector.h"
-#include "mensajes.h"
+#include "Mensajes.h"
 using namespace std;
 //Constante de incremento de memoria
 //const int TAMANO_MEMORIA_AGREGADA = 1;

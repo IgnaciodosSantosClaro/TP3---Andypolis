@@ -1,5 +1,5 @@
 #include "Jugador.h"
-#include "configuracion.h"
+#include "Configuracion.h"
 
 using namespace std;
 

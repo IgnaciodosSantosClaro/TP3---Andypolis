@@ -4,7 +4,7 @@
 #include <iostream>
 #include "Material.h"
 #include "Edificio.h"
-#include "configuracion.h"
+#include "Configuracion.h"
 #include <iomanip>
 using namespace std;
 

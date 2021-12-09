@@ -1,4 +1,4 @@
-#include "archivos.h"
+#include "Archivos.h"
 #include <cctype>
 using namespace std;
 

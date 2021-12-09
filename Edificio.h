@@ -5,7 +5,7 @@
 #include "Material.h"
 #include <iostream>
 #include "Material_consumible.h"
-#include "configuracion.h"
+#include "Configuracion.h"
 
 using namespace std;
 enum jugador

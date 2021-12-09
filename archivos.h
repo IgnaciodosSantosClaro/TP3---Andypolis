@@ -2,19 +2,19 @@
 #define ARCHIVOS_H
 #include <iostream>
 #include <fstream>
-#include "errores.h"
+#include "Errores.h"
 #include "Vector_material.h"
 #include "Grafo.h"
 #include "Jugador.h"
-#include "utiles.h"
+#include "Utiles.h"
 #include "Diccionario.h"
 
 //#include "Vector_edificio.h" ->implementar como arbol
 #include "Coordenada.h"
 #include "Matriz_casillero.h"
 #include <cstring>
-#include "configuracion.h"
-#include "mensajes.h"
+#include "Configuracion.h"
+#include "Mensajes.h"
 #include "Material_consumible.h"
 Errores abrir_archivo(std::ifstream &archivo, std::string path);
 // PRE: Recibe dos objetos Jugador.

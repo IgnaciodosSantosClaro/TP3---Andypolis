@@ -1,5 +1,5 @@
 #include "Coordenada.h"
-#include "configuracion.h"
+#include "Configuracion.h"
 #include <iostream>
 
 using namespace std;

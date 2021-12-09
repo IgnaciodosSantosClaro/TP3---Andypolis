@@ -1,4 +1,4 @@
-#include "menu.h"
+#include "Menu.h"
 
 using namespace std;
 void iniciar_juego()

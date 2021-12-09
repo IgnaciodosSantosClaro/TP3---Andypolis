@@ -1,5 +1,5 @@
 #include "Edificio.h"
-#include "mensajes.h"
+#include "Mensajes.h"
 
 Edificio::Edificio()
 {

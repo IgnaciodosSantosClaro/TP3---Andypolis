@@ -5,8 +5,8 @@
 #include "Material.h"
 #include <iostream>
 #include <string.h>
-#include "mensajes.h"
-#include "configuracion.h"
+#include "Mensajes.h"
+#include "Configuracion.h"
 #include <iomanip>
 #include "Material_consumible.h"
 #include "Matriz_casillero.h"

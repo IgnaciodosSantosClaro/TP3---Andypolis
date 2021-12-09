@@ -1,4 +1,4 @@
-#include "mecanicas_juego.h"
+#include "Mecanicas_juego.h"
 
 void modificar_edificio(Diccionario &diccionario) {
     Input input;

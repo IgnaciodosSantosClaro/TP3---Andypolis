@@ -1,8 +1,8 @@
 #ifndef VECTOR_H
 #define VECTOR_H
 #include <iostream>
-#include "configuracion.h"
-#include "mensajes.h"
+#include "Configuracion.h"
+#include "Mensajes.h"
 using namespace std;
 //Constante de incremento de memoria
 

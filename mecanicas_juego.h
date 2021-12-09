@@ -5,10 +5,10 @@
 #include <string>
 #include "Diccionario.h"
 #include "Jugador.h"
-#include "configuracion.h"
-#include "mensajes.h"
+#include "Configuracion.h"
+#include "Mensajes.h"
 #include "Input.h"
-#include "utiles.h"
+#include "Utiles.h"
 
 //PRE: El diccionario esta cargado
 //POS: Modifica la cantidad de materiales de construccion que necesitan los edificios

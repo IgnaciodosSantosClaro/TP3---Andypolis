@@ -1,15 +1,15 @@
 #ifndef MENU_H
 #define MENU_H
 
-#include "configuracion.h"
+#include "Configuracion.h"
 #include "Matriz_casillero.h"
 #include "Jugador.h"
 #include "Vector_material.h"
 #include "Input.h"
 #include "Utiles.h"
-#include "mensajes.h"
-#include "interfaz.h"
-#include "archivos.h"
+#include "Mensajes.h"
+#include "Interfaz.h"
+#include "Archivos.h"
 enum opciones_iniciales
 {
     INICIO_MODIFICAR_EDIFICIO_POR_NOMBRE = 1,

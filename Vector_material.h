@@ -6,7 +6,7 @@
 #include "Material_consumible.h"
 #include <iostream>
 #include <iomanip>
-#include "errores.h"
+#include "Errores.h"
 
 class Vector_material : public Vector<Material *>
 {
