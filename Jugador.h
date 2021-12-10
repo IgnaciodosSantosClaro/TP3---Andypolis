@@ -5,7 +5,8 @@
 #include "Vector_material.h"
 #include "Bomba.h"
 #include "Diccionario.h"
-#include "Configuracion.h"
+#include "configuracion.h"
+
 class Jugador
 {
 private:
@@ -23,18 +24,25 @@ public:
     // PRE: -
     // POS: Construye objeto jugador con energia = 50.
     Jugador();
+
     Jugador(string nombre);
+
     // PRE: -
     // POS: Devuelve la energia del jugador.
     int obtener_energia();
+
     string obtener_nombre();
-    // PRE: Recibe una energia que es un numero entero.
-    // POS: La energia del jugador se suma a la energia pasada por parametro.
-    void modificar_energia(int energia);
+
     Bomba obtener_bombas();
+
     void fijar_bombas(Bomba bombas);
-    // PRE: Las posiciones pos_x, pos_y son enteras y validas.
-    // POS: La posicion actual del jugador pasa a ser pos_x, pos_y.
+
+    //PRE: Recibe una energia que es un numero entero.
+    //POS: La energia del jugador se suma a la energia pasada por parametro.
+    void modificar_energia(int energia);
+
+    //PRE: Las posiciones pos_x, pos_y son enteras y validas.
+    //POS: La posicion actual del jugador pasa a ser pos_x, pos_y.
     void desplazarse(int pos_x, int pos_y);
 
     // PRE:

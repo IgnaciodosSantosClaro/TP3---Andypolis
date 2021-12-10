@@ -1,6 +1,6 @@
 #ifndef COORDENADA_H
 #define COORDENADA_H
-#include "Configuracion.h"
+#include "configuracion.h"
 #include <iostream>
 #include <string>
 using namespace std;

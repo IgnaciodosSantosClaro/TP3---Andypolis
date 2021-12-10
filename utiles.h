@@ -2,10 +2,10 @@
 #define UTILES_H
 #include <iostream>
 #include <string>
-#include "Configuracion.h"
+#include "configuracion.h"
 #include "Input.h"
-#include "Mensajes.h"
-#include "Menu.h"
+#include "mensajes.h"
+#include "menu.h"
 using namespace std;
 // PRE:-
 // POS:Es bloqueante, espera que el usuario ingrese un entero;

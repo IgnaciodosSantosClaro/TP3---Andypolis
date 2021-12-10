@@ -1,4 +1,4 @@
-#include "Archivos.h"
+#include "archivos.h"
 using namespace std;
 
 Errores abrir_archivo(ifstream &archivo, string path)

@@ -2,17 +2,17 @@
 #define ARCHIVOS_H
 #include <iostream>
 #include <fstream>
-#include "Errores.h"
+#include "errores.h"
 #include "Vector_material.h"
 #include "Grafo.h"
 #include "Jugador.h"
-#include "Utiles.h"
+#include "utiles.h"
 #include "Diccionario.h"
 #include "Coordenada.h"
 #include "Matriz_casillero.h"
 #include <cstring>
-#include "Configuracion.h"
-#include "Mensajes.h"
+#include "configuracion.h"
+#include "mensajes.h"
 #include "Material_consumible.h"
 #include <cctype>
 Errores abrir_archivo(std::ifstream &archivo, std::string path);

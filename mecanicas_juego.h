@@ -5,11 +5,12 @@
 #include <string>
 #include "Diccionario.h"
 #include "Jugador.h"
-#include "Configuracion.h"
-#include "Mensajes.h"
+#include "configuracion.h"
+#include "mensajes.h"
 #include "Input.h"
-#include "Utiles.h"
+#include "utiles.h"
 // Poner en minúscula el nombre del archivo
+
 // PRE: El diccionario esta cargado
 // POS: Modifica la cantidad de materiales de construccion que necesitan los edificios
 void modificar_edificio(Diccionario &diccionario);
@@ -18,5 +19,9 @@ void modificar_edificio(Diccionario &diccionario);
 // POS: Se realiza la compra de bombas en caso de tener la cantidad de andycoins suficiente.
 // void comprar_bombas(Jugador &jugador);
 void atacar(Matriz_casillero &mapa, Jugador &jugador);
+
+//PRE:
+//POS:
+void comprar_bombas(Jugador &jugador);
 
 #endif // MECANICAS_JUEGO_H

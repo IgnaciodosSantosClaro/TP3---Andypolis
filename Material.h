@@ -3,8 +3,8 @@
 
 #include <string>
 #include <iostream>
-#include "Configuracion.h"
-#include "Mensajes.h"
+#include "configuracion.h"
+#include "mensajes.h"
 class Material
 {
 protected:

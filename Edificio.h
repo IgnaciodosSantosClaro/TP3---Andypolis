@@ -5,9 +5,9 @@
 #include "Material.h"
 #include <iostream>
 #include "Material_consumible.h"
-#include "Configuracion.h"
+#include "configuracion.h"
 
-#include "Mensajes.h"
+#include "mensajes.h"
 using namespace std;
 enum tipo_jugador
 {

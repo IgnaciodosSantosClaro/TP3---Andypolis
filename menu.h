@@ -1,15 +1,15 @@
 #ifndef MENU_H
 #define MENU_H
 
-#include "Configuracion.h"
+#include "configuracion.h"
 #include "Jugador.h"
 #include "Matriz_casillero.h"
 #include "Vector_material.h"
 #include "Input.h"
-#include "Utiles.h"
-#include "Mensajes.h"
-#include "Interfaz.h"
-#include "Archivos.h"
+#include "utiles.h"
+#include "mensajes.h"
+#include "interfaz.h"
+#include "archivos.h"
 #include "mecanicas_juego.h"
 // Poner en minúscula el nombre del archivo
 enum opciones_iniciales

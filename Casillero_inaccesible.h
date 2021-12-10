@@ -4,8 +4,8 @@
 #include <iomanip>
 #include <iostream>
 #include <string>
-#include "Configuracion.h"
-#include "Mensajes.h"
+#include "configuracion.h"
+#include "mensajes.h"
 class Casillero_inaccesible : public Casillero
 {
 public:

@@ -1,9 +1,9 @@
 #ifndef MATERIAL_CONSUMIBLE_H
 #define MATERIAL_CONSUMIBLE_H
 #include "Material.h"
-#include "Mensajes.h"
+#include "mensajes.h"
 #include <iostream>
-#include "Configuracion.h"
+#include "configuracion.h"
 class Material_consumible : public Material
 {
 private:

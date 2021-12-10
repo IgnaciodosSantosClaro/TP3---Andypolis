@@ -6,7 +6,7 @@
 #include "Casillero_construible.h"
 #include "Casillero_transitable.h"
 #include "Casillero_inaccesible.h"
-#include "Mensajes.h"
+#include "mensajes.h"
 enum tipos_casillero
 {
     CASILLERO_CONSTRUIBLE,

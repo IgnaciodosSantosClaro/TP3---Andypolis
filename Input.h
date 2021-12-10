@@ -2,8 +2,8 @@
 #define INPUT_H
 
 #include "Matriz_casillero.h"
-#include "Errores.h"
-#include "Mensajes.h"
+#include "errores.h"
+#include "mensajes.h"
 
 class Input {
 private:

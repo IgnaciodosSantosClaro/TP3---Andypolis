@@ -2,8 +2,8 @@
 #define CASILLERO_CONSTRUIBLE_H
 #include "Casillero_construible.h"
 #include <iostream>
-#include "Mensajes.h"
-#include "Configuracion.h"
+#include "mensajes.h"
+#include "configuracion.h"
 #include "Casillero.h"
 #include "Edificio.h"
 #include <iomanip>

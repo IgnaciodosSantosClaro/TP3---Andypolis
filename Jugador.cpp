@@ -39,11 +39,11 @@ void Jugador::desplazarse(int pos_x, int pos_y)
 
 void Jugador::modificar_energia(int energia)
 {
-    if (this->energia += energia >= ENERGIA_MAXIMA)
+    if (this->energia + energia >= ENERGIA_MAXIMA)
     {
         this->energia = ENERGIA_MAXIMA;
     }
-    else if (this->energia += energia <= ENERGIA_MINIMA)
+    else if(this->energia - energia <= ENERGIA_MINIMA)
     {
         this->energia = ENERGIA_MINIMA;
     }
