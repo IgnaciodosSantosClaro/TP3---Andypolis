@@ -14,7 +14,7 @@ private:
     Coordenada posicion;
     Objetivo* objetivos_secundarios;
     Objetivo* objetivo_principal;
-    Vector_material inventario;
+    Vector_material* inventario;
     Bomba bombas;
     Diccionario* edificios;
 
@@ -55,6 +55,10 @@ public:
     //PRE: -
     //POS: Devuelve el puntero a diccionario edificios.
     Diccionario* obtener_edificios();
+
+    //PRE: -
+    //POS: Devuelve el inventario del jugador.
+    Vector_material* obtener_inventario();
 
     //PRE:
     //POS:

@@ -12,10 +12,10 @@
 
 // Archivos
 using namespace std;
-const string RUTA_MATERIALES = "materiales/materiales.txt";
-const string RUTA_EDIFICIOS = "edificios/edificios.txt";
-const string RUTA_UBICACIONES = "ubicaciones/ubicaciones.txt";
-const string RUTA_MAPA = "mapa/mapa.txt";
+const string RUTA_MATERIALES = "../materiales/materiales.txt";
+const string RUTA_EDIFICIOS = "../edificios/edificios.txt";
+const string RUTA_UBICACIONES = "../ubicaciones/ubicaciones.txt";
+const string RUTA_MAPA = "../mapa/mapa.txt";
 const int LARGO_HASTA_COLUMNA = 4;
 const char SEPARADOR_DERECHO_UBICACIONES = '(';
 const char SEPARADOR_IZQUIERDO_UBICACIONES = ')';
@@ -123,6 +123,7 @@ const int CANT_CONJUNTO_PIEDRA = 100;
 const int CANT_CONJUNTO_MADERA = 50;
 const int CANT_CONJUNTO_METAL = 50;
 const int CANT_CONJUNTO_ANDYCOINS = 250;
+const int PRECIO_BOMBAS = 100;
 // Menu
 const int OPCION_MINIMA = 1;
 const int OPCION_MAXIMA = 10;

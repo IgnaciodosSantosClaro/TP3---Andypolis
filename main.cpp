@@ -28,6 +28,7 @@ int main(void)
     procesar_ubicaciones(mapa, jugador1, jugador2);
     cout << "aca2" << endl;
     listar_todos_edificios(diccionario);
+    comprar_bombas(jugador2);
     mostrar_mapa(mapa, 5, 3);
 
     return 0;

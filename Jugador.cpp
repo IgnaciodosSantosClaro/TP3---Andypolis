@@ -7,6 +7,7 @@ Jugador::Jugador()
 {
     this->energia = ENERGIA_INICIAL;
     this->edificios = new Diccionario;
+    this->inventario = new Vector_material;
 }
 
 int Jugador::obtener_energia()
@@ -37,12 +38,12 @@ void Jugador::modificar_energia(int energia)
 
 void Jugador::agregar_consumible_inventario(string nombre, int cantidad, char icono)
 {
-    this->inventario.agregar_material_consumible_al_final(nombre, cantidad, icono);
+    this->inventario->agregar_material_consumible_al_final(nombre, cantidad, icono);
 }
 
 void Jugador::agregar_material_inventario(string nombre, int cantidad)
 {
-    this->inventario.agregar_material_al_final(nombre, cantidad);
+    this->inventario->agregar_material_al_final(nombre, cantidad);
 }
 
 void Jugador::modificar_cantidad_bomba(int cantidad)
@@ -52,9 +53,9 @@ void Jugador::modificar_cantidad_bomba(int cantidad)
 
 void Jugador::mostrar_inventario()
 {
-    for (int i = 0; i < inventario.obtener_largo(); i++)
+    for (int i = 0; i < inventario->obtener_largo(); i++)
     {
-        cout << inventario.obtener_valor(i)->obtener_nombre() << " " << inventario.obtener_valor(i)->obtener_cantidad() << endl;
+        cout << inventario->obtener_valor(i)->obtener_nombre() << " " << inventario->obtener_valor(i)->obtener_cantidad() << endl;
     }
     cout << "Bombas: " << bombas.obtener_cantidad() << endl;
 }
@@ -74,9 +75,16 @@ void Jugador::agregar_edificio(Edificio edificio)
     this->edificios->alta(edificio);
 }
 
+Vector_material* Jugador::obtener_inventario()
+{
+    return this->inventario;
+}
+
 Jugador::~Jugador()
 {
     delete this->edificios;
+    delete this->inventario;
     cout << "Mori jugador" << endl;
     this->edificios = nullptr;
+    this->inventario = nullptr;
 }

@@ -33,6 +33,7 @@ public:
     //PRE: Recibe el nombre del material y una cantidad entera y positiva.
     //POS: Reserva memoria y agrega un objeto Material al vector Vector_material inicializandolo con la cantidad indicada.
     void agregar_material_al_final(std::string nombre_material, int cantidad);
+
 };
 
 #endif //VECTOR_MATERIAL_H
