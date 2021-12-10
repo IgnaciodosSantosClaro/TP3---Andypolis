@@ -2,7 +2,9 @@
 #define MATERIAL_H
 
 #include <string>
-
+#include <iostream>
+#include "Configuracion.h"
+#include "Mensajes.h"
 class Material
 {
 protected:

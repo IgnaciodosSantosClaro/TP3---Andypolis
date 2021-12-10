@@ -12,10 +12,10 @@
 
 // Archivos
 using namespace std;
-const string RUTA_MATERIALES = "../materiales/materiales.txt";
-const string RUTA_EDIFICIOS = "../edificios/edificios.txt";
-const string RUTA_UBICACIONES = "../ubicaciones/ubicaciones.txt";
-const string RUTA_MAPA = "../mapa/mapa.txt";
+const string RUTA_MATERIALES = "materiales/materiales.txt";
+const string RUTA_EDIFICIOS = "edificios/edificios.txt";
+const string RUTA_UBICACIONES = "ubicaciones/ubicaciones.txt";
+const string RUTA_MAPA = "mapa/mapa.txt";
 const int LARGO_HASTA_COLUMNA = 4;
 const char SEPARADOR_DERECHO_UBICACIONES = '(';
 const char SEPARADOR_IZQUIERDO_UBICACIONES = ')';
@@ -60,6 +60,10 @@ const string COLOR_GRIS = "\033[48;5;246m";
 const string COLOR_NEGRO = "\033[48;5;16m";
 const string COLOR_CELESTE = "\033[48;5;6m";
 const string COLOR_VERDE = "\033[48;5;112m";
+const string COLOR_ROJO_OSCURO = "\033[48;5;52m";
+const string COLOR_ROJO = "\033[48;5;124m";
+const string COLOR_AMARILLO_OSCURO = "\033[48;5;3m";
+const string COLOR_AMARILLO = "\033[48;5;149m";
 const string COLOR_TEXTO_VERDE = "\033[38;5;28m";
 const string COLOR_TEXTO_NEGRO = "\033[38;5;16m";
 const string COLOR_TEXTO_BLANCO = "\033[38;5;15m";

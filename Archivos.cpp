@@ -1,5 +1,4 @@
 #include "Archivos.h"
-#include <cctype>
 using namespace std;
 
 Errores abrir_archivo(ifstream &archivo, string path)
@@ -223,8 +222,8 @@ void procesar_ubicaciones(Matriz_casillero &mapa, Jugador &jugador1, Jugador &ju
             }
             else if (procesar_jugador_1)
             {
-//                cout << "Soy un edificio del jugador 1" << endl;
-//                cout << "mi nombre es: " << nombre << " y estoy en " << fila << ": " << columna << endl;
+                //                cout << "Soy un edificio del jugador 1" << endl;
+                //                cout << "mi nombre es: " << nombre << " y estoy en " << fila << ": " << columna << endl;
 
                 Casillero_construible *construible_ptr = dynamic_cast<Casillero_construible *>(mapa.obtener_dato(fila, columna));
                 Edificio edificio_seleccionado = Edificio(nombre, PUNTOS_SALUD_BASE);
@@ -233,8 +232,8 @@ void procesar_ubicaciones(Matriz_casillero &mapa, Jugador &jugador1, Jugador &ju
             }
             else if (procesar_jugador_2)
             {
-//                cout << "Soy un edificio del jugador 2" << endl;
-//                cout << "mi nombre es: " << nombre << " y estoy en " << fila << ": " << columna << endl;
+                //                cout << "Soy un edificio del jugador 2" << endl;
+                //                cout << "mi nombre es: " << nombre << " y estoy en " << fila << ": " << columna << endl;
                 Casillero_construible *construible_ptr = dynamic_cast<Casillero_construible *>(mapa.obtener_dato(fila, columna));
                 Edificio edificio_seleccionado = Edificio(nombre, PUNTOS_SALUD_BASE);
                 jugador2.obtener_edificios()->consulta(nombre)->incrementar_construcciones();
@@ -243,13 +242,12 @@ void procesar_ubicaciones(Matriz_casillero &mapa, Jugador &jugador1, Jugador &ju
             else
             {
                 // Procesar materiales
-//                cout << "Soy un material " << endl;
-//                cout << "mi nombre es:" << nombre << " y estoy en " << fila << ": " << columna << endl;
+                //                cout << "Soy un material " << endl;
+                //                cout << "mi nombre es:" << nombre << " y estoy en " << fila << ": " << columna << endl;
                 Casillero_transitable *transitable_ptr = dynamic_cast<Casillero_transitable *>(mapa.obtener_dato(fila, columna));
                 Material_consumible material_seleccionado;
                 asignar_materiales(nombre, material_seleccionado);
                 transitable_ptr->ocupar_casillero(material_seleccionado);
-
             }
         }
     }

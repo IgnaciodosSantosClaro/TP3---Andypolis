@@ -1,4 +1,5 @@
 #include "Utiles.h"
+// Poner en minsucula
 int obtener_opcion_ingresada()
 {
     string entrada_usuario;
@@ -15,6 +16,24 @@ int obtener_opcion_ingresada()
     }
     return opcion_elegida;
 }
+void obtener_coordenadas(int &coord_x, int &coord_y, int max_x, int max_y)
+{
+    pedir_coordenada(coord_x, coord_y);
+    if ((coord_x < 0 || coord_x > max_x) || (coord_y < 0 || coord_y > max_y))
+    {
+        cout << MENSAJE_COORDENADAS_INVALIDAS << endl;
+        obtener_coordenadas(coord_x, coord_y, max_x, max_y);
+    }
+}
+void pedir_coordenada(int &coord_x, int &coord_y)
+{
+
+    cout << INGRESE_COORD_X;
+    coord_x = obtener_opcion_ingresada();
+
+    cout << INGRESE_COORD_Y;
+    coord_y = obtener_opcion_ingresada();
+};
 string separar_hasta(string cadena_a_separar, char caracter)
 {
     char cursor;
@@ -88,11 +107,20 @@ string pedir_nombre()
 {
     string nombre;
     cout << INGRESAR_NOMBRE_EDIFICIO;
-    //    cin.ignore();
-    getline(cin, nombre);
+    cin >> nombre;
     return nombre;
 }
-
+int elegir_jugador_inicial(int max_jugadores)
+{
+    cout << MENSAJE_ELEGIR_JUGADOR << max_jugadores << SEPARADOR_IZQUIERDO_UBICACIONES << endl;
+    int entrada = obtener_opcion_ingresada();
+    if (entrada <= 0 || entrada > max_jugadores)
+    {
+        cout << MENSAJE_OPCION_INVALIDA << endl;
+        elegir_jugador_inicial(max_jugadores);
+    }
+    return entrada;
+}
 bool confirmar_decision()
 {
     char opcion = '0'; // Valor default
@@ -144,44 +172,56 @@ void confirmar_opcion_valida(string &opcion, Input &input, int min, int max)
     }
 }
 
-void asignar_recursos_otorgados(string nombre, Edificio &edificio) {
-    if(nombre.compare(NOMBRE_EDIFICIO_MINA) == 0) {
+void asignar_recursos_otorgados(string nombre, Edificio &edificio)
+{
+    if (nombre.compare(NOMBRE_EDIFICIO_MINA) == 0)
+    {
         edificio.fijar_recurso_producido(PIEDRA, CANT_RECURSOS_MINA);
     }
-    else if(nombre.compare(NOMBRE_EDIFICIO_ASERRADERO) == 0) {
+    else if (nombre.compare(NOMBRE_EDIFICIO_ASERRADERO) == 0)
+    {
         edificio.fijar_recurso_producido(MADERA, CANT_RECURSOS_ASERRADERO);
     }
-    else if(nombre.compare(NOMBRE_EDIFICIO_FABRICA) == 0) {
+    else if (nombre.compare(NOMBRE_EDIFICIO_FABRICA) == 0)
+    {
         edificio.fijar_recurso_producido(METAL, CANT_RECURSOS_FABRICA);
     }
-    else if(nombre.compare(NOMBRE_EDIFICIO_ESCUELA) == 0) {
+    else if (nombre.compare(NOMBRE_EDIFICIO_ESCUELA) == 0)
+    {
         edificio.fijar_recurso_producido(ANDYCOINS, CANT_RECURSOS_ESCUELA);
     }
-    else if(nombre.compare(NOMBRE_EDIFICIO_MINA_ORO) == 0) {
+    else if (nombre.compare(NOMBRE_EDIFICIO_MINA_ORO) == 0)
+    {
         edificio.fijar_recurso_producido(ANDYCOINS, CANT_RECURSOS_MINA_ORO);
     }
-    else if(nombre.compare(NOMBRE_EDIFICIO_PLANTA_ELECTRICA) == 0) {
+    else if (nombre.compare(NOMBRE_EDIFICIO_PLANTA_ELECTRICA) == 0)
+    {
         edificio.fijar_recurso_producido(ENERGIA, CANT_RECURSOS_PLANTA_ELECTRICA);
     }
 }
 
-void asignar_materiales(string nombre, Material_consumible &material) {
-    if(nombre.compare(PIEDRA) == 0) {
+void asignar_materiales(string nombre, Material_consumible &material)
+{
+    if (nombre.compare(PIEDRA) == 0)
+    {
         material.fijar_nombre(PIEDRA);
         material.fijar_cantidad(CANT_CONJUNTO_PIEDRA);
         material.fijar_icono(ICONO_PIEDRA);
     }
-    else if(nombre.compare(MADERA) == 0) {
+    else if (nombre.compare(MADERA) == 0)
+    {
         material.fijar_nombre(MADERA);
         material.fijar_cantidad(CANT_CONJUNTO_MADERA);
         material.fijar_icono(ICONO_MADERA);
     }
-    else if(nombre.compare(METAL) == 0) {
+    else if (nombre.compare(METAL) == 0)
+    {
         material.fijar_nombre(METAL);
         material.fijar_cantidad(CANT_CONJUNTO_METAL);
         material.fijar_icono(ICONO_METAL);
     }
-    else if(nombre.compare(ANDYCOINS) == 0) {
+    else if (nombre.compare(ANDYCOINS) == 0)
+    {
         material.fijar_nombre(ANDYCOINS);
         material.fijar_cantidad(CANT_CONJUNTO_ANDYCOINS);
         material.fijar_icono(ICONO_ANDYCOINS);

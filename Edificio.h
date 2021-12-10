@@ -7,8 +7,9 @@
 #include "Material_consumible.h"
 #include "Configuracion.h"
 
+#include "Mensajes.h"
 using namespace std;
-enum jugador
+enum tipo_jugador
 {
     JUGADOR_1,
     JUGADOR_2,
@@ -24,7 +25,7 @@ class Edificio
 {
 private:
     std::string nombre_edificio;
-    jugador jugador_dueno = NO_ASIGNADO;
+    tipo_jugador jugador_dueno = NO_ASIGNADO;
     int cant_max;
     int cant_construidos;
     int salud;
@@ -48,9 +49,9 @@ public:
     // y salud puntos_salud.
     Edificio(string nombre_Edificio, int cant_max, int cantidad_contruidos, int puntos_salud);
 
-    //Constructor por parametros
-    //PRE:
-    //POS:
+    // Constructor por parametros
+    // PRE:
+    // POS:
     Edificio(string nombre_edificio, int cant_max, Material_consumible materiales_construccion[MAX_MATERIALES_CONSTRUIBLES]);
     void fijar_nombre(string nombre_edificio);
     // PRE: cant_construidos debe ser mayor o igual que cero.
@@ -63,8 +64,8 @@ public:
 
     // PRE:
     // POS:
-    void fijar_dueno(jugador jugador_dueno);
-    jugador obtener_dueno();
+    void fijar_dueno(tipo_jugador jugador_dueno);
+    tipo_jugador obtener_dueno();
     // PRE:
     // POS:
     void fijar_puntos_de_salud(int salud);
@@ -85,8 +86,8 @@ public:
     // POS: Devuelve la cantidad de edificios contruidos.
     int obtener_cant_construidos();
 
-    //PRE: -
-    //POS: Devuelve la salud del edificio.
+    // PRE: -
+    // POS: Devuelve la salud del edificio.
     int obtener_salud();
 
     // PRE: La posicion esta entre 0 y 2.
@@ -113,8 +114,8 @@ public:
     // POS: Imprime por pantalla la informacion del Edificio.
     void mostrar_edificio();
 
-    //PRE: La cantidad es un entero positivo.
-    //POS: Asigna el nombre y la cantidad a recursos_producidos
+    // PRE: La cantidad es un entero positivo.
+    // POS: Asigna el nombre y la cantidad a recursos_producidos
     void fijar_recurso_producido(string nombre, int cantidad);
 };
 

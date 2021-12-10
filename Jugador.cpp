@@ -1,5 +1,4 @@
 #include "Jugador.h"
-#include "Configuracion.h"
 
 using namespace std;
 
@@ -9,12 +8,30 @@ Jugador::Jugador()
     this->edificios = new Diccionario;
     this->inventario = new Vector_material;
 }
+Jugador::Jugador(string nombre)
+{
+    this->nombre = nombre;
+    this->energia = ENERGIA_INICIAL;
+    this->edificios = new Diccionario;
+    this->inventario = new Vector_material;
+}
 
 int Jugador::obtener_energia()
 {
     return energia;
 }
-
+string Jugador::obtener_nombre()
+{
+    return nombre;
+}
+Bomba Jugador::obtener_bombas()
+{
+    return this->bombas;
+}
+void Jugador::fijar_bombas(Bomba bombas)
+{
+    this->bombas = bombas;
+}
 void Jugador::desplazarse(int pos_x, int pos_y)
 {
     this->posicion.fijar_coordenadas(pos_x, pos_y);
@@ -75,7 +92,7 @@ void Jugador::agregar_edificio(Edificio edificio)
     this->edificios->alta(edificio);
 }
 
-Vector_material* Jugador::obtener_inventario()
+Vector_material *Jugador::obtener_inventario()
 {
     return this->inventario;
 }

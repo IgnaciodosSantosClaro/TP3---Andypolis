@@ -1,5 +1,4 @@
 #include "Edificio.h"
-#include "Mensajes.h"
 
 Edificio::Edificio()
 {
@@ -74,11 +73,11 @@ void Edificio::mostrar_leyenda(char icono)
 {
     cout << COLOR_VERDE << ESPACIO << icono << ESPACIO << COLOR_NEGRO << ESPACIO << COLOR_TEXTO_BLANCO << this->nombre_edificio;
 };
-void Edificio::fijar_dueno(jugador jugador_dueno)
+void Edificio::fijar_dueno(tipo_jugador jugador_dueno)
 {
     this->jugador_dueno = jugador_dueno;
 };
-jugador Edificio::obtener_dueno()
+tipo_jugador Edificio::obtener_dueno()
 {
     return this->jugador_dueno;
 };
@@ -156,11 +155,13 @@ void Edificio::fijar_material_constuible(int cantidad, int posicion)
     this->materiales_construccion[posicion].fijar_cantidad(cantidad);
 }
 
-void Edificio::fijar_recurso_producido(string nombre, int cantidad) {
+void Edificio::fijar_recurso_producido(string nombre, int cantidad)
+{
     this->recursos_producidos.fijar_nombre(nombre);
     this->recursos_producidos.fijar_cantidad(cantidad);
 }
 
-int Edificio::obtener_salud() {
+int Edificio::obtener_salud()
+{
     return this->salud;
 }

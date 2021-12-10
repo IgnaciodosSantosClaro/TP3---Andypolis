@@ -10,6 +10,7 @@ const string NOMBRE_CASILLERO_BETUN = "Betun";
 const string NOMBRE_CASILLERO_MUELLE = "Muelle";
 const string NOMBRE_CASILLERO_CONSTRUIBLE = "Terreno construible";
 // Bomba
+const string MENSAJE_INICIO_BOMBA = "Se planto una bomba en ";
 const string MENSAJE_BOMBA_DESTRUYO = "La bomba destruyo el edificio ";
 const string MENSAJE_BOMBA_DANO = "La bomba debilito el edificio ";
 const string MENSAJE_BOMBA_INSUFICIENTES = "No tienes suficentes bombas";
@@ -48,6 +49,8 @@ const std::string MENSAJE_MENU_JUEGO_OPCION_10 = " 10. Recolectar recursos produ
 const std::string MENSAJE_MENU_JUEGO_OPCION_11 = " 11. Moverse una coordenada.";
 const std::string MENSAJE_MENU_JUEGO_OPCION_12 = " 12. Finalizar turno.";
 const std::string MENSAJE_MENU_JUEGO_OPCION_13 = " 13. Guardar y salir.";
+
+const std::string MENSAJE_ELEGIR_JUGADOR = "Elija el numero del jugador inicial (1-";
 // utiles.h
 const int ANCHO_DE_INVENTARIO = 11;
 const std::string ENCABEZADO_LISTADO_MATERIALES = "══════════════════════════════════════════";
@@ -85,7 +88,8 @@ const string INGRESE_COORD_X = "Coordenada fila: ";
 const string INGRESE_COORD_Y = "Coordenada columna: ";
 const string DESEA_CONSTRUIR = "Desea construir el edificio? (s/n)";
 const string DESEA_MODIFICAR_MATERIAL = "Desea modificar la cantidad de material necesaria? (s/n)";
-
+const string MENSAJE_CASILLERO_NO_CONSTRUIBLE = "El casillero seleccionado no es construible, por favor seleccione un casillero construible";
+const string MENSAJE_COORDENADAS_INVALIDAS = "Las coordenadas ingresadas son inválidas";
 // Matriz.h
 const string TIPO_CASILLERO_DESCONOCIDO = "Formato de ubicaciones.txt desconocido";
 const string MENSAJE_POSICION_INACCESIBLE = "La posicion es inaccesible";
@@ -102,6 +106,7 @@ const string MENSAJE_CONSTRUCCION_FALLIDA = "Construccion cancelada";
 const string MENSAJE_TRANSITABLES_COMPLETO = "Se despejaron las nubes : No hay casilleros transitables libres para lluevan materiales.";
 const string MENSAJE_LLUVIA_INICIO = "Esta empezando a llover sobre el mapa....";
 const string MENSAJE_LLUVIA_COMPLETA = "Termino la lluvia, se generaron los siguientes recursos: ";
+const string MENSAJE_ATACAR_EDIFICO = "Ingrese la posición (fila,columna) a bombardear";
 // Objetivo_material.h
 const string MENSAJE_OBJETIVO_INVENTARIO_RESTANTES_P1 = "Faltan ";
 const string MENSAJE_OBJETIVO_INVENTARIO_RESTANTES_P2 = " de ";

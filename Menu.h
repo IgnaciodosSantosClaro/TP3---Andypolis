@@ -2,14 +2,16 @@
 #define MENU_H
 
 #include "Configuracion.h"
-#include "Matriz_casillero.h"
 #include "Jugador.h"
+#include "Matriz_casillero.h"
 #include "Vector_material.h"
 #include "Input.h"
 #include "Utiles.h"
 #include "Mensajes.h"
 #include "Interfaz.h"
 #include "Archivos.h"
+#include "mecanicas_juego.h"
+// Poner en minúscula el nombre del archivo
 enum opciones_iniciales
 {
     INICIO_MODIFICAR_EDIFICIO_POR_NOMBRE = 1,
@@ -25,6 +27,7 @@ enum opciones_juego
     LISTAR_EDIFICIOS_CONSTRUIDOS,
     DEMOLER_EDIFICIO_POR_COORDENADA,
     ATACAR_EDIFICIO_POR_COORDENADA,
+    REPARAR_EDIFICIO_POR_COORDENADA,
     COMPRAR_BOMBAS,
     CONSULTAR_COORDENADA,
     MOSTRAR_INVENTARIO,
@@ -36,15 +39,15 @@ enum opciones_juego
     OPCION_JUEGO_INVALIDA,
 };
 void iniciar_juego();
-bool procesar_menu_juego();
-void menu_inicial(Matriz_casillero &mapa);
-bool procesar_menu_inicial(Matriz_casillero &mapa);
+// Cambia indice, recibir por referencia
+bool procesar_menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, int &indice, Jugador *jugador_vec);
+void menu_inicial(Matriz_casillero &mapa, Diccionario &dicc_edificios, Jugador &jugador1, Jugador &jugador2);
+bool procesar_menu_inicial(Matriz_casillero &mapa, Diccionario &dicc_edificios, Jugador &jugador1, Jugador &jugador2);
 int obtener_opcion_ingresada();
 // PRE: -
 // POS: Imprime por pantalla el menu inicial.
 void mostrar_menu_inicio();
-void menu_juego(Matriz_casillero &mapa);
-bool procesar_menu_juego();
+void menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, Jugador &jugador1, Jugador &jugador2);
 // PRE: -
 // POS: Imprime por pantalla el menu de la partida.
 void mostrar_menu_juego();

@@ -1,7 +1,4 @@
 #include "Material.h"
-#include <iostream>
-#include "Configuracion.h"
-#include "Mensajes.h"
 
 Material::Material()
 {

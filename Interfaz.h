@@ -3,7 +3,11 @@
 #include "Matriz_casillero.h"
 #include "Diccionario.h"
 #include "Jugador.h"
-
+#include <iomanip>
+#include <chrono>
+#include <thread>
+#include "Utiles.h"
+#include "configuracion.h"
 enum filas_con_referencia
 {
     PRIMERA_FILA,
@@ -33,16 +37,17 @@ void mostrar_fila(Matriz_casillero &mapa, int fila, int ancho_grilla, int largo_
 // POS:Imprime todas las filas del mapa con grillas de tamaño ancho grillaxlargo_grilla.
 void mostrar_mapa(Matriz_casillero &mapa, int ancho_grilla, int largo_grilla);
 
-//PRE: El diccionario esta cargado.
-//POS: Imprimer por pantalla la informacion de los edificios.
+// PRE: El diccionario esta cargado.
+// POS: Imprimer por pantalla la informacion de los edificios.
 void listar_todos_edificios(Diccionario &dicc);
 
-//PRE: El objeto jugador esta cargado y no esta vacio
-//POS: Imprime por pantalla la informacion de los edificios construidos.
+// PRE: El objeto jugador esta cargado y no esta vacio
+// POS: Imprime por pantalla la informacion de los edificios construidos.
 void listar_edificios_construidos(Matriz_casillero &mapa, Jugador &jugador);
 
-//PRE: El mapa esta bien cargado y el nombre es valido.
-//POS: Imprime la coordenada del edificio ubicado en el casillero correspondiente.
+// PRE: El mapa esta bien cargado y el nombre es valido.
+// POS: Imprime la coordenada del edificio ubicado en el casillero correspondiente.
 void mostrar_coordenadas(Matriz_casillero &mapa, string nombre_edificio);
-
+void bombardeo(int milisegundos_retardo);
+void trueno(int milisegundos_duracion, string color);
 #endif

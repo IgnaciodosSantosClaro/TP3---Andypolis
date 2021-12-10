@@ -8,14 +8,13 @@
 #include "Jugador.h"
 #include "Utiles.h"
 #include "Diccionario.h"
-
-//#include "Vector_edificio.h" ->implementar como arbol
 #include "Coordenada.h"
 #include "Matriz_casillero.h"
 #include <cstring>
 #include "Configuracion.h"
 #include "Mensajes.h"
 #include "Material_consumible.h"
+#include <cctype>
 Errores abrir_archivo(std::ifstream &archivo, std::string path);
 // PRE: Recibe dos objetos Jugador.
 // POS: Carga el inventario de los jugadores con el contenido de materiales.txt
@@ -23,7 +22,7 @@ void cargar_materiales(Jugador &jugador1, Jugador &jugador2);
 
 // PRE: Recibe un Vector de edificios no nulo
 // POS: Carga el vector con el contenido de edificios.txt
- void procesar_edificios(Diccionario &dicc, Jugador &jugador1, Jugador &jugador2);
+void procesar_edificios(Diccionario &dicc, Jugador &jugador1, Jugador &jugador2);
 
 // PRE: Recibe un objeto matriz casillero
 // POS: Porcesa el contenido de mapa.txt y asigna a cada casillero un objeto casillero correspondiente

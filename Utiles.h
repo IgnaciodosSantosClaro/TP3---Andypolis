@@ -10,6 +10,11 @@ using namespace std;
 // PRE:-
 // POS:Es bloqueante, espera que el usuario ingrese un entero;
 int obtener_opcion_ingresada();
+// Modifica la entrada, recibir por referencia
+void obtener_coordenadas(int &coord_x, int &coord_y, int max_x, int max_y);
+// Modifica la entrada, recibir por referencia
+void pedir_coordenada(int &coord_x, int &coord_y);
+
 // PRE:Recibe una string y un caracter de separacion
 // POS:Devuelve el string hasta la aparición del caracter
 string separar_hasta(string cadena_a_separar, char caracter);
@@ -25,7 +30,9 @@ bool es_edificio(string nombre);
 // PRE:
 // POS:
 bool es_jugador(string nombre);
-
+// PRE:
+// POS:
+int elegir_jugador_inicial(int max_jugadores);
 // PRE:
 // POS:
 bool confirmar_decision();
@@ -38,12 +45,12 @@ bool validar_opcion(string opcion_elegida, Input &input, int min, int max);
 // POS:
 void confirmar_opcion_valida(string &opcion, Input &input, int min, int max);
 
-//PRE: nombre es valido y el objeto edificio esta creado.
-//POS: carga en edificio el material que otorga.
+// PRE: nombre es valido y el objeto edificio esta creado.
+// POS: carga en edificio el material que otorga.
 void asignar_recursos_otorgados(string nombre, Edificio &edificio);
 
-//PRE: nombre es valido y el objeto material esta creado.
-//POS: asigna a material la cantidad y el icono correspondiente.
+// PRE: nombre es valido y el objeto material esta creado.
+// POS: asigna a material la cantidad y el icono correspondiente.
 void asignar_materiales(string nombre, Material_consumible &material);
 
-#endif //UTILIES_H
+#endif // UTILIES_H
