@@ -13,6 +13,9 @@ class Objetivo
 protected:
     string nombre_objetivo;
     string descripcion;
+    int cantidad_actual = 0;
+    int cantidad_objetivo = 0;
+    int cantidad_restante = 0;
     bool esta_completo = false;
 
 public:
@@ -24,5 +27,9 @@ public:
     bool objetivo_completo();
     // virtual void fijar_objetivo();
     // virtual estado_objetivo actualizar_objetivo() = 0;
+    // Destructor virtual
+    // PRE: -
+    // POS: Destruye el objeto Objetivo.
+    virtual ~Objetivo() = default;
 };
 #endif // OBJETIVO_H

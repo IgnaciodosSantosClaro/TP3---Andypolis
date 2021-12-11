@@ -110,14 +110,14 @@ const string MENSAJE_LLUVIA_INICIO = "Esta empezando a llover sobre el mapa...."
 const string MENSAJE_LLUVIA_COMPLETA = "Termino la lluvia, se generaron los siguientes recursos: ";
 const string MENSAJE_ATACAR_EDIFICO = "Ingrese la posición (fila,columna) a bombardear";
 // Objetivo_material.h
+const string MENSAJE_OBJETIVO_COMPLETO = " ->Completo";
+
 const string MENSAJE_OBJETIVO_INVENTARIO_RESTANTES_P1 = "Faltan ";
 const string MENSAJE_OBJETIVO_INVENTARIO_RESTANTES_P2 = " de ";
-const string MENSAJE_OBJETIVO_INVENTARIO_RESTANTES_P3 = " para completar el objetivo ";
-const string MENSAJE_OBJETIVO_EDIFICIO_RESTANTES_P1 = "Faltan construir ";
-const string MENSAJE_OBJETIVO_EDIFICIO_RESTANTES_P2 = " para completar el objetivo ";
+const string MENSAJE_OBJETIVO_INVENTARIO_RESTANTES_P3 = "Para completar el objetivo ";
+const string MENSAJE_OBJETIVO_SIMPLE_RESTANTES_P1 = "Faltan construir/obtener ";
+const string MENSAJE_OBJETIVO_SIMPLE_RESTANTES_P2 = " para completar el objetivo ";
+const string COMPLETAR_OBJETIVO_MULTIPLE_INICIO = "Faltan cumplir los siguientes objetivos ";
+const string COMPLETAR_OBJETIVO_MULTIPLE_FIN = " para completar el objetivo ";
 
-const string DESCRIPCION_EDAD_PIEDRA = "Tener 500000 de piedra en el inventario.";
-const string COMPLETAR_OBJETIVO_MULTIPLE_INICIO = "Debes construir:";
-const string COMPLETAR_OBJETIVO_MULTIPLE_FIN = "Para completar el objetivo ";
-const string MENSAJE_OBJETIVO_COMPLETO = "Completo";
 #endif

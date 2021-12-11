@@ -355,3 +355,5 @@ cmake-build-debug/
 tp_prueba.exe
 
 *.exe
+
+*.json

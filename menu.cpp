@@ -8,6 +8,8 @@ void iniciar_juego()
     Diccionario dicc_edificios;
     Jugador jugador1 = Jugador("jugador1");
     Jugador jugador2 = Jugador("jugador2");
+
+    cargar_materiales(jugador1, jugador2);
     procesar_edificios(dicc_edificios, jugador1, jugador2);
     procesar_ubicaciones(mapa, jugador1, jugador2);
     menu_inicial(mapa, dicc_edificios, jugador1, jugador2);
@@ -25,6 +27,7 @@ void mostrar_menu_inicio()
 };
 void menu_inicial(Matriz_casillero &mapa, Diccionario &dicc_edificios, Jugador &jugador1, Jugador &jugador2)
 {
+
     bool salir = false;
     while (salir != true)
     {
@@ -36,14 +39,16 @@ void menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, Jugador &ju
 {
     bool salir = false;
     Jugador jugador_vec[2];
+    Vector_objetivo objetivos_generales[2];
+    cargar_objetivos(objetivos_generales[0], 1); // Poner maximo escuelas
+    cargar_objetivos(objetivos_generales[1], 1); // Falta asignar objetivo a cada jugador y actualizarlos cuando hacen acciones
     jugador_vec[0] = jugador1;
     jugador_vec[1] = jugador2;
-
     int jugador_actual = elegir_jugador_inicial(2); // Parametrizar
     jugador_actual -= 1;                            // Convierto a indice
     while (salir != true)
     {
-        mostrar_mapa(mapa, 3, 3);
+        mostrar_mapa(mapa, 5, 3);
         mostrar_menu_juego();
         salir = procesar_menu_juego(mapa, dicc_edificios, jugador_actual, jugador_vec);
     }
@@ -128,7 +133,7 @@ bool procesar_menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, in
         break;
     case COMPRAR_BOMBAS:
         // opcion_elegida = COMPRAR_BOMBAS;
-        // comprar_bombas(jugador_vec[indice_jugador_actual]); Falta implementar
+        comprar_bombas(jugador_vec[indice_jugador_actual]);
         break;
     case CONSULTAR_COORDENADA:
         // opcion_elegida = CONSULTAR_COORDENADA;

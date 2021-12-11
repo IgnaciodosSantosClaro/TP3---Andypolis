@@ -1,25 +1,26 @@
-#include "Objetivo_edificio_multiple.h"
-Objetivo_edificio_multiple::Objetivo_edificio_multiple(string nombre, string descripcion, Objetivo_edificio objetivo)
+#include "Objetivo_multiple.h"
+Objetivo_multiple::Objetivo_multiple(string nombre_objetivo_multiple, string descripcion, Objetivo_simple &objetivo)
 {
-    this->nombre_objetivo = nombre;
+    this->nombre_objetivo = nombre_objetivo_multiple;
     this->descripcion = descripcion;
     this->vector_objetivos.agregar_al_final(objetivo);
 }
-Objetivo_edificio_multiple::Objetivo_edificio_multiple(string nombre, string descripcion)
+Objetivo_multiple::Objetivo_multiple() {}
+
+Objetivo_multiple::Objetivo_multiple(string nombre, string descripcion)
 {
     this->nombre_objetivo = nombre;
     this->descripcion = descripcion;
 }
-void Objetivo_edificio_multiple::agregar_objetivo_edificio(Objetivo_edificio &edificio)
+void Objetivo_multiple::agregar_objetivo_simple(Objetivo_simple &objetivo_nuevo)
 {
-    this->vector_objetivos.agregar_al_final(edificio);
+    this->vector_objetivos.agregar_al_final(objetivo_nuevo);
 }
-void Objetivo_edificio_multiple::agregar_objetivo_edificio(string nombre_objetivo, string descripcion, string nombre_edificio, int cantidad_objetivo)
+void Objetivo_multiple::agregar_objetivo_simple(string nombre_objetivo, string descripcion, string nombre_simple, int cantidad_objetivo)
 {
-    Objetivo_edificio objetivo = Objetivo_edificio(nombre_objetivo, descripcion, nombre_edificio, cantidad_objetivo);
-    this->vector_objetivos.agregar_al_final(objetivo);
+    this->vector_objetivos.agregar_al_final(Objetivo_simple(nombre_objetivo, descripcion, nombre_simple, cantidad_objetivo));
 }
-int Objetivo_edificio_multiple::buscar_por_nombre(string nombre) // Devuelve posicion invalida si no encuentra
+int Objetivo_multiple::buscar_por_nombre(string nombre) // Devuelve posicion invalida si no encuentra
 {
     int largo_vector = this->vector_objetivos.obtener_largo();
     int i = 0;
@@ -37,7 +38,7 @@ int Objetivo_edificio_multiple::buscar_por_nombre(string nombre) // Devuelve pos
     }
     return i;
 }
-int Objetivo_edificio_multiple::obtener_cantidad_objetivo(string nombre) // Devuelve posicion invalida si no encuentra
+int Objetivo_multiple::obtener_cantidad_objetivo(string nombre) // Devuelve posicion invalida si no encuentra
 {
     int indice = buscar_por_nombre(nombre);
     int cant_objetivo = indice;
@@ -47,13 +48,13 @@ int Objetivo_edificio_multiple::obtener_cantidad_objetivo(string nombre) // Devu
     }
     else
     {
-        Objetivo_edificio objetivo_seleccionado = this->vector_objetivos.obtener_valor(indice);
+        Objetivo_simple objetivo_seleccionado = this->vector_objetivos.obtener_valor(indice);
         objetivo_seleccionado.obtener_cantidad_objetivo();
         this->vector_objetivos.fijar_valor(objetivo_seleccionado, indice);
     }
     return cant_objetivo;
 }
-estado_objetivo Objetivo_edificio_multiple::actualizar_objetivo(string nombre_objetivo, int cantidad_incremento)
+estado_objetivo Objetivo_multiple::actualizar_objetivo(string nombre_objetivo, int cantidad_incremento)
 {
     int indice = buscar_por_nombre(nombre_objetivo);
     estado_objetivo estado_secundario;
@@ -64,7 +65,7 @@ estado_objetivo Objetivo_edificio_multiple::actualizar_objetivo(string nombre_ob
     }
     else
     {
-        Objetivo_edificio objetivo_seleccionado = this->vector_objetivos.obtener_valor(indice);
+        Objetivo_simple objetivo_seleccionado = this->vector_objetivos.obtener_valor(indice);
         estado_secundario = objetivo_seleccionado.actualizar_objetivo(cantidad_incremento);
         this->vector_objetivos.fijar_valor(objetivo_seleccionado, indice);
     }
@@ -77,7 +78,7 @@ estado_objetivo Objetivo_edificio_multiple::actualizar_objetivo(string nombre_ob
     }
     return estado;
 }
-estado_objetivo Objetivo_edificio_multiple::actualizar_objetivo_multiple()
+estado_objetivo Objetivo_multiple::actualizar_objetivo_multiple()
 {
     int cantidad_objetivos = this->vector_objetivos.obtener_largo();
     estado_objetivo estado = OBJETIVO_COMPLETO;
@@ -90,12 +91,13 @@ estado_objetivo Objetivo_edificio_multiple::actualizar_objetivo_multiple()
     }
     return estado;
 }
-void Objetivo_edificio_multiple::mostrar_restante()
+void Objetivo_multiple::mostrar_restante()
 {
     cout << COMPLETAR_OBJETIVO_MULTIPLE_INICIO << endl;
     int cantidad_objetivos = this->vector_objetivos.obtener_largo();
     for (int i = 0; i < cantidad_objetivos; i++)
     {
+        cout << ESPACIO << ESPACIO;
         this->vector_objetivos.obtener_valor(i).mostrar_restante();
     }
     cout << COMPLETAR_OBJETIVO_MULTIPLE_FIN << this->nombre_objetivo << endl;

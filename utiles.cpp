@@ -92,14 +92,6 @@ bool es_jugador(string nombre)
     {
         jugador_detectado = true;
     }
-    if (jugador_detectado)
-    {
-        cout << nombre << " es jugador" << endl;
-    }
-    if (!jugador_detectado)
-    {
-        cout << nombre << " no es jugador" << endl;
-    }
     return jugador_detectado;
 }
 
@@ -226,4 +218,32 @@ void asignar_materiales(string nombre, Material_consumible &material)
         material.fijar_cantidad(CANT_CONJUNTO_ANDYCOINS);
         material.fijar_icono(ICONO_ANDYCOINS);
     }
+}
+
+void cargar_objetivos(Vector_objetivo &objetivos_totales, int cant_maxima_escuela)
+{
+    objetivos_totales.agregar_objetivo_simple(NOMBRE_OBJETIVO_PRINCIPAL, DESCRIPCION_OBJETIVO_PRINCIPAL, ELEMENTO_OBJETIVO_PRINCIPAL, CANTIDAD_OBJETIVO_PRINCIPAL);
+
+    objetivos_totales.agregar_objetivo_simple(NOMBRE_COMPRAR_ANDYPOLIS, DESCRIPCION_COMPRAR_ANDYPOLIS, ELEMENTO_COMPRAR_ANDYPOLIS, CANTIDAD_COMPRAR_ANDYPOLIS);
+    objetivos_totales.agregar_objetivo_simple(NOMBRE_EDAD_PIEDRA, DESCRIPCION_EDAD_PIEDRA, ELEMENTO_EDAD_PIEDRA, CANTIDAD_EDAD_PIEDRA);
+    objetivos_totales.agregar_objetivo_simple(NOMBRE_BOMBARDERO, DESCRIPCION_BOMBARDERO, ELEMENTO_BOMBARDERO, CANTIDAD_BOMBARDERO);
+    objetivos_totales.agregar_objetivo_simple(NOMBRE_ENERGETICO, DESCRIPCION_ENERGETICO, ELEMENTO_ENERGETICO, CANTIDAD_ENERGETICO);
+    objetivos_totales.agregar_objetivo_simple(NOMBRE_LETRADO, DESCRIPCION_LETRADO, ELEMENTO_LETRADO, cant_maxima_escuela);
+
+    Objetivo_multiple objetivo_minero = Objetivo_multiple(NOMBRE_MINERO, DESCRIPCION_MINERO);
+    objetivo_minero.agregar_objetivo_simple(ELEMENTO_1_MINERO, DESCRIPCION_ELEMENTO_1_MINERO, ELEMENTO_1_MINERO, CANTIDAD_MINERO);
+    objetivo_minero.agregar_objetivo_simple(ELEMENTO_2_MINERO, DESCRIPCION_ELEMENTO_2_MINERO, ELEMENTO_2_MINERO, CANTIDAD_MINERO);
+    objetivos_totales.agregar_objetivo_multiple(objetivo_minero);
+
+    Objetivo_multiple objetivo_constructor = Objetivo_multiple(NOMBRE_CONSTRUCTOR, DESCRIPCION_CONSTRUCTOR);
+    objetivo_constructor.agregar_objetivo_simple(ELEMENTO_1_CONSTRUCTOR, DESCRIPCION_ELEMENTO_1_CONSTRUCTOR, ELEMENTO_1_CONSTRUCTOR, CANTIDAD_CONSTRUCTOR);
+    objetivo_constructor.agregar_objetivo_simple(ELEMENTO_2_CONSTRUCTOR, DESCRIPCION_ELEMENTO_2_CONSTRUCTOR, ELEMENTO_2_CONSTRUCTOR, CANTIDAD_CONSTRUCTOR);
+    objetivo_constructor.agregar_objetivo_simple(ELEMENTO_3_CONSTRUCTOR, DESCRIPCION_ELEMENTO_3_CONSTRUCTOR, ELEMENTO_3_CONSTRUCTOR, CANTIDAD_CONSTRUCTOR);
+    objetivo_constructor.agregar_objetivo_simple(ELEMENTO_4_CONSTRUCTOR, DESCRIPCION_ELEMENTO_4_CONSTRUCTOR, ELEMENTO_4_CONSTRUCTOR, CANTIDAD_CONSTRUCTOR);
+    objetivo_constructor.agregar_objetivo_simple(ELEMENTO_5_CONSTRUCTOR, DESCRIPCION_ELEMENTO_5_CONSTRUCTOR, ELEMENTO_5_CONSTRUCTOR, CANTIDAD_CONSTRUCTOR);
+    objetivo_constructor.agregar_objetivo_simple(ELEMENTO_6_CONSTRUCTOR, DESCRIPCION_ELEMENTO_6_CONSTRUCTOR, ELEMENTO_6_CONSTRUCTOR, CANTIDAD_CONSTRUCTOR);
+    objetivos_totales.agregar_objetivo_multiple(objetivo_constructor);
+
+    objetivos_totales.agregar_objetivo_simple(NOMBRE_ARMADO, DESCRIPCION_ARMADO, ELEMENTO_ARMADO, CANTIDAD_MINERO);
+    objetivos_totales.agregar_objetivo_simple(NOMBRE_EXTREMISTA, DESCRIPCION_EXTREMISTA, ELEMENTO_EXTREMISTA, CANTIDAD_EXTREMISTA);
 }

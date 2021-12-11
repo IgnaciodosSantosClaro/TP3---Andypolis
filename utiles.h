@@ -5,6 +5,8 @@
 #include "configuracion.h"
 #include "Input.h"
 #include "mensajes.h"
+#include "menu.h"
+#include "Vector_objetivo.h"
 using namespace std;
 // PRE:-
 // POS:Es bloqueante, espera que el usuario ingrese un entero;
@@ -51,5 +53,5 @@ void asignar_recursos_otorgados(string nombre, Edificio &edificio);
 // PRE: nombre es valido y el objeto material esta creado.
 // POS: asigna a material la cantidad y el icono correspondiente.
 void asignar_materiales(string nombre, Material_consumible &material);
-
+void cargar_objetivos(Vector_objetivo &objetivos_totales, int cant_maxima_escuela);
 #endif // UTILIES_H

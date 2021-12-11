@@ -12,10 +12,10 @@
 
 // Archivos
 using namespace std;
-const string RUTA_MATERIALES = "../materiales/materiales.txt";
-const string RUTA_EDIFICIOS = "../edificios/edificios.txt";
-const string RUTA_UBICACIONES = "../ubicaciones/ubicaciones.txt";
-const string RUTA_MAPA = "../mapa/mapa.txt";
+const string RUTA_MATERIALES = "materiales/materiales.txt";
+const string RUTA_EDIFICIOS = "edificios/edificios.txt";
+const string RUTA_UBICACIONES = "ubicaciones/ubicaciones.txt";
+const string RUTA_MAPA = "mapa/mapa.txt";
 const int LARGO_HASTA_COLUMNA = 4;
 const char SEPARADOR_DERECHO_UBICACIONES = '(';
 const char SEPARADOR_IZQUIERDO_UBICACIONES = ')';
@@ -145,6 +145,74 @@ const int OPCION_LLUVIA_RECURSOS = 9;
 const int OPCION_GUARDAR_Y_SALIR = 10;
 
 const int TAMANO_MEMORIA_AGREGADA = 1;
-// UTILES.H
+// Objetivo_principal
+const string NOMBRE_OBJETIVO_PRINCIPAL = "Mas alto que las nubes";
+const string DESCRIPCION_OBJETIVO_PRINCIPAL = "Construir 1 obelisco";
+const string ELEMENTO_OBJETIVO_PRINCIPAL = "obelisco";
+const int CANTIDAD_OBJETIVO_PRINCIPAL = 1;
+// Objetivos_secundarios
+const string NOMBRE_COMPRAR_ANDYPOLIS = "Comprar Andypolis";
+const string DESCRIPCION_COMPRAR_ANDYPOLIS = "Haber utilizado 100000 Andycoins";
+const string ELEMENTO_COMPRAR_ANDYPOLIS = "andycoins";
+const int CANTIDAD_COMPRAR_ANDYPOLIS = 100000;
 
+const string NOMBRE_EDAD_PIEDRA = "Edad de piedra";
+const string DESCRIPCION_EDAD_PIEDRA = "Tener 50000 de piedra en el inventario";
+const string ELEMENTO_EDAD_PIEDRA = "piedra";
+const int CANTIDAD_EDAD_PIEDRA = 50000;
+
+const string NOMBRE_BOMBARDERO = "Bombardero";
+const string DESCRIPCION_BOMBARDERO = "Haber utilizado 5 bombas";
+const string ELEMENTO_BOMBARDERO = "bomba";
+const int CANTIDAD_BOMBARDERO = 5;
+
+const string NOMBRE_ENERGETICO = "Energetico";
+const string DESCRIPCION_ENERGETICO = "Haber terminado un turno con 100 de energia";
+const string ELEMENTO_ENERGETICO = "energia";
+const int CANTIDAD_ENERGETICO = 100;
+
+const string NOMBRE_LETRADO = "Letrado";
+const string DESCRIPCION_LETRADO = "Haber construido el maximo de escuelas";
+const string ELEMENTO_LETRADO = "escuelas"; // Fijar cantidad en tiempo de ejecucion
+
+const string NOMBRE_MINERO = "Minero";
+const string DESCRIPCION_MINERO = "Construir una mina de cada tipo";
+const string ELEMENTO_1_MINERO = "mina oro";
+const string DESCRIPCION_ELEMENTO_1_MINERO = "Construir una mina de oro";
+const string ELEMENTO_2_MINERO = "mina";
+const string DESCRIPCION_ELEMENTO_2_MINERO = "Construir una mina";
+
+const int CANTIDAD_MINERO = 1;
+
+const string NOMBRE_CANSADO = "Cansado";
+const string DESCRIPCION_CANSADO = "Terminar un turno con 0 de energía";
+const string ELEMENTO_CANSADO = "energia";
+const int CANTIDAD_CANSADO = 0;
+
+const string NOMBRE_CONSTRUCTOR = "Constructor";
+const string DESCRIPCION_CONSTRUCTOR = "constuir un edificio de cada tipo";
+const string ELEMENTO_CONSTRUCTOR = "todos los edificios";
+const string ELEMENTO_1_CONSTRUCTOR = "mina oro";
+const string DESCRIPCION_ELEMENTO_1_CONSTRUCTOR = "Construir una mina oro";
+const string ELEMENTO_2_CONSTRUCTOR = "mina";
+const string DESCRIPCION_ELEMENTO_2_CONSTRUCTOR = "Construir una mina";
+const string ELEMENTO_3_CONSTRUCTOR = "aserradero";
+const string DESCRIPCION_ELEMENTO_3_CONSTRUCTOR = "Construir un aserradero";
+const string ELEMENTO_4_CONSTRUCTOR = "fabrica";
+const string DESCRIPCION_ELEMENTO_4_CONSTRUCTOR = "Construir una fabrica";
+const string ELEMENTO_5_CONSTRUCTOR = "escuela";
+const string DESCRIPCION_ELEMENTO_5_CONSTRUCTOR = "Construir una escuela";
+const string ELEMENTO_6_CONSTRUCTOR = "planta electrica";
+const string DESCRIPCION_ELEMENTO_6_CONSTRUCTOR = "Construir una planta electrica";
+const int CANTIDAD_CONSTRUCTOR = 1;
+
+const string NOMBRE_ARMADO = "Armado";
+const string DESCRIPCION_ARMADO = "Tener 10 Bombas en el inventario";
+const string ELEMENTO_ARMADO = "bomba";
+const int CANTIDAD_ARMADO = 10;
+
+const string NOMBRE_EXTREMISTA = "Extremista";
+const string DESCRIPCION_EXTREMISTA = "Haber comprado 500 bombas en una partida";
+const string ELEMENTO_EXTREMISTA = "bomba";
+const int CANTIDAD_EXTREMISTA = 500;
 #endif
