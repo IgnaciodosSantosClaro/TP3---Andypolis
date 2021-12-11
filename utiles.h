@@ -5,7 +5,6 @@
 #include "configuracion.h"
 #include "Input.h"
 #include "mensajes.h"
-#include "menu.h"
 using namespace std;
 // PRE:-
 // POS:Es bloqueante, espera que el usuario ingrese un entero;

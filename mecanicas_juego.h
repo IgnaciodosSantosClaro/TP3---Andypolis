@@ -9,6 +9,7 @@
 #include "mensajes.h"
 #include "Input.h"
 #include "utiles.h"
+
 // Poner en minúscula el nombre del archivo
 
 // PRE: El diccionario esta cargado
@@ -23,5 +24,9 @@ void atacar(Matriz_casillero &mapa, Jugador &jugador);
 //PRE:
 //POS:
 void comprar_bombas(Jugador &jugador);
+
+//PRE: El jugador esta bien cargado.
+//POS: Recolecta los recursos producidos por los edificios correspondientes.
+void recolectar_recursos_producidos(Jugador &jugador);
 
 #endif // MECANICAS_JUEGO_H

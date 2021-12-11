@@ -1,5 +1,6 @@
 #ifndef BOMBA_H
 #define BOMBA_H
+
 #include "Material_consumible.h"
 #include "Casillero_construible.h"
 #include "Edificio.h"

@@ -8,6 +8,7 @@
 #include <thread>
 #include "utiles.h"
 #include "configuracion.h"
+
 enum filas_con_referencia
 {
     PRIMERA_FILA,

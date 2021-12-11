@@ -29,7 +29,15 @@ int main(void)
     cout << "aca2" << endl;
     listar_todos_edificios(diccionario);
     cout << jugador2.obtener_energia() << endl;
-    comprar_bombas(jugador2);
+//    comprar_bombas(jugador2);
+    listar_edificios_construidos(mapa, jugador1);
+    cout << endl;
+    jugador1.mostrar_inventario();
+    cout << endl;
+    recolectar_recursos_producidos(jugador1);
+    cout << endl;
+    jugador1.mostrar_inventario();
+    cout << endl;
     cout << jugador2.obtener_energia() << endl;
     mostrar_mapa(mapa, 5, 3);
 

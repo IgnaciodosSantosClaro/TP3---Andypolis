@@ -84,3 +84,62 @@ void comprar_bombas(Jugador &jugador) {
         cout << COLOR_TEXTO_ROJO << "La cantidad de energia es insuficiente." << COLOR_TEXTO_BLANCO << endl;
     }
 }
+
+void recolectar_recursos_producidos(Jugador &jugador)
+{
+    if(jugador.obtener_energia() >= CONSUMO_ENERGIA_RECOLECTAR_RECURSOS) {
+        int cant_piedra = 0;
+        int cant_madera = 0;
+        int cant_metal = 0;
+        int cant_andycoins = 0;
+        int cant_energia = 0;
+        Vector<Edificio *> vector_edificios = jugador.obtener_edificios()->arbol_a_vector();
+
+        for (int i = 0; i < vector_edificios.obtener_largo(); i++) {
+            Edificio *edificio_actual = vector_edificios.obtener_valor(i);
+            Material_consumible recurso = edificio_actual->obtener_materiales_otorgados();
+            string nombre_recurso = recurso.obtener_nombre();
+            int cant_construcciones = edificio_actual->obtener_cant_construidos();
+
+            if (nombre_recurso.compare(PIEDRA) == 0 && cant_construcciones > 0) {
+                cant_piedra = edificio_actual->obtener_materiales_otorgados().obtener_cantidad() * cant_construcciones;
+                int pos_piedra = jugador.obtener_inventario()->obtener_pos_material(PIEDRA);
+                int cant_piedra_actual = jugador.obtener_inventario()->obtener_valor(pos_piedra)->obtener_cantidad();
+                jugador.obtener_inventario()->obtener_valor(pos_piedra)->fijar_cantidad(cant_piedra + cant_piedra_actual);
+
+            } else if (nombre_recurso.compare(MADERA) == 0 && cant_construcciones > 0) {
+                cant_madera = edificio_actual->obtener_materiales_otorgados().obtener_cantidad() * cant_construcciones;
+                int pos_madera = jugador.obtener_inventario()->obtener_pos_material(MADERA);
+                int cant_madera_actual = jugador.obtener_inventario()->obtener_valor(pos_madera)->obtener_cantidad();
+                jugador.obtener_inventario()->obtener_valor(pos_madera)->fijar_cantidad(cant_madera + cant_madera_actual);
+
+            } else if (nombre_recurso.compare(METAL) == 0 && cant_construcciones > 0) {
+                cant_metal = edificio_actual->obtener_materiales_otorgados().obtener_cantidad() * cant_construcciones;
+                int pos_metal = jugador.obtener_inventario()->obtener_pos_material(METAL);
+                int cant_metal_actual = jugador.obtener_inventario()->obtener_valor(pos_metal)->obtener_cantidad();
+                jugador.obtener_inventario()->obtener_valor(pos_metal)->fijar_cantidad(cant_metal + cant_metal_actual);
+
+            } else if (nombre_recurso.compare(ANDYCOINS) == 0 && cant_construcciones > 0) {
+                cant_andycoins = edificio_actual->obtener_materiales_otorgados().obtener_cantidad() * cant_construcciones;
+                int pos_andycoins = jugador.obtener_inventario()->obtener_pos_material(ANDYCOINS);
+                int cant_andycoins_actual = jugador.obtener_inventario()->obtener_valor(pos_andycoins)->obtener_cantidad();
+                jugador.obtener_inventario()->obtener_valor(pos_andycoins)->fijar_cantidad(cant_andycoins + cant_andycoins_actual);
+
+            } else if (nombre_recurso.compare(ENERGIA) == 0 && cant_construcciones > 0) {
+                cant_energia = edificio_actual->obtener_materiales_otorgados().obtener_cantidad() * cant_construcciones;
+                int pos_energia = jugador.obtener_inventario()->obtener_pos_material(ENERGIA);
+                int cant_energia_actual = jugador.obtener_inventario()->obtener_valor(pos_energia)->obtener_cantidad();
+                jugador.obtener_inventario()->obtener_valor(pos_energia)->fijar_cantidad(cant_energia + cant_energia_actual);
+            }
+        }
+        cout << MENSAJE_RECOLECCION << endl;
+        cout << PIEDRA_MAYUS << " : " << cant_piedra << endl;
+        cout << MADERA_MAYUS << " : " << cant_madera << endl;
+        cout << METAL_MAYUS << " : " << cant_metal << endl;
+        cout << ANDYCOINS_MAYUS << " : " << cant_andycoins << endl;
+        cout << ENERGIA_MAYUS << " : " << cant_energia << endl;
+    }
+    else {
+        cout << COLOR_TEXTO_ROJO << "La cantidad de energia es insuficiente." << COLOR_TEXTO_BLANCO << endl;
+    }
+}
