@@ -1,8 +1,8 @@
 #ifndef OBJETIVO_SIMPLE_H
 #define OBJETIVO_SIMPLE_H
 #include "Objetivo.h"
-#include "Mensajes.h"
-#include "Configuracion.h"
+#include "mensajes.h"
+#include "configuracion.h"
 class Objetivo_simple : public Objetivo
 {
 private:

@@ -49,6 +49,13 @@ void listar_edificios_construidos(Matriz_casillero &mapa, Jugador &jugador);
 // PRE: El mapa esta bien cargado y el nombre es valido.
 // POS: Imprime la coordenada del edificio ubicado en el casillero correspondiente.
 void mostrar_coordenadas(Matriz_casillero &mapa, string nombre_edificio);
+
 void bombardeo(int milisegundos_retardo);
+
 void trueno(int milisegundos_duracion, string color);
+
+//PRE: El jugador esta bien cargado.
+//POS: Muestra el inventario del jugador.
+void mostrar_inventario(Jugador &jugador);
+
 #endif

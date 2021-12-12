@@ -29,4 +29,5 @@ void comprar_bombas(Jugador &jugador);
 //POS: Recolecta los recursos producidos por los edificios correspondientes.
 void recolectar_recursos_producidos(Jugador &jugador);
 
+
 #endif // MECANICAS_JUEGO_H

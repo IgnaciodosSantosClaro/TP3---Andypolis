@@ -75,7 +75,13 @@ void mostrar_menu_juego()
 bool procesar_menu_inicial(Matriz_casillero &mapa, Diccionario &dicc_edificios, Jugador &jugador1, Jugador &jugador2)
 {
     bool salir = false;
-    int opcion_elegida = obtener_opcion_ingresada();
+    cout << INGRESE_ACCION << endl;
+    Input input;
+    string entrada_usuario;
+    cin >> entrada_usuario;
+    confirmar_opcion_valida(entrada_usuario, input, INICIO_MODIFICAR_EDIFICIO_POR_NOMBRE, INICIO_GUARDAR_Y_SALIR_INICIAL);
+    int opcion_elegida = input.obtener_input();
+    system(CLR_SCREEN);
     switch (opcion_elegida)
     {
     case INICIO_MODIFICAR_EDIFICIO_POR_NOMBRE:
@@ -84,16 +90,18 @@ bool procesar_menu_inicial(Matriz_casillero &mapa, Diccionario &dicc_edificios, 
         break;
     case INICIO_LISTAR_TODOS_EDIFICIOS:
         opcion_elegida = INICIO_LISTAR_TODOS_EDIFICIOS;
-        cout << "Edificios Jugador 1" << endl;
-        listar_edificios_construidos(mapa, jugador1);
-        cout << "Edificios Jugador 2" << endl;
-        listar_edificios_construidos(mapa, jugador2); // Hacer una función que diga de quien es cada edificio
+//        cout << "Edificios Jugador 1" << endl;
+//        listar_edificios_construidos(mapa, jugador1);
+//        cout << "Edificios Jugador 2" << endl;
+//        listar_edificios_construidos(mapa, jugador2); // Hacer una función que diga de quien es cada edificio
+        listar_todos_edificios(dicc_edificios);
         break;
     case INICIO_MOSTRAR_MAPA:
         mostrar_mapa(mapa, 5, 3);
         break;
     case INICIO_COMENZAR_PARTIDA:
         menu_juego(mapa, dicc_edificios, jugador1, jugador2);
+        salir = true;
         break;
     case INICIO_GUARDAR_Y_SALIR_INICIAL:
         opcion_elegida = INICIO_GUARDAR_Y_SALIR_INICIAL;
@@ -111,7 +119,13 @@ bool procesar_menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, in
 {
     bool salir = false; // Verificar e imprimir energia
     cout << jugador_vec[indice_jugador_actual].obtener_nombre() << ESPACIO;
-    int opcion_elegida = obtener_opcion_ingresada();
+    cout << INGRESE_ACCION << endl;
+    Input input;
+    string entrada_usuario;
+    cin >> entrada_usuario;
+    confirmar_opcion_valida(entrada_usuario, input, CONSTRUIR_EDIFICIO_POR_NOMBRE, GUARDAR_Y_SALIR);
+    int opcion_elegida = input.obtener_input();
+    system(CLR_SCREEN);
     switch (opcion_elegida)
     {
     case CONSTRUIR_EDIFICIO_POR_NOMBRE:
@@ -140,12 +154,14 @@ bool procesar_menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, in
         break;
     case MOSTRAR_INVENTARIO:
         // opcion_elegida = MOSTRAR_INVENTARIO;
+        mostrar_inventario(jugador_vec[indice_jugador_actual]);
         break;
     case MOSTRAR_OBJETIVOS:
         // opcion_elegida = MOSTRAR_OBJETIVOS;
         break;
     case RECOLECTAR_RECURSOS_PRODUCIDOS:
         // opcion_elegida = RECOLECTAR_RECURSOS_PRODUCIDOS;
+        recolectar_recursos_producidos(jugador_vec[indice_jugador_actual]);
         break;
     case MOVERSE_A_UNA_COORDENADA:
         // opcion_elegida = MOVERSE_A_UNA_COORDENADA;

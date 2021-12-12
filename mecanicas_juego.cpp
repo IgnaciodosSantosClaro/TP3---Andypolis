@@ -138,6 +138,7 @@ void recolectar_recursos_producidos(Jugador &jugador)
                 jugador.obtener_inventario()->obtener_valor(pos_energia)->fijar_cantidad(cant_energia + cant_energia_actual);
             }
         }
+        jugador.modificar_energia(-CONSUMO_ENERGIA_RECOLECTAR_RECURSOS);
         cout << MENSAJE_RECOLECCION << endl;
         cout << PIEDRA_MAYUS << " : " << cant_piedra << endl;
         cout << MADERA_MAYUS << " : " << cant_madera << endl;
@@ -149,3 +150,4 @@ void recolectar_recursos_producidos(Jugador &jugador)
         cout << COLOR_TEXTO_ROJO << "La cantidad de energia es insuficiente." << COLOR_TEXTO_BLANCO << endl;
     }
 }
+

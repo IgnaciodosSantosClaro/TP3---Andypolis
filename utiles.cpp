@@ -1,21 +1,25 @@
 #include "utiles.h"
-// Poner en minsucula
-int obtener_opcion_ingresada()
-{
-    string entrada_usuario;
-    cin >> entrada_usuario;
-    int opcion_elegida;
-    try
-    {
-        opcion_elegida = std::stoi(entrada_usuario);
-    }
-    catch (std::invalid_argument &)
-    {
-        cout << MENSAJE_OPCION_INVALIDA << endl;
-        opcion_elegida = obtener_opcion_ingresada();
-    }
-    return opcion_elegida;
-}
+#include<climits>
+//int obtener_opcion_ingresada()
+//{
+//    Input input;
+//    string entrada_usuario;
+//    cin >> entrada_usuario;
+//    int opcion_elegida;
+////    try
+////    {
+////        opcion_elegida = std::stoi(entrada_usuario);
+////    }
+////    catch (std::invalid_argument &)
+////    {
+////        cout << MENSAJE_OPCION_INVALIDA << endl;
+////        opcion_elegida = obtener_opcion_ingresada();
+////    }
+////    return opcion_elegida;
+//    confirmar_opcion_valida(entrada_usuario, input, );
+//    opcion_elegida = input.obtener_input();
+//    return opcion_elegida;
+//}
 void obtener_coordenadas(int &coord_x, int &coord_y, int max_x, int max_y)
 {
     pedir_coordenada(coord_x, coord_y);
@@ -27,12 +31,18 @@ void obtener_coordenadas(int &coord_x, int &coord_y, int max_x, int max_y)
 }
 void pedir_coordenada(int &coord_x, int &coord_y)
 {
+    Input input;
+    string entrada_usuario;
 
     cout << INGRESE_COORD_X;
-    coord_x = obtener_opcion_ingresada();
+    cin >> entrada_usuario;
+    confirmar_opcion_valida(entrada_usuario, input, 0, INT_MAX);
+    coord_x = input.obtener_input();
 
     cout << INGRESE_COORD_Y;
-    coord_y = obtener_opcion_ingresada();
+    cin >> entrada_usuario;
+    confirmar_opcion_valida(entrada_usuario, input, 0, INT_MAX);
+    coord_y = input.obtener_input();
 };
 string separar_hasta(string cadena_a_separar, char caracter)
 {
@@ -105,12 +115,17 @@ string pedir_nombre()
 int elegir_jugador_inicial(int max_jugadores)
 {
     cout << MENSAJE_ELEGIR_JUGADOR << max_jugadores << SEPARADOR_IZQUIERDO_UBICACIONES << endl;
-    int entrada = obtener_opcion_ingresada();
-    if (entrada <= 0 || entrada > max_jugadores)
-    {
-        cout << MENSAJE_OPCION_INVALIDA << endl;
-        elegir_jugador_inicial(max_jugadores);
-    }
+    Input input;
+    string entrada_usuario;
+    cin >> entrada_usuario;
+    confirmar_opcion_valida(entrada_usuario, input, 1, max_jugadores);
+    int entrada = input.obtener_input();
+//    int entrada = obtener_opcion_ingresada();
+//    if (entrada <= 0 || entrada > max_jugadores)
+//    {
+//        cout << MENSAJE_OPCION_INVALIDA << endl;
+//        elegir_jugador_inicial(max_jugadores);
+//    }
     return entrada;
 }
 bool confirmar_decision()

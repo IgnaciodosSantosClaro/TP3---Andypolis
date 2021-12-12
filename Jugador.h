@@ -91,7 +91,7 @@ public:
 
     // PRE:
     // POS:
-    void mostrar_inventario();
+//    void mostrar_inventario();
 
     // PRE:
     // POS:

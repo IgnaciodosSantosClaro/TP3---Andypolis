@@ -68,14 +68,14 @@ void Jugador::modificar_cantidad_bomba(int cantidad)
     bombas.modificar_cantidad(cantidad);
 }
 
-void Jugador::mostrar_inventario()
-{
-    for (int i = 0; i < inventario->obtener_largo(); i++)
-    {
-        cout << inventario->obtener_valor(i)->obtener_nombre() << " " << inventario->obtener_valor(i)->obtener_cantidad() << endl;
-    }
-    cout << "Bombas: " << bombas.obtener_cantidad() << endl;
-}
+//void Jugador::mostrar_inventario()
+//{
+//    for (int i = 0; i < inventario->obtener_largo(); i++)
+//    {
+//        cout << inventario->obtener_valor(i)->obtener_nombre() << " " << inventario->obtener_valor(i)->obtener_cantidad() << endl;
+//    }
+//    cout << "Bombas: " << bombas.obtener_cantidad() << endl;
+//}
 
 void Jugador::asignar_edificios(Diccionario *diccionario)
 {
