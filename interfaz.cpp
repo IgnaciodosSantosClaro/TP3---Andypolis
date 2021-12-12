@@ -86,38 +86,43 @@ void mostrar_fila(Matriz_casillero &mapa, int fila, int ancho_grilla, int largo_
 void mostrar_referencia_casilleros()
 {
     Casillero_construible casillero_construible;
+    cout << ESPACIO;
     casillero_construible.mostrar_leyenda(NOMBRE_CASILLERO_CONSTRUIBLE);
 
     Casillero_transitable casillero_camino = Casillero_transitable(TERRENO_TRANSITABLE, 0, 0, false);
+    cout << ESPACIO;
     casillero_camino.mostrar_leyenda(NOMBRE_CASILLERO_TRANSITABLE);
 
     Casillero_transitable casillero_betun = Casillero_transitable(TERRENO_BETUN, 0, 0, false);
+    cout << ESPACIO;
     casillero_betun.mostrar_leyenda(NOMBRE_CASILLERO_BETUN);
 
     Casillero_transitable casillero_muelle = Casillero_transitable(TERRENO_MUELLE, 0, 0, false);
+    cout << ESPACIO;
     casillero_muelle.mostrar_leyenda(NOMBRE_CASILLERO_MUELLE);
 
     Casillero_inaccesible casillero_inaccesible = Casillero_inaccesible();
+    cout << ESPACIO;
     casillero_inaccesible.mostrar_leyenda(NOMBRE_CASILLERO_INACCESIBLE);
 }
 void mostrar_referencia_edificios() // PENSAR EN IMPLEMENTARLO CON metodos de la clase
 {
     // Recorrer Edificios y mostrar referencia
-    cout << "Referencias edificios";
+    cout << TABULACION << "Referencias edificios";
 };
 void mostrar_referencias_salud_edificios()
 {
-    cout << COLOR_VERDE << ESPACIO << COLOR_EDIFICIO_SANO_JUG_1 << NOMBRE_EDIFICIO_ASERRADERO[0] << ESPACIO << COLOR_NEGRO << COLOR_TEXTO_BLANCO << "Edificio de Jugador 1 sano";
-    cout << COLOR_VERDE << ESPACIO << COLOR_EDIFICIO_SANO_JUG_2 << NOMBRE_EDIFICIO_ASERRADERO[0] << ESPACIO << COLOR_NEGRO << COLOR_TEXTO_BLANCO << "Edificio de Jugador 2 sano";
+    cout << ESPACIO << COLOR_VERDE << ESPACIO << COLOR_EDIFICIO_SANO_JUG_1 << NOMBRE_EDIFICIO_ASERRADERO[0] << ESPACIO << COLOR_NEGRO << COLOR_TEXTO_BLANCO << ESPACIO << "Edificio de Jugador 1 sano";
+    cout << ESPACIO << COLOR_VERDE << ESPACIO << COLOR_EDIFICIO_SANO_JUG_2 << NOMBRE_EDIFICIO_ASERRADERO[0] << ESPACIO << COLOR_NEGRO << COLOR_TEXTO_BLANCO << ESPACIO << "Edificio de Jugador 2 sano";
 }
 void mostrar_referencias_salud_edificios_danados()
 {
-    cout << COLOR_VERDE << ESPACIO << COLOR_EDIFICIO_HERIDO_JUG_1 << NOMBRE_EDIFICIO_ASERRADERO[0] << ESPACIO << COLOR_NEGRO << COLOR_TEXTO_BLANCO << "Edificio de Jugador 1 herido";
-    cout << COLOR_VERDE << ESPACIO << COLOR_EDIFICIO_HERIDO_JUG_2 << NOMBRE_EDIFICIO_ASERRADERO[0] << ESPACIO << COLOR_NEGRO << COLOR_TEXTO_BLANCO << "Edificio de Jugador 2 herido";
+    cout << ESPACIO << COLOR_VERDE << ESPACIO << COLOR_EDIFICIO_HERIDO_JUG_1 << NOMBRE_EDIFICIO_ASERRADERO[0] << ESPACIO << COLOR_NEGRO << COLOR_TEXTO_BLANCO << ESPACIO << "Edificio de Jugador 1 herido";
+    cout << ESPACIO << COLOR_VERDE << ESPACIO << COLOR_EDIFICIO_HERIDO_JUG_2 << NOMBRE_EDIFICIO_ASERRADERO[0] << ESPACIO << COLOR_NEGRO << COLOR_TEXTO_BLANCO << ESPACIO << "Edificio de Jugador 2 herido";
 }
 void mostrar_referencia_materiales()
 {
-    cout << "Referencias materiales";
+    cout << TABULACION << "Referencias materiales";
     // Material pinza = Material("pinza", 1);
     // pinza.mostrar_leyenda('Y');
 }

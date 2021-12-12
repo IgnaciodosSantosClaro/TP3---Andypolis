@@ -1,6 +1,8 @@
 #include "menu.h"
 
 using namespace std;
+
+
 void iniciar_juego()
 {
     Matriz_casillero mapa;
@@ -14,8 +16,10 @@ void iniciar_juego()
     procesar_ubicaciones(mapa, jugador1, jugador2);
     menu_inicial(mapa, dicc_edificios, jugador1, jugador2);
 };
+
 void mostrar_menu_inicio()
 {
+    cout << TABULACION << endl;
     cout << TABULACION << TABULACION << TABULACION << TITULO_MENU << endl;
     cout << TABULACION << ENCABEZADO_MENU << endl;
     cout << TABULACION << MENSAJE_MENU_INICIAL_1 << endl;
@@ -24,7 +28,9 @@ void mostrar_menu_inicio()
     cout << TABULACION << MENSAJE_MENU_INICIAL_4 << endl;
     cout << TABULACION << MENSAJE_MENU_INICIAL_5 << endl;
     cout << TABULACION << ENCABEZADO_MENU << endl;
+    cout << TABULACION << endl;
 };
+
 void menu_inicial(Matriz_casillero &mapa, Diccionario &dicc_edificios, Jugador &jugador1, Jugador &jugador2)
 {
 
@@ -35,6 +41,7 @@ void menu_inicial(Matriz_casillero &mapa, Diccionario &dicc_edificios, Jugador &
         salir = procesar_menu_inicial(mapa, dicc_edificios, jugador1, jugador2);
     }
 };
+
 void menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, Jugador &jugador1, Jugador &jugador2)
 {
     bool salir = false;
@@ -53,8 +60,10 @@ void menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, Jugador &ju
         salir = procesar_menu_juego(mapa, dicc_edificios, jugador_actual, jugador_vec);
     }
 }
+
 void mostrar_menu_juego()
 {
+    cout << TABULACION << endl;
     cout << TABULACION << TABULACION << TABULACION << TITULO_MENU << endl;
     cout << TABULACION << ENCABEZADO_MENU << endl;
     cout << TABULACION << MENSAJE_MENU_JUEGO_OPCION_1 << endl;
@@ -71,7 +80,9 @@ void mostrar_menu_juego()
     cout << TABULACION << MENSAJE_MENU_JUEGO_OPCION_12 << endl;
     cout << TABULACION << MENSAJE_MENU_JUEGO_OPCION_13 << endl;
     cout << TABULACION << ENCABEZADO_MENU << endl;
+    cout << TABULACION << endl;
 }
+
 bool procesar_menu_inicial(Matriz_casillero &mapa, Diccionario &dicc_edificios, Jugador &jugador1, Jugador &jugador2)
 {
     bool salir = false;
@@ -115,6 +126,7 @@ bool procesar_menu_inicial(Matriz_casillero &mapa, Diccionario &dicc_edificios, 
     }
     return salir;
 }
+
 bool procesar_menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, int &indice_jugador_actual, Jugador *jugador_vec)
 {
     bool salir = false; // Verificar e imprimir energia

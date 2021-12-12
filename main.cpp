@@ -14,7 +14,7 @@
 #include "Vector_objetivo.h"
 int main(void)
 {
-
+    system(CLR_SCREEN);
     iniciar_juego();
     return 0;
 };
