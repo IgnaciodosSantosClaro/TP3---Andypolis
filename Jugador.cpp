@@ -8,14 +8,18 @@ Jugador::Jugador()
     this->edificios = new Diccionario;
     this->inventario = new Vector_material;
 }
-Jugador::Jugador(string nombre)
+Jugador::Jugador(string nombre, tipo_jugador identidad)
 {
     this->nombre = nombre;
+    this->identidad_jugador = identidad;
     this->energia = ENERGIA_INICIAL;
     this->edificios = new Diccionario;
     this->inventario = new Vector_material;
 }
-
+tipo_jugador Jugador::obtener_identidad()
+{
+    return this->identidad_jugador;
+}
 int Jugador::obtener_energia()
 {
     return energia;
@@ -43,7 +47,7 @@ void Jugador::modificar_energia(int energia)
     {
         this->energia = ENERGIA_MAXIMA;
     }
-    else if(this->energia - energia <= ENERGIA_MINIMA)
+    else if (this->energia - energia <= ENERGIA_MINIMA)
     {
         this->energia = ENERGIA_MINIMA;
     }
@@ -68,14 +72,14 @@ void Jugador::modificar_cantidad_bomba(int cantidad)
     bombas.modificar_cantidad(cantidad);
 }
 
-//void Jugador::mostrar_inventario()
+// void Jugador::mostrar_inventario()
 //{
-//    for (int i = 0; i < inventario->obtener_largo(); i++)
-//    {
-//        cout << inventario->obtener_valor(i)->obtener_nombre() << " " << inventario->obtener_valor(i)->obtener_cantidad() << endl;
-//    }
-//    cout << "Bombas: " << bombas.obtener_cantidad() << endl;
-//}
+//     for (int i = 0; i < inventario->obtener_largo(); i++)
+//     {
+//         cout << inventario->obtener_valor(i)->obtener_nombre() << " " << inventario->obtener_valor(i)->obtener_cantidad() << endl;
+//     }
+//     cout << "Bombas: " << bombas.obtener_cantidad() << endl;
+// }
 
 void Jugador::asignar_edificios(Diccionario *diccionario)
 {

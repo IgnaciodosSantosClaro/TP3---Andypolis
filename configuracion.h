@@ -54,6 +54,8 @@ const int ENERGIA_MAXIMA = 100;
 const int ENERGIA_MINIMA = 0;
 const string NOMBRE_JUGADOR_1_UBICACIONES = "1";
 const string NOMBRE_JUGADOR_2_UBICACIONES = "2";
+// Acciones
+const int ENERGIA_REPARAR = 25;
 // Casillero_contruible
 const string COLOR_BLANCO = "\033[48;5;15m";
 const string COLOR_MARRON = "\033[48;5;136m";

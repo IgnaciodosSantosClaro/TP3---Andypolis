@@ -1,11 +1,11 @@
 #include "utiles.h"
-#include<climits>
-//int obtener_opcion_ingresada()
+#include <climits>
+// int obtener_opcion_ingresada()
 //{
-//    Input input;
-//    string entrada_usuario;
-//    cin >> entrada_usuario;
-//    int opcion_elegida;
+//     Input input;
+//     string entrada_usuario;
+//     cin >> entrada_usuario;
+//     int opcion_elegida;
 ////    try
 ////    {
 ////        opcion_elegida = std::stoi(entrada_usuario);
@@ -120,12 +120,12 @@ int elegir_jugador_inicial(int max_jugadores)
     cin >> entrada_usuario;
     confirmar_opcion_valida(entrada_usuario, input, 1, max_jugadores);
     int entrada = input.obtener_input();
-//    int entrada = obtener_opcion_ingresada();
-//    if (entrada <= 0 || entrada > max_jugadores)
-//    {
-//        cout << MENSAJE_OPCION_INVALIDA << endl;
-//        elegir_jugador_inicial(max_jugadores);
-//    }
+    //    int entrada = obtener_opcion_ingresada();
+    //    if (entrada <= 0 || entrada > max_jugadores)
+    //    {
+    //        cout << MENSAJE_OPCION_INVALIDA << endl;
+    //        elegir_jugador_inicial(max_jugadores);
+    //    }
     return entrada;
 }
 bool confirmar_decision()
@@ -261,4 +261,31 @@ void cargar_objetivos(Vector_objetivo &objetivos_totales, int cant_maxima_escuel
 
     objetivos_totales.agregar_objetivo_simple(NOMBRE_ARMADO, DESCRIPCION_ARMADO, ELEMENTO_ARMADO, CANTIDAD_MINERO);
     objetivos_totales.agregar_objetivo_simple(NOMBRE_EXTREMISTA, DESCRIPCION_EXTREMISTA, ELEMENTO_EXTREMISTA, CANTIDAD_EXTREMISTA);
+}
+bool puede_reparar(Casillero *casillero_elegido, Jugador &jugador)
+{
+    Casillero_construible *construible_ptr;
+    bool reparar = false;
+    if ((construible_ptr = dynamic_cast<Casillero_construible *>(casillero_elegido)) && casillero_elegido->casillero_ocupado() == true)
+    {
+        if (construible_ptr->obtener_edificio().obtener_dueno() == jugador.obtener_identidad())
+        {
+            Edificio *edificio_modelo = jugador.obtener_edificios()->consulta(construible_ptr->obtener_edificio().obtener_nombre());
+            int madera_necesaria = (int)(edificio_modelo->obtener_material(POSICION_MADERA).obtener_cantidad() * 0.25);
+            int metal_necesaria = (int)(edificio_modelo->obtener_material(POSICION_METAL).obtener_cantidad() * 0.25);
+            int piedra_necesaria = (int)(edificio_modelo->obtener_material(POSICION_PIEDRA).obtener_cantidad() * 0.25);
+            int madera_jugador = (int)(jugador.obtener_inventario()->obtener_por_nombre(MADERA).obtener_cantidad());
+            int metal_jugador = (int)(jugador.obtener_inventario()->obtener_por_nombre(METAL).obtener_cantidad());
+            int piedra_jugador = (int)(jugador.obtener_inventario()->obtener_por_nombre(PIEDRA).obtener_cantidad());
+            if ((madera_necesaria <= madera_jugador) && (metal_necesaria <= metal_jugador) && (piedra_necesaria <= piedra_jugador))
+            {
+                reparar = true;
+            }
+        }
+    }
+    return reparar;
+}
+bool tiene_energia(Jugador &jugador, int energia_necesaria)
+{
+    return (jugador.obtener_energia() >= energia_necesaria);
 }

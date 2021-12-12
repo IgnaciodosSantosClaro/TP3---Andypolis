@@ -155,12 +155,12 @@ void procesar_edificios(Diccionario &dicc, Jugador &jugador1, Jugador &jugador2)
             }
 
             Material_consumible materiales[MAX_MATERIALES_CONSTRUIBLES];
-            materiales[0].fijar_nombre(PIEDRA);
-            materiales[0].fijar_cantidad(stoi(cant_piedra));
-            materiales[1].fijar_nombre(MADERA);
-            materiales[1].fijar_cantidad(stoi(cant_madera));
-            materiales[2].fijar_nombre(METAL);
-            materiales[2].fijar_cantidad(stoi(cant_metal));
+            materiales[POSICION_PIEDRA].fijar_nombre(PIEDRA);
+            materiales[POSICION_PIEDRA].fijar_cantidad(stoi(cant_piedra));
+            materiales[POSICION_MADERA].fijar_nombre(MADERA);
+            materiales[POSICION_MADERA].fijar_cantidad(stoi(cant_madera));
+            materiales[POSICION_METAL].fijar_nombre(METAL);
+            materiales[POSICION_METAL].fijar_cantidad(stoi(cant_metal));
 
             Edificio edificio(nombre, stoi(cant_maxima), materiales);
             asignar_recursos_otorgados(nombre, edificio);

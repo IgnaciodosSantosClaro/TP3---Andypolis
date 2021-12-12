@@ -284,23 +284,32 @@ void trueno(int milisegundos_duracion, string color)
     system(CLR_SCREEN);
 };
 
-
-void mostrar_inventario(Jugador &jugador) {
+void mostrar_inventario(Jugador &jugador)
+{
     int ancho = ANCHO_DE_INVENTARIO;
 
     cout << TABULACION << ENCABEZADO_LISTADO_MATERIALES << endl;
     cout << TABULACION << TITULO_LISTADO_MATERIALES << endl;
     cout << TABULACION << ENCABEZADO_LISTADO_MATERIALES << endl;
-    cout << left << TABULACION << setfill(' ') <<  setw(ancho) << TITULO_COLUMNA_MATERIAL << setfill(' ') <<  setw(1) << SEPARADOR_GRILLA_DERECHA << setfill(' ') <<  setw(ancho) << TITULO_COLUMNA_CANTIDAD << setfill(' ') <<  setw(1) << endl;
+    cout << left << TABULACION << setfill(' ') << setw(ancho) << TITULO_COLUMNA_MATERIAL << setfill(' ') << setw(1) << SEPARADOR_GRILLA_DERECHA << setfill(' ') << setw(ancho) << TITULO_COLUMNA_CANTIDAD << setfill(' ') << setw(1) << endl;
 
-    Vector_material* ptr_inventario = jugador.obtener_inventario();
-    for(int i = 0; i < ptr_inventario->obtener_largo(); i++) {
+    Vector_material *ptr_inventario = jugador.obtener_inventario();
+    for (int i = 0; i < ptr_inventario->obtener_largo(); i++)
+    {
         cout << left << TABULACION;
-        cout << setfill(' ') <<  setw(ancho) << ptr_inventario->obtener_valor(i)->obtener_nombre() << setfill(' ') <<  setw(1) << SEPARADOR_GRILLA_DERECHA;
-        cout << setfill(' ') <<  setw(ancho) << ptr_inventario->obtener_valor(i)->obtener_cantidad() << setfill(' ') <<  setw(1) << endl;
+        cout << setfill(' ') << setw(ancho) << ptr_inventario->obtener_valor(i)->obtener_nombre() << setfill(' ') << setw(1) << SEPARADOR_GRILLA_DERECHA;
+        cout << setfill(' ') << setw(ancho) << ptr_inventario->obtener_valor(i)->obtener_cantidad() << setfill(' ') << setw(1) << endl;
     }
     cout << left << TABULACION;
     cout << setfill(' ') << setw(ancho) << BOMBAS << setfill(' ') << setw(1) << SEPARADOR_GRILLA_DERECHA;
     cout << setfill(' ') << setw(ancho) << jugador.obtener_bombas().obtener_cantidad() << setfill(' ') << setw(1) << endl;
-
+}
+void imprimir_con_retardo(string mensaje, int retardo_milisegundos)
+{
+    cout << mensaje << endl;
+    sleep_for(milliseconds(retardo_milisegundos));
+}
+void retardo(int retardo_milisegundos)
+{
+    sleep_for(milliseconds(retardo_milisegundos));
 }

@@ -2,14 +2,13 @@
 
 using namespace std;
 
-
 void iniciar_juego()
 {
     Matriz_casillero mapa;
     procesar_mapa(mapa);
     Diccionario dicc_edificios;
-    Jugador jugador1 = Jugador("jugador1");
-    Jugador jugador2 = Jugador("jugador2");
+    Jugador jugador1 = Jugador("jugador1", JUGADOR_1);
+    Jugador jugador2 = Jugador("jugador2", JUGADOR_2);
 
     cargar_materiales(jugador1, jugador2);
     procesar_edificios(dicc_edificios, jugador1, jugador2);
@@ -37,6 +36,7 @@ void menu_inicial(Matriz_casillero &mapa, Diccionario &dicc_edificios, Jugador &
     bool salir = false;
     while (salir != true)
     {
+
         mostrar_menu_inicio();
         salir = procesar_menu_inicial(mapa, dicc_edificios, jugador1, jugador2);
     }
@@ -55,6 +55,7 @@ void menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, Jugador &ju
     jugador_actual -= 1;                            // Convierto a indice
     while (salir != true)
     {
+        retardo(2500);
         mostrar_mapa(mapa, 5, 3);
         mostrar_menu_juego();
         salir = procesar_menu_juego(mapa, dicc_edificios, jugador_actual, jugador_vec);
@@ -101,10 +102,10 @@ bool procesar_menu_inicial(Matriz_casillero &mapa, Diccionario &dicc_edificios, 
         break;
     case INICIO_LISTAR_TODOS_EDIFICIOS:
         opcion_elegida = INICIO_LISTAR_TODOS_EDIFICIOS;
-//        cout << "Edificios Jugador 1" << endl;
-//        listar_edificios_construidos(mapa, jugador1);
-//        cout << "Edificios Jugador 2" << endl;
-//        listar_edificios_construidos(mapa, jugador2); // Hacer una función que diga de quien es cada edificio
+        //        cout << "Edificios Jugador 1" << endl;
+        //        listar_edificios_construidos(mapa, jugador1);
+        //        cout << "Edificios Jugador 2" << endl;
+        //        listar_edificios_construidos(mapa, jugador2); // Hacer una función que diga de quien es cada edificio
         listar_todos_edificios(dicc_edificios);
         break;
     case INICIO_MOSTRAR_MAPA:
@@ -151,18 +152,24 @@ bool procesar_menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, in
         // opcion_elegida = DEMOLER_EDIFICIO_POR_COORDENADA;
         break;
     case ATACAR_EDIFICIO_POR_COORDENADA:
-        // opcion_elegida = ATACAR_EDIFICIO_POR_COORDENADA;
         atacar(mapa, jugador_vec[indice_jugador_actual]);
         break;
     case REPARAR_EDIFICIO_POR_COORDENADA:
         // opcion_elegida = REPARAR_EDIFICIO_POR_COORDENADA;
+        if (tiene_energia(jugador_vec[indice_jugador_actual], ENERGIA_REPARAR))
+        {
+            reparar(mapa, jugador_vec[indice_jugador_actual]);
+        }
+        else
+        {
+            imprimir_con_retardo("Energia insuficiente", 2000);
+        }
         break;
     case COMPRAR_BOMBAS:
-        // opcion_elegida = COMPRAR_BOMBAS;
         comprar_bombas(jugador_vec[indice_jugador_actual]);
         break;
     case CONSULTAR_COORDENADA:
-        // opcion_elegida = CONSULTAR_COORDENADA;
+        consultar_coordenada(mapa);
         break;
     case MOSTRAR_INVENTARIO:
         // opcion_elegida = MOSTRAR_INVENTARIO;

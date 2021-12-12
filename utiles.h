@@ -7,10 +7,11 @@
 #include "mensajes.h"
 #include "menu.h"
 #include "Vector_objetivo.h"
+#include "Diccionario.h"
 using namespace std;
 // PRE:-
 // POS:Es bloqueante, espera que el usuario ingrese un entero;
-//int obtener_opcion_ingresada();
+// int obtener_opcion_ingresada();
 
 // Modifica la entrada, recibir por referencia
 void obtener_coordenadas(int &coord_x, int &coord_y, int max_x, int max_y);
@@ -57,4 +58,6 @@ void asignar_recursos_otorgados(string nombre, Edificio &edificio);
 void asignar_materiales(string nombre, Material_consumible &material);
 
 void cargar_objetivos(Vector_objetivo &objetivos_totales, int cant_maxima_escuela);
+bool puede_reparar(Casillero *casillero_elegido, Jugador &jugador);
+bool tiene_energia(Jugador &jugador, int energia_necesaria);
 #endif // UTILIES_H

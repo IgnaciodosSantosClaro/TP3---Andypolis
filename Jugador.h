@@ -12,6 +12,7 @@ class Jugador
 private:
     string nombre;
     int energia;
+    tipo_jugador identidad_jugador;
     Coordenada posicion;
     Objetivo *objetivos_secundarios;
     Objetivo *objetivo_principal;
@@ -25,7 +26,7 @@ public:
     // POS: Construye objeto jugador con energia = 50.
     Jugador();
 
-    Jugador(string nombre);
+    Jugador(string nombre, tipo_jugador identidad);
 
     // PRE: -
     // POS: Devuelve la energia del jugador.
@@ -34,15 +35,15 @@ public:
     string obtener_nombre();
 
     Bomba obtener_bombas();
-
+    tipo_jugador obtener_identidad();
     void fijar_bombas(Bomba bombas);
 
-    //PRE: Recibe una energia que es un numero entero.
-    //POS: La energia del jugador se suma a la energia pasada por parametro.
+    // PRE: Recibe una energia que es un numero entero.
+    // POS: La energia del jugador se suma a la energia pasada por parametro.
     void modificar_energia(int energia);
 
-    //PRE: Las posiciones pos_x, pos_y son enteras y validas.
-    //POS: La posicion actual del jugador pasa a ser pos_x, pos_y.
+    // PRE: Las posiciones pos_x, pos_y son enteras y validas.
+    // POS: La posicion actual del jugador pasa a ser pos_x, pos_y.
     void desplazarse(int pos_x, int pos_y);
 
     // PRE:
@@ -91,7 +92,7 @@ public:
 
     // PRE:
     // POS:
-//    void mostrar_inventario();
+    //    void mostrar_inventario();
 
     // PRE:
     // POS:

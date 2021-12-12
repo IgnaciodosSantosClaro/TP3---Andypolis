@@ -37,7 +37,7 @@ public:
     // PRE: -
     // POS: Fija la cantidad del material.
     void fijar_cantidad(int cantidad);
-
+    void reducir_cantidad(int decremento);
     // Destructor virtual
     // PRE: -
     // POS: Destruye el objeto Material.

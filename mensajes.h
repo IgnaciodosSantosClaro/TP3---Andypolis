@@ -109,6 +109,9 @@ const string MENSAJE_TRANSITABLES_COMPLETO = "Se despejaron las nubes : No hay c
 const string MENSAJE_LLUVIA_INICIO = "Esta empezando a llover sobre el mapa....";
 const string MENSAJE_LLUVIA_COMPLETA = "Termino la lluvia, se generaron los siguientes recursos: ";
 const string MENSAJE_ATACAR_EDIFICO = "Ingrese la posición (fila,columna) a bombardear";
+const string MENSAJE_REPARAR_EDIFICIO = "Ingrese la posición (fila,columna) a reparar";
+const string MENSAJE_CASILLERO_NO_REPARABLE = "No se puede reparar, revise las coordenadas";
+const string MENSAJE_REPARACION_EXITOSA = "Reparacion exitosa!";
 // Objetivo_material.h
 const string MENSAJE_OBJETIVO_COMPLETO = " ->Completo";
 

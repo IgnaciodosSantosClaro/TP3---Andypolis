@@ -21,6 +21,12 @@ enum estado_edificio
     EDIFICIO_LASTIMADO,
     EDIFICIO_SANO,
 };
+enum posicion_materiales
+{
+    POSICION_PIEDRA = 0,
+    POSICION_MADERA,
+    POSICION_METAL,
+};
 class Edificio
 {
 private:

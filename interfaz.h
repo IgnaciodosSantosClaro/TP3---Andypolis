@@ -54,8 +54,10 @@ void bombardeo(int milisegundos_retardo);
 
 void trueno(int milisegundos_duracion, string color);
 
-//PRE: El jugador esta bien cargado.
-//POS: Muestra el inventario del jugador.
+// PRE: El jugador esta bien cargado.
+// POS: Muestra el inventario del jugador.
 void mostrar_inventario(Jugador &jugador);
+void imprimir_con_retardo(string mensaje, int retardo_milisegundos);
+void retardo(int retardo_milisegundos);
 
 #endif
