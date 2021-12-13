@@ -12,10 +12,10 @@
 
 // Archivos
 using namespace std;
-const string RUTA_MATERIALES = "materiales/materiales.txt";
-const string RUTA_EDIFICIOS = "edificios/edificios.txt";
-const string RUTA_UBICACIONES = "ubicaciones/ubicaciones.txt";
-const string RUTA_MAPA = "mapa/mapa.txt";
+const string RUTA_MATERIALES = "../materiales/materiales.txt";
+const string RUTA_EDIFICIOS = "../edificios/edificios.txt";
+const string RUTA_UBICACIONES = "../ubicaciones/ubicaciones.txt";
+const string RUTA_MAPA = "../mapa/mapa.txt";
 const int LARGO_HASTA_COLUMNA = 4;
 const char SEPARADOR_DERECHO_UBICACIONES = '(';
 const char SEPARADOR_IZQUIERDO_UBICACIONES = ')';
@@ -39,6 +39,7 @@ const int CONSUMO_ENERGIA_COMPRAR_BOMBAS = 5;
 const int CONSUMO_ENERGIA_RECOLECTAR_RECURSOS = 20;
 const int CONSUMO_ENERGIA_CONSTRUIR_EDIFICIO = 15;
 const int CONSUMO_ENERGIA_DEMOLER_EDIFICIO = 15;
+const int ENERGIA_FIN_TURNO = 20;
 // Casillero.h
 const char TERRENO_CONSTRUIBLE = 'T';
 const char TERRENO_INTRANSITABLE = 'L';

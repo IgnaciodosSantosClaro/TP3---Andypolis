@@ -469,5 +469,20 @@ void actualizar_aristas_grafo(Matriz_casillero &mapa, Grafo &grafo, Coordenada c
 
 }
 
+void inicializar_posicion_jugador(Matriz_casillero &mapa, Jugador &jugador)
+{
+    int fila = 0;
+    int columna = 0;
+    cout << INGRESE_APARICION_JUGADOR << endl;
+    obtener_coordenadas(fila, columna, mapa.obtener_largo_filas(), mapa.obtener_largo_columnas());
+}
+
+bool es_turno_valido(Jugador &jugador)
+{
+    return (jugador.obtener_energia() > ENERGIA_MINIMA);
+}
+
+
+
 
 
