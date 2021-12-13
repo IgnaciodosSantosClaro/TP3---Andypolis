@@ -274,9 +274,9 @@ bool puede_reparar(Casillero *casillero_elegido, Jugador *jugador)
             int madera_necesaria = (int)(edificio_modelo->obtener_material(POSICION_MADERA).obtener_cantidad() * 0.25);
             int metal_necesaria = (int)(edificio_modelo->obtener_material(POSICION_METAL).obtener_cantidad() * 0.25);
             int piedra_necesaria = (int)(edificio_modelo->obtener_material(POSICION_PIEDRA).obtener_cantidad() * 0.25);
-            int madera_jugador = (int)(jugador->obtener_inventario()->obtener_por_nombre(MADERA).obtener_cantidad());
-            int metal_jugador = (int)(jugador->obtener_inventario()->obtener_por_nombre(METAL).obtener_cantidad());
-            int piedra_jugador = (int)(jugador->obtener_inventario()->obtener_por_nombre(PIEDRA).obtener_cantidad());
+            int madera_jugador = (int)(jugador->obtener_inventario()->obtener_por_nombre(MADERA)->obtener_cantidad());
+            int metal_jugador = (int)(jugador->obtener_inventario()->obtener_por_nombre(METAL)->obtener_cantidad());
+            int piedra_jugador = (int)(jugador->obtener_inventario()->obtener_por_nombre(PIEDRA)->obtener_cantidad());
             if ((madera_necesaria <= madera_jugador) && (metal_necesaria <= metal_jugador) && (piedra_necesaria <= piedra_jugador))
             {
                 reparar = true;
@@ -478,4 +478,19 @@ void inicializar_posicion_jugador(Matriz_casillero &mapa, Jugador *jugador)
 bool es_turno_valido(Jugador &jugador)
 {
     return (jugador.obtener_energia() > ENERGIA_MINIMA);
+}
+void actualizar_inventario(Jugador *jugador, Material_consumible &material)
+{
+    jugador->obtener_inventario()->obtener_por_nombre(material.obtener_nombre())->aumentar_cantidad(material.obtener_cantidad());
+}
+void recolectar_material(Casillero *casillero, Jugador *jugador)
+{
+    Casillero_transitable *casillero_material = dynamic_cast<Casillero_transitable *>(casillero);
+    if (casillero_material->casillero_ocupado())
+    {
+        Material_consumible material_casillero = casillero_material->obtener_material();
+        actualizar_inventario(jugador, material_casillero);
+        casillero_material->desocupar_casillero();
+        cout << COLOR_TEXTO_VERDE << "Has recolectado " << material_casillero.obtener_cantidad() << " unidades de " << material_casillero.obtener_nombre() << COLOR_TEXTO_BLANCO << endl;
+    }
 }

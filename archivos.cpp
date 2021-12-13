@@ -217,20 +217,20 @@ void procesar_ubicaciones(Matriz_casillero &mapa, Vector_jugador &jugadores, Vec
                 if (nombre.compare(NOMBRE_JUGADOR_1_UBICACIONES) == 0)
                 {
                     mapa.obtener_dato(fila, columna)->fijar_color_texto(COLOR_JUGADOR_1);
-                    jugador1.desplazarse(fila, columna);
+                    jugadores.obtener_valor(POSICION_JUGADOR_1)->desplazarse(fila, columna);
                     mapa.obtener_dato(fila, columna)->habitar_casillero();
                     procesar_jugador_1 = true;
                     procesar_jugador_2 = false;
-                    actualizar_aristas_grafo(mapa, grafo1, coordenada, INFINITO);
+                    actualizar_aristas_grafo(mapa, grafos.obtener_valor(POSICION_JUGADOR_1), coordenada, INFINITO);
                 }
                 else
                 {
                     mapa.obtener_dato(fila, columna)->fijar_color_texto(COLOR_JUGADOR_2);
-                    jugador2.desplazarse(fila, columna);
+                    jugadores.obtener_valor(POSICION_JUGADOR_2)->desplazarse(fila, columna);
                     mapa.obtener_dato(fila, columna)->habitar_casillero();
                     procesar_jugador_1 = false;
                     procesar_jugador_2 = true;
-                    actualizar_aristas_grafo(mapa, grafo2, coordenada, INFINITO);
+                    actualizar_aristas_grafo(mapa, grafos.obtener_valor(POSICION_JUGADOR_2), coordenada, INFINITO);
                 }
             }
             else if (procesar_jugador_1)
