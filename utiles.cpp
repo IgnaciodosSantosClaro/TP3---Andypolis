@@ -382,7 +382,7 @@ Errores validar_coordenadas_construccion(int coord_x, int coord_y, Matriz_casill
     {
         estado_coordenadas = ERROR_COORDENADA_INACCESIBLE;
     }
-    else if(mapa.obtener_dato(coord_x, coord_x)->casillero_ocupado())
+    else if(mapa.obtener_dato(coord_x, coord_y)->casillero_ocupado())
     {
         estado_coordenadas = ERROR_COORDENADA_OCUPADA;
     }
@@ -468,6 +468,21 @@ void actualizar_aristas_grafo(Matriz_casillero &mapa, Grafo &grafo, Coordenada c
     }
 
 }
+
+void inicializar_posicion_jugador(Matriz_casillero &mapa, Jugador &jugador)
+{
+    int fila = 0;
+    int columna = 0;
+    cout << INGRESE_APARICION_JUGADOR << endl;
+    obtener_coordenadas(fila, columna, mapa.obtener_largo_filas(), mapa.obtener_largo_columnas());
+}
+
+bool es_turno_valido(Jugador &jugador)
+{
+    return (jugador.obtener_energia() > ENERGIA_MINIMA);
+}
+
+
 
 
 

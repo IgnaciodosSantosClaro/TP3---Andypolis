@@ -33,19 +33,21 @@ private:
 public:
     // Constructor
     Matriz_casillero();
+
     // Destructor
     //PRE:
     //POS: Elimina todas las posiciones de la matriz en las que se agrego un casillero.
     ~Matriz_casillero();
+
     //PRE:
     //POS:devuelve la cantidad de casilleros transitables.
     int obtener_cant_transitables();
 
-    //PRE:
+    //PRE: -
     //POS:devuelve la cantidad de casilleros inaccesibles.
     int obtener_cant_inaccesibles();
 
-    //PRE:
+    //PRE: -
     //POS:devuelve la cantidad de casilleros construibles.
     int obtener_cant_construibles();
 

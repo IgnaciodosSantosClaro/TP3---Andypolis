@@ -31,7 +31,7 @@ const std::string ERROR_GUARDAR = "ERROR guardando"; // integrar a error.h
 const std::string INGRESE_ACCION = "Ingrese el numero de la accion que desea realizar.";
 // menu inicial
 const std::string MENSAJE_MENU_INICIAL_1 = " 1. Modificiar edificio por nombre.";
-const std::string MENSAJE_MENU_INICIAL_2 = " 2. Listar edificios construidos.";
+const std::string MENSAJE_MENU_INICIAL_2 = " 2. Listar todos los edificios.";
 const std::string MENSAJE_MENU_INICIAL_3 = " 3. Mostrar mapa.";
 const std::string MENSAJE_MENU_INICIAL_4 = " 4. Comenzar partida.";
 const std::string MENSAJE_MENU_INICIAL_5 = " 5. Guardar y salir.";
@@ -90,6 +90,7 @@ const string COORDENADA_LIBRE = "El casillero no tiene ningun edificio construid
 const string COORDENADA_PROPIA = "El edificio que intentas demoler no te pertenece.";
 const string INGRESE_COORD_X = "Coordenada fila: ";
 const string INGRESE_COORD_Y = "Coordenada columna: ";
+const string INGRESE_APARICION_JUGADOR = "Ingrese la coordenada en la que desea posicionarse.";
 const string DESEA_CONSTRUIR = "Desea construir el edificio? (s/n)";
 const string DESEA_MODIFICAR_MATERIAL = "Desea modificar la cantidad de material necesaria? (s/n)";
 const string MENSAJE_CASILLERO_NO_CONSTRUIBLE = "El casillero seleccionado no es construible, por favor seleccione un casillero construible";

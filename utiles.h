@@ -89,4 +89,13 @@ string asignar_color_edificio_sano(Jugador &jugador);
 //POS: Actualiza las aristas de un vertice.
 void actualizar_aristas_grafo(Matriz_casillero &mapa, Grafo &grafo, Coordenada coordenada, int peso);
 
+//PRE: Jugador  y mapa estan bien cargados.
+//POS: Ubica al jugador en la coordenada ingresada por el usuario.
+void inicializar_posicion_jugador(Matriz_casillero &mapa, Jugador &jugador);
+
+//PRE: Jugador esta bien cargado.
+//POS: Devuelve true si la energia > 0 y false en caso contrario.
+bool es_turno_valido(Jugador &jugador);
+
+
 #endif // UTILIES_H

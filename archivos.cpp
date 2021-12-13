@@ -180,7 +180,7 @@ void procesar_edificios(Diccionario &dicc, Jugador &jugador1, Jugador &jugador2)
     archivo_edificios.close();
 }
 
-void procesar_ubicaciones(Matriz_casillero &mapa, Jugador &jugador1, Jugador &jugador2, bool &es_vacio) // Procesar despues de mapa
+void procesar_ubicaciones(Matriz_casillero &mapa, Jugador &jugador1, Jugador &jugador2, Grafo &grafo1, Grafo &grafo2, bool &es_vacio) // Procesar despues de mapa
 {
     string linea;
     string nombre;
@@ -207,6 +207,8 @@ void procesar_ubicaciones(Matriz_casillero &mapa, Jugador &jugador1, Jugador &ju
             inicio_posicion = linea.find(SEPARADOR_DERECHO_UBICACIONES);
             fila = linea[inicio_posicion + 1] - '0'; // Resto offset ASCII
             columna = linea[inicio_posicion + LARGO_HASTA_COLUMNA] - '0';
+            Coordenada coordenada;
+            coordenada.fijar_coordenadas(fila, columna);
 
             if (es_jugador(nombre))
             {
@@ -235,6 +237,7 @@ void procesar_ubicaciones(Matriz_casillero &mapa, Jugador &jugador1, Jugador &ju
                 edificio_seleccionado.fijar_dueno(JUGADOR_1);
                 jugador1.obtener_edificios()->consulta(nombre)->incrementar_construcciones();
                 construible_ptr->ocupar_casillero(edificio_seleccionado, COLOR_EDIFICIO_SANO_JUG_1);
+                actualizar_aristas_grafo(mapa, grafo1, coordenada, INFINITO);
             }
             else if (procesar_jugador_2)
             {
@@ -244,6 +247,7 @@ void procesar_ubicaciones(Matriz_casillero &mapa, Jugador &jugador1, Jugador &ju
                 edificio_seleccionado.fijar_dueno(JUGADOR_2);
                 jugador2.obtener_edificios()->consulta(nombre)->incrementar_construcciones();
                 construible_ptr->ocupar_casillero(edificio_seleccionado, COLOR_EDIFICIO_SANO_JUG_2);
+                actualizar_aristas_grafo(mapa, grafo2, coordenada, INFINITO);
             }
             else
             {
