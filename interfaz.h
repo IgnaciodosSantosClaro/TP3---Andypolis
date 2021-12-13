@@ -44,7 +44,7 @@ void listar_todos_edificios(Diccionario &dicc);
 
 // PRE: El objeto jugador esta cargado y no esta vacio
 // POS: Imprime por pantalla la informacion de los edificios construidos.
-void listar_edificios_construidos(Matriz_casillero &mapa, Jugador &jugador);
+void listar_edificios_construidos(Matriz_casillero &mapa, Jugador *jugador);
 
 // PRE: El mapa esta bien cargado y el nombre es valido.
 // POS: Imprime la coordenada del edificio ubicado en el casillero correspondiente.
@@ -56,7 +56,7 @@ void trueno(int milisegundos_duracion, string color);
 
 // PRE: El jugador esta bien cargado.
 // POS: Muestra el inventario del jugador.
-void mostrar_inventario(Jugador &jugador);
+void mostrar_inventario(Jugador *jugador);
 void imprimir_con_retardo(string mensaje, int retardo_milisegundos);
 void retardo(int retardo_milisegundos);
 

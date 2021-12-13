@@ -21,33 +21,33 @@ void modificar_edificio(Diccionario &diccionario);
 // PRE: El jugador esta cargado y no esta vacio.
 // POS: Se realiza la compra de bombas en caso de tener la cantidad de andycoins suficiente.
 // void comprar_bombas(Jugador &jugador);
-void atacar(Matriz_casillero &mapa, Jugador &jugador);
+void atacar(Matriz_casillero &mapa, Jugador *jugador);
 
-// PRE: Jugador esta bien cargado.
-// POS: Compra bombas que se almacenan en jugador.
-void comprar_bombas(Jugador &jugador);
+// PRE:
+// POS:
+void comprar_bombas(Jugador *jugador);
 
 // PRE: El jugador esta bien cargado.
 // POS: Recolecta los recursos producidos por los edificios correspondientes.
-void recolectar_recursos_producidos(Jugador &jugador);
+void recolectar_recursos_producidos(Jugador *jugador);
 
 void consultar_coordenada(Matriz_casillero &mapa);
 
-void reparar(Matriz_casillero &mapa, Jugador &jugador);
+void reparar(Matriz_casillero &mapa, Jugador *jugador);
 
 void lluvia_recursos(Matriz_casillero &mapa);
 
-void asignar_objetivos(Vector_objetivo &vector, Jugador &jugador, int cantidad_secundarios);
+void asignar_objetivos(Vector_objetivo &vector, Jugador *jugador, int cantidad_secundarios);
 
 bool indice_repetido(int indice_a_revisar, Vector<int> indices);
 
 // PRE: La Matriz_casillero, el Grafo y el Jugador estan bien cargados.
 // POS: Construye un edificio.
-void construir_edificio(Matriz_casillero &mapa, Grafo &grafo, Jugador &jugador);
+void construir_edificio(Matriz_casillero &mapa, Grafo *grafo, Jugador *jugador);
 
 // PRE: La Matriz_casillero, el Grafo y el Jugador estan bien cargados.
 // POS: Destruye un edificio.
-void demoler_edificio(Matriz_casillero &mapa, Grafo &grafo, Jugador &jugador, int numero_jugador);
+void demoler_edificio(Matriz_casillero &mapa, Grafo *grafo, Jugador *jugador, int numero_jugador);
 
 //PRE: mapa, grafo y jugador estan bien cargados.
 //POS: Desplaza al jugador.

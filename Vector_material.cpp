@@ -2,10 +2,10 @@
 
 using namespace std;
 
-Vector_material::Vector_material(){};
+Vector_material::Vector_material() { cout << "cree Vector material" << endl; };
 Vector_material::~Vector_material()
 {
-    cout << "Mori material" << endl;
+    cout << "Elimine Vector material" << endl;
     for (int posicion = 0; posicion < this->obtener_largo(); posicion++)
     {
         delete obtener_valor(posicion);

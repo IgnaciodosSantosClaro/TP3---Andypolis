@@ -122,7 +122,6 @@ void mostrar_referencias_salud_edificios_danados()
 }
 void mostrar_referencia_materiales()
 {
-    cout << TABULACION << "Referencias materiales";
     Material piedra = Material(PIEDRA, 1);
     piedra.mostrar_leyenda(ICONO_PIEDRA);
     Material madera = Material(MADERA, 1);
@@ -208,7 +207,7 @@ void listar_todos_edificios(Diccionario &diccionario)
     }
 }
 
-void listar_edificios_construidos(Matriz_casillero &mapa, Jugador &jugador)
+void listar_edificios_construidos(Matriz_casillero &mapa, Jugador *jugador)
 {
     int ancho_nombre = 19;
     int ancho_general = 11;
@@ -221,7 +220,7 @@ void listar_edificios_construidos(Matriz_casillero &mapa, Jugador &jugador)
     cout << setfill(' ') << setw(ancho_general) << TITULO_ESTADO_SALUD << setfill(' ') << setw(1) << SEPARADOR_GRILLA_DERECHA;
     cout << setfill(' ') << setw(ancho_nombre) << TITULO_COLUMNA_COORDENADAS << setfill(' ') << setw(1) << endl;
 
-    Vector<Edificio *> vector_construidos = jugador.obtener_edificios()->arbol_a_vector();
+    Vector<Edificio *> vector_construidos = jugador->obtener_edificios()->arbol_a_vector();
     for (int i = 0; i < vector_construidos.obtener_largo(); i++)
     {
         if (vector_construidos.obtener_valor(i)->obtener_cant_construidos() > 0)
@@ -260,7 +259,7 @@ void mostrar_coordenadas(Matriz_casillero &mapa, string nombre_edificio)
     }
 }
 
-void mostrar_inventario(Jugador &jugador)
+void mostrar_inventario(Jugador *jugador)
 {
     int ancho = ANCHO_DE_INVENTARIO;
 
@@ -269,7 +268,7 @@ void mostrar_inventario(Jugador &jugador)
     cout << TABULACION << ENCABEZADO_LISTADO_MATERIALES << endl;
     cout << left << TABULACION << setfill(' ') << setw(ancho) << TITULO_COLUMNA_MATERIAL << setfill(' ') << setw(1) << SEPARADOR_GRILLA_DERECHA << setfill(' ') << setw(ancho) << TITULO_COLUMNA_CANTIDAD << setfill(' ') << setw(1) << endl;
 
-    Vector_material *ptr_inventario = jugador.obtener_inventario();
+    Vector_material *ptr_inventario = jugador->obtener_inventario();
     for (int i = 0; i < ptr_inventario->obtener_largo(); i++)
     {
         cout << left << TABULACION;
@@ -278,7 +277,7 @@ void mostrar_inventario(Jugador &jugador)
     }
     cout << left << TABULACION;
     cout << setfill(' ') << setw(ancho) << BOMBAS << setfill(' ') << setw(1) << SEPARADOR_GRILLA_DERECHA;
-    cout << setfill(' ') << setw(ancho) << jugador.obtener_bombas().obtener_cantidad() << setfill(' ') << setw(1) << endl;
+    cout << setfill(' ') << setw(ancho) << jugador->obtener_bombas().obtener_cantidad() << setfill(' ') << setw(1) << endl;
 }
 void imprimir_con_retardo(string mensaje, int retardo_milisegundos)
 {

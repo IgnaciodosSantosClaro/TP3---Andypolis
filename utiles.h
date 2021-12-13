@@ -61,41 +61,41 @@ void asignar_materiales(string nombre, Material_consumible &material);
 
 void cargar_objetivos(Vector_objetivo &objetivos_totales, int cant_maxima_escuela);
 
-bool puede_reparar(Casillero *casillero_elegido, Jugador &jugador);
+bool puede_reparar(Casillero *casillero_elegido, Jugador *jugador);
 
-bool tiene_energia(Jugador &jugador, int energia_necesaria);
+bool tiene_energia(Jugador *jugador, int energia_necesaria);
 
-//PRE: -
-//POS: Imprime por pantalla el mensaje correspondiente al error.
+// PRE: -
+// POS: Imprime por pantalla el mensaje correspondiente al error.
 void procesar_errores(Errores error);
 
-//PRE: El Jugador esta bien cargado.
-//POS: Devuelve el estado de la verificacion de la construccion.
-Errores verificar_construccion(Jugador &jugador, string nombre_edificio);
+// PRE: El Jugador esta bien cargado.
+// POS: Devuelve el estado de la verificacion de la construccion.
+Errores verificar_construccion(Jugador *jugador, string nombre_edificio);
 
-//PRE: -
-//POS: Devuelve el estado de la validacion de las coordenadas.
+// PRE: -
+// POS: Devuelve el estado de la validacion de las coordenadas.
 Errores validar_coordenadas_construccion(int coord_x, int coord_y, Matriz_casillero &mapa);
 
-//PRE: -
-//POS: Devuelve el estado de la validacion de las coordenadas.
+// PRE: -
+// POS: Devuelve el estado de la validacion de las coordenadas.
 Errores validar_coordenadas_destruccion(int coord_x, int coord_y, Matriz_casillero &mapa, int numero_jugador);
 
-//PRE: Jugador esta bien cargado.
-//POS: Devuelve un string con el color de edificio sano correspondiente al numero de jugador.
-string asignar_color_edificio_sano(Jugador &jugador);
+// PRE: Jugador esta bien cargado.
+// POS: Devuelve un string con el color de edificio sano correspondiente al numero de jugador.
+string asignar_color_edificio_sano(Jugador *jugador);
 
-//PRE: El Grafo y la Matriz_casillero estan bien cargados.
-//POS: Actualiza las aristas de un vertice.
-void actualizar_aristas_grafo(Matriz_casillero &mapa, Grafo &grafo, Coordenada coordenada, int peso);
+// PRE: El Grafo y la Matriz_casillero estan bien cargados.
+// POS: Actualiza las aristas de un vertice.
+void actualizar_aristas_grafo(Matriz_casillero &mapa, Grafo *grafo, Coordenada coordenada, int peso);
 
-//PRE: Jugador  y mapa estan bien cargados.
-//POS: Ubica al jugador en la coordenada ingresada por el usuario.
-void inicializar_posicion_jugador(Matriz_casillero &mapa, Jugador &jugador);
+// PRE: Jugador  y mapa estan bien cargados.
+// POS: Ubica al jugador en la coordenada ingresada por el usuario.
+void inicializar_posicion_jugador(Matriz_casillero &mapa, Jugador *jugador);
 
-//PRE: Jugador esta bien cargado.
-//POS: Devuelve true si la energia > 0 y false en caso contrario.
-bool es_turno_valido(Jugador &jugador);
+// PRE: Jugador esta bien cargado.
+// POS: Devuelve true si la energia > 0 y false en caso contrario.
+bool es_turno_valido(Jugador *jugador);
 
 //PRE: El jugadaor esta bien cargado.
 //POS: Actualiza el inventario del jugador con el material pasado por parametro.

@@ -2,6 +2,7 @@
 
 Diccionario::Diccionario()
 {
+    cout << "cree diccionario" << endl;
     arbol = new ABB<Edificio>;
 }
 
@@ -50,6 +51,6 @@ Vector<Edificio *> Diccionario::arbol_a_vector()
 Diccionario::~Diccionario()
 {
     // arbol->~ABB();
+    cout << "Elimine Diccionario" << endl;
     delete arbol;
-    cout << "Mori diccionario" << endl;
 }

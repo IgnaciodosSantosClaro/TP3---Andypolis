@@ -25,7 +25,7 @@ void obtener_coordenadas(int &coord_x, int &coord_y, int max_x, int max_y)
     pedir_coordenada(coord_x, coord_y);
     if ((coord_x > max_x) || (coord_y > max_y))
     {
-        cout << COLOR_TEXTO_ROJO << COORDENADA_INALCANZABLE << COLOR_TEXTO_BLANCO <<  endl;
+        cout << COLOR_TEXTO_ROJO << COORDENADA_INALCANZABLE << COLOR_TEXTO_BLANCO << endl;
         obtener_coordenadas(coord_x, coord_y, max_x, max_y);
     }
 }
@@ -262,21 +262,21 @@ void cargar_objetivos(Vector_objetivo &objetivos_totales, int cant_maxima_escuel
     objetivos_totales.agregar_objetivo_simple(NOMBRE_ARMADO, DESCRIPCION_ARMADO, ELEMENTO_ARMADO, CANTIDAD_MINERO);
     objetivos_totales.agregar_objetivo_simple(NOMBRE_EXTREMISTA, DESCRIPCION_EXTREMISTA, ELEMENTO_EXTREMISTA, CANTIDAD_EXTREMISTA);
 }
-bool puede_reparar(Casillero *casillero_elegido, Jugador &jugador)
+bool puede_reparar(Casillero *casillero_elegido, Jugador *jugador)
 {
     Casillero_construible *construible_ptr;
     bool reparar = false;
     if ((construible_ptr = dynamic_cast<Casillero_construible *>(casillero_elegido)) && casillero_elegido->casillero_ocupado() == true)
     {
-        if (construible_ptr->obtener_edificio().obtener_dueno() == jugador.obtener_identidad())
+        if (construible_ptr->obtener_edificio().obtener_dueno() == jugador->obtener_identidad())
         {
-            Edificio *edificio_modelo = jugador.obtener_edificios()->consulta(construible_ptr->obtener_edificio().obtener_nombre());
+            Edificio *edificio_modelo = jugador->obtener_edificios()->consulta(construible_ptr->obtener_edificio().obtener_nombre());
             int madera_necesaria = (int)(edificio_modelo->obtener_material(POSICION_MADERA).obtener_cantidad() * 0.25);
             int metal_necesaria = (int)(edificio_modelo->obtener_material(POSICION_METAL).obtener_cantidad() * 0.25);
             int piedra_necesaria = (int)(edificio_modelo->obtener_material(POSICION_PIEDRA).obtener_cantidad() * 0.25);
-            int madera_jugador = (int)(jugador.obtener_inventario()->obtener_por_nombre(MADERA)->obtener_cantidad());
-            int metal_jugador = (int)(jugador.obtener_inventario()->obtener_por_nombre(METAL)->obtener_cantidad());
-            int piedra_jugador = (int)(jugador.obtener_inventario()->obtener_por_nombre(PIEDRA)->obtener_cantidad());
+            int madera_jugador = (int)(jugador->obtener_inventario()->obtener_por_nombre(MADERA).obtener_cantidad());
+            int metal_jugador = (int)(jugador->obtener_inventario()->obtener_por_nombre(METAL).obtener_cantidad());
+            int piedra_jugador = (int)(jugador->obtener_inventario()->obtener_por_nombre(PIEDRA).obtener_cantidad());
             if ((madera_necesaria <= madera_jugador) && (metal_necesaria <= metal_jugador) && (piedra_necesaria <= piedra_jugador))
             {
                 reparar = true;
@@ -285,43 +285,43 @@ bool puede_reparar(Casillero *casillero_elegido, Jugador &jugador)
     }
     return reparar;
 }
-bool tiene_energia(Jugador &jugador, int energia_necesaria)
+bool tiene_energia(Jugador *jugador, int energia_necesaria)
 {
-    return (jugador.obtener_energia() >= energia_necesaria);
+    return (jugador->obtener_energia() >= energia_necesaria);
 }
 
-Errores verificar_construccion(Jugador &jugador, string nombre_edificio)
+Errores verificar_construccion(Jugador *jugador, string nombre_edificio)
 {
     Errores estado = EXITO;
-    if(jugador.obtener_edificios()->consulta(nombre_edificio) == nullptr)
+    if (jugador->obtener_edificios()->consulta(nombre_edificio) == nullptr)
     {
         estado = ERROR_NOMBRE_EDIFICIO;
     }
     else
     {
-        Edificio* edificio_objetivo = jugador.obtener_edificios()->consulta(nombre_edificio);
-        int pos_piedra = jugador.obtener_inventario()->obtener_pos_material(PIEDRA);
-        int cant_piedra = jugador.obtener_inventario()->obtener_valor(pos_piedra)->obtener_cantidad();
+        Edificio *edificio_objetivo = jugador->obtener_edificios()->consulta(nombre_edificio);
+        int pos_piedra = jugador->obtener_inventario()->obtener_pos_material(PIEDRA);
+        int cant_piedra = jugador->obtener_inventario()->obtener_valor(pos_piedra)->obtener_cantidad();
 
-        int pos_madera = jugador.obtener_inventario()->obtener_pos_material(MADERA);
-        int cant_madera = jugador.obtener_inventario()->obtener_valor(pos_madera)->obtener_cantidad();
+        int pos_madera = jugador->obtener_inventario()->obtener_pos_material(MADERA);
+        int cant_madera = jugador->obtener_inventario()->obtener_valor(pos_madera)->obtener_cantidad();
 
-        int pos_metal = jugador.obtener_inventario()->obtener_pos_material(METAL);
-        int cant_metal = jugador.obtener_inventario()->obtener_valor(pos_metal)->obtener_cantidad();
+        int pos_metal = jugador->obtener_inventario()->obtener_pos_material(METAL);
+        int cant_metal = jugador->obtener_inventario()->obtener_valor(pos_metal)->obtener_cantidad();
 
-        if(cant_piedra < edificio_objetivo->obtener_material(0).obtener_cantidad())
+        if (cant_piedra < edificio_objetivo->obtener_material(0).obtener_cantidad())
         {
             estado = ERROR_CANT_PIEDRA;
         }
-        else if(cant_madera < edificio_objetivo->obtener_material(1).obtener_cantidad())
+        else if (cant_madera < edificio_objetivo->obtener_material(1).obtener_cantidad())
         {
             estado = ERROR_CANT_MADERA;
         }
-        else if(cant_metal < edificio_objetivo->obtener_material(2).obtener_cantidad())
+        else if (cant_metal < edificio_objetivo->obtener_material(2).obtener_cantidad())
         {
             estado = ERROR_CANT_METAL;
         }
-        else if(edificio_objetivo->obtener_cant_construidos() == edificio_objetivo->obtener_cant_max())
+        else if (edificio_objetivo->obtener_cant_construidos() == edificio_objetivo->obtener_cant_max())
         {
             estado = ERROR_CANT_MAXIMA;
         }
@@ -331,46 +331,46 @@ Errores verificar_construccion(Jugador &jugador, string nombre_edificio)
 
 void procesar_errores(Errores error)
 {
-    switch(error)
+    switch (error)
     {
-        case ERROR_NOMBRE_EDIFICIO:
-            cout << COLOR_TEXTO_ROJO << EDIFICIO_INEXISTENTE << COLOR_TEXTO_BLANCO << endl;
-            break;
-        case ERROR_CANT_MADERA:
-            cout << COLOR_TEXTO_ROJO << MADERA_INSUFICIENTE << COLOR_TEXTO_BLANCO <<  endl;
-            break;
-        case ERROR_CANT_PIEDRA:
-            cout << COLOR_TEXTO_ROJO << PIEDRA_INSUFICIENTE << COLOR_TEXTO_BLANCO <<  endl;
-            break;
-        case ERROR_CANT_METAL:
-            cout << COLOR_TEXTO_ROJO << METAL_INSUFICIENTE << COLOR_TEXTO_BLANCO <<  endl;
-            break;
-        case ERROR_CANT_MAXIMA:
-            cout << COLOR_TEXTO_ROJO << MAXIMO_ALCANZADO << COLOR_TEXTO_BLANCO <<  endl;
-            break;
-        case ERROR_COORDENADA_INVALIDA:
-            cout << COLOR_TEXTO_ROJO << COORDENADA_INVALIDA << COLOR_TEXTO_BLANCO <<  endl;
-            break;
-        case ERROR_COORDENADA_INALCANZABLE:
-            cout << COLOR_TEXTO_ROJO << COORDENADA_INALCANZABLE << COLOR_TEXTO_BLANCO <<  endl;
-            break;
-        case ERROR_COORDENADA_INACCESIBLE:
-            cout << COLOR_TEXTO_ROJO << COORDENADA_INACCESIBLE << COLOR_TEXTO_BLANCO <<  endl;
-            break;
-        case ERROR_COORDENADA_OCUPADA:
-            cout << COLOR_TEXTO_ROJO << COORDENADA_OCUPADA << COLOR_TEXTO_BLANCO <<  endl;
-            break;
-        case ERROR_COORDENADA_HABITADA:
-            cout << COLOR_TEXTO_ROJO << COORDENADA_HABITADA << COLOR_TEXTO_BLANCO << endl;
-            break;
-        case ERROR_COORDENADA_LIBRE:
-            cout << COLOR_TEXTO_ROJO << COORDENADA_LIBRE << COLOR_TEXTO_BLANCO <<  endl;
-            break;
-        case ERROR_COORDENADA_PROPIA:
-            cout << COLOR_TEXTO_ROJO << COORDENADA_PROPIA << COLOR_TEXTO_BLANCO << endl;
-            break;
-        default:
-            break;
+    case ERROR_NOMBRE_EDIFICIO:
+        cout << COLOR_TEXTO_ROJO << EDIFICIO_INEXISTENTE << COLOR_TEXTO_BLANCO << endl;
+        break;
+    case ERROR_CANT_MADERA:
+        cout << COLOR_TEXTO_ROJO << MADERA_INSUFICIENTE << COLOR_TEXTO_BLANCO << endl;
+        break;
+    case ERROR_CANT_PIEDRA:
+        cout << COLOR_TEXTO_ROJO << PIEDRA_INSUFICIENTE << COLOR_TEXTO_BLANCO << endl;
+        break;
+    case ERROR_CANT_METAL:
+        cout << COLOR_TEXTO_ROJO << METAL_INSUFICIENTE << COLOR_TEXTO_BLANCO << endl;
+        break;
+    case ERROR_CANT_MAXIMA:
+        cout << COLOR_TEXTO_ROJO << MAXIMO_ALCANZADO << COLOR_TEXTO_BLANCO << endl;
+        break;
+    case ERROR_COORDENADA_INVALIDA:
+        cout << COLOR_TEXTO_ROJO << COORDENADA_INVALIDA << COLOR_TEXTO_BLANCO << endl;
+        break;
+    case ERROR_COORDENADA_INALCANZABLE:
+        cout << COLOR_TEXTO_ROJO << COORDENADA_INALCANZABLE << COLOR_TEXTO_BLANCO << endl;
+        break;
+    case ERROR_COORDENADA_INACCESIBLE:
+        cout << COLOR_TEXTO_ROJO << COORDENADA_INACCESIBLE << COLOR_TEXTO_BLANCO << endl;
+        break;
+    case ERROR_COORDENADA_OCUPADA:
+        cout << COLOR_TEXTO_ROJO << COORDENADA_OCUPADA << COLOR_TEXTO_BLANCO << endl;
+        break;
+    case ERROR_COORDENADA_HABITADA:
+        cout << COLOR_TEXTO_ROJO << COORDENADA_HABITADA << COLOR_TEXTO_BLANCO << endl;
+        break;
+    case ERROR_COORDENADA_LIBRE:
+        cout << COLOR_TEXTO_ROJO << COORDENADA_LIBRE << COLOR_TEXTO_BLANCO << endl;
+        break;
+    case ERROR_COORDENADA_PROPIA:
+        cout << COLOR_TEXTO_ROJO << COORDENADA_PROPIA << COLOR_TEXTO_BLANCO << endl;
+        break;
+    default:
+        break;
     }
 }
 
@@ -378,15 +378,15 @@ Errores validar_coordenadas_construccion(int coord_x, int coord_y, Matriz_casill
 {
     Errores estado_coordenadas = EXITO;
 
-    if(mapa.obtener_tipo_casillero(coord_x, coord_y) != CASILLERO_CONSTRUIBLE)
+    if (mapa.obtener_tipo_casillero(coord_x, coord_y) != CASILLERO_CONSTRUIBLE)
     {
         estado_coordenadas = ERROR_COORDENADA_INACCESIBLE;
     }
-    else if(mapa.obtener_dato(coord_x, coord_y)->casillero_ocupado())
+    else if (mapa.obtener_dato(coord_x, coord_y)->casillero_ocupado())
     {
         estado_coordenadas = ERROR_COORDENADA_OCUPADA;
     }
-    else if(mapa.obtener_dato(coord_x, coord_y)->casillero_habitado())
+    else if (mapa.obtener_dato(coord_x, coord_y)->casillero_habitado())
     {
         estado_coordenadas = ERROR_COORDENADA_HABITADA;
     }
@@ -397,23 +397,23 @@ Errores validar_coordenadas_construccion(int coord_x, int coord_y, Matriz_casill
 Errores validar_coordenadas_destruccion(int coord_x, int coord_y, Matriz_casillero &mapa, int numero_jugador)
 {
     Errores estado_coordenadas = EXITO;
-    if(mapa.obtener_tipo_casillero(coord_x, coord_y) != CASILLERO_CONSTRUIBLE)
+    if (mapa.obtener_tipo_casillero(coord_x, coord_y) != CASILLERO_CONSTRUIBLE)
     {
         estado_coordenadas = ERROR_COORDENADA_INACCESIBLE;
     }
-    else if(!mapa.obtener_dato(coord_x, coord_y)->casillero_ocupado())
+    else if (!mapa.obtener_dato(coord_x, coord_y)->casillero_ocupado())
     {
         estado_coordenadas = ERROR_COORDENADA_LIBRE;
     }
-    else if(mapa.obtener_dato(coord_x, coord_y)->casillero_habitado())
+    else if (mapa.obtener_dato(coord_x, coord_y)->casillero_habitado())
     {
         estado_coordenadas = ERROR_COORDENADA_HABITADA;
     }
     else
     {
-        Casillero_construible* puntero_casillero = dynamic_cast<Casillero_construible*>(mapa.obtener_dato(coord_x, coord_y));
+        Casillero_construible *puntero_casillero = dynamic_cast<Casillero_construible *>(mapa.obtener_dato(coord_x, coord_y));
         Edificio edificio_objetivo = puntero_casillero->obtener_edificio();
-        if(numero_jugador != edificio_objetivo.obtener_dueno())
+        if (numero_jugador != edificio_objetivo.obtener_dueno())
         {
             estado_coordenadas = ERROR_COORDENADA_PROPIA;
         }
@@ -421,11 +421,10 @@ Errores validar_coordenadas_destruccion(int coord_x, int coord_y, Matriz_casille
     return estado_coordenadas;
 }
 
-
-string asignar_color_edificio_sano(Jugador &jugador)
+string asignar_color_edificio_sano(Jugador *jugador)
 {
     string color_edificio;
-    if(jugador.obtener_identidad() == JUGADOR_1)
+    if (jugador->obtener_identidad() == JUGADOR_1)
     {
         color_edificio = COLOR_EDIFICIO_SANO_JUG_1;
     }
@@ -436,7 +435,7 @@ string asignar_color_edificio_sano(Jugador &jugador)
     return color_edificio;
 }
 
-void actualizar_aristas_grafo(Matriz_casillero &mapa, Grafo &grafo, Coordenada coordenada, int peso)
+void actualizar_aristas_grafo(Matriz_casillero &mapa, Grafo *grafo, Coordenada coordenada, int peso)
 {
     int fila = coordenada.obtener_coordenadas().coordenada_x;
     int columna = coordenada.obtener_coordenadas().coordenada_y;
@@ -446,30 +445,29 @@ void actualizar_aristas_grafo(Matriz_casillero &mapa, Grafo &grafo, Coordenada c
     Casillero *vecino_abajo = mapa.obtener_casillero_vecino(mapa.obtener_dato(fila, columna), ABAJO);
     Casillero *vecino_arriba = mapa.obtener_casillero_vecino(mapa.obtener_dato(fila, columna), ARRIBA);
 
-    if(vecino_derecho != nullptr)
+    if (vecino_derecho != nullptr)
     {
         string coord_derecha = vecino_derecho->obtener_posicion().coordenada_a_string();
-        grafo.actualizar_camino(coord_derecha, destino, peso);
+        grafo->actualizar_camino(coord_derecha, destino, peso);
     }
-    if(vecino_izquierdo != nullptr)
+    if (vecino_izquierdo != nullptr)
     {
         string coord_izquierda = vecino_izquierdo->obtener_posicion().coordenada_a_string();
-        grafo.actualizar_camino(coord_izquierda, destino, peso);
+        grafo->actualizar_camino(coord_izquierda, destino, peso);
     }
-    if(vecino_abajo != nullptr)
+    if (vecino_abajo != nullptr)
     {
         string coord_abajo = vecino_abajo->obtener_posicion().coordenada_a_string();
-        grafo.actualizar_camino(coord_abajo, destino, peso);
+        grafo->actualizar_camino(coord_abajo, destino, peso);
     }
-    if(vecino_arriba != nullptr)
+    if (vecino_arriba != nullptr)
     {
         string coord_arriba = vecino_arriba->obtener_posicion().coordenada_a_string();
-        grafo.actualizar_camino(coord_arriba, destino, peso);
+        grafo->actualizar_camino(coord_arriba, destino, peso);
     }
-
 }
 
-void inicializar_posicion_jugador(Matriz_casillero &mapa, Jugador &jugador)
+void inicializar_posicion_jugador(Matriz_casillero &mapa, Jugador *jugador)
 {
     int fila = 0;
     int columna = 0;
@@ -481,25 +479,3 @@ bool es_turno_valido(Jugador &jugador)
 {
     return (jugador.obtener_energia() > ENERGIA_MINIMA);
 }
-
-void actualizar_inventario(Jugador &jugador, Material_consumible &material)
-{
-    jugador.obtener_inventario()->obtener_por_nombre(material.obtener_nombre())->aumentar_cantidad(material.obtener_cantidad());
-}
-
-void recolectar_material(Casillero* casillero, Jugador &jugador)
-{
-    Casillero_transitable* casillero_material = dynamic_cast<Casillero_transitable*>(casillero);
-    if(casillero_material->casillero_ocupado())
-    {
-        Material_consumible material_casillero = casillero_material->obtener_material();
-        actualizar_inventario(jugador, material_casillero);
-        casillero_material->desocupar_casillero();
-        cout << COLOR_TEXTO_VERDE << "Has recolectado " << material_casillero.obtener_cantidad() << " unidades de " << material_casillero.obtener_nombre() << COLOR_TEXTO_BLANCO << endl;
-    }
-}
-
-
-
-
-

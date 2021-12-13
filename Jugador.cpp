@@ -4,6 +4,7 @@ using namespace std;
 
 Jugador::Jugador()
 {
+    cout << "cree jugador " << this->obtener_nombre() << endl;
     this->energia = ENERGIA_INICIAL;
     this->edificios = new Diccionario;
     this->inventario = new Vector_material;
@@ -45,6 +46,7 @@ Jugador::Jugador()
 //}
 Jugador::Jugador(string nombre, tipo_jugador identidad)
 {
+    cout << "cree jugador " << this->obtener_nombre() << endl;
     this->nombre = nombre;
     this->identidad_jugador = identidad;
     this->energia = ENERGIA_INICIAL;
@@ -163,7 +165,7 @@ Vector_material *Jugador::obtener_inventario()
 
 Jugador::~Jugador()
 {
-    cout << "Mori jugador" << endl;
+    cout << "elimine jugador " << this->obtener_nombre() << endl;
     delete this->edificios;
     delete this->inventario;
     delete this->objetivo_principal;
