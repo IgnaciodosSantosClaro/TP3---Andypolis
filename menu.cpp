@@ -52,13 +52,22 @@ void menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, Jugador &ju
     jugador_vec[0] = jugador1;
     jugador_vec[1] = jugador2;
     int jugador_actual = elegir_jugador_inicial(2); // Parametrizar
-    jugador_actual -= 1;                            // Convierto a indice
+    jugador_actual -= 1;
+    lluvia_recursos(mapa);
+    bool jugo_1 = false;
+    bool jugo_2 = false;
     while (salir != true)
     {
         retardo(2500);
+        if (jugo_1 == true && jugo_2 == true)
+        {
+            lluvia_recursos(mapa);
+            jugo_1 = false;
+            jugo_2 = false;
+        }
         mostrar_mapa(mapa, 5, 3);
         mostrar_menu_juego();
-        salir = procesar_menu_juego(mapa, dicc_edificios, jugador_actual, jugador_vec);
+        salir = procesar_menu_juego(mapa, dicc_edificios, jugador_actual, jugador_vec, jugo_1, jugo_2);
     }
 }
 
@@ -128,9 +137,10 @@ bool procesar_menu_inicial(Matriz_casillero &mapa, Diccionario &dicc_edificios, 
     return salir;
 }
 
-bool procesar_menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, int &indice_jugador_actual, Jugador *jugador_vec)
+bool procesar_menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, int &indice_jugador_actual, Jugador *jugador_vec, bool &jugo_1, bool &jugo_2)
 {
     bool salir = false; // Verificar e imprimir energia
+
     cout << jugador_vec[indice_jugador_actual].obtener_nombre() << ESPACIO;
     cout << INGRESE_ACCION << endl;
     Input input;
@@ -139,6 +149,7 @@ bool procesar_menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, in
     confirmar_opcion_valida(entrada_usuario, input, CONSTRUIR_EDIFICIO_POR_NOMBRE, GUARDAR_Y_SALIR);
     int opcion_elegida = input.obtener_input();
     system(CLR_SCREEN);
+    mostrar_menu_juego();
     switch (opcion_elegida)
     {
     case CONSTRUIR_EDIFICIO_POR_NOMBRE:
@@ -152,7 +163,15 @@ bool procesar_menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, in
         // opcion_elegida = DEMOLER_EDIFICIO_POR_COORDENADA;
         break;
     case ATACAR_EDIFICIO_POR_COORDENADA:
-        atacar(mapa, jugador_vec[indice_jugador_actual]);
+
+        if (tiene_energia(jugador_vec[indice_jugador_actual], ENERGIA_ATACAR))
+        {
+            atacar(mapa, jugador_vec[indice_jugador_actual]);
+        }
+        else
+        {
+            imprimir_con_retardo("Energia insuficiente", 2000);
+        }
         break;
     case REPARAR_EDIFICIO_POR_COORDENADA:
         // opcion_elegida = REPARAR_EDIFICIO_POR_COORDENADA;
@@ -189,10 +208,14 @@ bool procesar_menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, in
         // opcion_elegida = FINALIZAR_TURNO;
         if (indice_jugador_actual == JUGADOR_1)
         {
+            cout << "Jugo 1" << endl;
+            jugo_1 = true;
             indice_jugador_actual = JUGADOR_2;
         }
         else
         {
+            cout << "Jugo 2" << endl;
+            jugo_2 = true;
             indice_jugador_actual = JUGADOR_1;
         }
 
@@ -200,6 +223,7 @@ bool procesar_menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, in
     case GUARDAR_Y_SALIR:
         // opcion_elegida = GUARDAR_Y_SALIR;
         salir = true;
+
         break;
     default:
         cout << "no entendi" << endl;

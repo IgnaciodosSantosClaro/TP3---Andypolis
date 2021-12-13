@@ -5,9 +5,9 @@
 #include "configuracion.h"
 #include "Input.h"
 #include "mensajes.h"
-#include "menu.h"
 #include "Vector_objetivo.h"
-#include "Diccionario.h"
+#include "Jugador.h"
+#include "Casillero.h"
 using namespace std;
 // PRE:-
 // POS:Es bloqueante, espera que el usuario ingrese un entero;
@@ -60,4 +60,5 @@ void asignar_materiales(string nombre, Material_consumible &material);
 void cargar_objetivos(Vector_objetivo &objetivos_totales, int cant_maxima_escuela);
 bool puede_reparar(Casillero *casillero_elegido, Jugador &jugador);
 bool tiene_energia(Jugador &jugador, int energia_necesaria);
+
 #endif // UTILIES_H

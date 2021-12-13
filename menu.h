@@ -4,11 +4,9 @@
 #include "configuracion.h"
 #include "Jugador.h"
 #include "Matriz_casillero.h"
-#include "Vector_material.h"
 #include "Input.h"
 #include "utiles.h"
 #include "mensajes.h"
-#include "interfaz.h"
 #include "archivos.h"
 #include "mecanicas_juego.h"
 // Poner en minúscula el nombre del archivo
@@ -40,7 +38,7 @@ enum opciones_juego
 };
 void iniciar_juego();
 // Cambia indice, recibir por referencia
-bool procesar_menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, int &indice, Jugador *jugador_vec);
+bool procesar_menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, int &indice, Jugador *jugador_vec, bool &jugo_1, bool &jugo_2);
 void menu_inicial(Matriz_casillero &mapa, Diccionario &dicc_edificios, Jugador &jugador1, Jugador &jugador2);
 bool procesar_menu_inicial(Matriz_casillero &mapa, Diccionario &dicc_edificios, Jugador &jugador1, Jugador &jugador2);
 int obtener_opcion_ingresada();

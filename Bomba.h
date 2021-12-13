@@ -4,7 +4,7 @@
 #include "Material_consumible.h"
 #include "Casillero_construible.h"
 #include "Edificio.h"
-//#include "interfaz.h" //Por algun motivo esto rompe todo
+#include "animaciones.h"
 #include <chrono>
 #include <thread>
 

@@ -123,8 +123,12 @@ void mostrar_referencias_salud_edificios_danados()
 void mostrar_referencia_materiales()
 {
     cout << TABULACION << "Referencias materiales";
-    // Material pinza = Material("pinza", 1);
-    // pinza.mostrar_leyenda('Y');
+    Material piedra = Material(PIEDRA, 1);
+    piedra.mostrar_leyenda(ICONO_PIEDRA);
+    Material madera = Material(MADERA, 1);
+    madera.mostrar_leyenda(ICONO_MADERA);
+    Material metal = Material(METAL, 1);
+    metal.mostrar_leyenda(ICONO_METAL);
 }
 
 void mostrar_mapa(Matriz_casillero &mapa, int ancho_grilla, int largo_grilla)
@@ -255,34 +259,6 @@ void mostrar_coordenadas(Matriz_casillero &mapa, string nombre_edificio)
         }
     }
 }
-
-void bombardeo(int retardo_milisegundos)
-{
-    sleep_for(milliseconds(retardo_milisegundos));
-    trueno(25, COLOR_ROJO_OSCURO);
-    trueno(15, COLOR_ROJO);
-    trueno(20, COLOR_AMARILLO_OSCURO);
-    trueno(30, COLOR_AMARILLO);
-    trueno(10, COLOR_ROJO_OSCURO);
-    trueno(25, COLOR_ROJO);
-    trueno(30, COLOR_AMARILLO);
-    trueno(50, COLOR_BLANCO);
-    cout << COLOR_NEGRO << endl;
-}
-void trueno(int milisegundos_duracion, string color)
-{
-
-    cout << color;
-    for (int i = 0; i < LARGO_TRUENO; i++)
-    {
-
-        cout.width(ANCHO_TRUENO);
-        cout.fill(ESPACIO);
-        cout << endl;
-    }
-    sleep_for(milliseconds(milisegundos_duracion));
-    system(CLR_SCREEN);
-};
 
 void mostrar_inventario(Jugador &jugador)
 {

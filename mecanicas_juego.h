@@ -9,7 +9,9 @@
 #include "mensajes.h"
 #include "Input.h"
 #include "utiles.h"
-
+#include "interfaz.h"
+#include "animaciones.h"
+#include <climits>
 // Poner en minúscula el nombre del archivo
 
 // PRE: El diccionario esta cargado
@@ -32,4 +34,5 @@ int castear_string_a_int(string valor);
 void procesar_errores(Errores error);
 void consultar_coordenada(Matriz_casillero &mapa);
 void reparar(Matriz_casillero &mapa, Jugador &jugador);
+void lluvia_recursos(Matriz_casillero &mapa);
 #endif // MECANICAS_JUEGO_H

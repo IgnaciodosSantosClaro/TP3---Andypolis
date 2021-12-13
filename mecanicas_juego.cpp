@@ -1,5 +1,4 @@
 #include "mecanicas_juego.h"
-#include <climits>
 
 void modificar_edificio(Diccionario &diccionario)
 {
@@ -50,7 +49,6 @@ void atacar(Matriz_casillero &mapa, Jugador &jugador)
         casillero_elegido = dynamic_cast<Casillero_construible *>(mapa.obtener_dato(coord_x, coord_y));
         Bomba bombas_disponibles = jugador.obtener_bombas();
         bombas_disponibles.tirar_bomba(*casillero_elegido);
-
         jugador.fijar_bombas(bombas_disponibles);
     }
     else
@@ -196,10 +194,86 @@ void reparar(Matriz_casillero &mapa, Jugador &jugador)
         {
             casillero_seleccionado->fijar_color_texto(COLOR_EDIFICIO_SANO_JUG_2);
         }
-        imprimir_con_retardo(MENSAJE_REPARACION_EXITOSA, 2000)
+        imprimir_con_retardo(MENSAJE_REPARACION_EXITOSA, 2000);
+        jugador.modificar_energia(-ENERGIA_REPARAR);
     }
     else
     {
         imprimir_con_retardo(MENSAJE_CASILLERO_NO_REPARABLE, 2000);
+    }
+}
+void lluvia_recursos(Matriz_casillero &mapa)
+{
+    imprimir_con_retardo(MENSAJE_LLUVIA_INICIO, 2000);
+    int limite_filas = mapa.obtener_largo_filas();
+    int limite_columnas = mapa.obtener_largo_columnas();
+
+    int cantidad_metal_a_generar;
+    int cantidad_piedra_a_generar;
+    int cantidad_madera_a_generar;
+    generar_cantidades_de_recursos(cantidad_metal_a_generar, cantidad_piedra_a_generar, cantidad_madera_a_generar);
+    int cantidad_casilleros = cantidad_madera_a_generar + cantidad_piedra_a_generar + cantidad_metal_a_generar;
+    bool generacion_completa = false;
+    int cantidad_metal_generada = 0;
+    int cantidad_piedra_generada = 0;
+    int cantidad_madera_generada = 0;
+    int cantidad_casilleros_completados = 0;
+    int cantidad_casilleros_ocupados = 0;
+    bool mapa_completo = false;
+    while (!generacion_completa)
+    {
+        int fila;
+        int columna;
+        coordenadas_aleatorias(limite_filas, limite_columnas, fila, columna);
+
+        if (mapa.obtener_tipo_casillero(fila, columna) == CASILLERO_TRANSITABLE)
+        {
+            Casillero_transitable *puntero_a_casillero = dynamic_cast<Casillero_transitable *>(mapa.obtener_dato(fila, columna));
+            if (!puntero_a_casillero->casillero_ocupado())
+            {
+
+                if (cantidad_metal_generada < cantidad_metal_a_generar)
+                {
+                    puntero_a_casillero->ocupar_casillero(Material_consumible(METAL, 1, ICONO_METAL));
+                    cantidad_metal_generada++;
+                }
+                else if (cantidad_piedra_generada < cantidad_piedra_a_generar)
+                {
+                    puntero_a_casillero->ocupar_casillero(Material_consumible(PIEDRA, 1, ICONO_PIEDRA));
+                    cantidad_piedra_generada++;
+                }
+                else if (cantidad_madera_generada < cantidad_madera_a_generar)
+                {
+                    puntero_a_casillero->ocupar_casillero(Material_consumible(MADERA, 1, ICONO_MADERA));
+                    cantidad_madera_generada++;
+                }
+                cantidad_casilleros_completados++;
+            }
+            else
+            {
+                cantidad_casilleros_ocupados++;
+            }
+        }
+        if (cantidad_casilleros_completados == cantidad_casilleros)
+        {
+            generacion_completa = true;
+        }
+        else if (cantidad_casilleros_ocupados == mapa.obtener_cant_transitables())
+        {
+            generacion_completa = true;
+            mapa_completo = true;
+        }
+    }
+    if (mapa_completo)
+    {
+        cout << MENSAJE_TRANSITABLES_COMPLETO << endl;
+    }
+    else
+    {
+        tormenta(1);
+        cout << MENSAJE_LLUVIA_COMPLETA << endl;
+        cout << PIEDRA << ESPACIO << cantidad_piedra_generada << endl;
+        cout << METAL << ESPACIO << cantidad_metal_generada << endl;
+        cout << MADERA << ESPACIO << cantidad_madera_generada << endl;
     }
 }

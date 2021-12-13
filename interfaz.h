@@ -3,11 +3,11 @@
 #include "Matriz_casillero.h"
 #include "Diccionario.h"
 #include "Jugador.h"
-#include <iomanip>
+//#include <iomanip>
 #include <chrono>
 #include <thread>
-#include "utiles.h"
-#include "configuracion.h"
+//#include "utiles.h"
+//#include "configuracion.h"
 
 enum filas_con_referencia
 {

@@ -17,6 +17,8 @@ void Bomba::tirar_bomba(Casillero_construible &casillero_objetivo)
         {
             this->cantidad--;
             Edificio edificio_objetivo = casillero_objetivo.obtener_edificio();
+            cout << MENSAJE_INICIO_BOMBA << edificio_objetivo.obtener_nombre() << endl;
+            bombardeo(1000);
             if (edificio_objetivo.atacar_edificio() == EDIFICIO_DESTRUIDO)
             {
                 cout << MENSAJE_BOMBA_DESTRUYO << edificio_objetivo.obtener_nombre() << endl;
@@ -24,10 +26,6 @@ void Bomba::tirar_bomba(Casillero_construible &casillero_objetivo)
             }
             else
             {
-                cout << MENSAJE_INICIO_BOMBA << edificio_objetivo.obtener_nombre() << endl;
-                sleep_for(milliseconds(1000));
-                // bombardeo(250);
-                sleep_for(milliseconds(1000));
                 cout << MENSAJE_BOMBA_DANO << edificio_objetivo.obtener_nombre() << endl;
 
                 if (casillero_objetivo.obtener_edificio().obtener_dueno() == JUGADOR_1)
