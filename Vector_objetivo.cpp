@@ -26,6 +26,11 @@ Vector_objetivo::Vector_objetivo(const Vector_objetivo &vector_a_copiar)
 
 Vector_objetivo Vector_objetivo::operator=(const Vector_objetivo &vector_a_copiar)
 {
+    for (int posicion = 0; posicion < this->espacio_reservado; posicion++)
+    {
+        delete this->obtener_valor(posicion);
+    }
+
     for (int posicion = 0; posicion < vector_a_copiar.largo_actual; posicion++)
     {
         if (Objetivo_simple *objetivo_ptr = dynamic_cast<Objetivo_simple *>(vector_a_copiar.datos[posicion]))

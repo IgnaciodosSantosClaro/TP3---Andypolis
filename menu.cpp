@@ -62,7 +62,7 @@ void menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, Jugador &ju
     grafo_vec[POSICION_JUGADOR_2] = grafo2;
     int jugador_actual = elegir_jugador_inicial(MAXIMO_JUGADORES);
     jugador_actual -= 1; // Paso a indice
-    if(es_partida_nueva)
+    if (es_partida_nueva)
     {
         inicializar_posicion_jugador(mapa, jugador_vec[POSICION_JUGADOR_1]);
         inicializar_posicion_jugador(mapa, jugador_vec[POSICION_JUGADOR_2]);
@@ -125,7 +125,7 @@ bool procesar_menu_inicial(Matriz_casillero &mapa, Diccionario &dicc_edificios, 
         break;
     case INICIO_LISTAR_TODOS_EDIFICIOS:
         opcion_elegida = INICIO_LISTAR_TODOS_EDIFICIOS;
-         if(!es_partida_nueva)
+        if (!es_partida_nueva)
         {
             cout << TABULACION << "Edificios Jugador 1" << endl;
             listar_todos_edificios(*jugador1.obtener_edificios());
@@ -135,7 +135,7 @@ bool procesar_menu_inicial(Matriz_casillero &mapa, Diccionario &dicc_edificios, 
         }
         else
         {
-             listar_todos_edificios(dicc_edificios);
+            listar_todos_edificios(dicc_edificios);
         }
         break;
     case INICIO_MOSTRAR_MAPA:
@@ -171,9 +171,9 @@ bool procesar_menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, in
     int opcion_elegida = input.obtener_input();
     system(CLR_SCREEN);
     mostrar_menu_juego();
-    if(es_turno_valido(jugador_vec[indice_jugador_actual]))
+    if (es_turno_valido(jugador_vec[indice_jugador_actual]))
     {
-        opcion_elegida = FINALIZAR_TURNO;
+        // opcion_elegida = FINALIZAR_TURNO;
     }
     switch (opcion_elegida)
     {

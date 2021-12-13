@@ -21,17 +21,26 @@ Jugador::Jugador(const Jugador &jugador_copiar)
 }
 Jugador Jugador::operator=(const Jugador &jugador_copiar)
 {
-    cout << "Entre aca" << endl;
     this->energia = ENERGIA_INICIAL;
     this->energia = jugador_copiar.energia;
-    this->edificios = new Diccionario;
-    this->edificios = jugador_copiar.edificios;
-    this->inventario = new Vector_material;
-    this->inventario = jugador_copiar.inventario;
-    this->objetivo_principal = new Objetivo_simple;
-    this->objetivos_secundarios = new Vector_objetivo;
-    *this->objetivo_principal = *jugador_copiar.objetivo_principal;
-    *(this->objetivos_secundarios) = *(jugador_copiar.objetivos_secundarios);
+    Diccionario *dicc_aux = new Diccionario;
+    dicc_aux = jugador_copiar.edificios;
+    delete this->edificios;
+    this->edificios = dicc_aux;
+
+    Vector_material *vector_material_aux = new Vector_material;
+    vector_material_aux = jugador_copiar.inventario;
+    delete this->inventario;
+    this->inventario = vector_material_aux;
+
+    Objetivo_simple *objetivo_simple_aux = new Objetivo_simple;
+    objetivo_simple_aux = jugador_copiar.objetivo_principal;
+    this->objetivo_principal = objetivo_simple_aux;
+
+    Vector_objetivo *vector_objetivo_aux = new Vector_objetivo;
+    vector_objetivo_aux = jugador_copiar.objetivos_secundarios;
+    delete this->objetivos_secundarios;
+    this->objetivos_secundarios = vector_objetivo_aux;
     return *this;
 }
 Jugador::Jugador(string nombre, tipo_jugador identidad)
@@ -158,9 +167,14 @@ Vector_material *Jugador::obtener_inventario()
 
 Jugador::~Jugador()
 {
+    cout << "Mori jugador" << endl;
     delete this->edificios;
     delete this->inventario;
-    cout << "Mori jugador" << endl;
+    delete this->objetivo_principal;
+    delete this->objetivos_secundarios;
+
     this->edificios = nullptr;
     this->inventario = nullptr;
+    this->objetivo_principal = nullptr;
+    this->objetivos_secundarios = nullptr;
 }

@@ -66,6 +66,7 @@ public:
         {
             this->datos[i] = vector_objetivo.datos[i];
         }
+
         this->largo_actual = vector_objetivo.largo_actual;
         this->espacio_reservado = vector_objetivo.espacio_reservado;
     }
@@ -73,16 +74,21 @@ public:
     //  PRE: Toma un objeto tipo vector
     //  POS: Copia el objeto en otro objeto vector independiente
     //   en términos de memoria.
-    Vector operator=(const Vector &vector_objetivo)
+    Vector &operator=(const Vector &vector_objetivo)
     {
-
-        datos = new tipo[vector_objetivo.espacio_reservado];
-        for (int i = 0; i < vector_objetivo.largo_actual; i++)
+        if (this != &vector_objetivo)
         {
-            this->datos[i] = vector_objetivo.datos[i];
+            tipo *nuevos_datos = new tipo[vector_objetivo.espacio_reservado];
+            for (int i = 0; i < vector_objetivo.largo_actual; i++)
+            {
+                nuevos_datos[i] = vector_objetivo.datos[i];
+            }
+            delete[] this->datos;
+            this->datos = nuevos_datos;
+            this->largo_actual = vector_objetivo.largo_actual;
+            this->espacio_reservado = vector_objetivo.espacio_reservado;
         }
-        this->largo_actual = vector_objetivo.largo_actual;
-        this->espacio_reservado = vector_objetivo.espacio_reservado;
+
         return *this;
     }
     // PRE: toma una posicion válida (dentro del espacio reservado)
