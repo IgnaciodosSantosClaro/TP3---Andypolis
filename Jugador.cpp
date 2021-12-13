@@ -80,12 +80,38 @@ void Jugador::modificar_cantidad_bomba(int cantidad)
 //     }
 //     cout << "Bombas: " << bombas.obtener_cantidad() << endl;
 // }
-
+void Jugador::asignar_objetivo_principal(Objetivo *objetivo)
+{
+    Objetivo_simple *objetivo_ptr = dynamic_cast<Objetivo_simple *>(objetivo);
+    this->objetivo_principal = *objetivo_ptr;
+}
+void Jugador::asignar_objetivo_secundario(Objetivo *objetivo)
+{
+    this->objetivos_secundarios.agregar_al_final(objetivo);
+}
 void Jugador::asignar_edificios(Diccionario *diccionario)
 {
     this->edificios = diccionario;
 }
+void Jugador::mostrar_objetivos_restantes()
+{
+    this->objetivo_principal.mostrar_restante();
+    this->objetivos_secundarios.mostrar_restante();
+}
+estado_objetivo Jugador::actualizar_objetivos(string nombre, int cant_incremento)
+{
+    estado_objetivo objetivos_completos = OBJETIVO_INCOMPLETO;
+    if (nombre.compare(NOMBRE_OBJETIVO_PRINCIPAL) == 0)
+    {
 
+        objetivos_completos = this->objetivo_principal.actualizar_objetivo(cant_incremento);
+    }
+    else
+    {
+        objetivos_completos = this->objetivos_secundarios.actualizar_por_nombre(nombre, cant_incremento);
+    }
+    return objetivos_completos;
+}
 Diccionario *Jugador::obtener_edificios()
 {
     return this->edificios;

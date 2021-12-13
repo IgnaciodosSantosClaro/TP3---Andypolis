@@ -277,3 +277,43 @@ void lluvia_recursos(Matriz_casillero &mapa)
         cout << MADERA << ESPACIO << cantidad_madera_generada << endl;
     }
 }
+// Espera dos Vectores objetivos y dos jugadores
+void asignar_objetivos(Vector_objetivo *vector, Jugador *jugador_vec, int cantidad_secundarios)
+{
+    jugador_vec[POSICION_JUGADOR_1].asignar_objetivo_principal(vector[POSICION_JUGADOR_1].obtener_valor(POSICION_OBJETIVO_PRINCIPAL));
+    jugador_vec[POSICION_JUGADOR_2].asignar_objetivo_principal(vector[POSICION_JUGADOR_2].obtener_valor(POSICION_OBJETIVO_PRINCIPAL));
+    Vector<int> indices_jug1;
+    Vector<int> indices_jug2;
+    int indice_1;
+    int indice_2;
+    for (int i = 0; i < cantidad_secundarios; i++)
+    {
+        indice_1 = numero_aleatorio(CANTIDAD_TOTAL_OBJETIVOS_SECUNDARIOS, CANTIDAD_OBJETIVO_PRINCIPAL);
+        indice_2 = numero_aleatorio(CANTIDAD_TOTAL_OBJETIVOS_SECUNDARIOS, CANTIDAD_OBJETIVO_PRINCIPAL);
+        while (indice_repetido(indice_1, indices_jug1) == true)
+        {
+            indice_1 = numero_aleatorio(CANTIDAD_TOTAL_OBJETIVOS_SECUNDARIOS, CANTIDAD_OBJETIVO_PRINCIPAL);
+        }
+        indices_jug1.agregar_al_final(indice_1);
+        jugador_vec[POSICION_JUGADOR_2].asignar_objetivo_secundario(vector[POSICION_JUGADOR_1].obtener_valor(indice_1));
+        while (indice_repetido(indice_2, indices_jug1) == true)
+        {
+            indice_2 = numero_aleatorio(CANTIDAD_TOTAL_OBJETIVOS_SECUNDARIOS, CANTIDAD_OBJETIVO_PRINCIPAL);
+        }
+        indices_jug2.agregar_al_final(indice_2);
+        jugador_vec[POSICION_JUGADOR_2].asignar_objetivo_secundario(vector[POSICION_JUGADOR_2].obtener_valor(indice_2));
+    }
+}
+
+bool indice_repetido(int indice_a_revisar, Vector<int> indices)
+{
+    bool esta_duplicado = false;
+    for (int i = 0; i < indices.obtener_largo(); i++)
+    {
+        if (indice_a_revisar == indices.obtener_valor(i))
+        {
+            esta_duplicado = true;
+        }
+    }
+    return esta_duplicado;
+}

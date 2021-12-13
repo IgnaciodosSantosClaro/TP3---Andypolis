@@ -45,14 +45,17 @@ void menu_inicial(Matriz_casillero &mapa, Diccionario &dicc_edificios, Jugador &
 void menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, Jugador &jugador1, Jugador &jugador2)
 {
     bool salir = false;
-    Jugador jugador_vec[2];
-    Vector_objetivo objetivos_generales[2];
-    cargar_objetivos(objetivos_generales[0], 1); // Poner maximo escuelas
-    cargar_objetivos(objetivos_generales[1], 1); // Falta asignar objetivo a cada jugador y actualizarlos cuando hacen acciones
-    jugador_vec[0] = jugador1;
-    jugador_vec[1] = jugador2;
-    int jugador_actual = elegir_jugador_inicial(2); // Parametrizar
-    jugador_actual -= 1;
+    Jugador jugador_vec[MAXIMO_JUGADORES];
+    Vector_objetivo objetivos_generales[MAXIMO_JUGADORES];
+    cargar_objetivos(objetivos_generales[POSICION_JUGADOR_1], dicc_edificios.consulta(NOMBRE_EDIFICIO_ESCUELA)->obtener_cant_max());
+    cargar_objetivos(objetivos_generales[POSICION_JUGADOR_2], dicc_edificios.consulta(NOMBRE_EDIFICIO_ESCUELA)->obtener_cant_max()); // Falta asignar objetivo a cada jugador y actualizarlos cuando hacen acciones
+
+    asignar_objetivos(objetivos_generales, jugador_vec, 2); // VER por que no asigna
+    jugador_vec[0].mostrar_objetivos_restantes();
+    jugador_vec[POSICION_JUGADOR_1] = jugador1;
+    jugador_vec[POSICION_JUGADOR_2] = jugador2;
+    int jugador_actual = elegir_jugador_inicial(MAXIMO_JUGADORES);
+    jugador_actual -= 1; // Paso a indice
     lluvia_recursos(mapa);
     bool jugo_1 = false;
     bool jugo_2 = false;
@@ -196,6 +199,7 @@ bool procesar_menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, in
         break;
     case MOSTRAR_OBJETIVOS:
         // opcion_elegida = MOSTRAR_OBJETIVOS;
+        jugador_vec[indice_jugador_actual].mostrar_objetivos_restantes();
         break;
     case RECOLECTAR_RECURSOS_PRODUCIDOS:
         // opcion_elegida = RECOLECTAR_RECURSOS_PRODUCIDOS;

@@ -12,12 +12,12 @@ enum tipo_objetivo
 };
 class Vector_objetivo : public Vector<Objetivo *>
 {
-    int pos_objetivo_principal;
+    int cantidad_completos = 0;
 
 public:
     void agregar_objetivo_simple(string nombre, string descripcion, string nombre_elemento_objetivo, int cantidad_objetivo);
     void agregar_objetivo_multiple(Objetivo_multiple &objetivo);
-    void actualizar_por_nombre(string nombre, int cant_incremento);
+    estado_objetivo actualizar_por_nombre(string nombre, int cant_incremento);
     tipo_objetivo obtener_tipo_objetivo(Objetivo *objetivo);
     void actualizar_multiple(string nombre);
     void mostrar_restante();

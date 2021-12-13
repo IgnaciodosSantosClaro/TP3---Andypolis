@@ -20,14 +20,15 @@ void Vector_objetivo::agregar_objetivo_multiple(Objetivo_multiple &objetivo)
     this->agregar_al_final(objetivo_nuevo);
 };
 // Si el nombre coincide objetivo lo actualiza
-void Vector_objetivo::actualizar_por_nombre(string nombre, int cant_incremento)
+estado_objetivo Vector_objetivo::actualizar_por_nombre(string nombre, int cant_incremento)
 {
     int largo_vector = this->obtener_largo();
     bool encontrado = false;
     int i = 0;
+    estado_objetivo estado = OBJETIVO_INCOMPLETO;
+    estado_objetivo estado_vector_objetivo = OBJETIVO_INCOMPLETO;
     while (encontrado == false && i < largo_vector)
     {
-        cout << i << endl;
 
         switch (obtener_tipo_objetivo(this->obtener_valor(i)))
         {
@@ -37,7 +38,7 @@ void Vector_objetivo::actualizar_por_nombre(string nombre, int cant_incremento)
             {
                 cout << i << endl;
                 Objetivo_simple *objetivo_ptr = dynamic_cast<Objetivo_simple *>(this->obtener_valor(i));
-                objetivo_ptr->actualizar_objetivo(cant_incremento);
+                estado = objetivo_ptr->actualizar_objetivo(cant_incremento);
                 encontrado = true;
             };
             break;
@@ -48,7 +49,7 @@ void Vector_objetivo::actualizar_por_nombre(string nombre, int cant_incremento)
             Objetivo_multiple *objetivo_ptr = dynamic_cast<Objetivo_multiple *>(this->obtener_valor(i));
             if (objetivo_ptr->buscar_por_nombre(nombre) != POSICION_INVALIDA)
             {
-                objetivo_ptr->actualizar_objetivo(nombre, cant_incremento);
+                estado = objetivo_ptr->actualizar_objetivo(nombre, cant_incremento);
                 encontrado = true;
             }
             break;
@@ -60,6 +61,15 @@ void Vector_objetivo::actualizar_por_nombre(string nombre, int cant_incremento)
         }
         i++;
     }
+    if (estado == OBJETIVO_COMPLETO)
+    {
+        this->cantidad_completos++;
+        if (this->cantidad_completos == this->obtener_largo())
+        {
+            estado_vector_objetivo = OBJETIVO_COMPLETO;
+        }
+    }
+    return estado_vector_objetivo;
 };
 tipo_objetivo Vector_objetivo::obtener_tipo_objetivo(Objetivo *objetivo)
 {
@@ -77,6 +87,7 @@ tipo_objetivo Vector_objetivo::obtener_tipo_objetivo(Objetivo *objetivo)
 void Vector_objetivo::mostrar_restante()
 {
     int largo_vector = this->obtener_largo();
+    cout << largo_vector << endl;
     for (int i = 0; i < largo_vector; i++)
     {
         this->obtener_valor(i)->mostrar_restante();

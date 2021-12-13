@@ -1,4 +1,5 @@
 #include "Objetivo.h"
+
 string Objetivo::obtener_nombre()
 {
     return this->nombre_objetivo;

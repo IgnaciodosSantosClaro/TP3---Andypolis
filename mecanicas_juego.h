@@ -35,4 +35,6 @@ void procesar_errores(Errores error);
 void consultar_coordenada(Matriz_casillero &mapa);
 void reparar(Matriz_casillero &mapa, Jugador &jugador);
 void lluvia_recursos(Matriz_casillero &mapa);
+void asignar_objetivos(Vector_objetivo *vector, Jugador *jugador_vec, int cantidad_secundarios);
+bool indice_repetido(int indice_a_revisar, Vector<int> indices);
 #endif // MECANICAS_JUEGO_H

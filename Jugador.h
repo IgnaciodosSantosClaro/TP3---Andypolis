@@ -6,7 +6,7 @@
 #include "Bomba.h"
 #include "Diccionario.h"
 #include "configuracion.h"
-
+#include "Vector_objetivo.h"
 class Jugador
 {
 private:
@@ -14,8 +14,8 @@ private:
     int energia;
     tipo_jugador identidad_jugador;
     Coordenada posicion;
-    Objetivo *objetivos_secundarios;
-    Objetivo *objetivo_principal;
+    Vector_objetivo objetivos_secundarios;
+    Objetivo_simple objetivo_principal;
     Vector_material *inventario;
     Bomba bombas;
     Diccionario *edificios;
@@ -52,11 +52,11 @@ public:
 
     // PRE:
     // POS:
-    void asignar_objetivo_principal();
+    void asignar_objetivo_principal(Objetivo *objetivo);
 
     // PRE:
     // POS:
-    void asignar_objetivo_secundario();
+    void asignar_objetivo_secundario(Objetivo *objetivo);
 
     // PRE: EL diccionario esta bien cargado.
     // POS: Asigna el diccionario al diccionario del jugador.
@@ -65,7 +65,8 @@ public:
     // PRE: -
     // POS: Devuelve el puntero a diccionario edificios.
     Diccionario *obtener_edificios();
-
+    void mostrar_objetivos_restantes();
+    estado_objetivo actualizar_objetivos(string nombre, int cant_incremento);
     // PRE: -
     // POS: Devuelve el inventario del jugador.
     Vector_material *obtener_inventario();

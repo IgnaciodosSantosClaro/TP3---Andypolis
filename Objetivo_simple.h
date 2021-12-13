@@ -7,9 +7,9 @@ class Objetivo_simple : public Objetivo
 {
 private:
     string nombre_elemento_objetivo;
-    bool es_de_inventario;
 
 public:
+    Objetivo_simple(const Objetivo_simple &objetivo_a_copiar);
     Objetivo_simple();
     Objetivo_simple(string nombre, string descripcion, string nombre_elemento_objetivo);
     Objetivo_simple(string nombre, string descripcion, string nombre_elemento_objetivo, int cantidad_objetivo);

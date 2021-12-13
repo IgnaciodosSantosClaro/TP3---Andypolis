@@ -54,6 +54,9 @@ const int ENERGIA_MAXIMA = 100;
 const int ENERGIA_MINIMA = 0;
 const string NOMBRE_JUGADOR_1_UBICACIONES = "1";
 const string NOMBRE_JUGADOR_2_UBICACIONES = "2";
+const int POSICION_JUGADOR_1 = 0;
+const int POSICION_JUGADOR_2 = 1;
+const int MAXIMO_JUGADORES = 2;
 // Acciones
 const int ENERGIA_REPARAR = 25;
 const int ENERGIA_ATACAR = 25;
@@ -153,7 +156,9 @@ const string NOMBRE_OBJETIVO_PRINCIPAL = "Mas alto que las nubes";
 const string DESCRIPCION_OBJETIVO_PRINCIPAL = "Construir 1 obelisco";
 const string ELEMENTO_OBJETIVO_PRINCIPAL = "obelisco";
 const int CANTIDAD_OBJETIVO_PRINCIPAL = 1;
+const int POSICION_OBJETIVO_PRINCIPAL = 0;
 // Objetivos_secundarios
+const int CANTIDAD_TOTAL_OBJETIVOS_SECUNDARIOS = 10;
 const string NOMBRE_COMPRAR_ANDYPOLIS = "Comprar Andypolis";
 const string DESCRIPCION_COMPRAR_ANDYPOLIS = "Haber utilizado 100000 Andycoins";
 const string ELEMENTO_COMPRAR_ANDYPOLIS = "andycoins";

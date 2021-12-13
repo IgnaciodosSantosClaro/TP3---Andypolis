@@ -1,4 +1,13 @@
 #include "Objetivo_simple.h"
+Objetivo_simple::Objetivo_simple(const Objetivo_simple &objetivo_a_copiar)
+{
+    this->nombre_objetivo = objetivo_a_copiar.nombre_objetivo;
+    this->esta_completo = objetivo_a_copiar.esta_completo;
+    this->descripcion = objetivo_a_copiar.descripcion;
+    this->cantidad_actual = objetivo_a_copiar.cantidad_actual;
+    this->cantidad_objetivo = objetivo_a_copiar.cantidad_objetivo;
+    this->cantidad_restante = objetivo_a_copiar.cantidad_restante;
+};
 Objetivo_simple::Objetivo_simple()
 {
     this->nombre_objetivo = "";
