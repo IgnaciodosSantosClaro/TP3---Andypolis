@@ -382,7 +382,7 @@ Errores validar_coordenadas_construccion(int coord_x, int coord_y, Matriz_casill
     {
         estado_coordenadas = ERROR_COORDENADA_INACCESIBLE;
     }
-    else if(mapa.obtener_dato(coord_x, coord_x)->casillero_ocupado())
+    else if(mapa.obtener_dato(coord_x, coord_y)->casillero_ocupado())
     {
         estado_coordenadas = ERROR_COORDENADA_OCUPADA;
     }
