@@ -36,5 +36,10 @@ void Material::fijar_cantidad(int cantidad)
 }
 void Material::reducir_cantidad(int decremento)
 {
-    this->cantidad -= this->cantidad - decremento;
+    this->cantidad -= decremento;
+}
+
+void Material::aumentar_cantidad(int incremento)
+{
+    this->cantidad += incremento;
 }

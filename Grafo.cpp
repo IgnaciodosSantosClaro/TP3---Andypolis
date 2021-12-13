@@ -39,6 +39,14 @@ void Grafo::agregar_camino(string origen, string destino, int peso)
     }
 }
 
+void Grafo::actualizar_camino(string origen, string destino, int peso)
+{
+    int posicion_origen = vertices->obtener_posicion(origen);
+    int posicion_destino = vertices->obtener_posicion(destino);
+
+    matriz_de_adyacencia[posicion_origen][posicion_destino] = peso;
+}
+
 Vector<string> *Grafo::camino_minimo(string origen, string destino)
 {
     int posicion_origen = vertices->obtener_posicion(origen);

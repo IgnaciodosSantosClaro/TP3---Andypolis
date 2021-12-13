@@ -64,6 +64,10 @@ public:
     // POS: Ajusta la matriz de adyacencia con el peso ingresado
     void agregar_camino(string origen, string destino, int peso);
 
+    //PRE: El destino y el origen son validos.
+    //POS: Actualiza el peso de un camino ya existente.
+    void actualizar_camino(string origen, string destino, int peso);
+
     // PRE: -
     // POS: imprime por pantalla el grafo
     void mostrar_grafo();

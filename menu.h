@@ -9,7 +9,7 @@
 #include "mensajes.h"
 #include "archivos.h"
 #include "mecanicas_juego.h"
-// Poner en minúscula el nombre del archivo
+
 enum opciones_iniciales
 {
     INICIO_MODIFICAR_EDIFICIO_POR_NOMBRE = 1,
@@ -36,16 +36,24 @@ enum opciones_juego
     GUARDAR_Y_SALIR,
     OPCION_JUEGO_INVALIDA,
 };
+
 void iniciar_juego();
+
 // Cambia indice, recibir por referencia
-bool procesar_menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, int &indice, Jugador *jugador_vec, bool &jugo_1, bool &jugo_2);
-void menu_inicial(Matriz_casillero &mapa, Diccionario &dicc_edificios, Jugador &jugador1, Jugador &jugador2);
-bool procesar_menu_inicial(Matriz_casillero &mapa, Diccionario &dicc_edificios, Jugador &jugador1, Jugador &jugador2);
+bool procesar_menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, int &indice, Jugador *jugador_vec, Grafo *grafo_vec, bool &jugo_1, bool &jugo_2);
+
+void menu_inicial(Matriz_casillero &mapa, Diccionario &dicc_edificios, Jugador &jugador1, Jugador &jugador2, Grafo &grafo1, Grafo &grafo2);
+
+bool procesar_menu_inicial(Matriz_casillero &mapa, Diccionario &dicc_edificios, Jugador &jugador1, Jugador &jugador2, Grafo &grafo1, Grafo &grafo2);
+
 int obtener_opcion_ingresada();
+
 // PRE: -
 // POS: Imprime por pantalla el menu inicial.
 void mostrar_menu_inicio();
-void menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, Jugador &jugador1, Jugador &jugador2);
+
+void menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, Jugador &jugador1, Jugador &jugador2, Grafo &grafo1, Grafo &grafo2);
+
 // PRE: -
 // POS: Imprime por pantalla el menu de la partida.
 void mostrar_menu_juego();

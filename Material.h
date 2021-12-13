@@ -34,10 +34,18 @@ public:
     // POS: Fija el nombre del material.
     void fijar_nombre(std::string nombre);
 
-    // PRE: -
+    // PRE: cantidad >= 0.
     // POS: Fija la cantidad del material.
     void fijar_cantidad(int cantidad);
+
+    //PRE: cantidad actual <= decremento <= 0
+    //POS: Decrementa la cantidad del material.
     void reducir_cantidad(int decremento);
+
+    //PRE: incremento >= 0.
+    //POS: Aumenta la cantidad de material.
+    void aumentar_cantidad(int incremento);
+
     // Destructor virtual
     // PRE: -
     // POS: Destruye el objeto Material.

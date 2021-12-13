@@ -11,7 +11,7 @@
 using namespace std;
 enum tipo_jugador
 {
-    JUGADOR_1,
+    JUGADOR_1 = 1,
     JUGADOR_2,
     NO_ASIGNADO
 };
@@ -72,11 +72,12 @@ public:
     // POS:
     void fijar_dueno(tipo_jugador jugador_dueno);
     tipo_jugador obtener_dueno();
-    // PRE:
-    // POS:
+
+    // PRE: salud >= 0
+    // POS: Fija la salud del edificio.
     void fijar_puntos_de_salud(int salud);
 
-    // PRE:
+    // PRE: -
     // POS:
     estado_edificio atacar_edificio();
 

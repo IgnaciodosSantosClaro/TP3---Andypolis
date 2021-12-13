@@ -30,7 +30,7 @@ void procesar_mapa(Matriz_casillero &mapa);
 
 // PRE:Recibe vectores de edificios (luego de procesar_edificios) y matriz de casilleros (luego de procesar_mapa)
 // POS: Carga la matriz con los casille
-void procesar_ubicaciones(Matriz_casillero &mapa, Jugador &jugador1, Jugador &jugador2);
+void procesar_ubicaciones(Matriz_casillero &mapa, Jugador &jugador1, Jugador &jugador2, bool &es_vacio);
 
 // PRE: Vector materiales bien cargado.
 // POS: Actualiza el archivo de materiales. Si no existe lo crea.

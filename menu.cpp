@@ -4,16 +4,21 @@ using namespace std;
 
 void iniciar_juego()
 {
+    bool es_partida_nueva = true;
     Matriz_casillero mapa;
     procesar_mapa(mapa);
     Diccionario dicc_edificios;
     Jugador jugador1 = Jugador("jugador1", JUGADOR_1);
     Jugador jugador2 = Jugador("jugador2", JUGADOR_2);
+    Grafo grafo1;
+    Grafo grafo2;
 
     cargar_materiales(jugador1, jugador2);
     procesar_edificios(dicc_edificios, jugador1, jugador2);
-    procesar_ubicaciones(mapa, jugador1, jugador2);
-    menu_inicial(mapa, dicc_edificios, jugador1, jugador2);
+    procesar_ubicaciones(mapa, jugador1, jugador2, es_partida_nueva);
+    cargar_grafo(grafo1, mapa, 1);
+    cargar_grafo(grafo2, mapa, 2);
+    menu_inicial(mapa, dicc_edificios, jugador1, jugador2, grafo1, grafo2);
 };
 
 void mostrar_menu_inicio()
@@ -30,7 +35,7 @@ void mostrar_menu_inicio()
     cout << TABULACION << endl;
 };
 
-void menu_inicial(Matriz_casillero &mapa, Diccionario &dicc_edificios, Jugador &jugador1, Jugador &jugador2)
+void menu_inicial(Matriz_casillero &mapa, Diccionario &dicc_edificios, Jugador &jugador1, Jugador &jugador2, Grafo &grafo1, Grafo &grafo2)
 {
 
     bool salir = false;
@@ -38,22 +43,24 @@ void menu_inicial(Matriz_casillero &mapa, Diccionario &dicc_edificios, Jugador &
     {
 
         mostrar_menu_inicio();
-        salir = procesar_menu_inicial(mapa, dicc_edificios, jugador1, jugador2);
+        salir = procesar_menu_inicial(mapa, dicc_edificios, jugador1, jugador2, grafo1, grafo2);
     }
 };
 
-void menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, Jugador &jugador1, Jugador &jugador2)
+void menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, Jugador &jugador1, Jugador &jugador2, Grafo &grafo1, Grafo &grafo2)
 {
     bool salir = false;
     Jugador jugador_vec[MAXIMO_JUGADORES];
+    Grafo grafo_vec[MAXIMO_JUGADORES];
     Vector_objetivo objetivos_generales[MAXIMO_JUGADORES];
     cargar_objetivos(objetivos_generales[POSICION_JUGADOR_1], dicc_edificios.consulta(NOMBRE_EDIFICIO_ESCUELA)->obtener_cant_max());
     cargar_objetivos(objetivos_generales[POSICION_JUGADOR_2], dicc_edificios.consulta(NOMBRE_EDIFICIO_ESCUELA)->obtener_cant_max()); // Falta asignar objetivo a cada jugador y actualizarlos cuando hacen acciones
-
     asignar_objetivos(objetivos_generales, jugador_vec, 2); // VER por que no asigna
     jugador_vec[0].mostrar_objetivos_restantes();
     jugador_vec[POSICION_JUGADOR_1] = jugador1;
     jugador_vec[POSICION_JUGADOR_2] = jugador2;
+    grafo_vec[POSICION_JUGADOR_1] = grafo1;
+    grafo_vec[POSICION_JUGADOR_2] = grafo2;
     int jugador_actual = elegir_jugador_inicial(MAXIMO_JUGADORES);
     jugador_actual -= 1; // Paso a indice
     lluvia_recursos(mapa);
@@ -70,7 +77,7 @@ void menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, Jugador &ju
         }
         mostrar_mapa(mapa, 5, 3);
         mostrar_menu_juego();
-        salir = procesar_menu_juego(mapa, dicc_edificios, jugador_actual, jugador_vec, jugo_1, jugo_2);
+        salir = procesar_menu_juego(mapa, dicc_edificios, jugador_actual, jugador_vec, grafo_vec, jugo_1, jugo_2);
     }
 }
 
@@ -96,7 +103,7 @@ void mostrar_menu_juego()
     cout << TABULACION << endl;
 }
 
-bool procesar_menu_inicial(Matriz_casillero &mapa, Diccionario &dicc_edificios, Jugador &jugador1, Jugador &jugador2)
+bool procesar_menu_inicial(Matriz_casillero &mapa, Diccionario &dicc_edificios, Jugador &jugador1, Jugador &jugador2, Grafo &grafo1, Grafo &grafo2)
 {
     bool salir = false;
     cout << INGRESE_ACCION << endl;
@@ -124,7 +131,7 @@ bool procesar_menu_inicial(Matriz_casillero &mapa, Diccionario &dicc_edificios, 
         mostrar_mapa(mapa, 5, 3);
         break;
     case INICIO_COMENZAR_PARTIDA:
-        menu_juego(mapa, dicc_edificios, jugador1, jugador2);
+        menu_juego(mapa, dicc_edificios, jugador1, jugador2, grafo1, grafo2);
         salir = true;
         break;
     case INICIO_GUARDAR_Y_SALIR_INICIAL:
@@ -140,7 +147,7 @@ bool procesar_menu_inicial(Matriz_casillero &mapa, Diccionario &dicc_edificios, 
     return salir;
 }
 
-bool procesar_menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, int &indice_jugador_actual, Jugador *jugador_vec, bool &jugo_1, bool &jugo_2)
+bool procesar_menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, int &indice_jugador_actual, Jugador *jugador_vec, Grafo *grafo_vec, bool &jugo_1, bool &jugo_2)
 {
     bool salir = false; // Verificar e imprimir energia
 
@@ -157,13 +164,14 @@ bool procesar_menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, in
     {
     case CONSTRUIR_EDIFICIO_POR_NOMBRE:
         // opcion_elegida = CONSTRUIR_EDIFICIO_POR_NOMBRE;
-
+        construir_edificio(mapa, grafo_vec[indice_jugador_actual], jugador_vec[indice_jugador_actual]);
         break;
     case LISTAR_EDIFICIOS_CONSTRUIDOS:
         listar_edificios_construidos(mapa, jugador_vec[indice_jugador_actual]);
         break;
     case DEMOLER_EDIFICIO_POR_COORDENADA:
         // opcion_elegida = DEMOLER_EDIFICIO_POR_COORDENADA;
+        demoler_edificio(mapa, grafo_vec[indice_jugador_actual], jugador_vec[indice_jugador_actual], indice_jugador_actual + 1);
         break;
     case ATACAR_EDIFICIO_POR_COORDENADA:
 

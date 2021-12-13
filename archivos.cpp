@@ -180,7 +180,7 @@ void procesar_edificios(Diccionario &dicc, Jugador &jugador1, Jugador &jugador2)
     archivo_edificios.close();
 }
 
-void procesar_ubicaciones(Matriz_casillero &mapa, Jugador &jugador1, Jugador &jugador2) // Procesar despues de mapa
+void procesar_ubicaciones(Matriz_casillero &mapa, Jugador &jugador1, Jugador &jugador2, bool &es_vacio) // Procesar despues de mapa
 {
     string linea;
     string nombre;
@@ -193,6 +193,7 @@ void procesar_ubicaciones(Matriz_casillero &mapa, Jugador &jugador1, Jugador &ju
     if (!archivo_ubicaciones.is_open())
     {
         cout << COLOR_TEXTO_ROJO << MENSAJE_ARCHIVO_NO_ENCONTRADO << COLOR_TEXTO_BLANCO << endl;
+        es_vacio = true;
     }
     else
     {
@@ -253,6 +254,7 @@ void procesar_ubicaciones(Matriz_casillero &mapa, Jugador &jugador1, Jugador &ju
                 transitable_ptr->ocupar_casillero(material_seleccionado);
             }
         }
+        es_vacio = es_vacio == linea.empty();
     }
 };
 

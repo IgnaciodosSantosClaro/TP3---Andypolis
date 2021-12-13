@@ -70,7 +70,7 @@ void comprar_bombas(Jugador &jugador)
         int cantidad_andycoins = jugador.obtener_inventario()->obtener_valor(pos_buscada)->obtener_cantidad();
         if (input.obtener_input() * PRECIO_BOMBAS > cantidad_andycoins)
         {
-            cout << COLOR_TEXTO_ROJO << "La cantidad de andycoins es insuficiente." << COLOR_TEXTO_BLANCO << endl;
+            cout << COLOR_TEXTO_ROJO << ANDYCOINS_INSUFICIENTES << COLOR_TEXTO_BLANCO << endl;
         }
         else
         {
@@ -84,7 +84,7 @@ void comprar_bombas(Jugador &jugador)
     }
     else
     {
-        cout << COLOR_TEXTO_ROJO << "La cantidad de energia es insuficiente." << COLOR_TEXTO_BLANCO << endl;
+        cout << COLOR_TEXTO_ROJO << ENERGIA_INSUFICIENTE << COLOR_TEXTO_BLANCO << endl;
     }
 }
 
@@ -152,7 +152,7 @@ void recolectar_recursos_producidos(Jugador &jugador)
     }
     else
     {
-        cout << COLOR_TEXTO_ROJO << "La cantidad de energia es insuficiente." << COLOR_TEXTO_BLANCO << endl;
+        cout << COLOR_TEXTO_ROJO << ENERGIA_INSUFICIENTE << COLOR_TEXTO_BLANCO << endl;
     }
 }
 
@@ -316,4 +316,95 @@ bool indice_repetido(int indice_a_revisar, Vector<int> indices)
         }
     }
     return esta_duplicado;
+}
+void construir_edificio(Matriz_casillero &mapa, Grafo &grafo, Jugador &jugador)
+{
+    if(tiene_energia(jugador, CONSUMO_ENERGIA_CONSTRUIR_EDIFICIO))
+    {
+        string nombre_edificio = pedir_nombre();
+        Errores estado = verificar_construccion(jugador, nombre_edificio);
+        if (estado != EXITO)
+        {
+            procesar_errores(estado);
+        }
+        else
+        {
+            cout << DESEA_CONSTRUIR << endl;
+            if (confirmar_decision())
+            {
+                int fila = 0;
+                int columna = 0;
+                obtener_coordenadas(fila, columna, mapa.obtener_largo_filas(), mapa.obtener_largo_columnas());
+                Errores estado_coordenadas = validar_coordenadas_construccion(fila, columna, mapa);
+                if(estado_coordenadas != EXITO)
+                {
+                    procesar_errores(estado_coordenadas);
+                }
+                else
+                {
+                    Casillero_construible* ptr_casillero = dynamic_cast<Casillero_construible*>(mapa.obtener_dato(fila, columna));
+                    Edificio* edificio_objetivo = jugador.obtener_edificios()->consulta(nombre_edificio);
+                    jugador.obtener_inventario()->obtener_por_nombre(PIEDRA).reducir_cantidad(edificio_objetivo->obtener_material(POSICION_PIEDRA).obtener_cantidad());
+                    jugador.obtener_inventario()->obtener_por_nombre(MADERA).reducir_cantidad(edificio_objetivo->obtener_material(POSICION_MADERA).obtener_cantidad());
+                    jugador.obtener_inventario()->obtener_por_nombre(METAL).reducir_cantidad(edificio_objetivo->obtener_material(POSICION_METAL).obtener_cantidad());
+                    jugador.modificar_energia(-CONSUMO_ENERGIA_CONSTRUIR_EDIFICIO);
+                    string color_edificio = asignar_color_edificio_sano(jugador);
+                    edificio_objetivo->incrementar_construcciones();
+                    ptr_casillero->ocupar_casillero(*edificio_objetivo, color_edificio);
+                    Coordenada coordenada;
+                    coordenada.fijar_coordenadas(fila, columna);
+                    actualizar_aristas_grafo(mapa, grafo, coordenada, INFINITO);
+                    cout << COLOR_TEXTO_VERDE << MENSAJE_CONSTRUCCION_EXITOSA << COLOR_TEXTO_BLANCO << endl;
+
+                }
+            }
+            else
+            {
+                cout << COLOR_TEXTO_ROJO << MENSAJE_CONSTRUCCION_CANCELADA << COLOR_TEXTO_BLANCO << endl;
+            }
+        }
+    }
+    else
+    {
+        cout << COLOR_TEXTO_ROJO << ENERGIA_INSUFICIENTE << COLOR_TEXTO_BLANCO << endl;
+    }
+}
+
+void demoler_edificio(Matriz_casillero &mapa, Grafo &grafo, Jugador &jugador, int numero_jugador)
+{
+    if(tiene_energia(jugador, CONSUMO_ENERGIA_DEMOLER_EDIFICIO)) {
+        cout << INGRESE_COORDENADAS_DESTRUIR << endl;
+        int fila = 0;
+        int columna = 0;
+        obtener_coordenadas(fila, columna, mapa.obtener_largo_filas(), mapa.obtener_largo_columnas());
+        Errores estado_coordenada = validar_coordenadas_destruccion(fila, columna, mapa, numero_jugador);
+        if (estado_coordenada != EXITO) {
+            procesar_errores(estado_coordenada);
+        } else {
+            Coordenada coordenada;
+            coordenada.fijar_coordenadas(fila, columna);
+            Casillero_construible *puntero_casillero = dynamic_cast<Casillero_construible *>(mapa.obtener_dato(fila,
+                                                                                                               columna));
+            Edificio edificio_objetivo = puntero_casillero->obtener_edificio();
+            Edificio *edificio_a_demoler = jugador.obtener_edificios()->consulta(edificio_objetivo.obtener_nombre());
+            jugador.obtener_inventario()->obtener_por_nombre(PIEDRA).aumentar_cantidad(
+                    edificio_a_demoler->obtener_material(POSICION_PIEDRA).obtener_cantidad() / 2);
+            jugador.obtener_inventario()->obtener_por_nombre(MADERA).aumentar_cantidad(
+                    edificio_a_demoler->obtener_material(POSICION_MADERA).obtener_cantidad() / 2);
+            jugador.obtener_inventario()->obtener_por_nombre(METAL).aumentar_cantidad(
+                    edificio_a_demoler->obtener_material(POSICION_METAL).obtener_cantidad() / 2);
+            edificio_a_demoler->decrementar_construcciones();
+            puntero_casillero->desocupar_casillero();
+            jugador.modificar_energia(-CONSUMO_ENERGIA_DEMOLER_EDIFICIO);
+
+            int peso = puntero_casillero->obtener_energia_necesaria()[numero_jugador - 1];
+            actualizar_aristas_grafo(mapa, grafo, coordenada, peso);
+
+            cout << COLOR_TEXTO_VERDE << MENSAJE_DESTRUCCION_EXITOSA << COLOR_TEXTO_BLANCO << endl;
+        }
+    }
+    else
+    {
+        cout << COLOR_TEXTO_ROJO << ENERGIA_INSUFICIENTE << COLOR_TEXTO_BLANCO << endl;
+    }
 }
