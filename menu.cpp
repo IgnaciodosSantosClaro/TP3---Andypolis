@@ -225,6 +225,7 @@ bool procesar_menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, in
         break;
     case MOVERSE_A_UNA_COORDENADA:
         // opcion_elegida = MOVERSE_A_UNA_COORDENADA;
+        desplazarse(mapa, grafo_vec[indice_jugador_actual], jugador_vec[indice_jugador_actual], indice_jugador_actual + 1);
         break;
     case FINALIZAR_TURNO:
         // opcion_elegida = FINALIZAR_TURNO;

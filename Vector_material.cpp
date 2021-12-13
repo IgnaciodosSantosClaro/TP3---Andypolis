@@ -35,7 +35,7 @@ int Vector_material::obtener_pos_material(string nombre)
     };
     return posicion;
 };
-Material Vector_material::obtener_por_nombre(std::string nombre)
+Material* Vector_material::obtener_por_nombre(string nombre)
 {
-    return *(this->obtener_valor(this->obtener_pos_material(nombre)));
+    return this->obtener_valor(this->obtener_pos_material(nombre));
 }

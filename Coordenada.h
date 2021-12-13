@@ -36,5 +36,9 @@ public:
     // PRE: Las coordenadas estan cargadas.
     // POS: Devuelve las coordenadas como "(fila, columna)".
     string coordenada_a_string();
+
+    //PRE: El string es valido y el formato es correcto.
+    //POS: Devuelve la conversion de string a ubicacion.
+    ubicacion string_a_coordenada(string coordenada);
 };
 #endif

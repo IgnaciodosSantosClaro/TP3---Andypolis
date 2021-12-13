@@ -10,39 +10,39 @@ Jugador::Jugador()
     this->objetivo_principal = new Objetivo_simple;
     this->objetivos_secundarios = new Vector_objetivo;
 }
-Jugador::Jugador(const Jugador &jugador_copiar)
-{
-    this->energia = ENERGIA_INICIAL;
-    this->edificios = new Diccionario;
-    this->inventario = new Vector_material;
-    this->objetivo_principal = new Objetivo_simple;
-    this->objetivos_secundarios = new Vector_objetivo;
-    *this->objetivo_principal = *jugador_copiar.objetivo_principal;
-}
-Jugador Jugador::operator=(const Jugador &jugador_copiar)
-{
-    this->energia = ENERGIA_INICIAL;
-    this->energia = jugador_copiar.energia;
-    Diccionario *dicc_aux = new Diccionario;
-    dicc_aux = jugador_copiar.edificios;
-    delete this->edificios;
-    this->edificios = dicc_aux;
-
-    Vector_material *vector_material_aux = new Vector_material;
-    vector_material_aux = jugador_copiar.inventario;
-    delete this->inventario;
-    this->inventario = vector_material_aux;
-
-    Objetivo_simple *objetivo_simple_aux = new Objetivo_simple;
-    objetivo_simple_aux = jugador_copiar.objetivo_principal;
-    this->objetivo_principal = objetivo_simple_aux;
-
-    Vector_objetivo *vector_objetivo_aux = new Vector_objetivo;
-    vector_objetivo_aux = jugador_copiar.objetivos_secundarios;
-    delete this->objetivos_secundarios;
-    this->objetivos_secundarios = vector_objetivo_aux;
-    return *this;
-}
+//Jugador::Jugador(const Jugador &jugador_copiar)
+//{
+//    this->energia = ENERGIA_INICIAL;
+//    this->edificios = new Diccionario;
+//    this->inventario = new Vector_material;
+//    this->objetivo_principal = new Objetivo_simple;
+//    this->objetivos_secundarios = new Vector_objetivo;
+//    *this->objetivo_principal = *jugador_copiar.objetivo_principal;
+//}
+//Jugador Jugador::operator=(const Jugador &jugador_copiar)
+//{
+//    this->energia = ENERGIA_INICIAL;
+//    this->energia = jugador_copiar.energia;
+//    Diccionario *dicc_aux = new Diccionario;
+//    dicc_aux = jugador_copiar.edificios;
+//    delete this->edificios;
+//    this->edificios = dicc_aux;
+//
+//    Vector_material *vector_material_aux = new Vector_material;
+//    vector_material_aux = jugador_copiar.inventario;
+//    delete this->inventario;
+//    this->inventario = vector_material_aux;
+//
+//    Objetivo_simple *objetivo_simple_aux = new Objetivo_simple;
+//    objetivo_simple_aux = jugador_copiar.objetivo_principal;
+//    this->objetivo_principal = objetivo_simple_aux;
+//
+//    Vector_objetivo *vector_objetivo_aux = new Vector_objetivo;
+//    vector_objetivo_aux = jugador_copiar.objetivos_secundarios;
+//    delete this->objetivos_secundarios;
+//    this->objetivos_secundarios = vector_objetivo_aux;
+//    return *this;
+//}
 Jugador::Jugador(string nombre, tipo_jugador identidad)
 {
     this->nombre = nombre;
@@ -64,6 +64,10 @@ int Jugador::obtener_energia()
 string Jugador::obtener_nombre()
 {
     return nombre;
+}
+Coordenada Jugador::obtener_posicion()
+{
+    return this->posicion;
 }
 Bomba Jugador::obtener_bombas()
 {
@@ -109,14 +113,6 @@ void Jugador::modificar_cantidad_bomba(int cantidad)
     bombas.modificar_cantidad(cantidad);
 }
 
-// void Jugador::mostrar_inventario()
-//{
-//     for (int i = 0; i < inventario->obtener_largo(); i++)
-//     {
-//         cout << inventario->obtener_valor(i)->obtener_nombre() << " " << inventario->obtener_valor(i)->obtener_cantidad() << endl;
-//     }
-//     cout << "Bombas: " << bombas.obtener_cantidad() << endl;
-// }
 void Jugador::asignar_objetivo_principal(Objetivo *objetivo)
 {
     Objetivo_simple *objetivo_ptr = dynamic_cast<Objetivo_simple *>(objetivo);

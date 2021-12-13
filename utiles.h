@@ -97,5 +97,13 @@ void inicializar_posicion_jugador(Matriz_casillero &mapa, Jugador &jugador);
 //POS: Devuelve true si la energia > 0 y false en caso contrario.
 bool es_turno_valido(Jugador &jugador);
 
+//PRE: El jugadaor esta bien cargado.
+//POS: Actualiza el inventario del jugador con el material pasado por parametro.
+void actualizar_inventario(Jugador &jugador, Material_consumible &material);
+
+//PRE: El jugador esta bien cargado.
+//POS: Recolecta el material que se encuentra en casillero.
+void recolectar_material(Casillero* casillero, Jugador &jugador);
+
 
 #endif // UTILIES_H

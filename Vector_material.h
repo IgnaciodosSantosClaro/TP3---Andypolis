@@ -26,8 +26,8 @@ public:
     int obtener_pos_material(std::string nombre);
 
     // PRE: El nombre del material debe ser valido y pertenecer al vector de materiales.
-    // POS: Devuelve el objeto material.
-    Material obtener_por_nombre(std::string nombre);
+    // POS: Devuelve un puntero al objeto material.
+    Material* obtener_por_nombre(std::string nombre);
 
     // PRE: Recibe el nombre del material, la cantidad y el icono que lo representa
     // POS: Reserva memoria y agrega un objeto Material_construible al vector Vector_material inicializandolo con

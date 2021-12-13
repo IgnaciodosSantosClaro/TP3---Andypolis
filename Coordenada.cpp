@@ -31,3 +31,14 @@ string Coordenada::coordenada_a_string()
 {
     return "(" + to_string(this->posicion_actual.coordenada_x) + "," + " " + to_string(this->posicion_actual.coordenada_y) + ")";
 }
+
+ubicacion Coordenada::string_a_coordenada(string coordenada)
+{
+    ubicacion coordenadas;
+    int coord_x = coordenada[1] - '0';
+    int coord_y = coordenada[LARGO_HASTA_COLUMNA] - '0';
+    coordenadas.coordenada_x = coord_x;
+    coordenadas.coordenada_y = coord_y;
+    return  coordenadas;
+
+}

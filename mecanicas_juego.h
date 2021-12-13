@@ -23,15 +23,13 @@ void modificar_edificio(Diccionario &diccionario);
 // void comprar_bombas(Jugador &jugador);
 void atacar(Matriz_casillero &mapa, Jugador &jugador);
 
-// PRE:
-// POS:
+// PRE: Jugador esta bien cargado.
+// POS: Compra bombas que se almacenan en jugador.
 void comprar_bombas(Jugador &jugador);
 
 // PRE: El jugador esta bien cargado.
 // POS: Recolecta los recursos producidos por los edificios correspondientes.
 void recolectar_recursos_producidos(Jugador &jugador);
-
-int castear_string_a_int(string valor);
 
 void consultar_coordenada(Matriz_casillero &mapa);
 
@@ -50,5 +48,9 @@ void construir_edificio(Matriz_casillero &mapa, Grafo &grafo, Jugador &jugador);
 // PRE: La Matriz_casillero, el Grafo y el Jugador estan bien cargados.
 // POS: Destruye un edificio.
 void demoler_edificio(Matriz_casillero &mapa, Grafo &grafo, Jugador &jugador, int numero_jugador);
+
+//PRE: mapa, grafo y jugador estan bien cargados.
+//POS: Desplaza al jugador.
+void desplazarse(Matriz_casillero &mapa, Grafo &grafo, Jugador &jugador, int numero_jugador);
 
 #endif // MECANICAS_JUEGO_H

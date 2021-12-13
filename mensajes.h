@@ -107,6 +107,7 @@ const string ERROR_ACHICAR_MATRIZ = "No fue posible achicar matriz";
 const string INGRESE_COORDENADAS_CONSTRUIR = "Ingrese las coordenadas en las que desea construir el edificio.";
 const string INGRESE_COORDENADAS_DESTRUIR = "Ingrese las coordenadas en las que desea destruir el edificio.";
 const string INGRESE_COORDENADAS_CONSULTAR = "Ingrese las coordenadas del casillero que desea consultaro.";
+const string INGRESE_COORDENADAS_DESPLAZAR = "Ingrese las coordenadas a las que desea desplazarse.";
 const string MENSAJE_DESTRUCCION_EXITOSA = "Edificio destruido exitosamente!";
 const string MENSAJE_CONSTRUCCION_EXITOSA = "Construccion existosa!";
 const string MENSAJE_CONSTRUCCION_CANCELADA = "Construccion cancelada";

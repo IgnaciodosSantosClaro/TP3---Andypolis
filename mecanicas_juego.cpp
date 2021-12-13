@@ -180,9 +180,9 @@ void reparar(Matriz_casillero &mapa, Jugador &jugador)
         int madera_necesaria = (int)(edificio_modelo->obtener_material(POSICION_MADERA).obtener_cantidad() * 0.25);
         int metal_necesaria = (int)(edificio_modelo->obtener_material(POSICION_METAL).obtener_cantidad() * 0.25);
         int piedra_necesaria = (int)(edificio_modelo->obtener_material(POSICION_PIEDRA).obtener_cantidad() * 0.25);
-        jugador.obtener_inventario()->obtener_por_nombre(MADERA).reducir_cantidad(madera_necesaria);
-        jugador.obtener_inventario()->obtener_por_nombre(METAL).reducir_cantidad(metal_necesaria);
-        jugador.obtener_inventario()->obtener_por_nombre(PIEDRA).reducir_cantidad(piedra_necesaria);
+        jugador.obtener_inventario()->obtener_por_nombre(MADERA)->reducir_cantidad(madera_necesaria);
+        jugador.obtener_inventario()->obtener_por_nombre(METAL)->reducir_cantidad(metal_necesaria);
+        jugador.obtener_inventario()->obtener_por_nombre(PIEDRA)->reducir_cantidad(piedra_necesaria);
         Edificio edificio_aux = casillero_seleccionado->obtener_edificio();
         edificio_aux.fijar_puntos_de_salud(PUNTOS_SALUD_BASE);
         casillero_seleccionado->fijar_edificio(edificio_aux);
@@ -334,9 +334,9 @@ void construir_edificio(Matriz_casillero &mapa, Grafo &grafo, Jugador &jugador)
                 {
                     Casillero_construible *ptr_casillero = dynamic_cast<Casillero_construible *>(mapa.obtener_dato(fila, columna));
                     Edificio *edificio_objetivo = jugador.obtener_edificios()->consulta(nombre_edificio);
-                    jugador.obtener_inventario()->obtener_por_nombre(PIEDRA).reducir_cantidad(edificio_objetivo->obtener_material(POSICION_PIEDRA).obtener_cantidad());
-                    jugador.obtener_inventario()->obtener_por_nombre(MADERA).reducir_cantidad(edificio_objetivo->obtener_material(POSICION_MADERA).obtener_cantidad());
-                    jugador.obtener_inventario()->obtener_por_nombre(METAL).reducir_cantidad(edificio_objetivo->obtener_material(POSICION_METAL).obtener_cantidad());
+                    jugador.obtener_inventario()->obtener_por_nombre(PIEDRA)->reducir_cantidad(edificio_objetivo->obtener_material(POSICION_PIEDRA).obtener_cantidad());
+                    jugador.obtener_inventario()->obtener_por_nombre(MADERA)->reducir_cantidad(edificio_objetivo->obtener_material(POSICION_MADERA).obtener_cantidad());
+                    jugador.obtener_inventario()->obtener_por_nombre(METAL)->reducir_cantidad(edificio_objetivo->obtener_material(POSICION_METAL).obtener_cantidad());
                     jugador.modificar_energia(-CONSUMO_ENERGIA_CONSTRUIR_EDIFICIO);
                     string color_edificio = asignar_color_edificio_sano(jugador);
                     edificio_objetivo->incrementar_construcciones();
@@ -380,11 +380,11 @@ void demoler_edificio(Matriz_casillero &mapa, Grafo &grafo, Jugador &jugador, in
                                                                                                                columna));
             Edificio edificio_objetivo = puntero_casillero->obtener_edificio();
             Edificio *edificio_a_demoler = jugador.obtener_edificios()->consulta(edificio_objetivo.obtener_nombre());
-            jugador.obtener_inventario()->obtener_por_nombre(PIEDRA).aumentar_cantidad(
+            jugador.obtener_inventario()->obtener_por_nombre(PIEDRA)->aumentar_cantidad(
                 edificio_a_demoler->obtener_material(POSICION_PIEDRA).obtener_cantidad() / 2);
-            jugador.obtener_inventario()->obtener_por_nombre(MADERA).aumentar_cantidad(
+            jugador.obtener_inventario()->obtener_por_nombre(MADERA)->aumentar_cantidad(
                 edificio_a_demoler->obtener_material(POSICION_MADERA).obtener_cantidad() / 2);
-            jugador.obtener_inventario()->obtener_por_nombre(METAL).aumentar_cantidad(
+            jugador.obtener_inventario()->obtener_por_nombre(METAL)->aumentar_cantidad(
                 edificio_a_demoler->obtener_material(POSICION_METAL).obtener_cantidad() / 2);
             edificio_a_demoler->decrementar_construcciones();
             puntero_casillero->desocupar_casillero();
@@ -400,4 +400,65 @@ void demoler_edificio(Matriz_casillero &mapa, Grafo &grafo, Jugador &jugador, in
     {
         cout << COLOR_TEXTO_ROJO << ENERGIA_INSUFICIENTE << COLOR_TEXTO_BLANCO << endl;
     }
+}
+
+void desplazarse(Matriz_casillero &mapa, Grafo &grafo, Jugador &jugador, int numero_jugador)
+{
+    Coordenada coordenada;
+    int fila = 0;
+    int columna = 0;
+    cout << INGRESE_COORDENADAS_DESPLAZAR << endl;
+    obtener_coordenadas(fila, columna, mapa.obtener_largo_filas(), mapa.obtener_largo_columnas());
+    coordenada.fijar_coordenadas(fila, columna);
+    string posicion_inicial = jugador.obtener_posicion().coordenada_a_string();
+    string posicion_final = coordenada.coordenada_a_string();
+    grafo.usar_floyd();
+    if(!tiene_energia(jugador, grafo.obtener_arista(posicion_inicial, posicion_final)))
+    {
+        cout << COLOR_TEXTO_ROJO << ENERGIA_INSUFICIENTE << COLOR_TEXTO_BLANCO << endl;
+    }
+    else
+    {
+        Vector<string>* camino_recorrido = grafo.camino_minimo(posicion_inicial, posicion_final);
+        Casillero* casillero_anterior = mapa.obtener_dato(jugador.obtener_posicion().obtener_coordenadas().coordenada_x, jugador.obtener_posicion().obtener_coordenadas().coordenada_y);
+
+        int peso = casillero_anterior->obtener_energia_necesaria()[numero_jugador - 1];
+        actualizar_aristas_grafo(mapa, grafo, coordenada, peso);
+        system(CLR_SCREEN);
+        for(int i = 0; i < camino_recorrido->obtener_largo(); i++)
+        {
+            casillero_anterior = mapa.obtener_dato(jugador.obtener_posicion().obtener_coordenadas().coordenada_x, jugador.obtener_posicion().obtener_coordenadas().coordenada_y);
+            string casillero_destino = camino_recorrido->obtener_valor(i);
+            ubicacion posicion = coordenada.string_a_coordenada(casillero_destino);
+            coordenada.fijar_coordenadas(posicion.coordenada_x, posicion.coordenada_y);
+
+            if(jugador.obtener_identidad() == JUGADOR_1)
+            {
+                mapa.obtener_dato(posicion.coordenada_x, posicion.coordenada_y)->fijar_color_texto(COLOR_JUGADOR_1);
+            }
+            else
+            {
+                mapa.obtener_dato(posicion.coordenada_x, posicion.coordenada_y)->fijar_color_texto(COLOR_JUGADOR_2);
+            }
+
+            jugador.desplazarse(posicion.coordenada_x, posicion.coordenada_y);
+
+            Casillero* casillero_actual = mapa.obtener_dato(posicion.coordenada_x, posicion.coordenada_y);
+            casillero_anterior->deshabitar_casillero();
+
+            if(mapa.obtener_tipo_casillero(posicion.coordenada_x, posicion.coordenada_y) == CASILLERO_TRANSITABLE)
+            {
+                recolectar_material(casillero_actual, jugador);
+            }
+            casillero_actual->habitar_casillero();
+
+            mostrar_mapa(mapa, 5, 3);
+            retardo(1700);
+            system(CLR_SCREEN);
+
+        }
+        actualizar_aristas_grafo(mapa, grafo, coordenada, INFINITO);
+        jugador.modificar_energia(-grafo.obtener_arista(posicion_inicial, posicion_final));
+    }
+
 }

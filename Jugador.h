@@ -24,19 +24,37 @@ public:
     // Constructor
     // PRE: -
     // POS: Construye objeto jugador con energia = 50.
-    Jugador(const Jugador &jugador_copiar);
-    Jugador operator=(const Jugador &jugador_copiar);
+//    Jugador(const Jugador &jugador_copiar);
+//
+//    //Sobrecarga del operador =
+//    Jugador operator=(const Jugador &jugador_copiar);
+
     Jugador();
+
     Jugador(string nombre, tipo_jugador identidad);
 
     // PRE: -
     // POS: Devuelve la energia del jugador
     int obtener_energia();
 
+    //PRE: -
+    //POS: Devuelve el nombre del jugador.
     string obtener_nombre();
 
+    //PRE: -
+    //POS: Devuelve la posicion del jugador.
+    Coordenada obtener_posicion();
+
+    //PRE: -
+    //POS: Devuelve las bombas del jugador.
     Bomba obtener_bombas();
+
+    //PRE: -
+    //POS: Devuelve la identidad del jugador.
     tipo_jugador obtener_identidad();
+
+    //PRE: -
+    //POS: Fija las bombas del jugador con las bombas pasadas por parametro.
     void fijar_bombas(Bomba bombas);
 
     // PRE: Recibe una energia que es un numero entero.
@@ -66,8 +84,15 @@ public:
     // PRE: -
     // POS: Devuelve el puntero a diccionario edificios.
     Diccionario *obtener_edificios();
+
+    //PRE:
+    //POS:
     void mostrar_objetivos_restantes();
+
+    //PRE:
+    //POS:
     estado_objetivo actualizar_objetivos(string nombre, int cant_incremento);
+
     // PRE: -
     // POS: Devuelve el inventario del jugador.
     Vector_material *obtener_inventario();
@@ -91,10 +116,6 @@ public:
     // PRE: Cantidad es un numero entero.
     // POS: Modifica la cantidad de bombas que tiene el jugador.
     void modificar_cantidad_bomba(int cantidad);
-
-    // PRE:
-    // POS:
-    //    void mostrar_inventario();
 
     // PRE:
     // POS:
