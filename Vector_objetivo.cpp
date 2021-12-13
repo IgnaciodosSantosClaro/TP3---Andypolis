@@ -4,9 +4,10 @@ Vector_objetivo::~Vector_objetivo()
     cout << "Elimine Vector objetivo" << endl;
     for (int posicion = 0; posicion < this->obtener_largo(); posicion++)
     {
-
+        cout << posicion << endl;
         delete obtener_valor(posicion);
     }
+    cout << "No sali de acaw" << endl;
 };
 Vector_objetivo::Vector_objetivo() { cout << "cree Vector objetivo" << endl; };
 Vector_objetivo::Vector_objetivo(const Vector_objetivo &vector_a_copiar)
@@ -15,7 +16,8 @@ Vector_objetivo::Vector_objetivo(const Vector_objetivo &vector_a_copiar)
     {
         if (Objetivo_simple *objetivo_ptr = dynamic_cast<Objetivo_simple *>(vector_a_copiar.datos[posicion]))
         {
-            this->agregar_al_final(new Objetivo_simple(*(objetivo_ptr)));
+            Objetivo_simple *objetivo_aux = new Objetivo_simple(*(objetivo_ptr));
+            this->agregar_al_final(objetivo_aux);
         }
         else
         {
@@ -45,6 +47,18 @@ Vector_objetivo Vector_objetivo::operator=(const Vector_objetivo &vector_a_copia
         }
     }
     return *this;
+};
+void Vector_objetivo::agregar_objetivo_al_final(Objetivo *objetivo)
+{
+    if (Objetivo_simple *objetivo_ptr = dynamic_cast<Objetivo_simple *>(objetivo))
+    {
+        this->agregar_al_final(new Objetivo_simple(*(objetivo_ptr)));
+    }
+    else
+    {
+        Objetivo_multiple *objetivo_multiple_ptr = dynamic_cast<Objetivo_multiple *>(objetivo);
+        this->agregar_al_final(new Objetivo_multiple(*(objetivo_multiple_ptr)));
+    }
 };
 void Vector_objetivo::agregar_objetivo_simple(string nombre, string descripcion, string nombre_elemento_objetivo, int cantidad_objetivo)
 {

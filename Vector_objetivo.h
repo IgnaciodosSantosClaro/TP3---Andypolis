@@ -24,6 +24,7 @@ public:
     tipo_objetivo obtener_tipo_objetivo(Objetivo *objetivo);
     void actualizar_multiple(string nombre);
     void mostrar_restante();
+    void agregar_objetivo_al_final(Objetivo *objetivo);
     ~Vector_objetivo();
 };
 

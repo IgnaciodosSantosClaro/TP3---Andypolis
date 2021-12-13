@@ -8,8 +8,10 @@ Vector_jugador::~Vector_jugador()
     cout << "Elimine Vector jugador" << endl;
     for (int posicion = 0; posicion < this->obtener_largo(); posicion++)
     {
+        cout << posicion << endl;
         delete obtener_valor(posicion);
     }
+    cout << "No sali de aca" << endl;
 };
 void Vector_jugador::agregar_jugador_al_final(std::string nombre_jugador, tipo_jugador identidad)
 {
