@@ -14,8 +14,8 @@ private:
     int energia;
     tipo_jugador identidad_jugador;
     Coordenada posicion;
-    Vector_objetivo objetivos_secundarios;
-    Objetivo_simple objetivo_principal;
+    Vector_objetivo *objetivos_secundarios;
+    Objetivo_simple *objetivo_principal;
     Vector_material *inventario;
     Bomba bombas;
     Diccionario *edificios;
@@ -24,12 +24,13 @@ public:
     // Constructor
     // PRE: -
     // POS: Construye objeto jugador con energia = 50.
+    Jugador(const Jugador &jugador_copiar);
+    Jugador operator=(const Jugador &jugador_copiar);
     Jugador();
-
     Jugador(string nombre, tipo_jugador identidad);
 
     // PRE: -
-    // POS: Devuelve la energia del jugador.
+    // POS: Devuelve la energia del jugador
     int obtener_energia();
 
     string obtener_nombre();

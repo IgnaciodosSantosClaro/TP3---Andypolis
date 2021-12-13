@@ -278,30 +278,20 @@ void lluvia_recursos(Matriz_casillero &mapa)
     }
 }
 // Espera dos Vectores objetivos y dos jugadores
-void asignar_objetivos(Vector_objetivo *vector, Jugador *jugador_vec, int cantidad_secundarios)
+void asignar_objetivos(Vector_objetivo &vector, Jugador &jugador, int cantidad_secundarios)
 {
-    jugador_vec[POSICION_JUGADOR_1].asignar_objetivo_principal(vector[POSICION_JUGADOR_1].obtener_valor(POSICION_OBJETIVO_PRINCIPAL));
-    jugador_vec[POSICION_JUGADOR_2].asignar_objetivo_principal(vector[POSICION_JUGADOR_2].obtener_valor(POSICION_OBJETIVO_PRINCIPAL));
-    Vector<int> indices_jug1;
-    Vector<int> indices_jug2;
-    int indice_1;
-    int indice_2;
+    jugador.asignar_objetivo_principal(vector.obtener_valor(POSICION_OBJETIVO_PRINCIPAL));
+    Vector<int> indices_jug;
+    int indice;
     for (int i = 0; i < cantidad_secundarios; i++)
     {
-        indice_1 = numero_aleatorio(CANTIDAD_TOTAL_OBJETIVOS_SECUNDARIOS, CANTIDAD_OBJETIVO_PRINCIPAL);
-        indice_2 = numero_aleatorio(CANTIDAD_TOTAL_OBJETIVOS_SECUNDARIOS, CANTIDAD_OBJETIVO_PRINCIPAL);
-        while (indice_repetido(indice_1, indices_jug1) == true)
+        indice = numero_aleatorio(CANTIDAD_TOTAL_OBJETIVOS_SECUNDARIOS, CANTIDAD_OBJETIVO_PRINCIPAL);
+        while (indice_repetido(indice, indices_jug) == true)
         {
-            indice_1 = numero_aleatorio(CANTIDAD_TOTAL_OBJETIVOS_SECUNDARIOS, CANTIDAD_OBJETIVO_PRINCIPAL);
+            indice = numero_aleatorio(CANTIDAD_TOTAL_OBJETIVOS_SECUNDARIOS, CANTIDAD_OBJETIVO_PRINCIPAL);
         }
-        indices_jug1.agregar_al_final(indice_1);
-        jugador_vec[POSICION_JUGADOR_2].asignar_objetivo_secundario(vector[POSICION_JUGADOR_1].obtener_valor(indice_1));
-        while (indice_repetido(indice_2, indices_jug1) == true)
-        {
-            indice_2 = numero_aleatorio(CANTIDAD_TOTAL_OBJETIVOS_SECUNDARIOS, CANTIDAD_OBJETIVO_PRINCIPAL);
-        }
-        indices_jug2.agregar_al_final(indice_2);
-        jugador_vec[POSICION_JUGADOR_2].asignar_objetivo_secundario(vector[POSICION_JUGADOR_2].obtener_valor(indice_2));
+        indices_jug.agregar_al_final(indice);
+        jugador.asignar_objetivo_secundario(vector.obtener_valor(indice));
     }
 }
 
@@ -319,7 +309,7 @@ bool indice_repetido(int indice_a_revisar, Vector<int> indices)
 }
 void construir_edificio(Matriz_casillero &mapa, Grafo &grafo, Jugador &jugador)
 {
-    if(tiene_energia(jugador, CONSUMO_ENERGIA_CONSTRUIR_EDIFICIO))
+    if (tiene_energia(jugador, CONSUMO_ENERGIA_CONSTRUIR_EDIFICIO))
     {
         string nombre_edificio = pedir_nombre();
         Errores estado = verificar_construccion(jugador, nombre_edificio);
@@ -336,14 +326,14 @@ void construir_edificio(Matriz_casillero &mapa, Grafo &grafo, Jugador &jugador)
                 int columna = 0;
                 obtener_coordenadas(fila, columna, mapa.obtener_largo_filas(), mapa.obtener_largo_columnas());
                 Errores estado_coordenadas = validar_coordenadas_construccion(fila, columna, mapa);
-                if(estado_coordenadas != EXITO)
+                if (estado_coordenadas != EXITO)
                 {
                     procesar_errores(estado_coordenadas);
                 }
                 else
                 {
-                    Casillero_construible* ptr_casillero = dynamic_cast<Casillero_construible*>(mapa.obtener_dato(fila, columna));
-                    Edificio* edificio_objetivo = jugador.obtener_edificios()->consulta(nombre_edificio);
+                    Casillero_construible *ptr_casillero = dynamic_cast<Casillero_construible *>(mapa.obtener_dato(fila, columna));
+                    Edificio *edificio_objetivo = jugador.obtener_edificios()->consulta(nombre_edificio);
                     jugador.obtener_inventario()->obtener_por_nombre(PIEDRA).reducir_cantidad(edificio_objetivo->obtener_material(POSICION_PIEDRA).obtener_cantidad());
                     jugador.obtener_inventario()->obtener_por_nombre(MADERA).reducir_cantidad(edificio_objetivo->obtener_material(POSICION_MADERA).obtener_cantidad());
                     jugador.obtener_inventario()->obtener_por_nombre(METAL).reducir_cantidad(edificio_objetivo->obtener_material(POSICION_METAL).obtener_cantidad());
@@ -355,7 +345,6 @@ void construir_edificio(Matriz_casillero &mapa, Grafo &grafo, Jugador &jugador)
                     coordenada.fijar_coordenadas(fila, columna);
                     actualizar_aristas_grafo(mapa, grafo, coordenada, INFINITO);
                     cout << COLOR_TEXTO_VERDE << MENSAJE_CONSTRUCCION_EXITOSA << COLOR_TEXTO_BLANCO << endl;
-
                 }
             }
             else
@@ -372,15 +361,19 @@ void construir_edificio(Matriz_casillero &mapa, Grafo &grafo, Jugador &jugador)
 
 void demoler_edificio(Matriz_casillero &mapa, Grafo &grafo, Jugador &jugador, int numero_jugador)
 {
-    if(tiene_energia(jugador, CONSUMO_ENERGIA_DEMOLER_EDIFICIO)) {
+    if (tiene_energia(jugador, CONSUMO_ENERGIA_DEMOLER_EDIFICIO))
+    {
         cout << INGRESE_COORDENADAS_DESTRUIR << endl;
         int fila = 0;
         int columna = 0;
         obtener_coordenadas(fila, columna, mapa.obtener_largo_filas(), mapa.obtener_largo_columnas());
         Errores estado_coordenada = validar_coordenadas_destruccion(fila, columna, mapa, numero_jugador);
-        if (estado_coordenada != EXITO) {
+        if (estado_coordenada != EXITO)
+        {
             procesar_errores(estado_coordenada);
-        } else {
+        }
+        else
+        {
             Coordenada coordenada;
             coordenada.fijar_coordenadas(fila, columna);
             Casillero_construible *puntero_casillero = dynamic_cast<Casillero_construible *>(mapa.obtener_dato(fila,
@@ -388,11 +381,11 @@ void demoler_edificio(Matriz_casillero &mapa, Grafo &grafo, Jugador &jugador, in
             Edificio edificio_objetivo = puntero_casillero->obtener_edificio();
             Edificio *edificio_a_demoler = jugador.obtener_edificios()->consulta(edificio_objetivo.obtener_nombre());
             jugador.obtener_inventario()->obtener_por_nombre(PIEDRA).aumentar_cantidad(
-                    edificio_a_demoler->obtener_material(POSICION_PIEDRA).obtener_cantidad() / 2);
+                edificio_a_demoler->obtener_material(POSICION_PIEDRA).obtener_cantidad() / 2);
             jugador.obtener_inventario()->obtener_por_nombre(MADERA).aumentar_cantidad(
-                    edificio_a_demoler->obtener_material(POSICION_MADERA).obtener_cantidad() / 2);
+                edificio_a_demoler->obtener_material(POSICION_MADERA).obtener_cantidad() / 2);
             jugador.obtener_inventario()->obtener_por_nombre(METAL).aumentar_cantidad(
-                    edificio_a_demoler->obtener_material(POSICION_METAL).obtener_cantidad() / 2);
+                edificio_a_demoler->obtener_material(POSICION_METAL).obtener_cantidad() / 2);
             edificio_a_demoler->decrementar_construcciones();
             puntero_casillero->desocupar_casillero();
             jugador.modificar_energia(-CONSUMO_ENERGIA_DEMOLER_EDIFICIO);

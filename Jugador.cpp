@@ -7,6 +7,32 @@ Jugador::Jugador()
     this->energia = ENERGIA_INICIAL;
     this->edificios = new Diccionario;
     this->inventario = new Vector_material;
+    this->objetivo_principal = new Objetivo_simple;
+    this->objetivos_secundarios = new Vector_objetivo;
+}
+Jugador::Jugador(const Jugador &jugador_copiar)
+{
+    this->energia = ENERGIA_INICIAL;
+    this->edificios = new Diccionario;
+    this->inventario = new Vector_material;
+    this->objetivo_principal = new Objetivo_simple;
+    this->objetivos_secundarios = new Vector_objetivo;
+    *this->objetivo_principal = *jugador_copiar.objetivo_principal;
+}
+Jugador Jugador::operator=(const Jugador &jugador_copiar)
+{
+    cout << "Entre aca" << endl;
+    this->energia = ENERGIA_INICIAL;
+    this->energia = jugador_copiar.energia;
+    this->edificios = new Diccionario;
+    this->edificios = jugador_copiar.edificios;
+    this->inventario = new Vector_material;
+    this->inventario = jugador_copiar.inventario;
+    this->objetivo_principal = new Objetivo_simple;
+    this->objetivos_secundarios = new Vector_objetivo;
+    *this->objetivo_principal = *jugador_copiar.objetivo_principal;
+    *(this->objetivos_secundarios) = *(jugador_copiar.objetivos_secundarios);
+    return *this;
 }
 Jugador::Jugador(string nombre, tipo_jugador identidad)
 {
@@ -15,6 +41,8 @@ Jugador::Jugador(string nombre, tipo_jugador identidad)
     this->energia = ENERGIA_INICIAL;
     this->edificios = new Diccionario;
     this->inventario = new Vector_material;
+    this->objetivo_principal = new Objetivo_simple;
+    this->objetivos_secundarios = new Vector_objetivo;
 }
 tipo_jugador Jugador::obtener_identidad()
 {
@@ -83,11 +111,12 @@ void Jugador::modificar_cantidad_bomba(int cantidad)
 void Jugador::asignar_objetivo_principal(Objetivo *objetivo)
 {
     Objetivo_simple *objetivo_ptr = dynamic_cast<Objetivo_simple *>(objetivo);
-    this->objetivo_principal = *objetivo_ptr;
+    *this->objetivo_principal = *objetivo_ptr;
 }
 void Jugador::asignar_objetivo_secundario(Objetivo *objetivo)
 {
-    this->objetivos_secundarios.agregar_al_final(objetivo);
+    this->objetivos_secundarios->agregar_al_final(objetivo);
+    objetivo->mostrar();
 }
 void Jugador::asignar_edificios(Diccionario *diccionario)
 {
@@ -95,8 +124,8 @@ void Jugador::asignar_edificios(Diccionario *diccionario)
 }
 void Jugador::mostrar_objetivos_restantes()
 {
-    this->objetivo_principal.mostrar_restante();
-    this->objetivos_secundarios.mostrar_restante();
+    this->objetivo_principal->mostrar_restante();
+    this->objetivos_secundarios->mostrar_restante();
 }
 estado_objetivo Jugador::actualizar_objetivos(string nombre, int cant_incremento)
 {
@@ -104,11 +133,11 @@ estado_objetivo Jugador::actualizar_objetivos(string nombre, int cant_incremento
     if (nombre.compare(NOMBRE_OBJETIVO_PRINCIPAL) == 0)
     {
 
-        objetivos_completos = this->objetivo_principal.actualizar_objetivo(cant_incremento);
+        objetivos_completos = this->objetivo_principal->actualizar_objetivo(cant_incremento);
     }
     else
     {
-        objetivos_completos = this->objetivos_secundarios.actualizar_por_nombre(nombre, cant_incremento);
+        objetivos_completos = this->objetivos_secundarios->actualizar_por_nombre(nombre, cant_incremento);
     }
     return objetivos_completos;
 }

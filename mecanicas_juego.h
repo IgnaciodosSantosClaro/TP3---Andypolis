@@ -39,16 +39,16 @@ void reparar(Matriz_casillero &mapa, Jugador &jugador);
 
 void lluvia_recursos(Matriz_casillero &mapa);
 
-void asignar_objetivos(Vector_objetivo *vector, Jugador *jugador_vec, int cantidad_secundarios);
+void asignar_objetivos(Vector_objetivo &vector, Jugador &jugador, int cantidad_secundarios);
 
 bool indice_repetido(int indice_a_revisar, Vector<int> indices);
 
-//PRE: La Matriz_casillero, el Grafo y el Jugador estan bien cargados.
-//POS: Construye un edificio.
+// PRE: La Matriz_casillero, el Grafo y el Jugador estan bien cargados.
+// POS: Construye un edificio.
 void construir_edificio(Matriz_casillero &mapa, Grafo &grafo, Jugador &jugador);
 
-//PRE: La Matriz_casillero, el Grafo y el Jugador estan bien cargados.
-//POS: Destruye un edificio.
+// PRE: La Matriz_casillero, el Grafo y el Jugador estan bien cargados.
+// POS: Destruye un edificio.
 void demoler_edificio(Matriz_casillero &mapa, Grafo &grafo, Jugador &jugador, int numero_jugador);
 
 #endif // MECANICAS_JUEGO_H

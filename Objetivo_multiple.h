@@ -8,9 +8,10 @@ class Objetivo_multiple : public Objetivo
 {
 private:
     Vector<Objetivo_simple> vector_objetivos;
-    bool es_de_inventario;
 
 public:
+    Objetivo_multiple(const Objetivo_multiple &objetivo_a_copiar);
+    Objetivo_multiple operator=(const Objetivo_multiple &objetivo_a_copiar);
     Objetivo_multiple();
     Objetivo_multiple(string nombre_objetivo_multiple, string descripcion, Objetivo_simple &objetivo);
     Objetivo_multiple(string nombre_objetivo_multiple, string descripcion);

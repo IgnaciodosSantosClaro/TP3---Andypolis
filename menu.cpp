@@ -52,11 +52,10 @@ void menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, Jugador &ju
     bool salir = false;
     Jugador jugador_vec[MAXIMO_JUGADORES];
     Grafo grafo_vec[MAXIMO_JUGADORES];
-    Vector_objetivo objetivos_generales[MAXIMO_JUGADORES];
-    cargar_objetivos(objetivos_generales[POSICION_JUGADOR_1], dicc_edificios.consulta(NOMBRE_EDIFICIO_ESCUELA)->obtener_cant_max());
-    cargar_objetivos(objetivos_generales[POSICION_JUGADOR_2], dicc_edificios.consulta(NOMBRE_EDIFICIO_ESCUELA)->obtener_cant_max()); // Falta asignar objetivo a cada jugador y actualizarlos cuando hacen acciones
-    asignar_objetivos(objetivos_generales, jugador_vec, 2); // VER por que no asigna
-    jugador_vec[0].mostrar_objetivos_restantes();
+    Vector_objetivo objetivos_generales;
+    cargar_objetivos(objetivos_generales, dicc_edificios.consulta(NOMBRE_EDIFICIO_ESCUELA)->obtener_cant_max());
+    asignar_objetivos(objetivos_generales, jugador1, 2);
+    asignar_objetivos(objetivos_generales, jugador2, 2);
     jugador_vec[POSICION_JUGADOR_1] = jugador1;
     jugador_vec[POSICION_JUGADOR_2] = jugador2;
     grafo_vec[POSICION_JUGADOR_1] = grafo1;
@@ -208,6 +207,7 @@ bool procesar_menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, in
     case MOSTRAR_OBJETIVOS:
         // opcion_elegida = MOSTRAR_OBJETIVOS;
         jugador_vec[indice_jugador_actual].mostrar_objetivos_restantes();
+        retardo(2500);
         break;
     case RECOLECTAR_RECURSOS_PRODUCIDOS:
         // opcion_elegida = RECOLECTAR_RECURSOS_PRODUCIDOS;

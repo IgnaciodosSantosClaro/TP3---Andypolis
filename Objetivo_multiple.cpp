@@ -1,4 +1,25 @@
 #include "Objetivo_multiple.h"
+Objetivo_multiple::Objetivo_multiple(const Objetivo_multiple &objetivo_a_copiar)
+{
+    this->nombre_objetivo = objetivo_a_copiar.nombre_objetivo;
+    this->esta_completo = objetivo_a_copiar.esta_completo;
+    this->descripcion = objetivo_a_copiar.descripcion;
+    this->cantidad_actual = objetivo_a_copiar.cantidad_actual;
+    this->cantidad_objetivo = objetivo_a_copiar.cantidad_objetivo;
+    this->cantidad_restante = objetivo_a_copiar.cantidad_restante;
+    this->vector_objetivos = objetivo_a_copiar.vector_objetivos;
+};
+Objetivo_multiple Objetivo_multiple::operator=(const Objetivo_multiple &objetivo_a_copiar)
+{
+    this->nombre_objetivo = objetivo_a_copiar.nombre_objetivo;
+    this->esta_completo = objetivo_a_copiar.esta_completo;
+    this->descripcion = objetivo_a_copiar.descripcion;
+    this->cantidad_actual = objetivo_a_copiar.cantidad_actual;
+    this->cantidad_objetivo = objetivo_a_copiar.cantidad_objetivo;
+    this->cantidad_restante = objetivo_a_copiar.cantidad_restante;
+    this->vector_objetivos = objetivo_a_copiar.vector_objetivos;
+    return *this;
+}
 Objetivo_multiple::Objetivo_multiple(string nombre_objetivo_multiple, string descripcion, Objetivo_simple &objetivo)
 {
     this->nombre_objetivo = nombre_objetivo_multiple;
