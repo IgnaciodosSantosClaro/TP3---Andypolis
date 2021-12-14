@@ -43,14 +43,14 @@ bool indice_repetido(int indice_a_revisar, Vector<int> indices);
 
 // PRE: La Matriz_casillero, el Grafo y el Jugador estan bien cargados.
 // POS: Construye un edificio.
-void construir_edificio(Matriz_casillero &mapa, Grafo *grafo, Jugador *jugador);
+void construir_edificio(Matriz_casillero &mapa, Grafo *grafo, Jugador *jugador, bool &gano);
 
 // PRE: La Matriz_casillero, el Grafo y el Jugador estan bien cargados.
 // POS: Destruye un edificio.
 void demoler_edificio(Matriz_casillero &mapa, Grafo *grafo, Jugador *jugador, int numero_jugador);
 
-//PRE: mapa, grafo y jugador estan bien cargados.
-//POS: Desplaza al jugador.
+// PRE: mapa, grafo y jugador estan bien cargados.
+// POS: Desplaza al jugador.
 void desplazarse(Matriz_casillero &mapa, Grafo &grafo, Jugador &jugador, int numero_jugador);
 
 #endif // MECANICAS_JUEGO_H

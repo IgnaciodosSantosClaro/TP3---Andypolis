@@ -211,12 +211,14 @@ void lluvia_recursos(Matriz_casillero &mapa)
     int cantidad_metal_a_generar;
     int cantidad_piedra_a_generar;
     int cantidad_madera_a_generar;
-    generar_cantidades_de_recursos(cantidad_metal_a_generar, cantidad_piedra_a_generar, cantidad_madera_a_generar);
-    int cantidad_casilleros = cantidad_madera_a_generar + cantidad_piedra_a_generar + cantidad_metal_a_generar;
+    int cantidad_andycoins_a_generar;
+    generar_cantidades_de_recursos(cantidad_metal_a_generar, cantidad_piedra_a_generar, cantidad_madera_a_generar, cantidad_andycoins_a_generar);
+    int cantidad_casilleros = cantidad_madera_a_generar + cantidad_piedra_a_generar + cantidad_metal_a_generar + cantidad_andycoins_a_generar;
     bool generacion_completa = false;
     int cantidad_metal_generada = 0;
     int cantidad_piedra_generada = 0;
     int cantidad_madera_generada = 0;
+    int cantidad_andycoins_generada = 0;
     int cantidad_casilleros_completados = 0;
     int cantidad_casilleros_ocupados = 0;
     bool mapa_completo = false;
@@ -234,18 +236,23 @@ void lluvia_recursos(Matriz_casillero &mapa)
 
                 if (cantidad_metal_generada < cantidad_metal_a_generar)
                 {
-                    puntero_a_casillero->ocupar_casillero(Material_consumible(METAL, 1, ICONO_METAL));
+                    puntero_a_casillero->ocupar_casillero(Material_consumible(METAL, CANT_METAL_EN_BOLSA, ICONO_METAL));
                     cantidad_metal_generada++;
                 }
                 else if (cantidad_piedra_generada < cantidad_piedra_a_generar)
                 {
-                    puntero_a_casillero->ocupar_casillero(Material_consumible(PIEDRA, 1, ICONO_PIEDRA));
+                    puntero_a_casillero->ocupar_casillero(Material_consumible(PIEDRA, CANT_PIEDRA_EN_BOLSA, ICONO_PIEDRA));
                     cantidad_piedra_generada++;
                 }
                 else if (cantidad_madera_generada < cantidad_madera_a_generar)
                 {
-                    puntero_a_casillero->ocupar_casillero(Material_consumible(MADERA, 1, ICONO_MADERA));
+                    puntero_a_casillero->ocupar_casillero(Material_consumible(MADERA, CANT_MADERA_EN_BOLSA, ICONO_MADERA));
                     cantidad_madera_generada++;
+                }
+                else if (cantidad_andycoins_generada < cantidad_andycoins_a_generar)
+                {
+                    puntero_a_casillero->ocupar_casillero(Material_consumible(ANDYCOINS, CANT_ANDYCOINS_EN_BOLSA, ICONO_ANDYCOINS));
+                    cantidad_andycoins_generada++;
                 }
                 cantidad_casilleros_completados++;
             }
@@ -275,6 +282,7 @@ void lluvia_recursos(Matriz_casillero &mapa)
         cout << PIEDRA << ESPACIO << cantidad_piedra_generada << endl;
         cout << METAL << ESPACIO << cantidad_metal_generada << endl;
         cout << MADERA << ESPACIO << cantidad_madera_generada << endl;
+        cout << ANDYCOINS << ESPACIO << cantidad_madera_generada << endl;
     }
 }
 // Espera dos Vectores objetivos y dos jugadores
@@ -307,7 +315,7 @@ bool indice_repetido(int indice_a_revisar, Vector<int> indices)
     }
     return esta_duplicado;
 }
-void construir_edificio(Matriz_casillero &mapa, Grafo *grafo, Jugador *jugador)
+void construir_edificio(Matriz_casillero &mapa, Grafo *grafo, Jugador *jugador, bool &gano)
 {
     if (tiene_energia(jugador, CONSUMO_ENERGIA_CONSTRUIR_EDIFICIO))
     {
@@ -345,6 +353,10 @@ void construir_edificio(Matriz_casillero &mapa, Grafo *grafo, Jugador *jugador)
                     coordenada.fijar_coordenadas(fila, columna);
                     actualizar_aristas_grafo(mapa, grafo, coordenada, INFINITO);
                     cout << COLOR_TEXTO_VERDE << MENSAJE_CONSTRUCCION_EXITOSA << COLOR_TEXTO_BLANCO << endl;
+                    if (jugador->actualizar_objetivos(edificio_objetivo->obtener_nombre(), 1) == OBJETIVO_COMPLETO)
+                    {
+                        gano = true;
+                    }
                 }
             }
             else

@@ -128,6 +128,8 @@ void mostrar_referencia_materiales()
     madera.mostrar_leyenda(ICONO_MADERA);
     Material metal = Material(METAL, 1);
     metal.mostrar_leyenda(ICONO_METAL);
+    Material andycoins = Material(ANDYCOINS, 1);
+    metal.mostrar_leyenda(ICONO_ANDYCOINS);
 }
 
 void mostrar_mapa(Matriz_casillero &mapa, int ancho_grilla, int largo_grilla)

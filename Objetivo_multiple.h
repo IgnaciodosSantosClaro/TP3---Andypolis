@@ -17,8 +17,10 @@ public:
     Objetivo_multiple(string nombre_objetivo_multiple, string descripcion);
     void agregar_objetivo_simple(Objetivo_simple &objetivo_nuevo);
     void agregar_objetivo_simple(string nombre_objetivo_simple, string descripcion, string nombre_elemento_objetivo, int cantidad_objetivo);
-    int buscar_por_nombre(string nombre);
+    int buscar_por_elemento(string elemento);
     int obtener_cantidad_objetivo(string nombre);
+    int buscar_por_nombre(string nombre);
+    estado_objetivo actualizar_por_elemento(string elemento, int cant_incremento);
     estado_objetivo actualizar_objetivo(string nombre_objetivo_simple, int cantidad_incremento);
     estado_objetivo actualizar_objetivo_multiple();
     void mostrar_restante();

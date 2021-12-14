@@ -59,17 +59,12 @@ void menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, Vector_juga
 
     cargar_objetivos(objetivos_generales, dicc_edificios.consulta(NOMBRE_EDIFICIO_ESCUELA)->obtener_cant_max());
     asignar_objetivos(objetivos_generales, jugadores.obtener_valor(POSICION_JUGADOR_1), 2);
-    asignar_objetivos(objetivos_generales, jugadores.obtener_valor(POSICION_JUGADOR_1), 2);
-    // jugador_vec[POSICION_JUGADOR_1] = jugador1;
-    // jugador_vec[POSICION_JUGADOR_2] = jugador2;
-    // grafo_vec[POSICION_JUGADOR_1] = grafo1;
-    // grafo_vec[POSICION_JUGADOR_2] = grafo2;
+    asignar_objetivos(objetivos_generales, jugadores.obtener_valor(POSICION_JUGADOR_2), 2);
+
     int jugador_actual = elegir_jugador_inicial(MAXIMO_JUGADORES);
     jugador_actual -= 1; // Paso a indice
     if (es_partida_nueva)
     {
-        // inicializar_posicion_jugador(mapa, jugador_vec[POSICION_JUGADOR_1]);
-        // inicializar_posicion_jugador(mapa, jugador_vec[POSICION_JUGADOR_2]);
 
         inicializar_posicion_jugador(mapa, jugadores.obtener_valor(POSICION_JUGADOR_1));
         inicializar_posicion_jugador(mapa, jugadores.obtener_valor(POSICION_JUGADOR_2));
@@ -77,7 +72,8 @@ void menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, Vector_juga
     lluvia_recursos(mapa);
     bool jugo_1 = false;
     bool jugo_2 = false;
-    while (salir != true)
+    bool gano = false;
+    while (salir != true || gano != true)
     {
         retardo(2500);
         if (jugo_1 == true && jugo_2 == true)
@@ -88,7 +84,11 @@ void menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, Vector_juga
         }
         mostrar_mapa(mapa, 5, 3);
         mostrar_menu_juego();
-        salir = procesar_menu_juego(mapa, dicc_edificios, jugador_actual, jugadores, grafos, jugo_1, jugo_2, es_partida_nueva);
+        salir = procesar_menu_juego(mapa, dicc_edificios, jugador_actual, jugadores, grafos, jugo_1, jugo_2, es_partida_nueva, gano);
+    }
+    if (gano == true)
+    {
+        cout << "Gano " << jugadores.obtener_valor(jugador_actual)->obtener_nombre() << endl;
     }
 }
 
@@ -153,11 +153,11 @@ bool procesar_menu_inicial(Matriz_casillero &mapa, Diccionario &dicc_edificios, 
     return salir;
 }
 
-// bool procesar_menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, int &indice_jugador_actual, Jugador jugador_vec[], Grafo grafo_vec[], bool &jugo_1, bool &jugo_2, bool es_partida_nueva)
-bool procesar_menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, int &indice, Vector_jugador &jugadores, Vector_grafo &grafos, bool &jugo_1, bool &jugo_2, bool es_partida_nueva)
+bool procesar_menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, int &indice, Vector_jugador &jugadores, Vector_grafo &grafos, bool &jugo_1, bool &jugo_2, bool es_partida_nueva, bool &gano)
 
 {
     bool salir = false;
+    // gano = verificar_objetivos_inventario();
     cout << jugadores.obtener_valor(indice)->obtener_nombre() << ESPACIO;
     cout << INGRESE_ACCION << endl;
     Input input;
@@ -170,7 +170,7 @@ bool procesar_menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, in
     switch (opcion_elegida)
     {
     case CONSTRUIR_EDIFICIO_POR_NOMBRE:
-        construir_edificio(mapa, grafos.obtener_valor(indice), jugadores.obtener_valor(indice));
+        construir_edificio(mapa, grafos.obtener_valor(indice), jugadores.obtener_valor(indice), gano);
         break;
     case LISTAR_EDIFICIOS_CONSTRUIDOS:
         listar_edificios_construidos(mapa, jugadores.obtener_valor(indice));
@@ -226,17 +226,17 @@ bool procesar_menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, in
     case MOVERSE_A_UNA_COORDENADA:
         break;
     case FINALIZAR_TURNO:
-        if (indice == JUGADOR_1)
+        if (indice == POSICION_JUGADOR_1)
         {
             cout << "Jugo 1" << endl;
             jugo_1 = true;
-            indice = JUGADOR_2;
+            indice = POSICION_JUGADOR_2;
         }
         else
         {
             cout << "Jugo 2" << endl;
             jugo_2 = true;
-            indice = JUGADOR_1;
+            indice = POSICION_JUGADOR_1;
         }
 
         break;

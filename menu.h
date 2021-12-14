@@ -47,7 +47,7 @@ void iniciar_juego();
 // POS: Procesa la opcion elegida por el usuario.
 //  Cambia indice, recibir por referencia
 // bool procesar_menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, int &indice, Jugador *jugador_vec, Grafo *grafo_vec, bool &jugo_1, bool &jugo_2, bool es_partida_nueva);
-bool procesar_menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, int &indice, Vector_jugador &jugadores, Vector_grafo &grafos_vec, bool &jugo_1, bool &jugo_2, bool es_partida_nueva);
+bool procesar_menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, int &indice, Vector_jugador &jugadores, Vector_grafo &grafos_vec, bool &jugo_1, bool &jugo_2, bool es_partida_nueva, bool &gano);
 
 // PRE: mapa, dicc_edificios, jugador1, jugador2, grafo1 y grafo2 estan bien cargados.
 // POS: Muestra el menu inicial y procesa la opcion ingredasa por usuario.

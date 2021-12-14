@@ -41,6 +41,10 @@ int Objetivo_simple::obtener_cantidad_objetivo()
 {
     return this->cantidad_objetivo;
 }
+string Objetivo_simple::obtener_elemento()
+{
+    return this->nombre_elemento_objetivo;
+}
 estado_objetivo Objetivo_simple::actualizar_objetivo(int cantidad_incremento)
 {
     this->cantidad_actual = this->cantidad_actual + cantidad_incremento;

@@ -133,17 +133,17 @@ void Jugador::mostrar_objetivos_restantes()
     this->objetivo_principal->mostrar_restante();
     this->objetivos_secundarios->mostrar_restante();
 }
-estado_objetivo Jugador::actualizar_objetivos(string nombre, int cant_incremento)
+estado_objetivo Jugador::actualizar_objetivos(string elemento, int cant_incremento)
 {
     estado_objetivo objetivos_completos = OBJETIVO_INCOMPLETO;
-    if (nombre.compare(NOMBRE_OBJETIVO_PRINCIPAL) == 0)
+    if (nombre.compare(ELEMENTO_OBJETIVO_PRINCIPAL) == 0)
     {
 
         objetivos_completos = this->objetivo_principal->actualizar_objetivo(cant_incremento);
     }
     else
     {
-        objetivos_completos = this->objetivos_secundarios->actualizar_por_nombre(nombre, cant_incremento);
+        objetivos_completos = this->objetivos_secundarios->actualizar_por_elemento(nombre, cant_incremento);
     }
     return objetivos_completos;
 }
