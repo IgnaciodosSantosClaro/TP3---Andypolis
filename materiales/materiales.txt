@@ -1,8 +1,0 @@
-madera 1500 0
-piedra 3000 0
-metal 2000 814
-andycoins 1500 1000
-bombas 10 0
-aluminio 3400 245
-cobre 6700 980
-diamante 600 3

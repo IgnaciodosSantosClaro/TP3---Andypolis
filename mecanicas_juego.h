@@ -51,6 +51,6 @@ void demoler_edificio(Matriz_casillero &mapa, Grafo *grafo, Jugador *jugador, in
 
 //PRE: mapa, grafo y jugador estan bien cargados.
 //POS: Desplaza al jugador.
-void desplazarse(Matriz_casillero &mapa, Grafo &grafo, Jugador &jugador, int numero_jugador);
+void desplazarse(Matriz_casillero &mapa, Grafo *grafo, Jugador *jugador, int numero_jugador);
 
 #endif // MECANICAS_JUEGO_H

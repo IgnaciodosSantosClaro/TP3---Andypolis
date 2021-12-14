@@ -224,6 +224,7 @@ bool procesar_menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, in
         recolectar_recursos_producidos(jugadores.obtener_valor(indice));
         break;
     case MOVERSE_A_UNA_COORDENADA:
+        desplazarse(mapa, grafos.obtener_valor(indice), jugadores.obtener_valor(indice), indice + 1);
         break;
     case FINALIZAR_TURNO:
         if (indice == JUGADOR_1)
@@ -241,6 +242,7 @@ bool procesar_menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, in
 
         break;
     case GUARDAR_Y_SALIR:
+        guardar_y_salir(mapa, jugadores);
         salir = true;
 
         break;
