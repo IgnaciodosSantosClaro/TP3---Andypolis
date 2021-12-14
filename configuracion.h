@@ -172,6 +172,7 @@ const string NOMBRE_COMPRAR_ANDYPOLIS = "Comprar Andypolis";
 const string DESCRIPCION_COMPRAR_ANDYPOLIS = "Haber utilizado 100000 Andycoins";
 const string ELEMENTO_COMPRAR_ANDYPOLIS = "andycoins";
 const int CANTIDAD_COMPRAR_ANDYPOLIS = 100000;
+const int CANTIDAD_OBJETIVOS_SECUNDARIOS_POR_JUGADOR = 2;
 
 const string NOMBRE_EDAD_PIEDRA = "Edad de piedra";
 const string DESCRIPCION_EDAD_PIEDRA = "Tener 50000 de piedra en el inventario";

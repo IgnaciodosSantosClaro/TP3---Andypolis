@@ -23,6 +23,7 @@ public:
     estado_objetivo actualizar_por_elemento(string elemento, int cant_incremento);
     estado_objetivo actualizar_por_nombre(string nombre, int cant_incremento);
     tipo_objetivo obtener_tipo_objetivo(Objetivo *objetivo);
+    int obtener_cantidad_completos();
     void actualizar_multiple(string nombre);
     void mostrar_restante();
     void agregar_objetivo_al_final(Objetivo *objetivo);

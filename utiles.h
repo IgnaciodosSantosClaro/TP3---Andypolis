@@ -104,5 +104,11 @@ void actualizar_inventario(Jugador *jugador, Material_consumible &material);
 // PRE: El jugador esta bien cargado.
 // POS: Recolecta el material que se encuentra en casillero.
 void recolectar_material(Casillero *casillero, Jugador *jugador);
+// PRE: El mapa esta bien cargado.
+// POS: Devuelve un vector con las coordenadas y el nombre de los materiales.
+Vector<string> *cadena_materiales(Matriz_casillero &mapa);
 
+// PRE: El mapa esta bien cargado.
+// POS: Devuelve un vector con las coordenadas y el nombre de los edificios.
+Vector<string> *cadena_edificios(Matriz_casillero &mapa, int numero_jugador);
 #endif // UTILIES_H

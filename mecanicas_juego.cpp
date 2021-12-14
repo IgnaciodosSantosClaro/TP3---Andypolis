@@ -302,7 +302,29 @@ void asignar_objetivos(Vector_objetivo &vector, Jugador *jugador, int cantidad_s
         jugador->asignar_objetivo_secundario(vector.obtener_valor(indice));
     }
 }
-
+bool verificar_objetivos_inventario(Jugador *jugador)
+{
+    int energia = jugador->obtener_energia();
+    int cantidad_piedra = jugador->obtener_inventario()->obtener_por_nombre(PIEDRA)->obtener_cantidad();
+    int cantidad_bombas = jugador->obtener_bombas().obtener_cantidad();
+    if (jugador->obtener_objetivos()->actualizar_por_nombre(NOMBRE_EDAD_PIEDRA, cantidad_piedra) != OBJETIVO_COMPLETO)
+    {
+        jugador->obtener_objetivos()->actualizar_por_nombre(NOMBRE_EDAD_PIEDRA, cantidad_piedra);
+    }
+    if (jugador->obtener_objetivos()->actualizar_por_nombre(NOMBRE_ENERGETICO, -energia) != OBJETIVO_COMPLETO)
+    {
+        jugador->obtener_objetivos()->actualizar_por_nombre(NOMBRE_ENERGETICO, -energia);
+    }
+    if (jugador->obtener_objetivos()->actualizar_por_nombre(NOMBRE_CANSADO, energia) != OBJETIVO_COMPLETO)
+    {
+        jugador->obtener_objetivos()->actualizar_por_nombre(NOMBRE_CANSADO, -energia);
+    }
+    if (jugador->obtener_objetivos()->actualizar_por_nombre(NOMBRE_ARMADO, cantidad_bombas) != OBJETIVO_COMPLETO)
+    {
+        jugador->obtener_objetivos()->actualizar_por_nombre(NOMBRE_CANSADO, -cantidad_bombas);
+    }
+    return jugador->cumplio_objetivos();
+}
 bool indice_repetido(int indice_a_revisar, Vector<int> indices)
 {
     bool esta_duplicado = false;
@@ -367,7 +389,7 @@ void construir_edificio(Matriz_casillero &mapa, Grafo *grafo, Jugador *jugador, 
     }
     else
     {
-        cout << COLOR_TEXTO_ROJO << ENERGIA_INSUFICIENTE << COLOR_TEXTO_BLANCO << endl;
+        imprimir_con_retardo(MENSAJE_ENERGIA_INSUFICIENTE, 2500);
     }
 }
 

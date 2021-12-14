@@ -133,8 +133,22 @@ void Jugador::mostrar_objetivos_restantes()
     this->objetivo_principal->mostrar_restante();
     this->objetivos_secundarios->mostrar_restante();
 }
-estado_objetivo Jugador::actualizar_objetivos(string elemento, int cant_incremento)
+bool Jugador::cumplio_objetivos()
 {
+    bool completo = false;
+    if (this->objetivo_principal->objetivo_completo())
+    {
+        completo = true;
+    }
+    else if (this->objetivos_secundarios->obtener_cantidad_completos() == CANTIDAD_OBJETIVOS_SECUNDARIOS_POR_JUGADOR)
+    {
+        completo = true;
+    }
+    return completo;
+}
+bool Jugador::actualizar_objetivos(string elemento, int cant_incremento)
+{
+    bool gano = false;
     estado_objetivo objetivos_completos = OBJETIVO_INCOMPLETO;
     if (nombre.compare(ELEMENTO_OBJETIVO_PRINCIPAL) == 0)
     {
@@ -145,7 +159,11 @@ estado_objetivo Jugador::actualizar_objetivos(string elemento, int cant_incremen
     {
         objetivos_completos = this->objetivos_secundarios->actualizar_por_elemento(nombre, cant_incremento);
     }
-    return objetivos_completos;
+    if (objetivos_completos == OBJETIVO_COMPLETO)
+    {
+        gano = true;
+    }
+    return gano;
 }
 Diccionario *Jugador::obtener_edificios()
 {
@@ -174,4 +192,8 @@ Jugador::~Jugador()
     this->inventario = nullptr;
     this->objetivo_principal = nullptr;
     this->objetivos_secundarios = nullptr;
+}
+Vector_objetivo *Jugador::obtener_objetivos()
+{
+    return this->objetivos_secundarios;
 }

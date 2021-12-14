@@ -394,3 +394,79 @@ void actualizar_archivo_materiales(Vector_material &materiales)
 
     archivo_materiales_actualizado.close();
 }
+void guardar_y_salir(Matriz_casillero &mapa, Vector_jugador &jugadores, Diccionario &diccionario)
+{
+    actualizar_archivo_materiales(jugadores);
+    actualizar_archivo_ubicaciones(mapa, jugadores);
+    actualizar_archivo_edificios(diccionario);
+}
+
+void actualizar_archivo_materiales(Vector_jugador &jugadores)
+{
+    ofstream archivo_materiales_actualizado(RUTA_MATERIALES);
+    if (!archivo_materiales_actualizado.is_open())
+    {
+        cout << "Archivo " << RUTA_MATERIALES << " creado." << endl;
+    }
+
+    for (int i = 0; i < jugadores.obtener_valor(JUGADOR_1)->obtener_inventario()->obtener_largo(); i++)
+    {
+        archivo_materiales_actualizado << jugadores.obtener_valor(JUGADOR_1 - 1)->obtener_inventario()->obtener_valor(i)->obtener_nombre() << " ";
+        archivo_materiales_actualizado << jugadores.obtener_valor(JUGADOR_1 - 1)->obtener_inventario()->obtener_valor(i)->obtener_cantidad() << " ";
+        archivo_materiales_actualizado << jugadores.obtener_valor(JUGADOR_2 - 1)->obtener_inventario()->obtener_valor(i)->obtener_cantidad() << endl;
+    }
+    archivo_materiales_actualizado.close();
+}
+
+void actualizar_archivo_ubicaciones(Matriz_casillero &mapa, Vector_jugador &jugadores)
+{
+    ofstream archivo_ubicaciones_actualizado(RUTA_UBICACIONES);
+    if (!archivo_ubicaciones_actualizado.is_open())
+    {
+        cout << "Archivo " << RUTA_UBICACIONES << " creado." << endl;
+    }
+
+    Vector<string> *materiales = cadena_materiales(mapa);
+    Vector<string> *edificios_jugador1 = cadena_edificios(mapa, JUGADOR_1 - 1);
+    Vector<string> *edificios_jugador2 = cadena_edificios(mapa, JUGADOR_2 - 1);
+
+    for (int i = 0; i < materiales->obtener_largo(); i++)
+    {
+        archivo_ubicaciones_actualizado << materiales->obtener_valor(i);
+    }
+
+    archivo_ubicaciones_actualizado << JUGADOR_1 << " " << jugadores.obtener_valor(JUGADOR_1 - 1)->obtener_posicion().coordenada_a_string() << endl;
+
+    for (int i = 0; i < edificios_jugador1->obtener_largo(); i++)
+    {
+        archivo_ubicaciones_actualizado << edificios_jugador1->obtener_valor(i);
+    }
+    archivo_ubicaciones_actualizado << JUGADOR_2 << " " << jugadores.obtener_valor(JUGADOR_2 - 1)->obtener_posicion().coordenada_a_string() << endl;
+
+    for (int i = 0; i < edificios_jugador2->obtener_largo(); i++)
+    {
+        archivo_ubicaciones_actualizado << edificios_jugador2->obtener_valor(i);
+    }
+
+    archivo_ubicaciones_actualizado.close();
+}
+
+void actualizar_archivo_edificios(Diccionario &diccionario)
+{
+    ofstream archivo_edificios_actualizado(RUTA_EDIFICIOS);
+    if (!archivo_edificios_actualizado.is_open())
+    {
+        cout << "Archivo " << RUTA_EDIFICIOS << " creado." << endl;
+    }
+
+    Vector<Edificio *> vector_edificios = diccionario.arbol_a_vector();
+    for (int i = 0; i < vector_edificios.obtener_largo(); i++)
+    {
+        archivo_edificios_actualizado << vector_edificios.obtener_valor(i)->obtener_nombre() << " ";
+        archivo_edificios_actualizado << vector_edificios.obtener_valor(i)->obtener_material(POSICION_PIEDRA).obtener_cantidad() << " ";
+        archivo_edificios_actualizado << vector_edificios.obtener_valor(i)->obtener_material(POSICION_MADERA).obtener_cantidad() << " ";
+        archivo_edificios_actualizado << vector_edificios.obtener_valor(i)->obtener_material(POSICION_METAL).obtener_cantidad() << " ";
+        archivo_edificios_actualizado << vector_edificios.obtener_valor(i)->obtener_cant_max() << endl;
+    }
+    archivo_edificios_actualizado.close();
+}
