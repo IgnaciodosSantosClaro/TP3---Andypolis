@@ -157,7 +157,7 @@ bool procesar_menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, in
 
 {
     bool salir = false;
-    // gano = verificar_objetivos_inventario();
+    gano = verificar_objetivos_inventario(jugadores.obtener_valor(indice));
     cout << jugadores.obtener_valor(indice)->obtener_nombre() << ESPACIO;
     cout << INGRESE_ACCION << endl;
     Input input;
@@ -185,7 +185,7 @@ bool procesar_menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, in
         }
         else
         {
-            imprimir_con_retardo("Energia insuficiente", 2000);
+            imprimir_con_retardo(MENSAJE_ENERGIA_INSUFICIENTE, 2000);
         }
         break;
     case REPARAR_EDIFICIO_POR_COORDENADA:
@@ -195,7 +195,7 @@ bool procesar_menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, in
         }
         else
         {
-            imprimir_con_retardo("Energia insuficiente", 2000);
+            imprimir_con_retardo(MENSAJE_ENERGIA_INSUFICIENTE, 2000);
         }
         if (tiene_energia(jugadores.obtener_valor(indice), ENERGIA_ATACAR))
         {
@@ -224,25 +224,22 @@ bool procesar_menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, in
         recolectar_recursos_producidos(jugadores.obtener_valor(indice));
         break;
     case MOVERSE_A_UNA_COORDENADA:
-        desplazarse(mapa, grafos.obtener_valor(indice), jugadores.obtener_valor(indice), indice + 1);
+
         break;
     case FINALIZAR_TURNO:
         if (indice == POSICION_JUGADOR_1)
         {
-            cout << "Jugo 1" << endl;
             jugo_1 = true;
             indice = POSICION_JUGADOR_2;
         }
         else
         {
-            cout << "Jugo 2" << endl;
             jugo_2 = true;
             indice = POSICION_JUGADOR_1;
         }
 
         break;
     case GUARDAR_Y_SALIR:
-        guardar_y_salir(mapa, jugadores);
         salir = true;
 
         break;

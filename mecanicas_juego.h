@@ -30,6 +30,7 @@ void comprar_bombas(Jugador *jugador);
 // PRE: El jugador esta bien cargado.
 // POS: Recolecta los recursos producidos por los edificios correspondientes.
 void recolectar_recursos_producidos(Jugador *jugador);
+bool verificar_objetivos_inventario(Jugador *jugador);
 
 void consultar_coordenada(Matriz_casillero &mapa);
 

@@ -119,7 +119,10 @@ estado_objetivo Vector_objetivo::actualizar_por_elemento(string elemento, int ca
     return estado_vector_objetivo;
 };
 // Si el nombre coincide objetivo lo actualiza
-
+int Vector_objetivo::obtener_cantidad_completos()
+{
+    return this->cantidad_completos;
+}
 estado_objetivo Vector_objetivo::actualizar_por_nombre(string nombre, int cant_incremento)
 {
     int largo_vector = this->obtener_largo();

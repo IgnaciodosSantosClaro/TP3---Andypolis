@@ -24,10 +24,10 @@ public:
     // Constructor
     // PRE: -
     // POS: Construye objeto jugador con energia = 50.
-//    Jugador(const Jugador &jugador_copiar);
-//
-//    //Sobrecarga del operador =
-//    Jugador operator=(const Jugador &jugador_copiar);
+    //    Jugador(const Jugador &jugador_copiar);
+    //
+    //    //Sobrecarga del operador =
+    //    Jugador operator=(const Jugador &jugador_copiar);
 
     Jugador();
 
@@ -37,24 +37,24 @@ public:
     // POS: Devuelve la energia del jugador
     int obtener_energia();
 
-    //PRE: -
-    //POS: Devuelve el nombre del jugador.
+    // PRE: -
+    // POS: Devuelve el nombre del jugador.
     string obtener_nombre();
 
-    //PRE: -
-    //POS: Devuelve la posicion del jugador.
+    // PRE: -
+    // POS: Devuelve la posicion del jugador.
     Coordenada obtener_posicion();
 
-    //PRE: -
-    //POS: Devuelve las bombas del jugador.
+    // PRE: -
+    // POS: Devuelve las bombas del jugador.
     Bomba obtener_bombas();
 
-    //PRE: -
-    //POS: Devuelve la identidad del jugador.
+    // PRE: -
+    // POS: Devuelve la identidad del jugador.
     tipo_jugador obtener_identidad();
 
-    //PRE: -
-    //POS: Fija las bombas del jugador con las bombas pasadas por parametro.
+    // PRE: -
+    // POS: Fija las bombas del jugador con las bombas pasadas por parametro.
     void fijar_bombas(Bomba bombas);
 
     // PRE: Recibe una energia que es un numero entero.
@@ -85,13 +85,13 @@ public:
     // POS: Devuelve el puntero a diccionario edificios.
     Diccionario *obtener_edificios();
 
-    //PRE:
-    //POS:
+    // PRE:
+    // POS:
     void mostrar_objetivos_restantes();
 
-    //PRE:
-    //POS:
-    estado_objetivo actualizar_objetivos(string nombre, int cant_incremento);
+    // PRE:
+    // POS:
+    bool actualizar_objetivos(string elemento, int cant_incremento);
 
     // PRE: -
     // POS: Devuelve el inventario del jugador.
@@ -121,6 +121,8 @@ public:
     // POS:
     void agregar_edificio(Edificio edificio);
 
+    Vector_objetivo *obtener_objetivos();
+    bool cumplio_objetivos();
     ~Jugador();
 };
 #endif // JUGADOR_H

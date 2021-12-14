@@ -118,6 +118,7 @@ const string MENSAJE_ATACAR_EDIFICO = "Ingrese la posición (fila,columna) a bom
 const string MENSAJE_REPARAR_EDIFICIO = "Ingrese la posición (fila,columna) a reparar";
 const string MENSAJE_CASILLERO_NO_REPARABLE = "No se puede reparar, revise las coordenadas";
 const string MENSAJE_REPARACION_EXITOSA = "Reparacion exitosa!";
+const string MENSAJE_ENERGIA_INSUFICIENTE = "No tenes la energía suficiente para realizar esta accion";
 // Objetivo_material.h
 const string MENSAJE_OBJETIVO_COMPLETO = " ->Completo";
 

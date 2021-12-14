@@ -494,20 +494,19 @@ void recolectar_material(Casillero *casillero, Jugador *jugador)
         cout << COLOR_TEXTO_VERDE << "Has recolectado " << material_casillero.obtener_cantidad() << " unidades de " << material_casillero.obtener_nombre() << COLOR_TEXTO_BLANCO << endl;
     }
 }
-
-Vector<string>* cadena_materiales(Matriz_casillero &mapa)
+Vector<string> *cadena_materiales(Matriz_casillero &mapa)
 {
-    Vector<string>* coord_materiales = new Vector<string>;
+    Vector<string> *coord_materiales = new Vector<string>;
     string cadena_material;
     Coordenada coordenada;
-    for(int fila = 0; fila < mapa.obtener_largo_filas(); fila++)
+    for (int fila = 0; fila < mapa.obtener_largo_filas(); fila++)
     {
-        for(int columna = 0; columna < mapa.obtener_largo_columnas(); columna++)
+        for (int columna = 0; columna < mapa.obtener_largo_columnas(); columna++)
         {
-            if(mapa.obtener_tipo_casillero(fila, columna) == CASILLERO_TRANSITABLE)
+            if (mapa.obtener_tipo_casillero(fila, columna) == CASILLERO_TRANSITABLE)
             {
-                Casillero_transitable* ptr_casillero = dynamic_cast<Casillero_transitable*>(mapa.obtener_dato(fila, columna));
-                if(ptr_casillero->casillero_ocupado())
+                Casillero_transitable *ptr_casillero = dynamic_cast<Casillero_transitable *>(mapa.obtener_dato(fila, columna));
+                if (ptr_casillero->casillero_ocupado())
                 {
                     coordenada.fijar_coordenadas(fila, columna);
                     cadena_material = ptr_casillero->obtener_material().obtener_nombre() + " " + coordenada.coordenada_a_string();
@@ -520,20 +519,21 @@ Vector<string>* cadena_materiales(Matriz_casillero &mapa)
     return coord_materiales;
 }
 
-Vector<string>* cadena_edificios(Matriz_casillero &mapa, int numero_jugador)
+Vector<string> *cadena_edificios(Matriz_casillero &mapa, int numero_jugador)
 {
-    Vector<string>* coord_edificios = new Vector<string>;
+    Vector<string> *coord_edificios = new Vector<string>;
     string cadena_edificio;
     Coordenada coordenada;
-    for(int fila = 0; fila < mapa.obtener_largo_filas(); fila++)
+    for (int fila = 0; fila < mapa.obtener_largo_filas(); fila++)
     {
-        for(int columna = 0; columna < mapa.obtener_largo_columnas(); columna++)
+        for (int columna = 0; columna < mapa.obtener_largo_columnas(); columna++)
         {
-            if(mapa.obtener_tipo_casillero(fila, columna) == CASILLERO_CONSTRUIBLE)
+            if (mapa.obtener_tipo_casillero(fila, columna) == CASILLERO_CONSTRUIBLE)
             {
-                Casillero_construible* ptr_casillero = dynamic_cast<Casillero_construible*>(mapa.obtener_dato(fila, columna));
-                if(ptr_casillero->casillero_ocupado()) {
-                    if(ptr_casillero->obtener_edificio().obtener_dueno() == numero_jugador)
+                Casillero_construible *ptr_casillero = dynamic_cast<Casillero_construible *>(mapa.obtener_dato(fila, columna));
+                if (ptr_casillero->casillero_ocupado())
+                {
+                    if (ptr_casillero->obtener_edificio().obtener_dueno() == numero_jugador)
                     {
                         coordenada.fijar_coordenadas(fila, columna);
                         cadena_edificio = ptr_casillero->obtener_edificio().obtener_nombre() + " " + coordenada.coordenada_a_string();
