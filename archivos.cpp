@@ -319,34 +319,6 @@ void cargar_materiales(Jugador *jugador1, Jugador *jugador2)
     archivo_materiales.close();
 }
 
-/* void guardar_y_salir(Vector_edificio &edificios, Vector_material &materiales, Matriz_casillero &mapa)
-{
-    actualizar_archivo_edificios(edificios);
-    actualizar_archivo_materiales(materiales);
-    actualizar_archivo_ubicaciones(mapa);
-} */
-
-/* void actualizar_archivo_edificios(Vector_edificio &edificios)
-{
-    ofstream archivo_edificios_actualizado(RUTA_EDIFICIOS);
-    if (!archivo_edificios_actualizado.is_open())
-    {
-        cout << "Archivo " << RUTA_EDIFICIOS << " creado." << endl;
-    }
-
-    for (int i = 0; i < edificios.obtener_largo(); i++)
-    {
-        Edificio edificio_actual = edificios.obtener_valor(i);
-        archivo_edificios_actualizado << edificio_actual.obtener_nombre() << " ";
-        archivo_edificios_actualizado << edificio_actual.obtener_material(0).obtener_cantidad() << " ";
-        archivo_edificios_actualizado << edificio_actual.obtener_material(1).obtener_cantidad() << " ";
-        archivo_edificios_actualizado << edificio_actual.obtener_material(2).obtener_cantidad() << " ";
-        archivo_edificios_actualizado << edificio_actual.obtener_cant_max() << endl;
-    }
-
-    archivo_edificios_actualizado.close();
-} */
-
 void actualizar_archivo_ubicaciones(Matriz_casillero &mapa)
 {
     ofstream archivo_ubicaciones_actualizado(RUTA_UBICACIONES);

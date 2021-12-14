@@ -1,15 +1,15 @@
 #include "Vector_objetivo.h"
 Vector_objetivo::~Vector_objetivo()
 {
-    cout << "Elimine Vector objetivo" << endl;
+
     for (int posicion = 0; posicion < this->obtener_largo(); posicion++)
     {
         cout << posicion << endl;
         delete obtener_valor(posicion);
     }
-    cout << "No sali de acaw" << endl;
+
 };
-Vector_objetivo::Vector_objetivo() { cout << "cree Vector objetivo" << endl; };
+Vector_objetivo::Vector_objetivo() {};
 Vector_objetivo::Vector_objetivo(const Vector_objetivo &vector_a_copiar)
 {
     for (int posicion = 0; posicion < vector_a_copiar.largo_actual; posicion++)

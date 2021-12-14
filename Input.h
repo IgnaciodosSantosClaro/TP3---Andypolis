@@ -35,11 +35,9 @@ public:
     //POS: Imprime por pantalla el pedido de input al usuario.
     void pedir_input();
 
-    //PRE:
-    //POS:
+    //PRE: -
+    //POS: Devuelve el input
     int obtener_input();
-
-    Errores coordenada_valida();
 
 };
 

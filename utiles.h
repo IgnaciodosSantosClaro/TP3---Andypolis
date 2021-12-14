@@ -11,6 +11,7 @@
 #include "Diccionario.h"
 #include "Grafo.h"
 using namespace std;
+
 // PRE:-
 // POS:Es bloqueante, espera que el usuario ingrese un entero;
 // int obtener_opcion_ingresada();
@@ -25,30 +26,32 @@ void pedir_coordenada(int &coord_x, int &coord_y);
 // POS:Devuelve el string hasta la aparición del caracter
 string separar_hasta(string cadena_a_separar, char caracter);
 
-// PRE:
-// POS:
+// PRE: -
+// POS: Pide que se ingrese un nombre.
 string pedir_nombre();
 
-// PRE:
-// POS:
+// PRE: nombre es un string valido.
+// POS: Devulve true si el nombre ingresado coincide con alguno de los edificios. False en caso contrario.
 bool es_edificio(string nombre);
 
-// PRE:
-// POS:
+// PRE: nombre es un string valido.
+// POS: Devuelve true si el nombre coincide con el del jugador1 o jugador2. False en caso contrario.
 bool es_jugador(string nombre);
-// PRE:
-// POS:
+
+// PRE: max_jugadores > 1.
+// POS: Devuelve la eleccion del numero de jugador que se desea emplear.
 int elegir_jugador_inicial(int max_jugadores);
-// PRE:
-// POS:
+
+// PRE: -
+// POS: Devuelve true si en caso de confirmar la decision. False en caso contrario.
 bool confirmar_decision();
 
-// PRE:
-// POS:
+// PRE: -
+// POS: Devuelve true si min <= opcion_elegida <= max. False en caso contrario.
 bool validar_opcion(string opcion_elegida, Input &input, int min, int max);
 
-// PRE:
-// POS:
+// PRE: -
+// POS: Imprime por pantalla si la opcion es invalida, y vuelve a pedir su ingreso.
 void confirmar_opcion_valida(string &opcion, Input &input, int min, int max);
 
 // PRE: nombre es valido y el objeto edificio esta creado.
@@ -59,10 +62,16 @@ void asignar_recursos_otorgados(string nombre, Edificio &edificio);
 // POS: asigna a material la cantidad y el icono correspondiente.
 void asignar_materiales(string nombre, Material_consumible &material);
 
+//PRE: El objeto objetivos_totales fue creado.
+//POS: Carga los objetivos en el vector Vector_objetivo.
 void cargar_objetivos(Vector_objetivo &objetivos_totales, int cant_maxima_escuela);
 
+//PRE: El objeto Jugador fue creado.
+//POS: Devuelve true si el jugador puede reparar el contenido de un casillero. False en caso contrario.
 bool puede_reparar(Casillero *casillero_elegido, Jugador *jugador);
 
+//PRE: energia_necesaria > 0.
+//POS: Devuelve true si la energia del jugador >= energia_necesaria. False en caso contrario.
 bool tiene_energia(Jugador *jugador, int energia_necesaria);
 
 // PRE: -

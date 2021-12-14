@@ -56,21 +56,28 @@ public:
     Edificio(string nombre_Edificio, int cant_max, int cantidad_contruidos, int puntos_salud);
 
     // Constructor por parametros
-    // PRE:
-    // POS:
+    // PRE: -
+    // POS: Construye objeto edificio de nombre nombre_edificio, cantidad maxima cant_max y materiales de construccion materiales_construccion.
     Edificio(string nombre_edificio, int cant_max, Material_consumible materiales_construccion[MAX_MATERIALES_CONSTRUIBLES]);
+
+    //PRE: -
+    //POS: Fija el nombre del edificio con nombre_edificio.
     void fijar_nombre(string nombre_edificio);
+
     // PRE: cant_construidos debe ser mayor o igual que cero.
     // POS: Actualiza el atributo cant_construidos.
     void modificar_cant_construidos(int cant_construidos);
 
-    // PRE:
-    // POS:
+    // PRE: -
+    // POS: Imprime leyenda.
     void mostrar_leyenda(char icono);
 
-    // PRE:
-    // POS:
+    // PRE: -
+    // POS: Fija el dueno del edificio.
     void fijar_dueno(tipo_jugador jugador_dueno);
+
+    //PRE: -
+    //POS: Devuelve el dueno del edificio.
     tipo_jugador obtener_dueno();
 
     // PRE: salud >= 0
@@ -78,7 +85,7 @@ public:
     void fijar_puntos_de_salud(int salud);
 
     // PRE: -
-    // POS:
+    // POS: Devuelve es estado del edificio.
     estado_edificio atacar_edificio();
 
     // PRE: -

@@ -53,7 +53,6 @@ void menu_inicial(Matriz_casillero &mapa, Diccionario &dicc_edificios, Vector_ju
 void menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, Vector_jugador &jugadores, Vector_grafo &grafos, bool es_partida_nueva)
 {
     bool salir = false;
-    // Jugador jugador_vec[MAXIMO_JUGADORES];
 
     Vector_objetivo objetivos_generales;
 
@@ -154,7 +153,6 @@ bool procesar_menu_inicial(Matriz_casillero &mapa, Diccionario &dicc_edificios, 
 }
 
 bool procesar_menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, int &indice, Vector_jugador &jugadores, Vector_grafo &grafos, bool &jugo_1, bool &jugo_2, bool es_partida_nueva, bool &gano)
-
 {
     bool salir = false;
     gano = verificar_objetivos_inventario(jugadores.obtener_valor(indice));
@@ -224,7 +222,7 @@ bool procesar_menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, in
         recolectar_recursos_producidos(jugadores.obtener_valor(indice));
         break;
     case MOVERSE_A_UNA_COORDENADA:
-
+        desplazarse(mapa, grafos.obtener_valor(indice), jugadores.obtener_valor(indice), indice + 1);
         break;
     case FINALIZAR_TURNO:
         if (indice == POSICION_JUGADOR_1)
@@ -241,7 +239,7 @@ bool procesar_menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, in
         break;
     case GUARDAR_Y_SALIR:
         salir = true;
-
+        guardar_y_salir(mapa, jugadores, dicc_edificios);
         break;
     default:
         cout << "no entendi" << endl;

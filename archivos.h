@@ -15,7 +15,9 @@
 #include "Material_consumible.h"
 #include "Vector_grafo.h"
 #include <cctype>
+
 Errores abrir_archivo(std::ifstream &archivo, std::string path);
+
 // PRE: Recibe dos objetos Jugador.
 // POS: Carga el inventario de los jugadores con el contenido de materiales.txt
 void cargar_materiales(Jugador *jugador1, Jugador *jugador2);
@@ -32,21 +34,10 @@ void procesar_mapa(Matriz_casillero &mapa);
 // POS: Carga la matriz con los casille
 void procesar_ubicaciones(Matriz_casillero &mapa, Vector_jugador &jugadores, Vector_grafo &grafos, bool &es_vacio);
 
-// PRE: Vector materiales bien cargado.
-// POS: Actualiza el archivo de materiales. Si no existe lo crea.
-void actualizar_archivo_materiales(Vector_material &materiales);
-
-// PRE: Vector edificios bien cargado.
-// POS: Actualiza el archivo de edificios. Si no esxiste lo crea.
-// void actualizar_archivo_edificios(Vector_edificio &edificios);
-
-// PRE: Matriz de casilleros bien cargada.
-// POS: Actualiza el archivo de ubicaciones.
-void actualizar_archivo_ubicaciones(Matriz_casillero &mapa);
-
 // PRE: Recibe un objeto Grafo y un mapa bien cargado.
 // POS: Carga el grafo con los casilleros como vertices y las energias como aristas.
 void cargar_grafo(Grafo *grafo, Matriz_casillero &mapa, int num_jugador);
+
 // PRE: mapa, jugadores y diccionario estan bien cargados.
 // POS: Actualiza los archivos de materiales, edificios y ubicaciones.
 void guardar_y_salir(Matriz_casillero &mapa, Vector_jugador &jugadores, Diccionario &diccionario);
@@ -65,7 +56,7 @@ void actualizar_archivo_edificios(Diccionario &diccionario);
 
 //PRE: mapa y jugadores estan bien cargados.
 //POS: Actualiza los archivos de materiales, edificios y ubicaciones.
-void guardar_y_salir(Matriz_casillero &mapa, Vector_jugador &jugadores);
+void guardar_y_salir(Matriz_casillero &mapa, Vector_jugador &jugadores, Diccionario &diccionario);
 
 //PRE: jugadores esta bien cargado.
 //POS: Actualiza el archivo de materiales. Si no existe lo crea.

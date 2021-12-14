@@ -11,6 +11,9 @@ private:
     string nombre;
 
 public:
+    //Constructor
+    //PRE: -
+    //POS: Construye vertice con nombre correspondiente al pasado por parametro.
     Vertice(string nombre);
 
     //PRE: -

@@ -28,9 +28,14 @@ public:
     //
     //    //Sobrecarga del operador =
     //    Jugador operator=(const Jugador &jugador_copiar);
-
+    //Constructor por defecto
+    //PRE:
+    //POS:
     Jugador();
 
+    //Constructor por parametros
+    //PRE:
+    //POS:
     Jugador(string nombre, tipo_jugador identidad);
 
     // PRE: -
@@ -65,8 +70,8 @@ public:
     // POS: La posicion actual del jugador pasa a ser pos_x, pos_y.
     void desplazarse(int pos_x, int pos_y);
 
-    // PRE:
-    // POS:
+    // PRE: -
+    // POS: Devuelve true si el jugador es ganador. False en caso contrario.
     bool es_ganador();
 
     // PRE:
@@ -121,8 +126,15 @@ public:
     // POS:
     void agregar_edificio(Edificio edificio);
 
+    //PRE:
+    //POS:
     Vector_objetivo *obtener_objetivos();
+
+    //PRE:
+    //POS:
     bool cumplio_objetivos();
+
+    //Destructor
     ~Jugador();
 };
 #endif // JUGADOR_H

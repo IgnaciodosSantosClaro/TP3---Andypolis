@@ -47,12 +47,6 @@ public:
     */
     void recorrer();
 
-    /*
-    PRE: la nombre_edificio corresponde a una nombre_edificio del diccionario
-    POS: reemplaza el valor asociado al nombre_edificio pasado por parametro liberando la memoria del dato del nodo anterior
-    */
-//    void reemplazar(string viejo, Edificio* edificio);
-
     //PRE:
     //POS: devuelve un vector que contiene los datos del ABB
     Vector<Edificio*> arbol_a_vector();

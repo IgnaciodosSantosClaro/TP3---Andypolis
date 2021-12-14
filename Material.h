@@ -25,7 +25,11 @@ public:
     // PRE: -
     // POS: Devuelve el nombre del material.
     std::string obtener_nombre();
+
+    //PRE: -
+    //POS: Imprime por pantalla la leyenda.
     void mostrar_leyenda(char icono);
+
     // PRE: -
     // POS: Devuelve la cantidad de material.
     int obtener_cantidad();

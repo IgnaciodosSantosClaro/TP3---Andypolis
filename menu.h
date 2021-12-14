@@ -40,13 +40,11 @@ enum opciones_juego
 };
 
 // PRE: -
-// POS:
+// POS: Inicia el juego.
 void iniciar_juego();
 
 // PRE: El mapa, dicc_edificios, jugador_vec y grafo_vec estan bien cargados.
 // POS: Procesa la opcion elegida por el usuario.
-//  Cambia indice, recibir por referencia
-// bool procesar_menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, int &indice, Jugador *jugador_vec, Grafo *grafo_vec, bool &jugo_1, bool &jugo_2, bool es_partida_nueva);
 bool procesar_menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, int &indice, Vector_jugador &jugadores, Vector_grafo &grafos_vec, bool &jugo_1, bool &jugo_2, bool es_partida_nueva, bool &gano);
 
 // PRE: mapa, dicc_edificios, jugador1, jugador2, grafo1 y grafo2 estan bien cargados.
@@ -56,10 +54,6 @@ void menu_inicial(Matriz_casillero &mapa, Diccionario &dicc_edificios, Vector_ju
 // PRE: mapa, dicc_edificios, jugador1, jugador2, grafo1 y grafo2 estan bien cargados.
 // POS: Procesa la opcion elegida por el usuario.
 bool procesar_menu_inicial(Matriz_casillero &mapa, Diccionario &dicc_edificios, Vector_jugador &jugadores, Vector_grafo &grafos_vec, bool es_partida_nueva);
-
-// PRE:
-// POS:
-int obtener_opcion_ingresada();
 
 // PRE: -
 // POS: Imprime por pantalla el menu inicial.

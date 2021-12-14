@@ -2,7 +2,6 @@
 
 Diccionario::Diccionario()
 {
-    cout << "cree diccionario" << endl;
     arbol = new ABB<Edificio>;
 }
 
@@ -32,15 +31,6 @@ void Diccionario::recorrer()
     arbol->imprimir_in_order();
 }
 
-// void Diccionario::reemplazar(string viejo, Edificio* edificio) {
-//     Nodo_ABB<Edificio>* aux = arbol->buscar(viejo);
-//     aux->~Nodo_ABB(); //borro la memoria que ocupaba el dato viejo
-//     aux->setear_dato(edificio); //establezco el dato nuevo
-//     aux->setear_clave(edificio->obtener_nombre()); //establezco la clave nueva para el nodo
-//     arbol->buscar(viejo)->~Nodo_ABB();
-//     arbol->buscar(viejo)->setear_dato(edificio);
-// }
-
 Vector<Edificio *> Diccionario::arbol_a_vector()
 {
     Vector<Edificio *> vector;
@@ -50,7 +40,5 @@ Vector<Edificio *> Diccionario::arbol_a_vector()
 
 Diccionario::~Diccionario()
 {
-    // arbol->~ABB();
-    cout << "Elimine Diccionario" << endl;
     delete arbol;
 }

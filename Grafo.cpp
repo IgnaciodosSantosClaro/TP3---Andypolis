@@ -52,13 +52,6 @@ Vector<string> *Grafo::camino_minimo(string origen, string destino)
     int posicion_origen = vertices->obtener_posicion(origen);
     int posicion_destino = vertices->obtener_posicion(destino);
 
-    //    if(posicion_origen == POSICION_NO_ENCONTRADA){
-    //        cout << "El vertice " << origen << " no existe en el grafo" << endl;
-    //    }
-    //    if(posicion_destino == POSICION_NO_ENCONTRADA){
-    //        cout << "El vertice " << destino << " no existe en el grafo" << endl;
-    //    }
-
     return camino_minimo(posicion_origen, posicion_destino);
 }
 

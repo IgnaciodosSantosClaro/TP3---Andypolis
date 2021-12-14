@@ -1,25 +1,6 @@
 #include "utiles.h"
 #include <climits>
-// int obtener_opcion_ingresada()
-//{
-//     Input input;
-//     string entrada_usuario;
-//     cin >> entrada_usuario;
-//     int opcion_elegida;
-////    try
-////    {
-////        opcion_elegida = std::stoi(entrada_usuario);
-////    }
-////    catch (std::invalid_argument &)
-////    {
-////        cout << MENSAJE_OPCION_INVALIDA << endl;
-////        opcion_elegida = obtener_opcion_ingresada();
-////    }
-////    return opcion_elegida;
-//    confirmar_opcion_valida(entrada_usuario, input, );
-//    opcion_elegida = input.obtener_input();
-//    return opcion_elegida;
-//}
+
 void obtener_coordenadas(int &coord_x, int &coord_y, int max_x, int max_y)
 {
     pedir_coordenada(coord_x, coord_y);
@@ -120,12 +101,6 @@ int elegir_jugador_inicial(int max_jugadores)
     cin >> entrada_usuario;
     confirmar_opcion_valida(entrada_usuario, input, 1, max_jugadores);
     int entrada = input.obtener_input();
-    //    int entrada = obtener_opcion_ingresada();
-    //    if (entrada <= 0 || entrada > max_jugadores)
-    //    {
-    //        cout << MENSAJE_OPCION_INVALIDA << endl;
-    //        elegir_jugador_inicial(max_jugadores);
-    //    }
     return entrada;
 }
 bool confirmar_decision()
