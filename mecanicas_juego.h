@@ -43,7 +43,7 @@ bool indice_repetido(int indice_a_revisar, Vector<int> indices);
 
 // PRE: La Matriz_casillero, el Grafo y el Jugador estan bien cargados.
 // POS: Construye un edificio.
-void construir_edificio(Matriz_casillero &mapa, Grafo *grafo, Jugador *jugador);
+void construir_edificio(Matriz_casillero &mapa, Grafo *grafo, Jugador *jugador, bool &gano);
 
 // PRE: La Matriz_casillero, el Grafo y el Jugador estan bien cargados.
 // POS: Destruye un edificio.

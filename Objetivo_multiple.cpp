@@ -59,6 +59,7 @@ int Objetivo_multiple::buscar_por_nombre(string nombre) // Devuelve posicion inv
     }
     return i;
 }
+
 int Objetivo_multiple::obtener_cantidad_objetivo(string nombre) // Devuelve posicion invalida si no encuentra
 {
     int indice = buscar_por_nombre(nombre);
@@ -111,6 +112,18 @@ estado_objetivo Objetivo_multiple::actualizar_objetivo_multiple()
         }
     }
     return estado;
+}
+estado_objetivo Objetivo_multiple::actualizar_por_elemento(string elemento, int cant_incremento) // Devuelve posicion invalida si no encuentra
+{
+    int cantidad_objetivos = this->vector_objetivos.obtener_largo();
+    for (int i = 0; i < cantidad_objetivos; i++)
+    {
+        if (this->vector_objetivos.obtener_valor(i).obtener_elemento().compare(elemento))
+        {
+            this->vector_objetivos.obtener_valor(i).actualizar_objetivo(cant_incremento);
+        }
+    }
+    return this->actualizar_objetivo_multiple();
 }
 void Objetivo_multiple::mostrar_restante()
 {

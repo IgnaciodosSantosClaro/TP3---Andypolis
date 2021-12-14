@@ -72,9 +72,10 @@ int numero_aleatorio(int limite_sup, int limite_inf)
 {
     return (rand() % (limite_sup + 1 - limite_inf)) + limite_inf;
 }
-void generar_cantidades_de_recursos(int &cantidad_metal, int &cantidad_piedra, int &cantidad_madera)
+void generar_cantidades_de_recursos(int &cantidad_metal, int &cantidad_piedra, int &cantidad_madera, int &cantidad_andycoins)
 {
     cantidad_metal = numero_aleatorio(CANT_MAXIMA_METAL, CANT_MINIMA_METAL);
     cantidad_piedra = numero_aleatorio(CANT_MAXIMA_PIEDRA, CANT_MINIMA_PIEDRA);
     cantidad_madera = numero_aleatorio(CANT_MAXIMA_MADERA, CANT_MINIMA_MADERA);
+    cantidad_andycoins = numero_aleatorio(CANT_MAXIMA_ANDYCOINS, CANT_MINIMA_ANDYCOINS);
 }

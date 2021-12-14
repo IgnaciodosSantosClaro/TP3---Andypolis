@@ -12,5 +12,5 @@ void tormenta(int cant_truenos);
 void lluvia(int t_visible, int num_gotas, int t_espera);
 void coordenadas_aleatorias(int limite_filas, int limite_columnas, int &fila, int &columna);
 int numero_aleatorio(int limite_sup, int limite_inf);
-void generar_cantidades_de_recursos(int &cantidad_metal, int &cantidad_piedra, int &cantidad_madera);
+void generar_cantidades_de_recursos(int &cantidad_metal, int &cantidad_piedra, int &cantidad_madera, int &cantidad_andycoins);
 #endif

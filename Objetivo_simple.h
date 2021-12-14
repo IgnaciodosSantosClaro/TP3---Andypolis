@@ -12,6 +12,7 @@ public:
     Objetivo_simple operator=(const Objetivo_simple &objetivo_a_copiar);
     Objetivo_simple(const Objetivo_simple &objetivo_a_copiar);
     Objetivo_simple();
+    string obtener_elemento();
     Objetivo_simple(string nombre, string descripcion, string nombre_elemento_objetivo);
     Objetivo_simple(string nombre, string descripcion, string nombre_elemento_objetivo, int cantidad_objetivo);
     int obtener_cantidad_objetivo();

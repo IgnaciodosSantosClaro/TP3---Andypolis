@@ -20,6 +20,7 @@ public:
     Vector_objetivo(const Vector_objetivo &vector_a_copiar);
     void agregar_objetivo_simple(string nombre, string descripcion, string nombre_elemento_objetivo, int cantidad_objetivo);
     void agregar_objetivo_multiple(Objetivo_multiple &objetivo);
+    estado_objetivo actualizar_por_elemento(string elemento, int cant_incremento);
     estado_objetivo actualizar_por_nombre(string nombre, int cant_incremento);
     tipo_objetivo obtener_tipo_objetivo(Objetivo *objetivo);
     void actualizar_multiple(string nombre);

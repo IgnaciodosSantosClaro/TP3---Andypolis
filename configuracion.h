@@ -106,7 +106,13 @@ const int MAX_MATERIALES_CONSTRUIBLES = 3;
 const int SALUD_MAXIMA = 2;
 // ERRORES
 const int POSICION_INVALIDA = -1;
-//
+// lluvia
+const int CANT_PIEDRA_EN_BOLSA = 100;
+const int CANT_METAL_EN_BOLSA = 100;
+const int CANT_MADERA_EN_BOLSA = 100;
+const int CANT_ANDYCOINS_EN_BOLSA = 100;
+const int CANT_MAXIMA_ANDYCOINS = 1;
+const int CANT_MINIMA_ANDYCOINS = 0;
 const int CANT_MAXIMA_METAL = 4;
 const int CANT_MAXIMA_PIEDRA = 2;
 const int CANT_MAXIMA_MADERA = 1;
