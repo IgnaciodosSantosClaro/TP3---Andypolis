@@ -72,7 +72,7 @@ void menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, Vector_juga
     bool jugo_1 = false;
     bool jugo_2 = false;
     bool gano = false;
-    while (salir != true || gano != true)
+    while (salir != true && gano != true)
     {
         retardo(2500);
         if (jugo_1 == true && jugo_2 == true)

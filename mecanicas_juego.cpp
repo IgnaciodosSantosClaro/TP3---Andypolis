@@ -309,7 +309,7 @@ bool verificar_objetivos_inventario(Jugador *jugador)
     int cantidad_bombas = jugador->obtener_bombas().obtener_cantidad();
     if (jugador->obtener_objetivos()->actualizar_por_nombre(NOMBRE_EDAD_PIEDRA, cantidad_piedra) != OBJETIVO_COMPLETO)
     {
-        jugador->obtener_objetivos()->actualizar_por_nombre(NOMBRE_EDAD_PIEDRA, cantidad_piedra);
+        jugador->obtener_objetivos()->actualizar_por_nombre(NOMBRE_EDAD_PIEDRA, -cantidad_piedra);
     }
     if (jugador->obtener_objetivos()->actualizar_por_nombre(NOMBRE_ENERGETICO, -energia) != OBJETIVO_COMPLETO)
     {

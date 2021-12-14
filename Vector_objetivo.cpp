@@ -75,7 +75,6 @@ void Vector_objetivo::agregar_objetivo_multiple(Objetivo_multiple &objetivo)
 estado_objetivo Vector_objetivo::actualizar_por_elemento(string elemento, int cant_incremento)
 {
     int largo_vector = this->obtener_largo();
-    estado_objetivo estado = OBJETIVO_INCOMPLETO;
     estado_objetivo estado_vector_objetivo = OBJETIVO_INCOMPLETO;
     for (int i = 0; i < largo_vector; i++)
     {
@@ -88,7 +87,7 @@ estado_objetivo Vector_objetivo::actualizar_por_elemento(string elemento, int ca
             Objetivo_simple *objetivo_ptr = dynamic_cast<Objetivo_simple *>(this->obtener_valor(i));
             if (objetivo_ptr->obtener_elemento().compare(elemento) == 0)
             {
-                estado = objetivo_ptr->actualizar_objetivo(cant_incremento);
+                objetivo_ptr->actualizar_objetivo(cant_incremento);
             }
 
             break;
@@ -107,14 +106,17 @@ estado_objetivo Vector_objetivo::actualizar_por_elemento(string elemento, int ca
         }
         i++;
     }
-
-    if (estado == OBJETIVO_COMPLETO)
+    this->cantidad_completos = 0;
+    for (int i = 0; i < this->obtener_largo(); i++)
     {
-        this->cantidad_completos++;
-        if (this->cantidad_completos == this->obtener_largo())
+        if (this->obtener_valor(i)->objetivo_completo())
         {
-            estado_vector_objetivo = OBJETIVO_COMPLETO;
+            this->cantidad_completos++;
         }
+    }
+    if (this->cantidad_completos == this->obtener_largo())
+    {
+        estado_vector_objetivo = OBJETIVO_COMPLETO;
     }
     return estado_vector_objetivo;
 };
@@ -128,7 +130,6 @@ estado_objetivo Vector_objetivo::actualizar_por_nombre(string nombre, int cant_i
     int largo_vector = this->obtener_largo();
     bool encontrado = false;
     int i = 0;
-    estado_objetivo estado = OBJETIVO_INCOMPLETO;
     estado_objetivo estado_vector_objetivo = OBJETIVO_INCOMPLETO;
     while (encontrado == false && i < largo_vector)
     {
@@ -141,7 +142,7 @@ estado_objetivo Vector_objetivo::actualizar_por_nombre(string nombre, int cant_i
             {
                 cout << i << endl;
                 Objetivo_simple *objetivo_ptr = dynamic_cast<Objetivo_simple *>(this->obtener_valor(i));
-                estado = objetivo_ptr->actualizar_objetivo(cant_incremento);
+                objetivo_ptr->actualizar_objetivo(cant_incremento);
                 encontrado = true;
             };
             break;
@@ -152,7 +153,7 @@ estado_objetivo Vector_objetivo::actualizar_por_nombre(string nombre, int cant_i
             Objetivo_multiple *objetivo_ptr = dynamic_cast<Objetivo_multiple *>(this->obtener_valor(i));
             if (objetivo_ptr->buscar_por_nombre(nombre) != POSICION_INVALIDA)
             {
-                estado = objetivo_ptr->actualizar_objetivo(nombre, cant_incremento);
+                objetivo_ptr->actualizar_objetivo(nombre, cant_incremento);
                 encontrado = true;
             }
             break;
@@ -164,14 +165,19 @@ estado_objetivo Vector_objetivo::actualizar_por_nombre(string nombre, int cant_i
         }
         i++;
     }
-    if (estado == OBJETIVO_COMPLETO)
+    this->cantidad_completos = 0;
+    for (int i = 0; i < this->obtener_largo(); i++)
     {
-        this->cantidad_completos++;
-        if (this->cantidad_completos == this->obtener_largo())
+        if (this->obtener_valor(i)->objetivo_completo())
         {
-            estado_vector_objetivo = OBJETIVO_COMPLETO;
+            this->cantidad_completos++;
         }
     }
+    if (this->cantidad_completos == this->obtener_largo())
+    {
+        estado_vector_objetivo = OBJETIVO_COMPLETO;
+    }
+
     return estado_vector_objetivo;
 };
 tipo_objetivo Vector_objetivo::obtener_tipo_objetivo(Objetivo *objetivo)
