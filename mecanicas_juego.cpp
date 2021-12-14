@@ -57,7 +57,7 @@ void atacar(Matriz_casillero &mapa, Jugador *jugador)
     }
 }
 
-void comprar_bombas(Jugador *jugador)
+void comprar_bombas(Jugador *jugador, bool &gano)
 {
     if (jugador->obtener_energia() >= CONSUMO_ENERGIA_COMPRAR_BOMBAS)
     {
@@ -78,6 +78,10 @@ void comprar_bombas(Jugador *jugador)
             jugador->obtener_inventario()->obtener_valor(pos_buscada)->fijar_cantidad(cantidad_andycoins);
             jugador->modificar_energia(-CONSUMO_ENERGIA_COMPRAR_BOMBAS);
             jugador->modificar_cantidad_bomba(input.obtener_input());
+            if (jugador->actualizar_objetivos(ANDYCOINS, cantidad_andycoins) == OBJETIVO_COMPLETO)
+            {
+                gano = true;
+            }
             cout << "Se han adquirido " << input.obtener_input() << " bombas." << endl;
             cout << "Se tienen " << cantidad_andycoins << " andycoins." << endl;
         }

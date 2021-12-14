@@ -4,12 +4,10 @@ Vector_objetivo::~Vector_objetivo()
 
     for (int posicion = 0; posicion < this->obtener_largo(); posicion++)
     {
-        cout << posicion << endl;
         delete obtener_valor(posicion);
     }
-
 };
-Vector_objetivo::Vector_objetivo() {};
+Vector_objetivo::Vector_objetivo(){};
 Vector_objetivo::Vector_objetivo(const Vector_objetivo &vector_a_copiar)
 {
     for (int posicion = 0; posicion < vector_a_copiar.largo_actual; posicion++)
@@ -83,7 +81,6 @@ estado_objetivo Vector_objetivo::actualizar_por_elemento(string elemento, int ca
         {
         case OBJETIVO_SIMPLE:
         {
-            cout << i << endl;
             Objetivo_simple *objetivo_ptr = dynamic_cast<Objetivo_simple *>(this->obtener_valor(i));
             if (objetivo_ptr->obtener_elemento().compare(elemento) == 0)
             {
@@ -94,7 +91,6 @@ estado_objetivo Vector_objetivo::actualizar_por_elemento(string elemento, int ca
         }
         case OBJETIVO_MULTIPLE:
         {
-            cout << i << endl;
             Objetivo_multiple *objetivo_ptr = dynamic_cast<Objetivo_multiple *>(this->obtener_valor(i));
             objetivo_ptr->actualizar_por_elemento(elemento, cant_incremento);
             break;
@@ -140,7 +136,6 @@ estado_objetivo Vector_objetivo::actualizar_por_nombre(string nombre, int cant_i
         {
             if (this->obtener_valor(i)->obtener_nombre().compare(nombre) == 0)
             {
-                cout << i << endl;
                 Objetivo_simple *objetivo_ptr = dynamic_cast<Objetivo_simple *>(this->obtener_valor(i));
                 objetivo_ptr->actualizar_objetivo(cant_incremento);
                 encontrado = true;
@@ -149,7 +144,6 @@ estado_objetivo Vector_objetivo::actualizar_por_nombre(string nombre, int cant_i
         }
         case OBJETIVO_MULTIPLE:
         {
-            cout << i << endl;
             Objetivo_multiple *objetivo_ptr = dynamic_cast<Objetivo_multiple *>(this->obtener_valor(i));
             if (objetivo_ptr->buscar_por_nombre(nombre) != POSICION_INVALIDA)
             {

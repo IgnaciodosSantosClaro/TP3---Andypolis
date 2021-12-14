@@ -2,12 +2,11 @@
 
 using namespace std;
 
-Vector_jugador::Vector_jugador() {};
+Vector_jugador::Vector_jugador(){};
 Vector_jugador::~Vector_jugador()
 {
     for (int posicion = 0; posicion < this->obtener_largo(); posicion++)
     {
-        cout << posicion << endl;
         delete obtener_valor(posicion);
     }
 };

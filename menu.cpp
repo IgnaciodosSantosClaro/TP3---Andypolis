@@ -205,7 +205,7 @@ bool procesar_menu_juego(Matriz_casillero &mapa, Diccionario &dicc_edificios, in
         }
         break;
     case COMPRAR_BOMBAS:
-        comprar_bombas(jugadores.obtener_valor(indice));
+        comprar_bombas(jugadores.obtener_valor(indice), gano);
 
         break;
     case CONSULTAR_COORDENADA:

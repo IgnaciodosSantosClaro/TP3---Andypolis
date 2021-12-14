@@ -2,10 +2,9 @@
 
 using namespace std;
 
-Vector_material::Vector_material() { cout << "cree Vector material" << endl; };
+Vector_material::Vector_material(){};
 Vector_material::~Vector_material()
 {
-    cout << "Elimine Vector material" << endl;
     for (int posicion = 0; posicion < this->obtener_largo(); posicion++)
     {
         delete obtener_valor(posicion);
@@ -35,7 +34,7 @@ int Vector_material::obtener_pos_material(string nombre)
     };
     return posicion;
 };
-Material* Vector_material::obtener_por_nombre(string nombre)
+Material *Vector_material::obtener_por_nombre(string nombre)
 {
     return this->obtener_valor(this->obtener_pos_material(nombre));
 }

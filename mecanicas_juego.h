@@ -23,34 +23,34 @@ void atacar(Matriz_casillero &mapa, Jugador *jugador);
 
 // PRE: jugador no es nullptr.
 // POS: Compra bombas.
-void comprar_bombas(Jugador *jugador);
+void comprar_bombas(Jugador *jugador, bool &gano);
 
 // PRE: jugador no es nullptr.
 // POS: Recolecta los recursos producidos por los edificios correspondientes.
 void recolectar_recursos_producidos(Jugador *jugador);
 
-//PRE: jugador no es nullptr.
-//POS: Devuelve true si se completo un objetivo. False en caso contrario.
+// PRE: jugador no es nullptr.
+// POS: Devuelve true si se completo un objetivo. False en caso contrario.
 bool verificar_objetivos_inventario(Jugador *jugador);
 
-//PRE: Mapa esta bien cargado.
-//POS: Imprime por pantalla el contenido de las coordenadas.
+// PRE: Mapa esta bien cargado.
+// POS: Imprime por pantalla el contenido de las coordenadas.
 void consultar_coordenada(Matriz_casillero &mapa);
 
-//PRE: jugador no es nullptr y mapa esta bien cargado.
-//POS: Repara un edificio.
+// PRE: jugador no es nullptr y mapa esta bien cargado.
+// POS: Repara un edificio.
 void reparar(Matriz_casillero &mapa, Jugador *jugador);
 
-//PRE: Mapa esta bien cargado.
-//POS: Se generan aleatoriamente sobre el mapa conjuntos de materiales.
+// PRE: Mapa esta bien cargado.
+// POS: Se generan aleatoriamente sobre el mapa conjuntos de materiales.
 void lluvia_recursos(Matriz_casillero &mapa);
 
-//PRE: jugador no es nullptr, vector esta bien cargado y cantidad_secundarios > 0.
-//POS: Asigna objetivos al jugador.
+// PRE: jugador no es nullptr, vector esta bien cargado y cantidad_secundarios > 0.
+// POS: Asigna objetivos al jugador.
 void asignar_objetivos(Vector_objetivo &vector, Jugador *jugador, int cantidad_secundarios);
 
-//PRE: indice_a_revisar >= 0.
-//POS: Devuelve true si un indice esta repetido. False en caso contrario.
+// PRE: indice_a_revisar >= 0.
+// POS: Devuelve true si un indice esta repetido. False en caso contrario.
 bool indice_repetido(int indice_a_revisar, Vector<int> indices);
 
 // PRE: La Matriz_casillero, el Grafo y el Jugador estan bien cargados.
@@ -61,8 +61,8 @@ void construir_edificio(Matriz_casillero &mapa, Grafo *grafo, Jugador *jugador, 
 // POS: Destruye un edificio.
 void demoler_edificio(Matriz_casillero &mapa, Grafo *grafo, Jugador *jugador, int numero_jugador);
 
-//PRE: mapa, grafo y jugador estan bien cargados.
-//POS: Desplaza al jugador.
+// PRE: mapa, grafo y jugador estan bien cargados.
+// POS: Desplaza al jugador.
 void desplazarse(Matriz_casillero &mapa, Grafo *grafo, Jugador *jugador, int numero_jugador);
 
 #endif // MECANICAS_JUEGO_H

@@ -2,4 +2,3 @@ madera 150 300
 piedra 200 300
 metal 200 814
 andycoins 15 1000
-bombas 1 0
